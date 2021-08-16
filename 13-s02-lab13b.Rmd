@@ -1,0 +1,35 @@
+## PreClass Activity
+
+Only one chapter to read this week. Some of the terms will be familiar but some novel so remember to take notes and think of examples which would use the same design but in a different scenario. Once you have read the chapter, try the suggested exercise from the chapter and then the MCQs below to see if you are following things correctly. Anything you are unsure of, post questions on the forum or ask them in the lab.
+
+### Read
+
+**Chapter**
+
+Read Chapter 4 of <a href="https://drive.google.com/file/d/0B1fyuTuvj3YoaFdUR3FZaXNuNXc/view" target = "_blank">Miller and Haden (2013)</a> and try to understand the situation where you have two factors with at least two levels each. In this lab we will look at interactions. 
+
+### TRY
+
+**Test your understanding of Miller and Haden (2013) Chapter 4**
+
+1. To test your understanding, work through Computational Exercise #1 in Section 4.9 of Miller and Haden - the answer is in Section 4.10 so check your working but be sure to work through the example first. The concept of interactions should be familiar to you from your statistics lectures this semester.
+
+2. Try these short MCQs on two factor, between-subjects designs:
+
+1. A 2x2 factorial design contains how many cells? `r mcq(c("two",answer = "four","six","eight","who do we appreciate!"))`
+
+2. What effect is / effects are tested in a 2x2 ANOVA with factors A and B? `r mcq(c(answer = "the main effects of A and B, and the AB interaction", "only the main effects of A and B", "only the AB interaction", "a correlation between A and B"))`
+
+3. What is a marginal mean? `r mcq(c(answer = "the mean DV at a given level of one factor, averaged over the levels of the other factors","the mean DV at a given level of one factor, at a particular level of the other factor","a mean that is nearly statistically significant","a mean defined based on marginal likelihood"))`
+
+4. What is a cell mean? `r mcq(c("the mean DV at a given level of one factor, averaged over the levels of the other factors",answer =  "the mean DV at a given level of one factor, at a particular level of the other factor","a mean that is nearly statistically significant","a mean defined based on marginal likelihood"))`
+
+5. A statistical test for a main effect tests the null hypothesis that `r mcq(c("simple effects in the sample are equivalent","simple effects in the population are equivalent","sample marginal means are equivalent",answer = "population marginal means are equivalent"))`
+
+6. A statistical test for an interaction tests the null hypothesis that `r mcq(c(answer = "the effect of one factor is constant across the levels of the other in the population","the effect of one factor is constant across the levels of the other in the sample","sample marginal means are equivalent","population marginal means are equivalent"))`
+
+If you are not sure about the above questions, go back and read the chapter and make sure you understand the difference between a main effect (the effect at one of the IVs) and the interaction (the effect of one factor dependent on the levels of the other factor). Those are the key elements to really wrap your head around in a factorial ANOVA.
+
+**Note:** factorial ANOVAs can get really complex with three, four, or more IVs, so when writing about one, it is often good to state something like two-way (meaning two IVs) or three-way (meaning three IVs) etc. Be clear for your reader.
+
+<span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span>

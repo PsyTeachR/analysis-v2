@@ -1,0 +1,179 @@
+## Solutions to Questions
+
+```{r lab5-solutions-data, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE}
+set.seed(1409)
+dat <- read_csv("./data/05-s01/inclass/perm_data.csv") %>% 
+  mutate(subj_id = row_number())
+``` 
+
+Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
+
+### InClass Activities
+
+#### Step 1
+
+```{r data-load, message = FALSE, eval=FALSE}
+library("tidyverse")
+set.seed(1409)
+
+dat <- read_csv("perm_data.csv") %>% 
+  mutate(subj_id = row_number())
+```
+
+**Note:** The data for this activity was created in exactly the same fashion as we saw in the PreClass Activity Skill 1.  If you wanted to create your own datasets this is the code we used.
+
+```{r data-create, eval=FALSE}
+
+dat <- tibble(group = rep(c("A", "B"), each = 50),
+               Y = c(rnorm(50, 100, 15),
+                     rnorm(50, 110, 15)))
+
+write_csv(dat, "perm_data.csv")
+```
+
+[Return to Task](#Ch5InClassQueT1)
+
+#### Step 2
+
+**Step 2.1.1 - the basic dat pipeline**
+
+```{r basic-dat, warning = FALSE}
+dat %>%
+  group_by(group) %>%
+  summarise(m = mean(Y))
+```
+
+
+**Step 2.1.2 - using `pivot_wider()` to separate the groups**
+```{r spread-part, warning = FALSE}
+dat %>%
+  group_by(group) %>%
+  summarise(m = mean(Y)) %>%
+  pivot_wider(names_from = "group", values_from = "m")
+```
+
+**Step 2.1.3 - `mutate()` the column of mean differences**
+```{r mutate-part, warning = FALSE}
+dat %>%
+  group_by(group) %>%
+  summarise(m = mean(Y)) %>%
+  pivot_wider(names_from = "group", values_from = "m") %>%
+  mutate(diff = A - B)
+```
+
+**Step 2.1.4 - `pull()` out the difference**
+```{r pull-part, warning = FALSE}
+dat %>%
+  group_by(group) %>%
+  summarise(m = mean(Y)) %>%
+  pivot_wider(names_from = "group", values_from = "m") %>%
+  mutate(diff = A - B) %>%
+  pull(diff)
+```
+
+```{r pull-part-1, echo=FALSE, warning = FALSE}
+d_orig <- dat %>%
+  group_by(group) %>%
+  summarise(m = mean(Y)) %>%
+  pivot_wider(names_from = "group", values_from = "m") %>%
+  mutate(diff = A - B) %>%
+  pull(diff)
+```
+
+* As such $D_{orig}$ = `r round(d_orig, 2)`
+
+**Step 2.2 - setting up the `calc_diff()` function**
+```{r calc_diff_solution}
+calc_diff <- function(x) {
+  x %>%
+    group_by(group) %>%
+    summarise(m = mean(Y)) %>%
+    pivot_wider(names_from = "group", values_from = "m") %>%
+    mutate(diff = A - B) %>%
+    pull(diff)
+}
+```
+
+**Step 2.3 - Calculating d_orig using calc_diff()**
+```{r d_orig_solution, warning = FALSE}
+d_orig <- calc_diff(dat)
+is_tibble(d_orig)
+is_numeric(d_orig)
+```
+
+[Return to Task](#Ch5InClassQueT2)
+
+#### Step 3
+
+```{r permute_fn, warning = FALSE}
+permute <- function(x) {
+  x %>%
+    mutate(group = sample(group))
+}
+
+permute(dat)
+```
+
+[Return to Task](#Ch5InClassQueT3)
+
+#### Step 4
+
+**Step 4.1 - the pipeline**
+```{r permute_once}
+dat %>% permute() %>% calc_diff()
+```
+
+
+**Step 4.2 - creating nhd**
+```{r nhd}
+nhd <- replicate(1000, dat %>% permute() %>% calc_diff())
+```
+
+**Step 4.3 - plotting nhd**
+```{r histogram, fig.cap="The simulated distribution of all possible differences"}
+ggplot(tibble(x = nhd), aes(x)) + geom_histogram(binwidth = 1)
+```
+
+[Return to Task](#Ch5InClassQueT4)
+
+#### Step 5
+
+**Step 5.1 - The logical vector**
+
+* This code establishes all the values in nhd that are equal to or greater than the value in d_orig
+* It returns all these values as TRUE and all other values as FALSE
+* `abs()` tells the code to ignore the sign of the value (i.e. assumes everything is positive)
+
+```{r lvec}
+lvec = abs(nhd) >= abs(d_orig)
+```
+
+
+**Step 5.2 - Sum up all the TRUE values**
+
+* This gives the total number of values greater or equal to d_orig
+```{r n-exceed}
+n_exceeding_orig <- sum(lvec)
+```
+
+**Step 5.3 - Calculate the probability**
+
+* The probability of obtaining d_orig or greater is calculated by the number of values equal to or greater than d_orig, divided by the full size of nhd (or in other words, its length)
+
+```{r prob-p}
+p <- n_exceeding_orig / length(nhd)
+```
+
+* As such the probability of finding a value of $D_{orig}$ or larger was p = `r p`
+
+To write up the sentence, with inline coding you would write:
+
+* The difference between Group A and Group B (M = `r backtick("r round(d_orig, 2)")`) was found to be have a probability of p = `r backtick("r p")`. This means that the original mean difference was significant and the null hypothesis is rejected.
+
+Which when knitted would produce:
+
+* The difference between Group A and Group B (M = `r round(d_orig, 2)`) was found to be have a probability of p = `r p`. This means that the original mean difference was significant and the null hypothesis is rejected.
+
+[Return to Task](#Ch5InClassQueT5)
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

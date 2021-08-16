@@ -1,0 +1,214 @@
+## Additional Material
+
+Below is some additional material that might help your wrangling.
+
+```{r lab2-additional-data, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE}
+# preclass
+pong_data <- read_csv("./data/02-s01/preclass/PongBlueRedBack 1-16 Codebook.csv")
+pong_data3 <- read_csv("./data/02-s01/preclass/PongBlueRedBack 1-16 Codebook.csv",
+                      col_types = "iiiiicii")
+
+# inclass
+responses <- read_csv("./data/02-s01/inclass/responses.csv")
+qformats <- read_csv("./data/02-s01/inclass/qformats.csv")
+scoring <- read_csv("./data/02-s01/inclass/scoring.csv")
+pinfo <- read_csv("./data/02-s01/inclass/pinfo.csv")
+``` 
+
+### More on read_csv() {-}
+
+In the preclass activity we used the following code to load in our data:
+
+``` {r lab2-add-1, eval = FALSE, message = FALSE, warning = FALSE}
+pong_data <- read_csv("PongBlueRedBack 1-16 Codebook.csv")
+``` 
+
+This is a totally acceptable approach and it is the one we will use 99% of the time. Now one thing to note that the `read_csv()` function by default always loads any number as **double**, meaning that it can take a decimal. As shown here by the <dbl> at the start of each variable. The one column that is not a double is the BackgroundColor column, which is of course "characters" <chr>.
+
+* **Note:** we can use `glimpse()` from `dplyr` to check our data types.
+
+```{r lab2-add-1-glimpse}
+
+glimpse(pong_data)
+```
+
+However you might not always want this default and might want to stipulate the data-type to load the data in as. Particularly if you already know the data-type you should have. Let's look at this first and then talk about it.
+
+``` {r lab2-add-2, eval = FALSE, message = FALSE, warning = FALSE}
+pong_data3 <- read_csv("PongBlueRedBack 1-16 Codebook.csv",
+                      col_types = "iiiiicii")
+``` 
+
+Which if we look at again, we now see that the numerical data are **integers** <int> instead of **double** <dbl>.
+
+```{r lab2-add-2-glimpse}
+glimpse(pong_data3)
+```
+
+So what is the difference? Note that in the new code we have specified the `col_types` argument as `"iiiiicii"`. The `col_types` argument allows you to control the data type for each variable. If you don't specify this argument, the default is for `read_csv()` to guess, and when it sees numbers in a column, it will default to treating it as type `double`.
+
+What does the `"iiiiicii"` string do? Well, we know that there are 8 different columns in the csv file, and we have 8 characters in the string `"iiiiicii"`; each letter in this string tells `read_csv()` the data type for each of these columns. The string has five "i"s followed by one "c" followed by two more "i"s, which tells `read_csv()` to treat the first five columns as type `integer` (i), the sixth column as type `character` (c), and the last two columns as type `integer`. (If we wanted a column to be read in as a double, we would use `"d"`.)
+
+Whilst this is a very useful approach if you are already familiar with the type and structure of the data you are working with, it can cause issues if you don't know that. For instance, you need to know exactly how many columns there are, what order, and what type they are in. So it can get tricky. For this series of lab activities, we will just stick to using the basic read_csv() defaults and not state column types.
+
+---
+
+### More on Code Layout {-}
+
+One issue we see a lot is people not being able to debug their code quickly (i.e. find issues) because of the way the code is laid out. Pipes (%>%) helps with that, but so does taking new lines for different parts of your code. After a comma (,) or a pipe (%>%), you can take a new line to continue your code to make it easier to read and follow. For example, both of the following will work, but the second is easiest to read.
+
+```{r lab2-add3-1, eval = FALSE}
+musical_means <- group_by(responses_points, ID) %>% summarise(Total_QHC = sum(SCORE)) %>% inner_join(screening, "ID") %>% group_by(MUSICAL) %>% summarise(mean_score = mean(Total_QHC))
+```
+
+```{r lab2-add3-2, eval = FALSE}
+musical_means <- group_by(responses_points, ID) %>%
+                  summarise(Total_QHC = sum(SCORE)) %>%
+                  inner_join(screening, "ID") %>%
+                  group_by(MUSICAL) %>%
+                  summarise(mean_score = mean(Total_QHC))
+```
+
+And you could even expand this second option further to make it clearer on the `group_by()` and `inner_join()` what are the different inputs:
+
+```{r lab2-add3-3, eval = FALSE}
+musical_means <- group_by(responses_points, 
+                          ID) %>%
+                  summarise(Total_QHC = sum(SCORE)) %>%
+                  inner_join(screening, 
+                             "ID") %>%
+                  group_by(MUSICAL) %>%
+                  summarise(mean_score = mean(Total_QHC))
+```
+
+Remember, **Tidy Code and Tidy Data Make Wrangling Fun!** OK, that is not catchy, but true!
+
+---
+
+### More on gathering data - `pivot_longer()` and `gather()` {-}
+
+With time, some functions change a bit, others change entirely, and others get forgotten about. `gather()` is one of these functions. `gather()` was one of these functions that many people just couldn't ever get right in their head and as such `pivot_longer()` was created. The first version of this book was written using the `gather()` function and we have tried to update the book to replace it with the `pivot_longer()` but we will make mistakes and no doubt `gather()` will appear somewhere, or you may get some old code and see the `gather()` function and wonder what it does. As such, we have put below a version of the code from the inclass using the `gather()` function instead of the `pivot_longer()` function, just in case it helps.
+
+* `gather()` allows us to **transform** a table from wide format to long format. It has now been replaced by `pivot_longer()`
+* `spread()` allows us to **transform** a table from long format to wide format. It has now been replaced by `pivot_wider()`
+
+**An example with gather()**
+
+In the example in class, Task 5, we have all the data we need loaded in, but in order to make it easier for us to get the AQ score for each participant, we need to change the layout of the `responses` tibble. In class we use the `pivot_longer()` function but you could have done it with the `gather()` function as follows
+
+```{r gatherdata, eval = FALSE}
+rlong <- gather(responses, Question, Response, Q1:Q10)
+```
+
+* The first argument given to the `gather()` function is the dataset which holds the data we want to wrangle, `responses`. 
+* The second and third arguments are the names we want to give the columns we are creating; 
+    - the first will store the question numbers, `Question` 
+    - the second will store the responses, `Response`. 
+    - **Note that these names could have been anything but by using these names the code makes more sense**. 
+* Finally, the fourth argument is the names of specific columns in the original tibble that we want to gather together - columns Q1 to Q10. The colon (:) says "all columns from this to that" - all columns from Q1 to Q10. 
+
+**Notes:** 
+
+* "Gathering" of columns is based on position in the tibble.  If the order of columns in the tibble was Q1 then Q10, the above code would only gather those two columns. As it is, in our tibble, the order, is Q1, Q2, Q3, ... Q10, and therefore the code gathers all the columns between Q1 and Q10.   
+
+* If you had just wanted columns Q1 and Q10, then you could do `c(Q1, Q10)`.
+
+* `pivot_longer()` and `gather()` do not function exactly the same. They tend to sort data differently. Make sure you are using the function you need to do. You should always always always check the output of your functions to make sure they are doing what you expect.
+
+* In case you are wondering, if we wanted to go back the way and ungather the data we just gathered, we would use the `spread()` function: e.g. `rwide <- spread(rlong, Questions, Response)`. But we do not want to do that here so let's not add this to the code. 
+
+<span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>
+
+Let's see if you understand `gather()`. Say I wanted to gather the first three columns from a tibble called `responses` where the columns are called Q1, Q2, Q3 (in that order), put the question numbers in a column called `Jam`, the responses in a column called `Strawberry`, and store everything in a tibble called `sandwich`. Fill in the box with what you would write: `r fitb("sandwich <- gather(responses, Jam, Strawberry, Q1:Q3)", width = 60, ignore_ws = TRUE)`
+
+`r hide("Explain this - I dont get the right answer!")`
+```{block, type ="info"}
+sandwich <- gather(responses, Jam, Strawberry, Q1:Q3)
+    
+`gather` wants the data first, then the name of the new column to store the gathered column names, then the name of the new column to store the data, and then finally which columns to gather.
+```
+`r unhide()`
+<br>
+
+As mentioned above we hope to replace every instance of `gather()` and `spread()` in this book with `pivot_longer()` and `pivot_wider()`, but if we make mistakes the above might help.
+
+---
+
+### More on binding and joining {-}
+
+In this lab we looked at two methods of combining datasets. We used `bind_rows()` and we used `inner_join()`. They do quite different tasks but we thought a quick summary might help.
+
+```{r ch2-more-hidden, echo=FALSE}
+set.seed(1409)
+
+cats <- tibble(ID = 1:5,
+               Animal = "Cats",
+               Perceived_Emotion_Accuracy = round(rnorm(5, 10, 2),0))
+
+dogs <- tibble(ID = 1:5,
+               Animal = "Dogs",
+               Perceived_Emotion_Accuracy = round(rnorm(5, 80, 2),0))
+
+ages <- tibble(ID = c(1:5,1:5),
+               Animal = rep(c("Cats", "Dogs"), each = 5),
+               Ages = round(rnorm(10, 5, 1),0))
+```
+
+Let's say we have the following two tables that show Perceived Emotion Accuracy in five different cats:
+
+```{r ch2-more-cats-show, echo=FALSE}
+knitr::kable(cats,
+             align = "c",
+             caption = "Cat data - not very good")
+```
+
+And in five different dogs:
+
+```{r ch2-more-dogs-show, echo=FALSE}
+knitr::kable(dogs,
+             align = "c",
+             caption = "Dog data - smart!")
+```
+
+Because these two tables have no overlapping information about participants but have a similar tibble structure (i.e. number and names of columns) then the way we can combine the tibbles is by putting one tibble below the other using `bind_rows()`
+
+```{r ch2-more-bind}
+all_animals <- bind_rows(cats, dogs)
+```
+
+Which would give us:
+
+```{r ch2-more-join-show, echo=FALSE}
+knitr::kable(all_animals,
+             align = "c",
+             caption = "By using bind_rows()")
+```
+
+And say now we want to tack on the age information from each participant. Because `all_animals` and `ages` have overlapping information that we can use to link the information, we can put the new information at the side of the tibble as a new column using `inner_join()`.
+
+```{r ch2-more-join}
+all_animals_ages <- inner_join(all_animals, ages, c("ID", "Animal"))
+```
+
+Which would give us:
+
+```{r ch2-more-join-show-table, echo=FALSE}
+knitr::kable(all_animals_ages,
+             align = "c",
+             caption = "By using inner_join()")
+
+```
+
+There is actualy `bind_cols()` as well as a host of other join functions, e.g. `full_join()`, `anti_join()`. You will pick up more of these functions as we continue but we hope this helps clarify these two functions a little.
+
+**A quick table on some useful joins()`**
+
+|function|Example|Final tibble has...|
+|:------:|:------|:------|
+|full_join()|full_join(x,y, by = "ID")|information for all observations found in both original tibbles|
+|inner_join()|inner_join(x,y, by = "ID")|information for only observations found in both original tibbles|
+|anti_join()|anti_join(x,y, by = "ID")|information for observations found in tibble x but not tibble y|
+|           |anti_join(y,x, by = "ID")|information for observations found in tibble y but not tibble x|
+---
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Additional Material!</span>

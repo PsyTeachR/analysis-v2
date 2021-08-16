@@ -1,0 +1,146 @@
+---
+title: "Psych 2A Lab 2: Formative Data-Wrangling Assignment"
+author: "My GUID"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+One thing to keep in mind in all assignments is that spelling it really important when learning about being reproducible. Remember that `Mycolumn` is a different column to `mycolumn` and when being reproducible only one is correct. Likewise, `Mydata` and `mydata` are two different tibbles, and `read_csv()` and `read.csv()` are two different functions. Check the instructions and check your work!
+
+## Before starting lets check:
+
+1. The `.csv` files are saved into a folder on your computer and you have manually set this folder as your working directory. 
+
+2. The `.Rmd` file is saved in the same folder as the `.csv` files. For assessments we ask that you save it with the format `GUID_Level2_Semester1_Lab2.Rmd` where `GUID` is replaced with your `GUID`. Though this is a formative assessment, it may be good practice to do the same here.
+
+## Load in the data
+
+1. You see the code chunk called `libraries` below. It is all set-up to load in the data for you and to call `tidyverse` to the `library()`. Run this code chunk now to bring in the data and tidyverse. You can do this in the console, in a script, or even through the code chunk by clicking the small green play symbol in the top right of the code chunk.
+
+```{r libraries, echo = FALSE, warning=FALSE, message=FALSE}
+library("tidyverse")
+
+screening <- read_csv("p_screen.csv")
+responses <- read_csv("QHC_responses.csv")
+scoring <- read_csv("QHC_scoring.csv")
+```
+
+## The Tasks
+
+Now that we have the data loaded, tidyverse attached, and have viewed our data, you should now try to complete the following 9 tasks. You may want to practice them first to get the correct code and format, and to make sure they work. You can do this in the console or a script, but remember, once you have the correct code, edit the necessary parts of this assignment `.Rmd` file to produce a reproducible Rmd file. This is what you will do from now on for all other assessment files so practicing this now will really help. In short, go through the tasks and change only the `NULL` with what the question asks for and then make sure that the file `knits` at the end so that you have a fully reproducible code.
+
+When altering code inside the code blocks, *do not* re-order or rename the code blocks (T1, T2, ... etc.).  If you do this then the code is no longer consistent across people and on summative assignments this will impact your grade!
+
+### Task 1 - Oldest Participant
+
+Replace the `NULL` in the `T1` code chunk with the Participant ID of the oldest participant. Store this single value in `oldest_participant` (e.g. `oldest_participant <- 999`.
+
+* **hint:** look at your data, who is oldest?
+
+```{r T1}
+oldest_participant <- NULL
+```
+
+### Task 2 - Arranging D-SPAN
+
+Replace the `NULL` in the `T2` code chunk with code that arranges participants' D-SPAN performance from highest to lowest using the appropriate one-table dplyr (i.e., Wickham) verb. Store the output in `cogtest_sort`. (e.g. `cogtest_sort <- verb(data, argument)`)
+
+* **hint:** arrange your screening data
+
+```{r T2}
+cogtest_sort <- NULL
+```
+
+### Task 3 - Foreign Language Speakers
+
+Replace the `NULL` in each of the two lines of code chunk `T3`, so that `descriptives` has a column called `n` that shows the number of participants that speak a foreign language and number of participants that do not speak a foreign language, and another column called `median_age` that shows the median age for those two groups. If you have done this correctly, `descriptives` should have 3 columns and 2 rows of data, not including the header row.
+
+* hint: First need to group_by() foreign language
+* hint: Second need to summarise(). You will need the `n()` function. Pay attention to specific column names given.
+
+```{r T3}
+screen_groups <- NULL
+descriptives <- NULL
+```
+
+### Task 4 - Creating Percentage MOCA scores
+
+Replace the `NULL` in the `T4` code chunk with code using one of the dplyr verbs to add a new column called `MOCA_Perc` to the dataframe `screening` In this new column should be the `MOCA` scores coverted to percentages. The maximum achievable score on MOCA is `30` and percentages are calculated as `(participant score / max score) * 100`. Store this output in `screening`.
+
+* **hint:** mutate() something using MOCA and the percentage formula
+
+```{r T4}
+screening <- NULL
+```
+
+### Task 5 - Remove the MOCA column
+
+Now that we have our MoCA score expressed as a percentage `MOCA_Perc` we no longer need the raw scores held in `MOCA`. Replace the `NULL` in the `T5` code chunk using a one-table dplyr verb to keep all the columns of `screening`, with the same order, but without the `MOCA` column. Store this output in `screening`.
+
+* **hint:** select your columns
+
+```{r T5}
+screening <- NULL
+```
+
+### Task 6 - Gather the Responses together
+
+Replace the `NULL` in the `T6` code chunk using code to gather the responses to all the questions of the QHC from wide format to tidy/long format. Put the names in `Question` and the values in `RESPONSE`. Store this output in `responses_long`.
+
+* **hint:** pivot_lnger()
+* **hint:** names to "Question"
+* **hint:** values to "RESPONSE"
+
+```{r T6}
+responses_long <- NULL 
+```
+
+### Task 7 - Joining the data
+
+Now we need to join the number of points for each response in `scoring` to the participants' responses in `responses_long`. 
+
+Replace the `NULL` in the `T7` code chunk using `inner_join()` to combine `responses_long` and `scoring` into a new variable called `responses_points`. 
+
+* **hint:** join them by the column common to both scoring and responses_long
+
+```{r T7}
+responses_points <- NULL
+```
+
+### Task 8 - Working the Pipes
+
+Below we have given you five lines of code that takes the data in its current long format and then creates a QHC score for each participant (`group_by()...summarise()`). It then joins the screening information (`inner_join()`) before calculating a mean QHC score for the two groups of participants - those that play musical intruments and those that don't. This final step is stored as a tibble called `musical_means`.  
+
+```
+participant_groups <- group_by(responses_points, ID)
+participant_scores <- summarise(participant_groups, Total_QHC = sum(SCORE))
+participant_screening <- inner_join(participant_scores, screening, "ID")
+screening_groups_new <- group_by(participant_screening, MUSICAL)
+musical_means <- summarise(screening_groups_new, mean_score = mean(Total_QHC))
+```
+
+Use the above five lines of code to replace the `NULL` in the `T8` code chunk with a functioning code pipeline using pipes. Put each function on a new line one under the other. This pipeline should result in the mean QHC values of musical and non-musical people being stored in the tibble `musical_means`. This final tibble will consist of two rows by two columns (i.e. four cells in total).  
+
+* **hint:** in pipes, the output of the previous function is the input of the subsequent function.
+* **hint:** function1(...) %>% function2(...)
+
+```{r T8}
+musical_means <- NULL
+```
+
+### Task 9 - Difference in Musical Means
+
+Finally, replace the `NULL` in the `T9` code chunk with the value of how much higher the QHC score of people who play music is compared to people who don't play music. This should be a single numeric value, to two decimal places, e.g. 2.93
+
+* **hint:** look in musical means and enter the difference between the two means.
+
+```{r T9}
+QHC_diff <- NULL
+```
+
+## Finished
+
+Well done, you are finshed! Now you should go check your answers against the solutions at the end of the chapter. You are looking to check that the answers you have submitted are exactly the same as the ones in the solution - for example, remember that `Mycolumn` is different to `mycolumn` and only one is correct. If you have any questions, please post them on the forums.

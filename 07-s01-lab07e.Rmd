@@ -1,0 +1,233 @@
+## Solutions to Questions
+
+```{r lab7-solutions-setup, echo = FALSE, message=FALSE, warning=FALSE}
+library(broom)
+ratings <- read_csv("data/07-s01/inclass/GuiltJudgements.csv")
+```
+
+Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
+
+### InClass Activities
+
+#### InClass Task 1
+
+```{r ch7-task1, eval = FALSE}
+library(broom)
+library(tidyverse)
+
+ratings <- read_csv("GuiltJudgements.csv")
+```
+
+[Return to Task](#Ch7InClassQueT1)
+
+#### InClass Task 2
+
+```{r ch7-task2, results='asis'}
+lates <- ratings %>%
+  filter(Evidence == "Late") %>% 
+  select(Participant, Evidence, `12`, `13`) %>% 
+  rename(Twelve = `12`, Thirteen = `13`) %>%
+  pivot_longer(cols = Twelve:Thirteen, 
+               names_to = "Timepoint", 
+               values_to = "GuiltRating")
+```
+
+* If you have carried this out correctly, `lates` will have `r dim(lates)[1]` rows and `r dim(lates)[2]` columns. This comes from `r dim(lates)[1]/2` participants giving two responses each - TimePoint 12 and TimePoint 13.
+
+
+[Return to Task](#Ch7InClassQueT2)
+
+#### InClass Task 3
+
+```{r ch7-task3, results='asis', fig.cap = "Potential Solution to Task 3"}
+lates %>% 
+  ggplot(aes(GuiltRating)) +
+  geom_histogram(binwidth = 1) +
+ facet_wrap(~Timepoint) +
+  labs(x = "GuiltRating", y = NULL) +
+theme_bw()
+```
+
+[Return to Task](#Ch7InClassQueT3)
+
+#### InClass Task 4
+
+The Task only asks for the boxplot. We have added some additional functions to tidy up the figure a bit that you might want to play with.
+
+```{r ch7-task4, results='asis', fig.cap = "Potential Solution to Task 4"}
+lates %>% 
+  ggplot(aes(x = Timepoint,
+             y = GuiltRating)) + 
+  geom_boxplot() +
+  scale_y_continuous(breaks = c(1:9)) + 
+  coord_cartesian(xlim = c(.5, 2.5), ylim = c(1,9), expand = TRUE) +
+  theme_bw()
+```
+
+You can see that there is one outlier in the `Thirteen` condition. It is represented by the the single dot far above the whiskers of that boxplot.
+
+[Return to Task](#Ch7InClassQueT4)
+
+#### InClass Task 5
+
+We have added color but that was not necessary:
+
+```{r ch7-task5-1, results='asis', fig.cap = "Potential Solution to Task 5"}
+lates %>% 
+  ggplot(aes(x=Timepoint,y=GuiltRating))+
+  geom_violin(aes(fill = Timepoint), alpha = .2) + 
+  geom_boxplot(width = 0.5) +
+  scale_y_continuous(breaks = c(1:9)) + 
+  coord_cartesian(ylim = c(1,9), expand = TRUE) +
+  theme_bw()
+```
+
+* You can still see the outlier at the top of the figure as a solid black dot.
+
+You could even add the `geom_jitter` to have all the data points:
+
+```{r ch7-task5-2, results='asis', fig.cap = "Alternative Potential Solution to Task 5"}
+lates %>% 
+  ggplot(aes(x=Timepoint,y=GuiltRating))+
+  geom_violin(aes(fill = Timepoint), alpha = .2) + 
+  geom_boxplot(width = 0.5) +
+  geom_jitter(aes(fill = Timepoint), width = .1, alpha = .2) + 
+  scale_y_continuous(breaks = c(1:9)) + 
+  coord_cartesian(ylim = c(1,9), expand = TRUE) +
+  theme_classic()
+```
+
+[Return to Task](#Ch7InClassQueT5)
+
+#### InClass Task 6
+
+```{r ch7-task6, results='asis'}
+descriptives <- lates %>% 
+  group_by(Timepoint) %>%
+  summarise(n = n(),
+            mean = mean(GuiltRating),
+            sd = sd(GuiltRating),
+            se = sd/sqrt(n),
+            LowerCI = mean - 1.96*se,
+            UpperCI = mean + 1.96*se)
+```
+
+This would show the following data:
+
+```{r ch7-task6-table1}
+knitr::kable(descriptives, align = "c", caption = "Descriptive data for the current study")
+```
+
+```{r hidden-1, include = FALSE}
+desc2 <- descriptives %>%
+  mutate_at(vars(mean, sd, se, LowerCI, UpperCI),
+            webex::round2, digits = 2)
+.d12 <- desc2 %>% filter(Timepoint == "Twelve")
+.d13 <- desc2 %>% filter(Timepoint == "Thirteen")
+```
+
+
+[Return to Task](#Ch7InClassQueT6)
+
+#### InClass Task 7
+
+* A basic barplot with 95% Confidence Intervals. 
+* We have embellished the figure a little but you can mess around with the code to see what each bit does.
+
+```{r ch7-task7-1, results='asis', fig.cap = "Possible Solution to Task 7"}
+ggplot(descriptives, aes(x = Timepoint, y = mean, fill = Timepoint)) + 
+  geom_col(colour = "black") +
+  scale_fill_manual(values=c("#999000", "#000999")) +
+  scale_x_discrete(limits = c("Twelve","Thirteen")) +
+  labs(x = "Timepoint of Evidence", y = "GuiltRating") +
+  guides(fill="none") +
+  geom_errorbar(aes(ymin = LowerCI, ymax = UpperCI),
+                position = "dodge", width = .15) +
+  scale_y_continuous(breaks = c(1:9), limits = c(0,9)) +
+  coord_cartesian(ylim = c(1,9), xlim = c(0.5,2.5), expand = FALSE) +
+  theme_classic()
+```
+
+* One thing to watch out for with the above code is the `scale_y_continuous()` function which helps us set the length and tick marks (-) on the y-axis. Rather oddly, if you set the `limits = ...` to the same values as the `ylim = ...` in `coord_cartesian()` then your figure will behave oddly and may disappear. `coord_cartesian()` is a zoom function and must be set within the limits of the scale, set by `scale_y_continuous()`.
+
+* An alternative way to display just the means and errorbars would be to use the pointrange approach. This image shows again the 95% CI
+
+```{r ch7-task7-2, results='asis', fig.cap = "Alternative Solution to Task 7"}
+ggplot(descriptives, aes(x = Timepoint, y = mean, fill = Timepoint)) + 
+  geom_pointrange(aes(ymin = LowerCI, ymax = UpperCI))+
+  scale_x_discrete(limits = c("Twelve","Thirteen")) +
+  labs(x = "Timepoint of Evidence", y = "GuiltRating") +
+  guides(fill="none")+
+  scale_y_continuous(breaks = c(1:9), limits = c(0,9)) +
+  coord_cartesian(ylim = c(1,9), xlim = c(0.5,2.5), expand = FALSE) +
+  theme_bw()
+```
+
+[Return to Task](#Ch7InClassQueT7)
+
+#### InClass Task 8
+
+* Remember to set `paired = TRUE` to run the within-subjects t-test
+
+```{r ch7-task8-1, results='asis'}
+
+results <- t.test(GuiltRating ~ Timepoint, 
+                  data = lates, 
+                  paired = TRUE, 
+                  alternative = "two.sided") %>% tidy()
+```
+
+```{r ch7-task8-1-table, echo=FALSE}
+knitr::kable(results)
+```
+
+* Alternatively, using the `filter()` and `pull()` functions to make force in a given condition as the first condition. Here, below, we are forcing condition `Thirteen` as the first condition and so the values match the above approach. If you forced condition `Twelve` as the first condition then the only difference would be that the t-value would change polarity (positive to negative or vice versa).
+
+```{r ch7-task8-2, results='asis'}
+
+results <- t.test(lates %>% filter(Timepoint == "Thirteen") %>% pull(GuiltRating),
+                  lates %>% filter(Timepoint == "Twelve") %>% pull(GuiltRating),
+                  paired = TRUE, 
+                  alternative = "two.sided") %>% tidy()
+```
+
+```{r ch7-task8-2-table, echo =FALSE}
+knitr::kable(results)
+```
+
+The reason that the two outputs are the same is because the formula (top) method (x ~ y) is actually doing the same process as the second approach, but you are just not sure which is the first condition. This second approach (bottom) just makes it clearer.
+`r unhide()`
+
+**Note:** The `conf.low` and `conf.high` values are the 95% Confidence Intervals for the mean difference between the two conditions. This could be written as something like, "there was a difference between the two groups (M = -1.76, 95% CI = [-2.19, -1.33])".
+
+[Return to Task](#Ch7InClassQueT8)
+
+#### InClass Task 9
+
+A potential write-up for this study would be as follows:
+
+**"A paired-samples t-test was ran to compare the change in guilt ratings before (M = `r descriptives %>% filter(Timepoint =="Twelve") %>% pull(mean)`, SD = `r descriptives %>% filter(Timepoint =="Twelve") %>% pull(sd) %>% round(2)`) and after (M = `r descriptives %>% filter(Timepoint =="Thirteen") %>% pull(mean)`, SD = `r descriptives %>% filter(Timepoint =="Thirteen") %>% pull(sd) %>% round(2)`) the crucial evidence was heard. A significant difference was found (t(`r results %>% pull(parameter)`) = `r results %>% pull(statistic) %>% round(2) %>% abs()`, p = `r results %>% pull(p.value)`) with Timepoint 13 having an average rating `r results %>% pull(estimate) %>% abs()` units lower than Timepoint 12. This tells us that the critical evidence did have an influence on the rating of guilt by jury members."**
+
+**Working with rounding p-values**
+
+When rounding off p-values that are less than .001, rounding will give you a value of 0 which is technically wrong - the probability will be very low but not 0. As such, and according to APA format, values less than .001 would normally be written as p < .001. To create a reader-friendly p-value, then you could try something like the following in your code:
+
+```{r example-1, eval=FALSE}
+ifelse(results$p.value < .001, 
+       "p < .001", 
+       paste0("p = ", round(results$p.value,3))) 
+```
+
+So instead of writing **t(`r results %>% pull(parameter)`) = `r results %>% pull(statistic) %>% round(2) %>% abs()`, p = `r results %>% pull(p.value)`**, you would write **t(`r results %>% pull(parameter)`) = `r results %>% pull(statistic) %>% round(2) %>% abs()`, `r ifelse(results$p.value < .001, "p < .001", paste0("p = ", round(results$p.value,3)))`** 
+
+The in-line coding for these options would look like: 
+
+p = `r backtick("r results %>% pull(p.value)")` for p = `r results %>% pull(p.value)`
+
+& 
+
+`r backtick("r ifelse(results$p.value < .001, \"p < .001\", paste0(\"p = \", round(results$p.value,3)))")` for `r ifelse(results$p.value < .001, "p < .001", paste0("p = ", round(results$p.value,3)))`
+
+[Return to Task](#Ch7InClassQueT9)
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

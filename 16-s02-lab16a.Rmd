@@ -1,0 +1,5 @@
+# Reflection - Chpts 10-15
+
+## Overview
+
+As in Semester 1 we have covered a lot of material in these labs and now would be a good time to stop, recap, and reflect on what we have learned. As such this last chapter is again about looking back at what you have learned, reflecting on your knowledge and skills, resolving issues, and looking at other cool applications of R that have not been covered in this lab series.

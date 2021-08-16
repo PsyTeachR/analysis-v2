@@ -1,0 +1,41 @@
+subject,sex,condition,looktime
+F01,female,false belief,904.1667499999999
+F02,female,false belief,54.16675
+F03,female,false belief,-70.8335
+F04,female,false belief,-12.500249999999994
+F05,female,false belief,620.83325
+F06,female,ignorance,641.6665
+F07,female,ignorance,841.66675
+F08,female,ignorance,291.66650000000004
+F09,female,ignorance,337.5
+F10,female,ignorance,945.8335
+F11,female,false belief,0
+F12,female,false belief,2691.66675
+F13,female,false belief,154.16650000000004
+F14,female,false belief,1525
+F15,female,false belief,79.1665
+F16,female,ignorance,166.66650000000004
+F17,female,ignorance,3308.33325
+F18,female,ignorance,433.33349999999996
+F19,female,ignorance,237.5
+F20,female,ignorance,1645.8335000000002
+F21,female,ignorance,1541.6665
+M01,male,false belief,666.6665
+M02,male,false belief,183.33325
+M03,male,false belief,645.83325
+M04,male,false belief,1675.00025
+M05,male,false belief,-787.5
+M07,male,ignorance,0
+M08,male,ignorance,479.16675
+M09,male,ignorance,1070.8335
+M10,male,ignorance,79.16650000000001
+M11,male,false belief,841.66675
+M12,male,false belief,0
+M13,male,false belief,1162.5
+M14,male,false belief,141.66675
+M15,male,false belief,516.66675
+M16,male,ignorance,637.4997500000001
+M17,male,ignorance,2491.66675
+M18,male,ignorance,262.5
+M19,male,ignorance,133.33325
+M20,male,ignorance,345.83325

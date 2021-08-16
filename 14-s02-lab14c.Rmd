@@ -1,0 +1,314 @@
+## InClass Activity
+
+```{r round2-function-setup, echo=FALSE, warning=FALSE, message=FALSE}
+# needed for rounding up from .5 (not default in R)
+round2 = function(x, n = 0) {
+  posneg = sign(x)
+  z = abs(x)*10^n
+  z = z + 0.5
+  z = trunc(z)
+  z = z/10^n
+  z*posneg
+}
+
+ratings <- read_csv("data/14-s02/inclass/voice_ratings.csv")
+acoustics <- read_csv("data/14-s02/inclass/voice_acoustics.csv")
+```
+
+You have been reading about regression in Miller and Haden (2013) and have been looking at it in the lectures. Today, to help get a practical understanding of regression, you will be working with real data and using regression to explore the question of whether there is a relationship between voice acoustics and ratings of perceived trustworthiness. 
+
+**The Voice**
+
+The prominent theory of voice production is the **source-filter theory** (Fant, 1960) which suggests that vocalisation is a two step process: air is pushed through the larynx (vocal chords) creating a vibration, i.e. the source, and this is then shaped and moulded into words and utterances as it passes through the neck, mouth and nose, and depending on the shape of those structures at any given time you produce different sounds, i.e. the filter. One common measure of the source is pitch (otherwise called Fundamental Frequency or F0 (pronounced "F-zero")) (Titze, 1994), which is a measure of the vibration of the vocal chords, in Hertz (Hz); males have on average a lower pitch than females for example. Likewise, one measure of the filter is called formant dispersion (measured again in Hz), and is effectively a measure of the length of someone's vocal tract (or neck). Height and neck length are suggested to be negatively correlated with formant dispersion, so tall people tend to have smaller formant dispersion. So all in, the sound of your voice is thought to give some indication of what you look like.  
+
+More recently, work has focussed on what the sound of your voice suggests about your personality. <a href = "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090779" target = "_blank">McAleer, Todorov and Belin (2014)</a> suggested that vocal acoustics give a perception of your trustworthiness and dominance to others, regardless of whether or not it is accurate. One extension of this is that trust may be driven by malleable aspects of your voice (e.g. your pitch) but not so much by static aspects of your voice (e.g. your formant dispersion). Pitch is considered malleable because you can control the air being pushed through your vocal chords (though you have no conscious control of your vocal chords), whereas dispersion may be controlled by the structure of your throat which is much more rigid due to muscle, bone, and other things that keep your head attached. This idea of certain traits being driven by malleable features and others by static features was previously suggested by <a href = "https://www.pnas.org/content/105/32/11087" target = "_blank">Oosterhof and Todorov (2008)</a> and has been tested with some validation by <a href = "https://link.springer.com/article/10.1007/s10919-015-0214-8" target = "_blank">Rezlescu, Penton, Walsh, Tsujimura, Scott and Banissy (2015)</a>.
+
+So the research question today is: can vocal acoustics, namely pitch and formant dispersion, predict perceived trustworthiness from a person's voice? We will only look at male voices today, but you have the data for female voices as well should you wish to practice (note that in the field, tendency is to analyse male and female voices separately as they are effectively sexually dimorphic). As such, we hypothesise that **a linear combination of pitch and dispersion will predict perceived vocal trustworthiness in male voices**. This is what we will analyse.
+
+**Let's begin.**
+
+First, to run this analysis you will need to download the data [from here](data/14-s02/inclass/ch14-inclass-data.zip). You will see in this folder that there are two datafiles:
+
+* **voice_acoustics.csv** - shows the VoiceID, the sex of voice, and the pitch and dispersion values
+* **voice_ratings.csv** - shows the VoiceID and the ratings of each voice by 28 participants on a scale of 1 to 9 where 9 was extremely trustworthy and 1 was extremely untrustworthy
+
+Have a look at the layout of the data and familiarise yourself with it. The ratings data is rather messy and in a different layout to the acoustics but can you tell what is what?
+
+* Looking at the layout of the acoustics data it appears to be in `r mcq(c("long", "wide", answer = "tidy"))`
+* Looking at the layout of the ratings data it appears to be in `r mcq(c("long", answer = "wide"))`
+
+It may help to refer back to [Chapter 2](https://psyteachr.github.io/ug2-practical/data-wrangling-a-key-skill.html#inclass-activity){target="_blank"} of the book on different layouts of data if you are still not quite sure what is the difference between long and tidy. But in terms of today, we are going to need to do some data-wrangling before we do any analysis, so let's crack on with that!
+
+### Task 1: Setup {#Ch14InClassQueT1}
+
+Start by opening a new script or .Rmd (depending on how you like to work) and load in the **`tidyverse`**, **`broom`**, and the two CSV datasets into tibbles called `ratings` and `acoustics`.  Probably best if the ratings are in `ratings` and the acoustics in `acoustics`.
+
+* **Note:** Remember that order of packages matter and we recommend always loading in tidyverse last.
+
+### Task 2: Restructuring the ratings {#Ch14InClassQueT2}
+
+Next we need to calculate a mean rating score for each voice. We are analysing the voices and not specifically what each participant rated each voice as (that is for another year) so we need to average across all participants, their ratings for each individual voice and get a mean rating for each voice. You will see in your data that the voices are identified in the VoiceID column.
+
+Recall the difference between **tidy**, **wide** and **long** data. In wide data, each row represents an individual case, with different observations for that case in separate columns; in long data, each row represents a single observation, and the observations are grouped together into cases based on the value of a variable (for these data, the `VoiceID` variable). Tidy is a bit like a mix of these ideas but is generally closer to long format, with the main difference being that you are likely to have more than one row relating to a given observation. 
+
+Before we calculate means, what you need to do is to restructure the ratings data into the appropriate "tidy" format; i.e., so that it looks like the table below.
+
+```{r ratings-wide, echo = FALSE}
+ratings_hide <- pivot_longer(ratings, 
+                              names_to = "participant", 
+                              values_to = "rating", 
+                              cols = "P1":"P28")
+
+knitr::kable(ratings_hide[1:6,], align = "c", caption = "Using `pivot_longer()`, gather the data into tidy format")
+```
+<br><br>
+
+* Write code using `pivot_longer()` to restructure the ratings data as above and store the resulting tibble as `ratings_tidy`.  
+* Only the first six rows are shown but your tibble will have all the data. In the table above you see the first six ratings of Voice 1, with each rating coming from a different participant.
+
+`r hide("Hint for Task 2")`
+```{block, type = "info"}
+* pivot_longer(data, new_column_name, new_column_name, first-column:last-column)
+* don't forget the quotation marks
+```
+`r unhide()`
+
+```{r reshape, echo = FALSE}
+ratings_tidy <- pivot_longer(ratings, 
+                              names_to = "participant", 
+                              values_to = "rating", 
+                              cols = "P1":"P28")
+```
+
+### Task 3: Calculate mean trustworthiness rating for each voice {#Ch14InClassQueT3}
+
+Now that you've gotten your ratings data into a more tidy format, the next step is to calculate the mean rating (`mean_rating`) for each voice. Remember that each voice is identified by the `VoiceID` variable. Store the resulting tibble in a variable named `ratings_mean`. 
+
+* The reason you need the mean rating for each voice is because you have to think what goes into the regression - what is actually being analysed. The analysis requires one trustworthiness rating for each voice, so that means we need to average across all the ratings for each voice. Otherwise we would have far too much data!
+
+`r hide("Hint for Task 3")`
+```{block, type = "info"}
+ * a group_by and summarise would do the trick
+ * remember if there are any NAs then na.rm = TRUE would help
+```
+`r unhide()`
+
+```{r ratings_means, echo=FALSE}
+ratings_mean <- ratings_tidy %>% 
+  group_by(VoiceID) %>% 
+  summarise(mean_rating = mean(rating))
+```
+
+### Task 4: Joining the Data together {#Ch14InClassQueT4}
+
+Great! We are so hot at wrangling now we are like hot wrangling irons! But before we get ahead of ourselves, in order to perform the regression analysis, we need to combine the data from `ratings_mean` (the mean ratings; our Dependent Variable - what we want to predict) with `acoustics` (the pitch and dispersion ratings; our Predictors). Also, as we said, we only want to analyse Male voices today. 
+
+* Go ahead and join the two tibbles (`ratings_mean` and `acoustics`) and filter out the Female voices to keep only the Male voices. Call the resulting tibble `joined`. The first few rows should look as shown below.
+* If you are not quite sure which join you need then it might be worth having a quick look at the [join summary at the end of Chapter 2](https://psyteachr.github.io/ug2-practical/data-wrangling-a-key-skill.html#more-on-binding-and-joining){target="_blank"}
+
+```{r combine-ex, echo = FALSE}
+joined_hide <- inner_join(ratings_mean, acoustics, "VoiceID") %>% filter(sex == "M")
+knitr::kable(joined_hide[1:6,], caption = "The `joined` tibble showing the mean trustworthiness rating and the pitch and dispersion value for each voice")
+```
+
+`r hide("Hint for Task 4")`
+```{block, type = "info"}
+* inner_join by the common column in both datasets
+* filter to keep just Male voices
+```
+`r unhide()`
+
+```{r joined, echo=FALSE}
+joined <- inner_join(ratings_mean, acoustics, "VoiceID") %>% filter(sex == "M")
+```
+
+### Task 5: Scatterplot {#Ch14InClassQueT5}
+
+As always, where possible, it is a good idea to visualise your data. Now that we have all of the variables in one place, reproduce the scatterplot shown below and then try to answer the below questions.
+
+* Your first version of the figure might look a bit odd as the Hz values of pitch and dispersion are rather different. Remember you can look up the help of different functions to see how to set different axes in facets by using `?facet_wrap` but we have also given a hint below.
+* The code for this figure is in the solution. It would be worth taking a few minutes to try it out as it also shows how to change the layout of `facet_wrap()` using `nrow` and `ncol`.
+
+```{r scatter, echo = FALSE, fig.cap='Scatterplot showing the relationship between the voice measures of Dispersion (left) and Pitch (right) and Mean Trustworthiness Rating'}
+
+ggplot(joined, aes(value, mean_rating)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_y_continuous(breaks = c(1:7), limits = c(1,7)) +
+  labs(x = "Voice Measure (Hz)", y = "Mean Trustworthiness Rating") +
+  facet_wrap(~measures, nrow = 1, ncol = 2, scales = "free") +
+  theme_classic()
+```
+<br><br>
+
+**Answer me:**
+
+* According to the scatterplot, there appears to be a `r mcq(c("negative relationship", answer = "positive relationship"))` between both pitch and trustworthiness and dispersion and trustworthiness though the relationship with `r mcq(c("dispersion", answer = "pitch"))` seems stronger.
+
+`r hide("Hint for Task 5")`
+```{block, type = "info"}
+
+**The scatterplot**
+
+* ggplot() + geom_point()
+* geom_smooth(method = "lm")
+* coord_cartesian or scale_y_continuous
+* facet_wrap(scales = "free")
+* did you know also that you can control the number of columns and rows in a facet_wrap by adding nrow and ncol?
+* for example, facet_wrap(~variable, nrow = 1, ncol = 2)
+
+**The interpretation**
+
+* The first consideration is direction. Remember that a positive relationship means as scores on one variable increase so do scores on the other variable, and negative means as scores on one variables increase, scores on the other variable decrease.
+* The second consideration is strength: strong, medium or weak.
+
+```
+`r unhide()`
+
+### Task 6: Spreading the data with `pivot_wider()` {#Ch14InClassQueT6}
+
+Ok so we are starting to get an understanding of our data and we want to start thinking about the regression. However, the regression would be easier to work with if Pitch and Dispersion were in separate columns. So I know we just joined the columns together to create the figure and now we are splitting them to do the analyse and that might seem odd. There are ways around this that you will develop in future years but when learning it can help just to keep everything systematic and really highly processed. So sometimes you will see funny moves like this. But remember, if the code works and does what you need, then the only bad code is no code  
+
+* Using the `pivot_wider()` function, create a new tibble where Pitch and Dispersion data have been split into two columns called `Pitch` and `Dispersion` respectively.
+* We used `pivot_wider()` to spread data in Chapter 5 when creating the difference of two groups so maybe refer back then to see how to input the columns, but there is also information in the hint below.
+
+`r hide("Hint for Task 6")`
+```{block, type = "info"}
+* pivot_wider() needs the data, name of the categorical column to spread, and the name of the data to spread
+* pivot_wider(data, names_from = "column_name", values_from = "column_name")
+```
+`r unhide()`
+
+```{r data-spread, echo = FALSE}
+joined_wide <- joined %>% pivot_wider(names_from = "measures",
+                                      values_from = "value")
+```
+
+### Task 7: The Regressions {#Ch14InClassQueT7}
+
+Ok we are almost at the point when we need to do the regression. We should always think about assumptions but as that is covered in the lecture series we will mostly leave that there for now. That said, one assumption we can roughly and quickly look at is the correlation between Pitch and Dispersion, remembering the issue of **multicollinearity** - if predictors are highly correlated (r > .8 for example then it is impossible to tease apart their unique contributions).  So, now, run a code using `cor.test()` to calculate the correlation between Pitch and Dispersion and then fill in this statement. 
+
+* The correlation between Pitch and Dispersion is `r mcq(c(answer = "rho = .239", "rho = -.239", "rho = .186", "rho = -.186"))` which would suggest that we have no issues with multicollinearity as our two predictors are only slightly correlated. So nothing to worry about there.
+
+Right, now let's do some regression analysis. We will first do two simple linear regressions (one for each predictor), and then we will do a multiple linear regression using both predictors.
+
+The `lm()` function in R is the main function we will use to estimate a **L**inear **M**odel (hence the function name `lm`). The function takes the format of:
+
+* `lm(dv ~ iv, data = my_data)` for simple linear regression
+* `lm(dv ~ iv1 + iv2, data = my_data)` for multiple linear regression
+
+Now, use the `lm()` function to run the following three regression models.  
+
+**Simple Linear Regression**
+
+* Run the simple linear regression of predicting trustworthiness mean ratings from Pitch and store the model in `mod_pitch`
+* Run the simple linear regression of predicting trustworthiness mean ratings from Dispersion and store the model in `mod_disp`
+
+**Multitple Linear Regression**
+
+* Run the multiple linear regression of predicting trustworthiness mean ratings from Pitch and Dispersion, and store the model in `mod_pitchdisp`
+
+`r hide("Hint for Task 7")`
+```{block, type = "info"}
+**Correlations**
+
+* You could argue that you should use a Spearman correlation for the correlation between Pitch and Dispersion because the scales are very different although measured both in (Hz), though it would not be wrong to use Pearson here either as it is still the same scale.
+* You may need to refer back to Chapter 10 on correlations to remember how to use `cor.test()`.
+
+**Regressions**
+
+The functions would be something like:
+
+* lm(trust_column ~ pitch_column, data = my_data) for simple linear regression
+* lm(trust_column ~ pitch_column + dispersion_column, data = my_data) for multiple linear regression
+
+```
+`r unhide()`
+
+### Task 8: Model interpretations {#Ch14InClassQueT8}
+
+Now let's look at the results of each model in turn, using the function `summary()`, e.g. `summary(mod_pitch)`, and try to interpret them based on what you already know about regression outputs from the lectures.
+
+```{r mod1, echo=FALSE}
+mod_pitch <- lm(mean_rating ~ Pitch, joined_wide)
+```
+
+```{r mod2, echo=FALSE}
+mod_disp <- lm(mean_rating ~ Dispersion, joined_wide)
+```
+
+```{r mod3, echo=FALSE}
+mod_pitchdisp <- lm(mean_rating ~ Pitch + Dispersion, joined_wide)
+```
+
+Let's start by looking at the `mod_pitch` model together.
+
+```{r mod1-show}
+summary(mod_pitch)
+```
+
+From the output we can see that this model, when relating to the population, would predict approximately `r round2(summary(mod_pitch)$adj.r.squared,4)*100`% of the variance in trustworthiness ratings (Adjusted-R^2 = `r round2(summary(mod_pitch)$adj.r.squared,4)`). We could also say that a linear regression model revealed that pitch significantly predicted perceived trustworthiness scores in male voices in that as pitch increased so does perceived trustworthiness ($b$ = `r round2(summary(mod_pitch)$coefficients[2],4)`, t(`r summary(mod_pitch)$df[2]`) = `r round2(summary(mod_pitch)$coefficients[2,3],3)`, p < .001). (Remember that these are unstandardised coefficients so the "Estimate" would mean that a one unit change in pitch would result in a `r round2(summary(mod_pitch)$coefficients[2],4)` unit change in perceived trust, a rather small change.) 
+
+Overall, looking at this model with just Pitch as a predictor, we have a regression model of small to medium prediction (i.e. explained variance) but it is significantly better than a model using the mean value of trust ratings as a prediction - as shown by the F-test being significant. Remember from the lectures that the default model is where every predicted value of Y is the mean of Y; we called this the mean model. So our new model is better than using that model based on the mean.
+
+Worth also pointing out here that in a simple linear regression the F-test and the t-value for the predictor are the same based on t^2 = F, as seen earlier in this book. For example, looking at the values above, we see that `r round2(summary(mod_pitch)$coefficients[2,3],3)` $\times$ `r round2(summary(mod_pitch)$coefficients[2,3],3)` = `r round2(summary(mod_pitch)$coefficients[2,3] * summary(mod_pitch)$coefficients[2,3],2)`. Just again goes to show that there is a link between the tests we have been looking at.
+
+Ok, based on that knowledge, answer the following questions about the two remaining models.
+
+- The model of just dispersion as a predictor would explain approximately `r mcq(c(answer = "3%","13%","31%","33%"))`
+- In fact, the model of just dispersion is `r mcq(c(answer = "not significant", "significant"))` and therefor `r mcq(c(answer = "no use","very useful"))` as a model
+- Looking at the multiple linear regression model, the explained variance is `r mcq(c("3.05%","13.5%",answer = "30.5%","33.5%"))`and as such explains `r mcq(c(answer = "less","more"))` variance than the pitch only model.
+
+We have added a brief interpretation of the models in the solution to this task as well so it might be worth reading that to make sure you are understanding the outputs.
+
+What the above should remind you is that it is not the case that simply putting all the possible predictors into a model will make it a better model. For every predictor you add there is a penalty associated with the Adjusted-R^2 and if the explained variance attributable to the new predictor is not greater than the penalty to overall explained variance then you may actually end up with a worse model despite having more predictors.  We touched briefly in the lecture on using the `anova(model1, model2)` approach to compare models; something like this:
+
+```{r model_comparison1, eval = FALSE}
+anova(mod_pitch, mod_pitchdisp)
+```
+
+Which gives the following output:
+
+```{r model_comparison_output, echo = FALSE}
+anova(mod_pitch, mod_pitchdisp)
+```
+
+And shows no significant difference between these two models. We will look at model comparison more in the coming months and years but it is always good to keep the rule of parsimony in mind! The simpler the better.
+
+### Task 9: Making predictions {#Ch14InClassQueT9}
+
+Congratulations! You have successfully constructed a linear model relating trustworthiness to pitch and dispersion and you can think about applying this knowledge to other challenges - perhaps go look at female voices? However, one last thing you might want to do that we will quickly show you is how to make a prediction using the `predict()` function. One way you use this, though see the solution to the chapter for alternatives, is:
+
+```{r predict_code, eval=FALSE}
+predict(model, newdata)
+```
+
+where `newdata` is a tibble with new observations/values of X (e.g. `pitch` and/or `dispersion`) for which you want to predict the corresponding Y values (`mean_rating`). So let's try that out now.
+
+* Make a tibble with two columns, one called `Pitch` and one called `Dispersion` - exactly as spelt in the model.  Give `Pitch` a value of 150 Hz (quite a high voice) and give `Dispersion` a value of 1100 Hz - somewhere in the middle. We saw how to create tibbles in Chapter 5 using the `tibble()` function so you might need to refer back to that.  
+* Now put that tibble, `newdata`, into the `predict()` function and run it on the `mod_pitchdisp`. Follow the above format of `model` as first argument and tibble of new values as second argument.
+
+Now, based on the output try to answer this question: 
+
+* To one decimal place, what is the predicted trustworthiness rating of a person with 150 Hz Pitch and 1100 Hz Dispersion - `r fitb(5.3, width = 4)`
+
+`r hide("Hint for Task 9")`
+```{block, type ="info"}
+* tibble(Pitch = Value, Dispersion = Value)
+* predict(mod_pitchdisp, newdata)
+* **Note:** Alternative ways to enter the data are in the solution for this task.
+
+```
+`r unhide()`
+<br>
+
+**WAIT!** - Didn't we just say that the `mod_pitchdisp` model is not as good as `mod_pitch`. Yep. We did and that is actually what the model comparison shows above as well, but we wanted to show you how to enter different predictors into the `predict()` function. So whilst this is a good teaching aid, you are 100% correct in thinking that in reality we would be better making predictions with just the `mod_pitch` model as it explains more variance overall.  Well done for spotting that!
+
+<span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span>
+
+Great! Now you know how to make predictions why not try a few more.  Choose some pitch values see what you get! Go record your voice. Extract the pitch using something like <a href = "http://www.fon.hum.uva.nl/praat/" target = "_blank">PRAAT</a>. Put it in the `predict()` function. Get a rating of trustworthiness for your voice. Go run a study that has your voice rated for trustworthiness and see how close the model was. Given the explained variance is not great it probably won't be that close but you start to see how, in principle, the idea of regression and prediction of relationships works. The greater the explained variance of your predictors, the better your prediction will be for a novel participant/observation/event!
+
+**One last thing:**
+
+Before ending this section, if you have any questions, please post them on the available forums or speak to a member of the team. Finally, don't forget to add any useful information to your Portfolio before you leave it too long and forget. Remember the more you work with knowledge and skills the easier they become.
+

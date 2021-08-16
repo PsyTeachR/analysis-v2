@@ -1,0 +1,424 @@
+## Solutions to Questions
+
+```{r lab13-solutions-setup-inclass, echo = FALSE, message=FALSE, warning=FALSE}
+RNGversion("3.5")
+set.seed(5000)
+library(ez)
+library(afex)
+
+make_resids <- function(nper, sd) {
+  vec <- rnorm(nper - 1L, sd = sd) %>% round(0)
+  as.integer(c(vec, -sum(vec)))
+}
+
+make_facdata <- function(nper = 3,
+                         mu = sample(50:100, 1),
+                         A = 2 * sample(c(-4:-1, 1:4), 1),
+                         B = 2 * sample(c(-4:-1, 1:4), 1),
+                         AB = 4 * sample(c(-4:-1, 1:4), 1)) {
+  
+  dat <- tibble::tibble(i = rep(rep(1:2, each = nper * 2)),
+                 j = rep(rep(1:2, each = nper), times = 2),
+                 mu = mu,
+                 A = rep(c(A / 2, -A / 2), each = nper * 2),
+                 B = rep(rep(c(B / 2, -B / 2), each = nper), times = 2),
+                 AB = rep(c(AB / 4, -AB / 4, -AB / 4, AB / 4), each = nper))
+  
+  dat2 <- dat %>% 
+    nest(data = c(-i, -j))  
+  
+  this_sd <- sample(3:5, 1)
+  dat2[["err"]] <- rerun(nrow(dat2), make_resids(nper, this_sd))
+  dat2 %>% unnest(c(data, err)) %>%
+    mutate(k = rep(1:nper, 4), Y_ijk = mu + A + B + AB + err) %>%
+    select(i, j, k, Y_ijk, mu, A_i = A, B_j = B, AB_ij = AB, err)
+}
+
+fmt_facdata <- function(x) {
+  d2 <- x %>%
+    select(i, j, Y_ijk) %>%
+    nest(data = c(Y_ijk)) %>%
+    mutate(cell = map_chr(data, ~ paste(.x[["Y_ijk"]], collapse = ", ")),
+           A = paste0("A", i),
+           B = paste0("B", j)) %>%
+    select(` ` = A, B, cell) %>%
+    pivot_wider(names_from = B, values_from = cell)
+}
+
+nper <- 3L
+dmx <- make_facdata(nper)
+```
+
+Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
+
+### InClass Activities
+
+#### Estimation equations and decomposition matrix
+
+**Creating the Decomposition Matrix**
+
+```{r ch13-inclass-t1-sol, echo = FALSE, results = 'asis'}
+decomp <- dmx
+
+cat("```\n")
+cat("decomp <- tibble(i = rep(1:2, each = 6),\n")
+cat("                 j = rep(rep(1:2, each = 3), times = 2),\n")
+cat("                 k = rep(1:3, times = 4),\n")
+cat("                 Y_ijk = c(",paste(dmx[["Y_ijk"]], collapse = ", "), ")) %>%\n", sep = "")
+cat("    mutate(mu = mean(Y_ijk)) %>% # calculate mu\n")
+cat("    group_by(i) %>% \n")
+cat("    mutate(A_i = mean(Y_ijk) - mu) %>% # calculate A_i\n")
+cat("    group_by(j) %>% \n")
+cat("    mutate(B_j = mean(Y_ijk) - mu) %>% # calculate B_j\n")
+cat("    ungroup()\n")
+cat("```\n")
+```
+
+[Return to Task](#Ch13InClassQueT1)
+
+#### Adding the missing columns
+
+```{r ch13-inclass-t2-sol}
+decomp2 <- decomp %>%
+  group_by(i, j) %>%
+  mutate(AB_ij = mean(Y_ijk) - mu - A_i - B_j) %>%
+  ungroup() %>%
+  mutate(err = Y_ijk - mu - A_i - B_j - AB_ij)
+```
+
+[Return to Task](#Ch13InClassQueT2)
+
+#### Understanding the two-factor decomposition matrix
+
+**Q1**
+
+The DV value of participant $Y_{212}$ or the 2nd Participant in $I_2$, $J_1$, is `r decomp2[7,4] %>% pull()`
+
+**Q2**
+
+The Sums of Squares of Factor B is `r sum(dmx$B_j^2)`
+
+**Q3**
+
+The Sums of Squares of the Error is `r sum(dmx$err^2)`
+
+```{r ch13-inclass-t3-sol-1, echo = FALSE}
+ms_b <- sum(dmx$B_j^2)
+df_denom <- nper * 4 - 4
+ms_err <- round(sum(dmx$err^2) / df_denom, 3)
+fratio = round(ms_b / ms_err, 3)
+```
+
+**Q4**
+
+The $MS_{B}$ is `r ms_b`
+
+**Q5**
+
+The $MS_{error}$ (to one decimal places) is `r ms_err`
+
+**Q6**
+
+The F-ratio for the main effect of B to 3 decimal places is `r fratio`
+
+**Q7**
+
+The numerator and denominator degrees of freedom associated with this $F$ ratio are `r 1` and `r df_denom` respectively
+
+```{r ch13-inclass-t3-sol-2, echo = FALSE}
+pval <- round(pf(fratio, 1, df_denom, lower.tail = FALSE), 3)
+pval2 <- round(pf(round(fratio, 3), 1, df_denom, lower.tail = FALSE), 3)
+sols <- sprintf("%0.3f", union(pval, pval2))
+sols2 <- sub("^0\\.", ".", sols)
+allsols <- paste(c(sols, sols2), collapse = " :or: ")
+```
+
+**Q8**
+
+And based on `pf(fratio, 1, ``r as.character(df_denom)``, lower.tail = FALSE)` the $p$-value associated with this F ratio to three decimal places is `r sols` or `r sols2`
+
+[Return to Task](#Ch13InClassQueT3)
+
+#### Get your data ready for analysis
+
+```{r ch13-inclass-t4-sol}
+dat <- decomp %>%
+  mutate(A = paste0("A", i),
+         B = paste0("B", j),
+         id = row_number()) %>%
+  select(id, A, B, Y_ijk)
+```
+
+[Return to Task](#Ch13InClassQueT4)
+
+#### Visualizing 2x2 designs: The interaction plot
+
+**Creating the Cell means**
+
+```{r ch13-inclass-t5-sol-1}
+cell_means <- dat %>%
+  group_by(A, B) %>%
+  summarise(m = mean(Y_ijk))
+```
+
+**Reproducing the Plot**
+
+```{r ch13-inclass-t5-sol-2, fig.cap='The plot that the code gives'}
+ggplot(cell_means, aes(A, m, group = B, shape = B, color = B)) +
+  geom_point(size = 3) +
+  geom_line()
+```
+
+**Easter Egg Figure Solution**
+
+The plot above is functional but sometimes you want something a bit more communicative. It is worth working on your figures so, here is an example of what you can think about for your report. Remember to look back through previous labs and homework as well (Semester 1: Lab 3, Lab 7, Lab 6, Lab 5 & 9 assignments, for instance) to see how figures can be improved.
+
+The code below adds another few dimensions to the above figure. Copy and run the code in your Rmd, knitting it to HTML, and play with the different parts to see what they do. We have changed the legends to be more descriptive and to have more readable text, fixed the scale for the vertical axis, made the figure black and white without a box, we also added 95% confidence intervals and a figure caption. 
+
+There are of course various ways to do these changes, in particular the caption, but this is an option.
+
+**Note:** This will only run if you have the tibble dat from earlier in this worksheet
+
+```{r ch13-inclass-t5-sol-3, fig.cap='A nice figure example'}
+cell_means1 <- dat %>%
+group_by(A, B) %>%
+summarise(m = mean(Y_ijk),
+          n = n(),
+          sd_scores = sd(Y_ijk),
+          ste_scores = sd_scores/sqrt(n),
+          ci = 1.96 * ste_scores)
+  
+ggplot(cell_means1, aes(A, m, group = B)) +
+  geom_point(aes(shape = B), size = 3) +
+  geom_line() +
+  geom_errorbar(aes(ymin = m - ci, ymax = m + ci), 
+                width = 0.05, 
+                size = .5) +
+  coord_cartesian(ylim = c(0,100)) +
+  labs(x = "Groups in Factor A", 
+       y = "Mean Scores", 
+       caption = "Figure 1. Mean scores from the example data for the two-way \nbetween-subjects design ANOVA. Error bars indicate 95% \nconfidence intervals.") +
+  scale_shape_discrete("Groups in Factor B") +
+  theme_classic() +
+  theme(axis.text.x = element_text(size = 12),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        legend.title = element_text(size = 14),
+        legend.text = element_text(size = 14),
+        plot.caption  = element_text(size = 14, hjust = 0))
+```
+
+[Return to Task](#Ch13InClassQueT5)
+
+#### ANOVA Using aov_ez
+
+**The code**
+
+```{r ch13-inclass-t6-sol-1, warning = FALSE}
+result <- aov_ez(data = dat, 
+                  dv = "Y_ijk", 
+                  id = "id",
+                  type = 3,
+                  between = c("A", "B"))
+
+result$anova_table
+```
+
+**The output**
+
+* Using the `anova_table` within the output, i.e. `result$anova_table`, would show us:
+
+```{r ch13-inclass-t6-sol-2, echo = FALSE}
+knitr::kable(result$anova_table,
+             digits = 3,
+             caption = "The ANOVA output") %>%
+  kable_styling() %>%
+  scroll_box(width = "100%", box_css = "border: 0px;")
+```
+
+* Alternatively, using the `Anova` within the output, i.e. `result$Anova`, would show us the Sums of Squares as well:
+
+```{r ch13-inclass-t6-sol-3, echo = FALSE}
+knitr::kable(result$Anova,
+             digits = 3,
+             caption = "The ANOVA output") %>%
+  kable_styling() %>%
+  scroll_box(width = "100%", box_css = "border: 0px;")
+```
+
+[Return to Task](#Ch13InClassQueT6)
+
+### Test Yourself Activities
+
+```{r lab13-solutions-setup-homework, echo = FALSE, message=FALSE, warning=FALSE}
+dat <- read_csv("data/13-s02/homework/keysar_lin_barr_2003.csv")
+```
+
+#### Task 1A: Libraries
+
+* In today's assignment you will need both the **`tidyverse`** and **`ez`** packages. 
+
+```{r t1A, message = FALSE, warning=FALSE, eval=FALSE}
+library(afex)
+library(tidyverse)
+```
+
+[Return to Task](#Ch13AssignQueT1A)
+
+#### Task 1B: Loading in the data
+
+* Remember to use `read_csv()` to load in the data.
+
+```{r t1B, eval = FALSE}
+dat <- read_csv("keysar_lin_barr_2003.csv")
+```
+
+[Return to Task](#Ch13AssignQueT1B)
+
+#### Task 2: Calculate cell means for the cell means.
+
+* The code below will give the table shown.
+
+```{r t2}
+cell_means <- dat %>%
+  group_by(sex, condition) %>%
+  summarise(m = mean(looktime), sd = sd(looktime))
+```
+
+```{r t2-hide, echo = FALSE, message = FALSE, warning=FALSE}
+knitr::kable(cell_means)
+```
+
+[Return to Task](#Ch13AssignQueT2)
+
+#### Task 3: Marginal means for sex
+
+* The code below will give the table shown for the marginal means of sex.
+
+```{r t3}
+marg_sex <- dat %>%
+  group_by(sex) %>%
+  summarise(m = mean(looktime), sd = sd(looktime))
+```
+
+```{r t3-hide, echo = FALSE, message = FALSE}
+knitr::kable(marg_sex)
+```
+
+[Return to Task](#Ch13AssignQueT3)
+
+#### Task 4: Marginal means for condition
+
+* The code below will give the table shown for the marginal means of condition.
+
+```{r t4}
+marg_cond <- dat %>%
+  group_by(condition) %>%
+  summarise(m = mean(looktime), sd = sd(looktime))
+```
+
+```{r t4-hide, echo = FALSE, message = FALSE}
+knitr::kable(marg_cond)
+```
+
+[Return to Task](#Ch13AssignQueT4)
+
+#### Task 5: Interaction plot
+
+* The code below will produce the shown figure.
+
+```{r t5, fig.cap='You should have produced a similar figure'}
+ggplot(cell_means, aes(condition, m, shape = sex, group = sex, color = sex)) +
+  geom_line() +
+  geom_point(size = 3) +
+  labs(y = "mean looking time (msecs)") +
+  scale_y_continuous(limits = c(0, 1000)) + 
+  theme_bw()
+```
+
+[Return to Task](#Ch13AssignQueT5)
+
+#### Task 6: Recap Question 1
+
+We want the alternative, not the null hypothesis here. So, an acceptable hypothesis for the interaction effect of sex and condition would be:
+
+**We hypothesised that there would be a significant interaction between condition and sex of participant on egocentric interference (mean looking time (msecs)).**
+
+As such the correct answer is:
+
+```{r t6}
+answer_t6 <- 3
+```
+
+[Return to Task](#Ch13AssignQueT6)
+
+#### Task 7: Recap Question 2
+
+A good description of the marginal means for sex would be:
+
+**The female participants have an average longer looking time (M = 777.98, SD = 911.53) than the male participants (M = 555.04, SD = 707.81) which may suggest a significant main effect of sex.**
+
+As such the correct answer is:
+
+```{r t7}
+answer_t7 <- 1
+```
+
+[Return to Task](#Ch13AssignQueT7)
+
+#### Task 8: Recap Question 3
+
+A good description of the marginal means for condition would be:
+
+**The participants in the false belief group had an average shorter looking time (M = 549.58, SD = 775.91) than the participants in the ignorance group (M = 749.58, SD = 861.23), which may suggest a significant main effect of condition.**
+
+As such the correct answer is:
+
+```{r t8}
+answer_t8 <- 2
+```
+
+[Return to Task](#Ch13AssignQueT8)
+
+#### Task 9: Running the factorial ANOVA
+
+* The code below will produce the shown ANOVA output
+
+```{r t9, warning=FALSE, message=FALSE}
+mod <- aov_ez(data = dat,
+                   dv = "looktime", 
+                   id = "subject",
+                   type = 3,
+                   between = c("condition", "sex"))
+```
+
+```{r t9-output}
+knitr::kable(mod$anova_table)
+```
+
+[Return to Task](#Ch13AssignQueT9)
+
+#### Task 10: Interpreting the ANOVA output Question
+
+A good summary of the outcome ANOVA would be:
+
+**There is no significant main effect of sex or condition and there is no significant interaction between condition and sex.**
+
+As such the correct answer is:
+
+
+```{r t10}
+answer_t10 <- 3
+```
+
+[Return to Task](#Ch13AssignQueT10)
+
+#### Task 11: Report your results
+
+There is no definitive way to write this paragraph but essentially your findings should report both main effects and the interaction, giving appropriate F outputs, e.g. F(1, 36) = .79, p = .38, and give some interpretation/qualification of the results using the means and standard deviations above, e.g. looking time was not significantly different between the false belief task (M = X, SD = XX) or the Ignorance task (M = XX, SD = XX). Something along the following would be appropriate:
+
+**A two-way between-subjects factorial ANOVA was conducted testing the main effects and interaction between sex (male vs. female) and condition (false belief vs. ignorance) on the average looking time (msecs) on a matching task. Results revealed no significant interaction (F(1, 36) = .21, p = .647) suggesting that there is no modulation of condition by sex of participant in this looking task. Furthermore, there was no significant main effect of sex (F(1, 36) = .64, p = .429) suggesting that male (M = 555.04, SD = 707.81) and female participants (M = 777.98, SD = 911.53) perform similarly in this task. Finally, there was no significant main effect of condition (F(1, 36) = .79, p = .38) suggesting that whether participants were given a false belief scenario (M = 594.58, SD = 775.91) or an ignorance scenario (M = 794.58, SD = 861.23) had no overall impact on their performance.**
+
+[Return to Task](#Ch13AssignQueT11)
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

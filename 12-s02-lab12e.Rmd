@@ -1,0 +1,153 @@
+## Solutions to Questions
+
+```{r lab12-solutions-setup, echo = FALSE, message=FALSE, warning=FALSE}
+dmx <- tibble(sub_id = 1:9,
+              i = rep(1:3, each = 3),
+              j = rep(1:3, times = 3),
+              typos = c(111, 102, 111, 
+                    89, 127, 90,
+                    97, 85, 88),
+              sound = rep(c("cafe", "jazz", "silence"), each = 3)) %>%
+  mutate(mu = mean(typos)) %>%
+  group_by(i) %>%
+  mutate(Ai = mean(typos) - mu) %>%
+  ungroup() %>%
+  mutate(err = typos - (mu + Ai))
+
+dat_ss <- dmx %>% 
+  summarise(total = sum(typos^2),
+            ss_mu = sum(mu^2),
+            ss_sound = sum(Ai^2),
+            ss_err = sum(err^2))
+```
+
+Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
+
+### InClass Activities
+
+#### InClass Task 1 
+
+**Question 1**
+
+* $SS_{corrected\ total} = SS_{total} - SS_{\mu}$
+* $SS_{total}$ = `r as.integer(dat_ss[["total"]])`
+* $SS_{\mu}$ = `r as.integer(dat_ss[["ss_mu"]])`
+* $SS_{corrected\ total}$ = `r as.integer(dat_ss[["total"]])` - `r as.integer(dat_ss[["ss_mu"]])` = `r as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])`
+
+**Question 2**
+
+* $SS_{sound}$ = `r as.integer(dat_ss[["ss_sound"]])`
+* $SS_{corrected\ total}$ = `r as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])`
+* $SS_{sound} / SS_{corrected\ total}$ = `r as.integer(dat_ss[["ss_sound"]])` / `r as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])` = `r round(as.integer(dat_ss[["ss_sound"]]) / (as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])),2)`
+    
+**Question 3**
+
+* $SS_{err}$ = `r as.integer(dat_ss[["ss_err"]])`
+* $SS_{corrected\ total}$ = `r as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])`
+* $SS_{err} / SS_{corrected\ total}$ = `r as.integer(dat_ss[["ss_err"]])` / `r as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])` = `r round(as.integer(dat_ss[["ss_err"]]) / (as.integer(dat_ss[["total"]]) - as.integer(dat_ss[["ss_mu"]])),2)`
+
+[Return to Task](#Ch12InClassQueT1)
+
+#### InClass Task 2
+
+**Question 1**
+
+$\mu_{cafe} = \mu_{jazz} = \mu_{silence}$
+
+**Question 2**
+
+* k = number of conditions, so: 
+
+df = k - 1 = 3 - 1 = 2
+
+**Question 3**
+
+* N = 9, and $dfA_{i}$ = 2, so
+
+df = 9 - 2 - 1 = 6
+    
+**Question 4**
+
+* The factor df = 2
+
+```{r ms_a}
+ms_a <- dat_ss[["ss_sound"]] / 2L
+```
+
+* Giving $MS_{A}$ = `r ms_a`
+
+**Question 5**
+
+* The residual df = 6
+
+```{r ms_err}
+ms_err <- dat_ss[["ss_err"]] / 6L
+```
+
+* Giving $MS_{S(A)}$ = `r ms_err`
+
+[Return to Task](#Ch12InClassQueT2)
+
+#### InClass Task 3
+
+**Question 1**
+
+```{r fratio}
+f_obs <- ms_a / ms_err
+```
+
+* Giving a F-value of F = `r round(f_obs,3)` when rounded to three decimal places.
+
+**Question 2**
+
+The red line should be about F = 5.143, meaning that that is the minimum value of F, for those dfs, considered to be statistically significant at $\alpha = .05$
+
+**Question 3**
+
+Reading off the app, the approximate p-value for f_obs is p = .317.  
+
+**Question 4**
+
+As $p$ > $\alpha$ we would retain the null hypothesis that there is no significant effect of group in this study
+
+**Question 5**
+
+This could alternatively calculated using coding as such:
+
+```{r ch12Task3Q5sol, eval=FALSE}
+pf(f_obs, 2, 6, lower.tail = FALSE)
+```
+
+Which would give a p-value of p = `r pf(f_obs, 2, 6, lower.tail = FALSE) %>% round(3)` and again could be written up as F(2, 6) = `r f_obs %>% round(3)`, p = `r pf(f_obs, 2, 6, lower.tail = FALSE) %>% round(3)`, suggesting no significant effect of ambiance or location on concentration as measured through the number of typos.
+
+[Return to Task](#Ch12InClassQueT3)
+
+#### InClass Task 4
+
+```{r afex-input, warning = FALSE}
+dat <- select(dmx, sub_id, typos, sound)
+
+results <- afex::aov_ez(data = dat,
+                         dv = "typos",
+                         id = "sub_id",
+                         type = 3,
+                         between = "sound")
+```
+<br>
+And when we look at the output table see:
+
+```{r afex-output2, warning = FALSE, echo=FALSE}
+options(knitr.kable.NA = '')
+
+
+knitr::kable(results$Anova,
+             digits = 3,
+             caption = "ANOVA output")
+```
+<br>
+
+From this we can see that the numbers we calculated match up exactly with the values that the function produced - F(2, 6) = 1.41, p = .31. You can also see that there is no significant effect and as such we cannot reject the null hypothesis. 
+
+[Return to Task](#Ch12InClassQueT4)
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

@@ -1,0 +1,149 @@
+Participant,Sex,Age,Evidence,Decision
+1,female,18,Late,Guilty
+2,female,19,Late,Not Guilty
+3,female,19,Late,Not Guilty
+4,male,31,Late,Not Guilty
+5,female,19,Late,Guilty
+6,female,19,Late,Not Guilty
+7,female,19,Late,Not Guilty
+8,female,20,Late,Not Guilty
+9,female,19,Late,Not Guilty
+10,female,20,Late,Not Guilty
+11,female,19,Late,Guilty
+12,female,18,Late,Not Guilty
+13,female,29,Late,Not Guilty
+14,female,19,Late,Not Guilty
+15,female,20,Late,Not Guilty
+16,female,21,Late,Guilty
+17,female,19,Late,Not Guilty
+18,male,19,Late,Not Guilty
+19,female,19,Late,Not Guilty
+20,female,19,Late,Not Guilty
+21,male,19,Late,Not Guilty
+22,female,22,Late,Not Guilty
+23,female,19,Late,Not Guilty
+24,female,20,Late,Not Guilty
+25,female,21,Late,Not Guilty
+26,male,30,Late,Not Guilty
+27,female,20,Late,Not Guilty
+28,female,19,Late,Guilty
+29,female,20,Late,Not Guilty
+30,female,23,Late,Not Guilty
+31,male,20,Late,Not Guilty
+32,female,20,Late,Not Guilty
+33,female,20,Late,Not Guilty
+34,female,20,Late,Not Guilty
+35,female,19,Late,Guilty
+36,female,23,Late,Guilty
+37,female,19,Late,Not Guilty
+38,male,18,Late,Not Guilty
+39,female,20,Late,Not Guilty
+40,female,19,Late,Not Guilty
+41,male,20,Late,Guilty
+42,male,20,Late,Guilty
+43,female,18,Late,Not Guilty
+44,female,19,Late,Not Guilty
+45,female,19,Late,Not Guilty
+46,male,18,Late,Not Guilty
+47,female,20,Late,Guilty
+48,female,19,Late,Guilty
+49,male,21,Late,Not Guilty
+50,female,19,Late,Not Guilty
+51,female,19,Late,Guilty
+52,female,19,Late,Not Guilty
+53,female,19,Late,Guilty
+54,male,40,Late,Not Guilty
+55,male,18,Late,Not Guilty
+56,prefer not to say,19,Late,Not Guilty
+57,female,19,Late,Not Guilty
+58,female,19,Late,Not Guilty
+59,female,27,Late,Not Guilty
+60,female,18,Late,Not Guilty
+61,female,23,Late,Not Guilty
+62,female,20,Late,Guilty
+63,male,19,Late,Guilty
+64,female,19,Late,Guilty
+65,female,20,Late,Guilty
+66,female,20,Late,Guilty
+67,female,19,Late,Guilty
+68,female,19,Late,Not Guilty
+69,male,20,Late,Not Guilty
+70,female,20,Late,Not Guilty
+71,female,18,Late,Guilty
+72,female,19,Late,Not Guilty
+73,female,19,Late,Guilty
+74,female,19,Late,Not Guilty
+75,female,19,Late,Not Guilty
+76,male,20,Middle,Not Guilty
+77,female,20,Middle,Not Guilty
+78,female,19,Middle,Guilty
+79,female,19,Middle,Not Guilty
+80,male,20,Middle,Guilty
+81,female,19,Middle,Guilty
+82,female,18,Middle,Not Guilty
+83,female,21,Middle,Guilty
+84,male,19,Middle,Guilty
+85,female,19,Middle,Not Guilty
+86,female,19,Middle,Not Guilty
+87,female,18,Middle,Guilty
+88,male,19,Middle,Not Guilty
+89,female,19,Middle,Not Guilty
+90,female,21,Middle,Not Guilty
+91,female,28,Middle,Not Guilty
+92,male,23,Middle,Not Guilty
+93,female,19,Middle,Not Guilty
+94,female,23,Middle,Not Guilty
+95,female,20,Middle,Not Guilty
+96,female,24,Middle,Guilty
+97,male,19,Middle,Not Guilty
+98,female,20,Middle,Guilty
+99,male,37,Middle,Not Guilty
+100,female,19,Middle,Not Guilty
+101,female,21,Middle,Guilty
+102,female,19,Middle,Not Guilty
+103,female,18,Middle,Guilty
+104,male,21,Middle,Not Guilty
+105,male,20,Middle,Not Guilty
+106,female,19,Middle,Not Guilty
+107,male,19,Middle,Not Guilty
+108,male,27,Middle,Not Guilty
+109,male,20,Middle,Not Guilty
+110,female,20,Middle,Not Guilty
+111,female,23,Middle,Not Guilty
+112,male,20,Middle,Not Guilty
+113,female,19,Middle,Guilty
+114,female,19,Middle,Guilty
+115,female,20,Middle,Not Guilty
+116,female,19,Middle,Guilty
+117,female,18,Middle,Not Guilty
+118,female,37,Middle,Not Guilty
+119,male,34,Middle,Not Guilty
+120,female,19,Middle,Guilty
+121,female,21,Middle,Not Guilty
+122,female,19,Middle,Guilty
+123,female,19,Middle,Not Guilty
+124,female,19,Middle,Guilty
+125,male,18,Middle,Not Guilty
+126,female,26,Middle,Not Guilty
+127,female,19,Middle,Not Guilty
+128,female,19,Middle,Guilty
+129,female,19,Middle,Guilty
+130,female,19,Middle,Guilty
+131,female,25,Middle,Guilty
+132,female,25,Middle,Guilty
+133,female,19,Middle,Not Guilty
+134,female,21,Middle,Guilty
+135,female,19,Middle,Guilty
+136,female,19,Middle,Guilty
+137,female,18,Middle,Not Guilty
+138,male,20,Middle,Not Guilty
+139,male,21,Middle,Guilty
+140,female,20,Middle,Guilty
+141,male,27,Middle,Guilty
+142,female,18,Middle,Guilty
+143,female,19,Middle,Guilty
+144,female,18,Middle,Guilty
+145,female,20,Middle,Not Guilty
+146,female,19,Middle,Guilty
+147,female,27,Middle,Guilty
+148,female,22,Middle,Guilty

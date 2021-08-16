@@ -1,0 +1,416 @@
+## Solutions to Questions
+
+```{r lab15-solutions-setup, echo = FALSE, message=FALSE, warning=FALSE}
+
+pinfo <- read_csv("data/15-s02/inclass/participant_info.csv")
+wellbeing <- read_csv("data/15-s02/inclass/wellbeing.csv")
+screen <- read_csv("data/15-s02/inclass/screen_time.csv")
+
+# test yourself data
+dat <- read_csv("data/15-s02/homework/Han_OSF_HGSandVoiceData.csv")
+```
+
+Below you will find the solutions to the questions for the PreClass and InClass activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
+
+### PreClass Activities
+
+#### Loading the Data
+
+```{r ch15-sol-load, eval = FALSE}
+library("tidyverse")
+
+pinfo <- read_csv("participant_info.csv")
+wellbeing <- read_csv("wellbeing.csv")
+screen <- read_csv("screen_time.csv")
+```
+
+[Return to Task](#Ch15PreClassQueT1)
+
+#### Compute the well-being score for each participant
+
+* Both of these solutions would produce the same output.
+
+**Version 1**
+
+* bit quicker in terms of coding and reduces chance of error by perhaps forgetting to include a specific column 
+
+```{r ch15-sol-wemwbs-v1}
+wemwbs <- wellbeing %>%
+  pivot_longer(names_to = "var", values_to = "score", cols = -Serial) %>%
+  group_by(Serial) %>%
+  summarise(tot_wellbeing = sum(score))
+```
+
+* This is how you would do the same above with the `gather()` function in case there are still some `gather()` in this chapter by mistake. It does the same task but just slightly different input and can create a slightly different output because it has a different sorting function within it compared to `pivot_longer()`
+
+```{r ch15-sol-wemwbs-v2}
+wemwbs <- wellbeing %>%
+  gather(key = "var", value = "score", -Serial) %>%
+  group_by(Serial) %>%
+  summarise(tot_wellbeing = sum(score))
+```
+
+**Version 2**
+
+* this one is a bit slower
+
+```{r ch15-sol-wemwbs2}
+wemwbs <- wellbeing %>%
+  mutate(tot_wellbeing = WBOptimf +	WBUseful + 
+           WBRelax + WBIntp +	WBEnergy + WBDealpr + 
+           WBThkclr + WBGoodme + WBClsep + WBConfid + 
+           WBMkmind + WBLoved + WBIntthg + WBCheer) %>%
+  select(Serial, tot_wellbeing) %>%
+  arrange(Serial)
+```
+
+[Return to Task](#Ch15PreClassQueT2)
+
+#### Visualising Screen time on all technologies
+
+```{r ch15-sol-st-plot-sol, fig.cap = 'Count of the hours of usage of different types of social media at Weekdays and Weekends'}
+## screen time
+
+screen_long <- screen %>%
+  pivot_longer(names_to = "var", values_to = "hours", cols = -Serial) %>%
+  separate(var, c("variable", "day"), "_")
+
+screen2 <- screen_long %>%
+  mutate(variable = recode(variable,
+			   "Watch" = "Watching TV",
+			   "Comp" = "Playing Video Games",
+			   "Comph" = "Using Computers",
+			   "Smart" = "Using Smartphone"),
+	 day = recode(day,
+		      "wk" = "Weekday",
+		      "we" = "Weekend"))
+
+ggplot(screen2, aes(hours)) +
+  geom_bar() +
+  facet_grid(day ~ variable)
+```
+
+* This is how you would do the first step above with the `gather()` function in case there are still some `gather()` in this chapter by mistake. It does the same task but just slightly different input and can create a slightly different output because it has a different sorting function within it compared to `pivot_longer()`
+
+```{r ch15-sol-st-plot-sol-hide, eval = FALSE}
+screen_long <- screen %>%
+  gather("var", "hours", -Serial) %>%
+  separate(var, c("variable", "day"), "_")
+```
+
+
+[Return to Task](#Ch15PreClassQueT3)
+
+#### Visualising the Screen time and Well-being relationship
+
+```{r ch15-sol-combined, fig.cap = 'Scatterplot showing the relationship between screen time and mean well-being across four technologies for Weekdays and Weekends'}
+dat_means <- inner_join(wemwbs, screen2, "Serial") %>%
+  group_by(variable, day, hours) %>%
+  summarise(mean_wellbeing = mean(tot_wellbeing))
+
+ggplot(dat_means, aes(hours, mean_wellbeing, linetype = day)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~variable, nrow = 2)
+```
+
+[Return to Task](#Ch15PreClassQueT4)
+
+### InClass Activities
+
+#### Smartphone and well-being for boys and girls
+
+**Solution Steps 1 to 2**
+
+```{r ch15-sol-calculate_mean}
+smarttot <- screen2 %>%
+  filter(variable == "Using Smartphone") %>%
+  group_by(Serial) %>%
+  summarise(tothours = mean(hours))
+```
+
+**Solution Step 3**
+
+```{r ch15-sol-combine2}
+smart_wb <- smarttot %>%
+  filter(tothours > 1) %>%
+  inner_join(wemwbs, "Serial") %>%
+  inner_join(pinfo, "Serial") 
+```
+
+[Return to Task](#Ch15InClassQueT1)
+
+#### Visualise and Interpreting the relationship of smartphone use and wellbeing by sex 
+
+**The Figure**
+
+```{r ch15-use-wb-bysex, fig.cap='Scatterplot and slopes for relationships between total hours and mean wellbeing score for boys (cyan) and girls (red)'}
+smart_wb_gen <- smart_wb %>%
+  group_by(tothours, sex) %>%
+  summarise(mean_wellbeing = mean(tot_wellbeing))
+
+ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = factor(sex))) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+**A brief Interpretation**
+
+Girls show lower overall well-being compared to boys.  In addition, the slope for girls appears more negative than that for boys; the one for boys appears relatively flat.  This suggests that the negative association between well-being and smartphone use is stronger for girls.
+
+[Return to Task](#Ch15InClassQueT2)
+
+#### Estimating model parameters
+
+* This is the chunk we gave in the materials.
+
+```{r ch15-sol-centering}
+smart_wb <- smart_wb %>%
+  mutate(tothours_c = tothours - mean(tothours),
+         sex_c = ifelse(sex == 1, .5, -.5)) %>%
+  select(-tothours, -sex)
+```
+
+* and the model would be specified as:
+
+```{r ch15-sol-mod}
+mod <- lm(tot_wellbeing ~ tothours_c * sex_c, smart_wb)
+```
+
+* or alternatively
+
+```{r ch15-sol-mod-option}
+mod <- lm(tot_wellbeing ~ tothours_c + sex_c + tothours_c:sex_c, smart_wb)
+```
+
+* and the output called by:
+
+```{r ch15-sol-mod-output}
+summary(mod)
+```
+
+[Return to Task](#Ch15InClassQueT3)
+
+#### Final Interpretations
+
+```{r ch15-sol-hidden, include = FALSE}
+male_intercept <- coef(mod)["(Intercept)"] + coef(mod)["sex_c"] * .5
+male_slope <- coef(mod)["tothours_c"] + coef(mod)["tothours_c:sex_c"] * .5
+female_intercept <- coef(mod)["(Intercept)"] + coef(mod)["sex_c"] * -.5
+female_slope <- coef(mod)["tothours_c"] + coef(mod)["tothours_c:sex_c"] * -.5
+```
+
+* The interaction between smartphone use and gender is shown by the variable tothours_c:sex_c, and this interaction was significant at the $\alpha = .05$ level, meaning that there is an significant interaction between sex and hours of smartphone usage on wellbeing
+
+* To two decimal places, the intercept for male participants is: `r round2(male_intercept, 2)`
+* To two decimal places, the slope for male participants is: `r round2(male_slope, 2)`
+* To two decimal places, the intercept for female participants is: `r round2(female_intercept, 2)`
+* To two decimal places, the slope for female participants is: `r round2(female_slope, 2)`
+
+As such, given the model of `Y = intercept + (slope * X)`  where Y is wellbeing and X is total hours on smartphone, what would be the predicted wellbeing score for a male and a female who use their smartphones for 8 hours. Give your answer to two decimal places:
+
+* Male: `r round2(male_intercept, 2) + round2(male_slope, 2) * 8`
+* Female: `r round2(female_intercept, 2) + round2(female_slope, 2) * 8`
+
+And finally, the most reasonable interpretation of these results is that smartphone use was more negatively associated with wellbeing for girls than for boys.
+
+[Return to Task](#Ch15InClassQueT4)
+
+### Test Yourself Activities
+
+#### Task 1A: Load add-on packages 
+
+The `tidyverse` would be loaded in as shown below.
+
+```{r T1A, echo = TRUE, eval = FALSE}
+
+library(tidyverse)
+```
+
+[Return to task](#Ch15AssignQueT1A)
+
+#### Task 1B: Load the data 
+
+The data would be read in as follows.
+
+```{r T1B, echo = TRUE, eval = FALSE}
+dat <- read_csv("Han_OSF_HGSandVoiceData.csv")
+```
+
+* Remember to check that you have used `read_csv()`
+* Double check the spelling of the data file.
+* Be sure to have a look at your data through the viewer or by using commands in your console only, not in your code.
+
+[Return to task](#Ch15AssignQueT1B)
+
+#### Task 2: Demographics
+
+This would be carried out using a `group_by()` and `summarise()` combination as shown. As always be sure to pay attention to the spelling of variables
+
+```{r T2}
+demogs <- dat %>% group_by(sex) %>%
+  summarise(n = n(),
+            mean_age = mean(age),
+            sd_age = sd(age))
+```
+
+[Return to task](#Ch15AssignQueT2)
+
+#### Task 3: Plotting the general relationship of F0 and HGS
+
+The below figure would be appropriate here:
+
+```{r T3-hide, echo = FALSE, eval = TRUE, fig.cap='The relationship between fundamental frequency (Hz) and hand grip strength'}
+
+ggplot(dat, aes(F0, HGS)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Fundamental Frequency (Hz)", y = "Hand Grip Strength") +
+  coord_cartesian(ylim = c(0,100)) +
+  theme_classic()
+```
+
+And would be created with the following code:
+
+```{r T3-show, echo = TRUE, eval = FALSE}
+ggplot(dat, aes(F0, HGS)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Fundamental Frequency (Hz)", y = "Hand Grip Strength") +
+  coord_cartesian(ylim = c(0,100)) +
+  theme_classic()
+```
+
+[Return to task](#Ch15AssignQueT3)
+
+
+#### Task 4: Analysing the general relationship of F0 and HGS
+
+The appropriate way to run this analysis would be as shown below:
+
+* `HGS` is the dependent variable (or the outcome variable)
+* `F0` is the independent variable (or the predictor variables
+* The data is stored in `dat`
+
+```{r T4}
+mod1 <- lm(HGS ~ F0, dat)
+```
+
+**Note:** Be sure to watch spelling and capitalisation of the variables. For example, F0_C is pronounced as "F Zero" and the F is capitalised.
+
+[Return to task](#Ch15AssignQueT4)
+
+#### Task 5: Interpreting the general relationship of F0 and HGS
+
+An appropriate summary would be:
+
+**As illustrated in the scatterplot of Task 4, the model revealed that fundamental frequency does predict hand grip strength, explaining approximately 56.7% of the population variance. The model would suggest that there is a negative relationship between F0 and HGS (b = -.145) supporting the basic hypothesis that as pitch increases, hand grip strength decreases (Adjusted R-squared = .567, F(1, 219) = 289.3, p < .001.**
+
+As such the answer is:
+
+```{r T5}
+answer_t5 <- 3
+```
+
+[Return to task](#Ch15AssignQueT5)
+
+#### Task 6: Plotting the modulation of voice/strength relationship by sex
+
+The below figure would be sufficient for this task: 
+
+```{r T6-hide, echo = FALSE, eval = TRUE, fig.cap='The relationship between fundamental frequency and hand grip strength by sex'}
+
+
+ggplot(dat, aes(F0, HGS, group = sex)) +
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Fundamental Frequency (Hz)", y = "Hand Grip Strength") +
+  coord_cartesian(ylim = c(0,100)) +
+  theme_classic()
+```
+
+And would be created as follows.
+
+```{r T6-show, echo = TRUE, eval = FALSE}
+ggplot(dat, aes(F0, HGS, group = sex)) +
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Fundamental Frequency (Hz)", y = "Hand Grip Strength") +
+  coord_cartesian(ylim = c(0,100)) +
+  theme_classic()
+```
+
+[Return to task](#Ch15AssignQueT6)
+
+#### Task 7: Mean centering and Dummy coding the variables.
+
+One way to complete this task using a `mutate()` function as shown below. Be sure however to keep an eye on spelling and capitalisation of variables. For example, F0_C is pronounced as "F Zero underscore C" and the F and C are both capitalised.
+
+```{r T7}
+dat_dummy <- dat %>%
+  mutate(F0_C = F0 - mean(F0),
+         sex_C = ifelse(sex == "female", -.5, .5))
+```
+
+[Return to task](#Ch15AssignQueT7)
+
+#### Task 8: Estimate the modulation of voice/strength relationship by sex
+
+The appropriate way to run this analysis would be as shown below:
+
+* `HGS` is the dependent variable (or the outcome variable)
+* `F0_C` and `sex_C` are the independent variables (or the predictor variables)
+* The data is stored in `dat_dummy`
+
+```{r T8}
+mod2 <- lm(HGS ~ F0_C * sex_C, dat_dummy)
+```
+
+**Note:** Be sure to watch spelling and capitalisation of the variables. For example, F0_C is pronounced as "F Zero underscore C" and the F and C are both capitalised.
+
+[Return to task](#Ch15AssignQueT8)
+
+#### Task 9: Interpreting the output 1
+
+The appropriate synopsis would be:
+
+
+**The beta coeffecient of fundamental frequency (b = -.033) and the interaction (-.016) are not significant but the coeffecient of sex is significant (b = 13.182).**
+
+As such the correct answer is:
+
+```{r T9}
+answer_t9 <- 4
+```
+
+[Return to task](#Ch15AssignQueT9)
+
+#### Task 10: Interpreting the output 2
+
+The appropriate synopsis would be:
+
+**The slope of the male regression line (slope = -.042) is marginally more negative than the slope of the female regression line (slope = -.025).**
+
+As such the correct answer is:
+
+```{r T10}
+answer_t10 <- 1
+```
+
+[Return to task](#Ch15AssignQueT10)
+
+#### Task 11: Interpreting the output 3
+
+A good summary of the analysis would be as follows:
+
+**An analysis involving 221 participants (female: N = 110, Mean Age = 22.93, SD Age = 3.35; male: N = 111, Mean Age = 23.87, SD Age = 5.14) was conducted to test the hypothesis that there was a negative relationship between fundamental frequency and hand grip strength in males but not in females. A simple linear regression suggested that there was a significant negative relationship between F0 and HGS, when not controlling for sex. However, after controlling for participant sex, there appears to be no significant relationship between fundamental frequency and grip strength. The only significant effect suggests that there is a difference in hand grip strength between males and females but this is not related to fundamental frequency.**
+
+As such the correct answer is: 
+
+```{r T11}
+answer_t11 <- 4
+```
+
+[Return to task](#Ch15AssignQueT11)
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

@@ -1,0 +1,33 @@
+{
+    "description": "The 2021-2022 version of the course book for the Year 2 Research Methods and Statistics Practical Course at the School of Psychology University of Glasgow", 
+    "license": "cc-by-sa", 
+    "title": "Year 2 Research Methods and Statistics Practical Skills", 
+    "version": "1.0.9001",
+    "upload_type": "software", 
+    "publication_date": "2021-07-14", 
+    "creators": [
+        {
+            "name": "Phil McAleer",
+            "affiliation": "University of Glasgow",
+            "orcid": "0000-0002-4523-2097"
+        }, 
+        {
+            "name": "Carolina Kuepper-Tetzel",
+            "affiliation": "University of Glasgow",
+            "orcid": "0000-0003-0830-7915"
+        }, 
+        {
+            "name": "Helena M. Paterson",
+            "affiliation": "University of Glasgow",
+            "orcid": "0000-0001-7715-5973"
+        }
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://psyteachr.github.io/ug2-practical/", 
+            "relation": "isSupplementTo"
+        }
+    ]
+}

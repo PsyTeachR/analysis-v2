@@ -1,0 +1,159 @@
+---
+title: "Psych 2A Lab 6: Independent samples t-test Assignment"
+author: "School of Psychology, University of Glasgow"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+## DO NOT DELETE THIS CHUNK OR ALTER ANY OF THE LINES WITHIN THIS CHUNK!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Before starting lets check:
+
+1. The `.csv` file is saved into a folder on your computer and you have manually set this folder as your working directory. 
+
+2. The `.Rmd` file is saved in the same folder as the `.csv` files. For assessments we ask that you save it with the format `GUID_Level2_Semester1_Lab6.Rmd` where `GUID` is replaced with your `GUID`. Though this is a formative assessment, it may be good practice to do the same here.
+
+## Task 1A: Libraries
+
+* In today's assignment you will need both the `tidyverse` and `broom` packages. Enter code into the t1A code chunk below to load in both of these libraries.
+
+```{r t1A, message = FALSE}
+## load in the tidyverse and broom packages
+
+
+```
+
+## Task 1B: Loading in the data
+
+* Use `read_csv()` to replace the `NULL` in the t1B code chunk below to load in the data stored in the datafile `CRT_Data.csv`. Store the data in the variable `crt`. Do not change the filename of the datafile. 
+
+```{r t1B, message = FALSE}
+crt <- NULL
+```
+
+## Task 2: Identify relevant columns
+
+Have a look at `crt`.  There are three variables in `crt` that you will need to find and extract in order to perform the t-test: the subject ID number (**hint**: each participant has a unique number); the independent variable (**hint**: each participant has the possibility of being in one of two treatments coded as 1 or 0); and the dependent variable (**hint**: the test specifically looks at which *answers people get correct*).  Identify those three variables. It might help to look at the first few sentences under the heading **The influence of testosterone on CRT performance** and Figure 2a in the paper for further guidance on the correct variables.
+
+* Having identified the important three columns, replace the `NULL` in the t2 code chunk below to select out only those three columns from `crt` and store them in the tibble `crt2`.
+
+**Check your work:** If correct, `crt2` should be a tibble with 3 columns and 243 rows.
+
+```{r t2}
+crt2 <- NULL
+```
+
+**NOTE:** For the remainder of this assignment you should use `crt2` as the main source tibble and not `crt`.
+
+## Task 3: Verify the number of subjects in each group
+
+The Participants section of the article contains the following statement:
+
+**243 men (mostly college students; for demographic details, see Table S1 in the Supplemental Material available online) were randomly administered a topical gel containing either testosterone (n = 125) or placebo (n = 118).**
+
+In the t3 code block below, replace the `NULLs` with lines of code to calculate:
+
+1. The number of men in each Treatment. This should be a tibble/table called `cond_counts` containing a column called `Treatment` showing the two groups and a column called `n` which shows the number of men in each group.
+
+2. The total number of men in the sample. This should be a single value, not a tibble/table, and should be stored in `n_men`. 
+
+You know the answer to both of these tasks already. Make sure that your code gives the correct answer!
+
+```{r t3}
+cond_counts <- NULL
+n_men <- NULL
+```
+
+* Now replace the strings in the statements below, using inline R code, so that it reproduces the sentence from the paper exactly as it is shown above. In other words, in the statement below, anywhere it says `"(your code here)"`, replace that string (including the quotes), with inline R code.  To clarify, when looking at the .Rmd file you should see R code; when looking at the knitted file, you should see values. See Chapter 1 if you are unsure of how to use inline code.
+
+**Hint:** One solution is to do something with `cond_counts` similar to what we did with `filter()` and `pull()` in the in-class exercises of this Chapter.
+
+**`"(your code here)"` men (mostly college students; for demographic details, see Table S1 in the Supplemental Material available online) were randomly administered a topical gel containing either testosterone (n = `"(your code here)"`) or placebo (n = `"(your code here)"`).**
+
+## Task 4: Reproduce Figure 2a
+
+Figure 2A from the original paper is shown on the Moodle assignment:
+
+* Write code in the t4 code chunk to reproduce a version of Figure 2a - shown on Moodle.  Before you create the plot, replace the `NULL` to make a tibble called `crt_means` with the mean and standard deviation of the number of `CorrectAnswers` for each group. 
+* Use `crt_means` as the source data for the plot.  
+
+**Hint:** you will need to check out `recode()` to get the labels of treatments right. Again this webpage is highly recommended: <a href="https://debruine.github.io/posts/recode/" target = "_blank">https://debruine.github.io/posts/recode/</a>
+
+Don't worry about including the error bars (unless you want to) or the line indicating significance in the plot. Do however make sure to pay attention to the labels of treatments and of the y-axis scale and label. Reposition the x-axis label to below the Figure. You can use colour if you like. 
+
+```{r t4}
+crt_means <- NULL
+
+## TODO: add lines of code using ggplot
+
+
+```
+
+## Task 5: Interpreting your Figure
+
+Always good to do a slight recap at this point to make sure you are following the analysis.  Replace the `NULL` in the t5 code chunk below with the number of the statement that best describes the data you have calculated and plotted thus far. Store this single value in `answer_t5`:
+
+1. The Testosterone group (M = 2.10, SD = 1.02) would appear to have fewer correct answers on average than the Placebo group (M = 1.66, SD = 1.18) on the Cognitive Reflection Test suggesting that testosterone does in fact inhibit the ability to override incorrect intuitive judgements with the correct response. 
+
+2. The Testosterone group (M = 1.66, SD = 1.18) would appear to have more correct answers on average than the Placebo group (M = 2.10, SD = 1.02) on the Cognitive Reflection Test suggesting that testosterone does in fact inhibit the ability to override incorrect intuitive judgements with the correct response. 
+
+3. The Testosterone group (M = 1.66, SD = 1.18) would appear to have fewer correct answers on average than the Placebo group (M = 2.10, SD = 1.02) on the Cognitive Reflection Test suggesting that testosterone does in fact inhibit the ability to override incorrect intuitive judgements with the correct response. 
+
+4. The Testosterone group (M = 2.10, SD = 1.02) would appear to have more correct answers on average than the Placebo group (M = 1.66, SD = 1.18) on the Cognitive Reflection Test suggesting that testosterone does in fact inhibit the ability to override incorrect intuitive judgements with the correct response.
+
+```{r t5}
+answer_t5 <- NULL
+```
+
+## Task 6: t-test
+
+Now that we have calculated the descriptives in our study we need to run the inferentials. In the t6  code chunk below, replace the `NULL` with a line of code to run the t-test taking care to make sure that the output table has the Placebo mean under Estimate1 (group 0) and Testosterone mean under Estimate2 (group 1). Assume variance is equal and use `broom::tidy()` to sweep and store the results into a tibble called `t_table`.
+
+```{r t6}
+t_table <- NULL
+```
+
+## Task 7: Reporting results
+
+In the t7A code chunk below, replace the `NULL` with a line of code to pull out the df from t_table. This must be a single value stored in `t_df`. 
+
+```{r t7A}
+t_df <- NULL
+```
+
+In the t7B code chunk below, replace the `NULL` with a line of code to pull out the t-value from t_table. Round it to three decimal places. This must be a single value stored in `t_value`. 
+
+```{r t7B}
+t_value <- NULL
+```
+
+In the t7C code chunk below, replace the `NULL` with a line of code to pull out the p-value from t_table. Round it to three decimal places. This must be a single value stored in `p_value`. 
+
+```{r t7C}
+p_value <- NULL
+```
+
+In the t7D code chunk below, replace the `NULL` with a line of code to calculate the absolute difference between the mean number of correct answers for the Testosterone group and the Placebo group. Round it to three decimal places. This must be a single value stored in `t_diff`.
+
+```{r t7D}
+t_diff <- NULL
+```
+
+If you have completed t7A to t7D accurately, then when knitted, one of these statements below will produce an accurate and coherent summary of the results.  In the t7E code chunk below, replace the `NULL` the number of the statement below that best summarises the data in this study. Store this single value in `answer_t7e`
+
+1. The testosterone group performed significantly better (`r t_diff` fewer correct answers) than the placebo group, t(`r t_df`) = `r t_value`, p = `r p_value`.
+2. The testosterone group performed significantly worse (`r t_df` fewer correct answers) than the placebo group, t(`r t_diff`) = `r t_value`, p = `r p_value`.
+3. The testosterone group performed significantly better (`r t_diff` more correct answers) than the placebo group, t(`r t_df`) = `r t_value`, p = `r p_value`.
+4. The testosterone group performed significantly worse (`r t_diff` fewer correct answers) than the placebo group, t(`r t_df`) = `r t_value`, p = `r p_value`.
+
+```{r t7E}
+answer_t7e <- NULL
+```
+
+# Finished
+
+Well done, you are finshed! Now you should go check your answers against the solution file which can be found on Moodle. You are looking to check that the resulting output from the answers that you have submitted are exactly the same as the output in the solution - for example, remember that a single value is not the same as a coded answer. Where there are alternative answers it means that you could have submitted any one of the options as they should all return the same answer. If you have any questions please post them on the available forums or ask a member of staff.
+
+On to the next chapter!
