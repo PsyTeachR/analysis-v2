@@ -1,30 +1,39 @@
 --- 
-title: "Level 2 Research Methods and Statistics Practical Skills"
-date: "Last Update: 2021-07-15"
+title: "Analysis"
+author: "Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson"
+date: "2021-09-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-biblio-style: apalike
+biblio-style: apa
+csl: include/apa.csl
 link-citations: yes
-description: ug2-practical-materials
+description: |
+  This book covers data skills such as R Markdown, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces statistical concepts such as permutation tests, NHST, alpha, power, effect size, and sample size as well as statistical procedures such as correlations and the general linear model.
+url: https://psyteachr.github.io/analysis-v2
+github-repo: psyteachr/analysis-v2
+cover-image: images/logos/twitter_card.png
+apple-touch-icon: images/logos/apple-touch-icon.png
+apple-touch-icon-size: 180
+favicon: images/logos/favicon.ico
 ---
 
 
 
 # Overview {-}
 
-<img src="images/L2.png" style="width: 200px; float: right;">
+<div class="small_right"><img src="images/logos/logo.png" alt="Hex sticker, orange, text: Analysis" /></div>
 
 Materials for the University of Glasgow School of Psychology Year 2 Research Methods and Statistics Practical Course. 
 
-**Authors:** Phil McAleer, Carolina Kuepper-Tetzel & Helena M. Paterson
+**Authors:** Phil McAleer, Carolina E. Kuepper-Tetzel, & Helena M. Paterson
 
-**Aim:** This course covers data skills such as R Markdown, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces statistical concepts such as permutation tests, Null Hypothesis Significance Testing (NHST), alpha, power, effect size, and sample size. Semester 2 focusses on correlations and the general linear model.
+**Aim:** This course covers data skills such as R Markdown, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces statistical concepts such as permutation tests, Null Hypothesis Significance Testing (NHST), alpha, power, effect size, and sample size. Semester 2 focuses on correlations and the general linear model.
 
-**Contact:** This book is a living document and will be regularly checked and updated for improvements. Should you have any issues using the book or queries, please contact [Phil McAleer](mailto:philip.mcaleer@glasgow.ac.uk).
+**Contact:** This book is a living document and will be regularly checked and updated for improvements. Should you have any issues using the book or queries, please contact [Carolina E. Kuepper-Tetzel](mailto:carolina.kuepper-tetzel@glasgow.ac.uk).
 
 **R Version:** This book has been written with R version 4.1.0 (2021-05-18)
 
 **Randomising Seed:** In chapters that use some level of randomisation, where we have remembered, the seed is set as 1409.
 
-**Cite as:** McAleer, P., Kuepper-Tetzel, C., & Paterson, H. M. (2021, July 14). Year 2 Research Methods and Statistics Practical Skills (Version 1.0.9001). Zenodo. <a href = "http://doi.org/10.5281/zenodo.3822464" target = "_blank">http://doi.org/10.5281/zenodo.3822464</a>
+**Cite as:** McAleer, P., Kuepper-Tetzel, C. E., & Paterson, H. M. (2021, July 14). Year 2 Research Methods and Statistics Practical Skills (Version 1.0.9001). Zenodo. <a href = "http://doi.org/10.5281/zenodo.3822464" target = "_blank">http://doi.org/10.5281/zenodo.3822464</a>
