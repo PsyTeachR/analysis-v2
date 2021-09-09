@@ -24,11 +24,12 @@ favicon: images/logos/favicon.ico
 
 <div class="small_right"><img src="images/logos/logo.png" alt="Hex sticker, orange, text: Analysis" /></div>
 
-Materials for the University of Glasgow School of Psychology Year 2 Research Methods and Statistics Practical Course. 
 
 **Authors:** Phil McAleer, Carolina E. Kuepper-Tetzel, & Helena M. Paterson
 
-**Aim:** This course covers data skills such as R Markdown, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces statistical concepts such as permutation tests, Null Hypothesis Significance Testing (NHST), alpha, power, effect size, and sample size. Semester 2 focuses on correlations and the general linear model.
+**Aim:** This course covers data skills such as R Markdown, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces statistical concepts such as probabilities, Null Hypothesis Significance Testing (NHST), alpha, power, effect size, and sample size. The most common statistical analyses are covered in this book such as t-test, correlations, ANOVAs, and Regressions.
+
+**Note:** This book is currently being updated which means that chapters are being published on a rolling basis.
 
 **Contact:** This book is a living document and will be regularly checked and updated for improvements. Should you have any issues using the book or queries, please contact [Carolina E. Kuepper-Tetzel](mailto:carolina.kuepper-tetzel@glasgow.ac.uk).
 
@@ -36,4 +37,4 @@ Materials for the University of Glasgow School of Psychology Year 2 Research Met
 
 **Randomising Seed:** In chapters that use some level of randomisation, where we have remembered, the seed is set as 1409.
 
-**Cite as:** McAleer, P., Kuepper-Tetzel, C. E., & Paterson, H. M. (2021, July 14). Year 2 Research Methods and Statistics Practical Skills (Version 1.0.9001). Zenodo. <a href = "http://doi.org/10.5281/zenodo.3822464" target = "_blank">http://doi.org/10.5281/zenodo.3822464</a>
+<!-- **Cite as:** McAleer, P., Kuepper-Tetzel, C. E., & Paterson, H. M. (2021, July 14). Analysis (Version 2). Zenodo. <a href = "http://doi.org/10.5281/zenodo.3822464" target = "_blank">http://doi.org/10.5281/zenodo.3822464</a> -->
