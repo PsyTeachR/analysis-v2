@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Foreword | Analysis</title>
+<title>C Exporting files from the server | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
-<meta name="description" content="Welcome to the Level 2 Practical Lab Series Over the course of this year's practical lab sessions, and this book, we will help you learn a whole host of skills and methods based around being a...">
+<meta name="description" content="If you are using the R server, you may need to export files to share them with other people or submit them for your assignments. First, make sure you have saved any changes you have made to the...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Foreword | Analysis">
+<meta property="og:title" content="C Exporting files from the server | Analysis">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://psyteachr.github.io/analysis-v2/foreword.html">
+<meta property="og:url" content="https://psyteachr.github.io/analysis-v2/exporting-files-from-the-server.html">
 <meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/twitter_card.png">
-<meta property="og:description" content="Welcome to the Level 2 Practical Lab Series Over the course of this year's practical lab sessions, and this book, we will help you learn a whole host of skills and methods based around being a...">
+<meta property="og:description" content="If you are using the R server, you may need to export files to share them with other people or submit them for your assignments. First, make sure you have saved any changes you have made to the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Foreword | Analysis">
-<meta name="twitter:description" content="Welcome to the Level 2 Practical Lab Series Over the course of this year's practical lab sessions, and this book, we will help you learn a whole host of skills and methods based around being a...">
+<meta name="twitter:title" content="C Exporting files from the server | Analysis">
+<meta name="twitter:description" content="If you are using the R server, you may need to export files to share them with other people or submit them for your assignments. First, make sure you have saved any changes you have made to the...">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/twitter_card.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -51,14 +51,14 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Overview</a></li>
-<li><a class="active" href="foreword.html">Foreword</a></li>
+<li><a class="" href="foreword.html">Foreword</a></li>
 <li><a class="" href="starting-with-r-markdown.html"><span class="header-section-number">1</span> Starting with R Markdown</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="stats-by-hand.html">Stats by Hand</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
 <li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
-<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="active" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
 <li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
 <li><a class="" href="license.html">License</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -69,15 +69,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="foreword" class="section level1 unnumbered">
-<h1>Foreword<a class="anchor" aria-label="anchor" href="#foreword"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="exporting-files-from-the-server" class="section level1" number="4">
+<h1>
+<span class="header-section-number">C</span> Exporting files from the server<a class="anchor" aria-label="anchor" href="#exporting-files-from-the-server"><i class="fas fa-link"></i></a>
 </h1>
-<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">Welcome to the Level 2 Practical Lab Series</span></p>
-<p>Over the course of this year's practical lab sessions, and this book, we will help you learn a whole host of skills and methods based around being a psychologist. If you have completed Book 1 in the <strong>PsyTeachR</strong> series (<a href="https://psyteachr.github.io/" target="_blank">https://psyteachr.github.io/</a>) the first few labs will be familiar to you, with some additions. This is deliberate in order to refresh your knowledge and skills before moving on to more advanced topics later in this book. First, we will remind you how to work with R Markdown, before recapping the main functions we use for visualisation and data wrangling. From there we will build your understanding of probability before going on to using all these refreshed skills to analyse a variety of different experiments; all with the idea of being reproducible in our approach throughout. By the end of the book we would hope that you are both competent and confident in all the knowledge and skills we want you to have going forward, and we will be here to support you along the way.</p>
-<p>As you will see, this book requires more self-directed learning than the first book; part of learning is trying things out yourself and recognising where you need help. That said, that does not mean we are not here to help and any time you are unsure, please, ask in class, on the Teams channels, in our student office hours, or during our GTA drop-in sessions.</p>
-<p>When working through this book remember that this is not about learning a software. We do not teach R independent of statistical knowledge and content. Rather, we teach data and analytical skills and knowledge within R, mainly within the tidyverse framework. You are learning data and analytical skills and knowledge within R. The goal is to learn different skills, step-by-step, and integrating them together as you progress!</p>
-<p>You can do this!</p>
-
+<p>If you are using the R server, you may need to export files to share them with other people or submit them for your assignments.</p>
+<ul>
+<li>First, make sure you have saved any changes you have made to the file. Do this by clicking "File - Save", Ctrl + S, or clicking the save icon. If all your changes have been saved, the save icon will be greyed out. If there are new unsaved changes, you will be able to click the icon.</li>
+<li>Select the file you and to download in the files pane (bottom right) by ticking the box next to it, then click "More - Export" and save the file to your computer.</li>
+<li>If you do not have R installed, DO NOT try to open it on your computer. If you do, it will open in Word, Endnote or similar, and it may corrupt your code. Only open the file if you have R and R Studio installed.</li>
+<li>If you want to double check that this file is definitely the right one to submit for an assignment, you can re-upload it to the server and open it again to make sure it has the answers in it.</li>
+</ul>
 </div>
 <script>
 
@@ -196,16 +198,16 @@ $( document ).ready(function() {
   );
 });
 </script><div class="chapter-nav">
-<div class="prev"><a href="index.html">Overview</a></div>
-<div class="next"><a href="starting-with-r-markdown.html"><span class="header-section-number">1</span> Starting with R Markdown</a></div>
+<div class="prev"><a href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></div>
+<div class="next"><a href="symbols.html"><span class="header-section-number">D</span> Symbols</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#foreword">Foreword</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#exporting-files-from-the-server"><span class="header-section-number">C</span> Exporting files from the server</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/analysis-v2/blob/master/book/00-s01-lab00a.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/analysis-v2/edit/master/book/00-s01-lab00a.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/analysis-v2/blob/master/book/appendix-c-exporting-server.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/analysis-v2/edit/master/book/appendix-c-exporting-server.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
