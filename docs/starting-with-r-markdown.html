@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 1 Starting with R Markdown | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
-<meta name="description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of a journal article....">
+<meta name="description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Starting with R Markdown | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/starting-with-r-markdown.html">
 <meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/twitter_card.png">
-<meta property="og:description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of a journal article....">
+<meta property="og:description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Starting with R Markdown | Analysis">
-<meta name="twitter:description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of a journal article....">
+<meta name="twitter:description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/twitter_card.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +51,6 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Overview</a></li>
-<li><a class="" href="foreword.html">Foreword</a></li>
 <li><a class="active" href="starting-with-r-markdown.html"><span class="header-section-number">1</span> Starting with R Markdown</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
@@ -76,7 +75,7 @@
 <h2>
 <span class="header-section-number">1.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of a journal article. There are numerous ways that people combine different software to create a journal article, but a more recent innovation in the field that we want you to know about is creating reports and articles through R Markdown. If you like, you can see an example from a research team in our school in this <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185093" target="_blank">recent PLOS article</a>. A link within the article methods section (this one - <a href="https://osf.io/eb9dq/" target="_blank">https://osf.io/eb9dq/</a>) allows you to see the one file that creates the whole manuscript. Obviously you won't be writing full journal articles just yet but you will use R Markdown throughout this lab series to do assignments. You could also use it in other subjects to write reports, or to make yourself a portfolio of hints, tips, and study aids as we suggest throughout the labs.</p>
+<p>A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles. There are numerous ways that people combine different software to create a journal article, but a more recent innovation in the field that we want you to know about is creating reports and articles through R Markdown. If you like, you can see an example from a research team in our school in this <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185093" target="_blank">recent PLOS article</a>. A link within the article methods section (this one - <a href="https://osf.io/eb9dq/" target="_blank">https://osf.io/eb9dq/</a>) allows you to see the one file that creates the whole manuscript. Obviously you won't be writing full journal articles just yet, but you will use R Markdown throughout this lab series to do assignments. You could also use it in other subjects to write reports, or to make yourself a portfolio of hints, tips, and study aids as we suggest throughout the labs.</p>
 <p>Today, we will start by showing you some of skills in using R Markdown efficiently.</p>
 <p><strong>In this lab you will learn:</strong></p>
 <ol style="list-style-type: decimal">
@@ -89,7 +88,7 @@
 <h3>
 <span class="header-section-number">1.1.1</span> What is R Markdown?<a class="anchor" aria-label="anchor" href="#what-is-r-markdown"><i class="fas fa-link"></i></a>
 </h3>
-<p>R Markdown (abbreviated as Rmd) is a great way to create dynamic documents through embedded chunks of code. These documents are self-contained and fully reproducible which makes it very easy to share. For more information about R Markdown feel free to have a look at their main webpage sometime: <a href="http://rmarkdown.rstudio.com" target="_blank">The R Markdown Webpage</a>. The key advantage of R Markdown is that it allows you to write code into a document, along with regular text, and then <strong>knit</strong> it using the package <code>knitr()</code> to create your document as either a webpage (HTML), a PDF, or Word document (.docx).</p>
+<p>R Markdown (abbreviated as Rmd) is a great way to create dynamic documents through embedded chunks of code. These documents are self-contained and fully reproducible which makes it very easy to share. For more information about R Markdown, feel free to have a look at their main webpage sometime: <a href="http://rmarkdown.rstudio.com" target="_blank">The R Markdown Webpage</a>. The key advantage of R Markdown is that it allows you to write code into a document, along with regular text, and then <strong>knit</strong> it using the package <code>knitr()</code> to create your document as either a webpage (HTML), a PDF, or Word document (.docx).</p>
 <div class="webex-solution">
 <button>
 Explain This - We Knit what?
@@ -112,22 +111,23 @@ For any of the practical data assignments, one check to run before submitting is
 <span class="header-section-number">1.1.2</span> Advantages of using R Markdown<a class="anchor" aria-label="anchor" href="#advantages-of-using-r-markdown"><i class="fas fa-link"></i></a>
 </h3>
 <ol style="list-style-type: decimal">
-<li><p>The output is one file that includes figures, text and citations. No additional files are needed so it's easy to keep all your work in one place.</p></li>
-<li><p>R code can be put directly into an R Markdown report so it is not necessary to keep your writing (e.g. a Word document) and your analysis (e.g. your R script) separate.</p></li>
+<li><p>The output is one file that includes figures, text, and citations. No additional files are needed so it's easy to keep all your work in one place.</p></li>
+<li><p>R code can be put directly into an R Markdown report, so it is not necessary to keep your writing (e.g., a Word document) and your analysis (e.g., your R script) separate.</p></li>
 <li><p>Including the R code directly lets others see how you did your analysis - this is a good thing for science! It is both reproducible and transparent, key components of Open Science!</p></li>
-<li><p>You write your report in plain text, a non software-specific format that is easy to share, so it's not necessary to learn any new coding such as HTM, but can create various outputs depending on what you need.</p></li>
+<li><p>You write your report in plain text, a non software-specific format that is easy to share, so it's not necessary to learn any new coding language such as HTML, but can create various outputs depending on what you need.</p></li>
 </ol>
 </div>
 <div id="creating-an-r-markdown-.rmd-file" class="section level3" number="1.1.3">
 <h3>
 <span class="header-section-number">1.1.3</span> Creating an R Markdown (.Rmd) File<a class="anchor" aria-label="anchor" href="#creating-an-r-markdown-.rmd-file"><i class="fas fa-link"></i></a>
 </h3>
-<p>In this lab you're going to create your own R Markdown document. Knowing how to do this will:</p>
+<p>In this chapter you're going to create your own R Markdown document. Knowing how to do this will:</p>
 <ol style="list-style-type: lower-alpha">
-<li>help you navigate R Markdown, in turn with submitting homework assignments, and</li>
+<li>help you navigate R Markdown.</li>
+<li>show you how to create homework assignment documents.</li>
 <li>help you to create your own reports using it.</li>
 </ol>
-<p>If at any point you are unsure about how to do something remember to think about where you can get help. There is an <strong>R Markdown Cheatsheet</strong> on the top menu under <strong><code>Help &gt;&gt; Cheatsheets</code></strong> or do what we do, google it. For example, if I forget how to put words in bold, I could simply go to Google and type "<strong>rmarkdown bold</strong>" and no doubt get a lot of useful hints. There is nothing wrong with this. Nobody is expecting you to keep every function in your head; we all need reminders. You will find some elements stick in your head better than others. So remember, google is your friend!</p>
+<p>If at any point you are unsure about how to do something remember to think about where you can get help, do what we do, google it (there are R markdown cheat sheets on the internet). For example, if you forget how to put words in bold, you could simply go to Google and type "<strong>rmarkdown bold</strong>" and no doubt get a lot of useful hints. There is nothing wrong with this. Nobody is expecting you to keep every function in your head; we all need reminders. You will find some elements stick in your head better than others. So remember, Google is your friend!</p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <p>We have put questions throughout to help you test your knowledge. When you type in or choose the correct answer, the dashed box will change color and become solid.</p>
 <ul>
@@ -152,13 +152,13 @@ So there's more than one answer to this question! R Markdown can combine report 
 <h3>
 <span class="header-section-number">1.1.4</span> One last thing before beginning!<a class="anchor" aria-label="anchor" href="#one-last-thing-before-beginning"><i class="fas fa-link"></i></a>
 </h3>
-<p>Before working through the rest of this Lab you may want to watch the short videos on the Moodle pages and the <a href="https://psyteachr.github.io/ug1-practical/" target="_blank">Level 1 PsyTeachR Grassroots book</a> reminding you about the skills we want you have already learnt through using R and RStudio, and the various file formats you will be working with.</p>
+<p>Remember: You can always go back to the <a href="https://psyteachr.github.io/data-skills-v1/" target="_blank">Data Skills Book</a> from Level 1 to remind you about the skills we want you have already learned through using R and RStudio. The first few chapters in this book will partly overlap with what you have learned previously, but will further extend on your skills and knowledge.</p>
 
 </div>
 </div>
-<div id="preclass-activiy" class="section level2" number="1.2">
+<div id="r-markdown-basics" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> PreClass Activiy<a class="anchor" aria-label="anchor" href="#preclass-activiy"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> R Markdown Basics<a class="anchor" aria-label="anchor" href="#r-markdown-basics"><i class="fas fa-link"></i></a>
 </h2>
 <p>Having read the Overview for this lab, and the reason behind using R, we are now going work on making a reproducible code. If you have a laptop, it is best to install R and Rstudio on that for you to use. The videos on Moodle and in the Grassroots book gives a reminder of how to install R and Rstudio. If you don't have it installed yet you can just read along today and try it out when you have access to a machine in the labs or online through a cloud, server or remote access.</p>
 <div id="lets-begin" class="section level3" number="1.2.1">
@@ -608,9 +608,9 @@ Finally, in Psychology, the vast majority of journal articles are written in the
 
 </div>
 </div>
-<div id="inclass-activiy" class="section level2" number="1.3">
+<div id="r-markdown-application" class="section level2" number="1.3">
 <h2>
-<span class="header-section-number">1.3</span> InClass Activiy<a class="anchor" aria-label="anchor" href="#inclass-activiy"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3</span> R Markdown Application<a class="anchor" aria-label="anchor" href="#r-markdown-application"><i class="fas fa-link"></i></a>
 </h2>
 <p><span style="font-size: 16px; font-weight: bold; color: var(--green);">For all the inclass activities, you will need to have completed the PreClass Activities. You may also need some cheatsheets such as <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" target="_blank">The R Markdown Cheatsheet</a>. Everything you need to complete this inclass activity can be found in those documents. We will tell you which additional material might help where we think it is appropriate.</span></p>
 <div id="r-markdown-and-the-experimental-design-portfolio" class="section level3" number="1.3.1">
@@ -1070,11 +1070,11 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 
 </div>
 </div>
-<div id="assignment" class="section level2" number="1.4">
+<div id="practice-your-skills" class="section level2" number="1.4">
 <h2>
-<span class="header-section-number">1.4</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.4</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills"><i class="fas fa-link"></i></a>
 </h2>
-<p>This is a formative assignment. Instructions as to how to access this assignment will be made available on Moodle during the course. Please note though that this assignment will not be graded and does not count towards obtaining course credit or your overall grade.</p>
+<p>This is a formative activity for you to practice the skills taught in this chapter. Instructions as to how to access this assignment will be made available on Moodle during the course. Please note though that this assignment will not be graded and does not count towards obtaining course credit or your overall grade.</p>
 
 </div>
 <div id="solutions-to-questions" class="section level2" number="1.5">
@@ -1082,24 +1082,21 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 <span class="header-section-number">1.5</span> Solutions to Questions<a class="anchor" aria-label="anchor" href="#solutions-to-questions"><i class="fas fa-link"></i></a>
 </h2>
 <p>Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.</p>
-<div id="inclass-activities" class="section level3" number="1.5.1">
+<!-- ### InClass Activities -->
+<div id="task-2-give-your-report-a-heading" class="section level3" number="1.5.1">
 <h3>
-<span class="header-section-number">1.5.1</span> InClass Activities<a class="anchor" aria-label="anchor" href="#inclass-activities"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.5.1</span> Task 2: Give your Report a Heading<a class="anchor" aria-label="anchor" href="#task-2-give-your-report-a-heading"><i class="fas fa-link"></i></a>
 </h3>
-<div id="task-2-give-your-report-a-heading" class="section level4" number="1.5.1.1">
-<h4>
-<span class="header-section-number">1.5.1.1</span> Task 2: Give your Report a Heading<a class="anchor" aria-label="anchor" href="#task-2-give-your-report-a-heading"><i class="fas fa-link"></i></a>
-</h4>
 <ol style="list-style-type: decimal">
 <li>You should have used only one hashtag to give the biggest heading size.</li>
 </ol>
 <p><code># Lab 1 - The magnitude of the Ponzo Illusion varies as a function of Age</code></p>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT2">Return to Task</a></p>
 </div>
-<div id="task-3-creating-a-code-chunk" class="section level4" number="1.5.1.2">
-<h4>
-<span class="header-section-number">1.5.1.2</span> Task 3: Creating a Code Chunk<a class="anchor" aria-label="anchor" href="#task-3-creating-a-code-chunk"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-3-creating-a-code-chunk" class="section level3" number="1.5.2">
+<h3>
+<span class="header-section-number">1.5.2</span> Task 3: Creating a Code Chunk<a class="anchor" aria-label="anchor" href="#task-3-creating-a-code-chunk"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>The <code>echo</code> rule, <code>warning</code> rule and <code>message</code> rule should all be set to <code>FALSE</code>. As such, the start of the code chunk should look like:</li>
 </ol>
@@ -1109,10 +1106,10 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 </div>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT3">Return to Task</a></p>
 </div>
-<div id="task-4-writing-your-report" class="section level4" number="1.5.1.3">
-<h4>
-<span class="header-section-number">1.5.1.3</span> Task 4: Writing your Report<a class="anchor" aria-label="anchor" href="#task-4-writing-your-report"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-4-writing-your-report" class="section level3" number="1.5.3">
+<h3>
+<span class="header-section-number">1.5.3</span> Task 4: Writing your Report<a class="anchor" aria-label="anchor" href="#task-4-writing-your-report"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Task 4 is about setting a title to <code>Header 2</code> style. This is done via two <code>##</code> at the start of the line - before the word Introduction in this case but don't forget the space.</li>
 </ol>
@@ -1125,20 +1122,20 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 2. The Framing Hypothesis</code></pre>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT4">Return to Task</a></p>
 </div>
-<div id="task-5-making-text-bold-or-italicized" class="section level4" number="1.5.1.4">
-<h4>
-<span class="header-section-number">1.5.1.4</span> Task 5: Making Text Bold or Italicized<a class="anchor" aria-label="anchor" href="#task-5-making-text-bold-or-italicized"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-5-making-text-bold-or-italicized" class="section level3" number="1.5.4">
+<h3>
+<span class="header-section-number">1.5.4</span> Task 5: Making Text Bold or Italicized<a class="anchor" aria-label="anchor" href="#task-5-making-text-bold-or-italicized"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>To turn text to bold you need to put two <code>**</code> at the start and end of the word or sentence you want as bold, e.g.</li>
 </ol>
 <pre><code>**make me bold**</code></pre>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT5">Return to Task</a></p>
 </div>
-<div id="task-6-adding-links-to-the-data-in-your-methods" class="section level4" number="1.5.1.5">
-<h4>
-<span class="header-section-number">1.5.1.5</span> Task 6: Adding Links to the Data in your Methods<a class="anchor" aria-label="anchor" href="#task-6-adding-links-to-the-data-in-your-methods"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-6-adding-links-to-the-data-in-your-methods" class="section level3" number="1.5.5">
+<h3>
+<span class="header-section-number">1.5.5</span> Task 6: Adding Links to the Data in your Methods<a class="anchor" aria-label="anchor" href="#task-6-adding-links-to-the-data-in-your-methods"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>To set a header as <code>Header 2</code> style use <code>##</code> at the start of the line.</li>
 <li>To set a header as <code>Header 3</code> style use <code>###</code> at the start of the line.</li>
@@ -1146,10 +1143,10 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 </ol>
 <pre><code>[Lebowitz and Judisch (2016)](https://www.jstor.org/stable/1420548?seq=1#page_scan_tab_contents)</code></pre>
 </div>
-<div id="task-7-adding-an-image-to-your-methods" class="section level4" number="1.5.1.6">
-<h4>
-<span class="header-section-number">1.5.1.6</span> Task 7: Adding an Image to your Methods<a class="anchor" aria-label="anchor" href="#task-7-adding-an-image-to-your-methods"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-7-adding-an-image-to-your-methods" class="section level3" number="1.5.6">
+<h3>
+<span class="header-section-number">1.5.6</span> Task 7: Adding an Image to your Methods<a class="anchor" aria-label="anchor" href="#task-7-adding-an-image-to-your-methods"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>To set a header as <code>Header 3</code> style use <code>###</code> at the start of the line.</li>
 <li>An image is created by putting the words you want to act as the name of the image <code>[]</code> and then the link to the image immediately after in <code>()</code>. The key thing is to start with an exclamation mark <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code>. For example:</li>
@@ -1159,10 +1156,10 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 <pre><code>![The Ponzo Illusion](https://upload.wikimedia.org/wikipedia/en/8/89/Ponzo_Illusion.jpg)</code></pre>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT7">Return to Task</a></p>
 </div>
-<div id="task-8-adding-a-table-to-your-results" class="section level4" number="1.5.1.7">
-<h4>
-<span class="header-section-number">1.5.1.7</span> Task 8: Adding a Table to your Results<a class="anchor" aria-label="anchor" href="#task-8-adding-a-table-to-your-results"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-8-adding-a-table-to-your-results" class="section level3" number="1.5.7">
+<h3>
+<span class="header-section-number">1.5.7</span> Task 8: Adding a Table to your Results<a class="anchor" aria-label="anchor" href="#task-8-adding-a-table-to-your-results"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>To set a header as <code>Header 2</code> style use <code>##</code> at the start of the line.</p></li>
 <li><p>The code chunk heading should read as follows:</p></li>
@@ -1173,10 +1170,10 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 </div>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT8">Return to Task</a></p>
 </div>
-<div id="task-9-adding-a-figure-to-your-results" class="section level4" number="1.5.1.8">
-<h4>
-<span class="header-section-number">1.5.1.8</span> Task 9: Adding a Figure to your Results<a class="anchor" aria-label="anchor" href="#task-9-adding-a-figure-to-your-results"><i class="fas fa-link"></i></a>
-</h4>
+<div id="task-9-adding-a-figure-to-your-results" class="section level3" number="1.5.8">
+<h3>
+<span class="header-section-number">1.5.8</span> Task 9: Adding a Figure to your Results<a class="anchor" aria-label="anchor" href="#task-9-adding-a-figure-to-your-results"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>The code chunk heading should read as follows:</li>
 </ol>
@@ -1186,27 +1183,24 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 </div>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT9">Return to Task</a></p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span></p>
-
 </div>
-</div>
-</div>
-<div id="inclass-comparison" class="section level2" number="1.6">
-<h2>
-<span class="header-section-number">1.6</span> InClass Comparison<a class="anchor" aria-label="anchor" href="#inclass-comparison"><i class="fas fa-link"></i></a>
-</h2>
+<div id="example-of-output-after-completing-all-activities" class="section level3" number="1.5.9">
+<h3>
+<span class="header-section-number">1.5.9</span> Example of output after completing all activities<a class="anchor" aria-label="anchor" href="#example-of-output-after-completing-all-activities"><i class="fas fa-link"></i></a>
+</h3>
 <p>This section shows the output that would be expected if you were to follow the inclass activities correctly.</p>
 <ul>
 <li>
 <strong>Note:</strong> Headings in this comparison will appear one size smaller than if you were to knit the Rmd due to rendering. Do not worry if yours look a bit bigger, it is more that you have them as <strong>headers</strong> is the key part.Your output should match the output of knitting <a href="data/01-s01/inclass/ProducedPonzoTemplate.zip">the .Rmd document found here</a>
 </li>
 </ul>
-<div id="lab-1---the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age" class="section level3 unnumbered">
-<h3>Lab 1 - The Magnitude of the Ponzo Illusion varies as a function of Age<a class="anchor" aria-label="anchor" href="#lab-1---the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age"><i class="fas fa-link"></i></a>
-</h3>
+<div id="the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age" class="section level4 unnumbered">
+<h4>The Magnitude of the Ponzo Illusion varies as a function of Age<a class="anchor" aria-label="anchor" href="#the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age"><i class="fas fa-link"></i></a>
+</h4>
 </div>
-<div id="introduction" class="section level3 unnumbered">
-<h3>Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
-</h3>
+<div id="introduction" class="section level4 unnumbered">
+<h4>Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+</h4>
 <p>The Ponzo Illusion is where...</p>
 <p><strong>There are two underlying hypotheses that may explain the Ponzo Illusion. These are: </strong></p>
 <ol style="list-style-type: decimal">
@@ -1214,25 +1208,25 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 <li>The Perspective hypothesis</li>
 </ol>
 </div>
-<div id="methods" class="section level3 unnumbered">
-<h3>Methods<a class="anchor" aria-label="anchor" href="#methods"><i class="fas fa-link"></i></a>
-</h3>
-<div id="data" class="section level4 unnumbered">
-<h4>Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+<div id="methods" class="section level4 unnumbered">
+<h4>Methods<a class="anchor" aria-label="anchor" href="#methods"><i class="fas fa-link"></i></a>
 </h4>
+<div id="data" class="section level5 unnumbered">
+<h5>Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+</h5>
 <p>The data in this report was obtained from within the original paper, <a href="https://www.jstor.org/stable/1420548?seq=1#page_scan_tab_contents">Lebowitz and Judisch (2016)</a></p>
 </div>
-<div id="stimuli" class="section level4 unnumbered">
-<h4>Stimuli<a class="anchor" aria-label="anchor" href="#stimuli"><i class="fas fa-link"></i></a>
-</h4>
+<div id="stimuli" class="section level5 unnumbered">
+<h5>Stimuli<a class="anchor" aria-label="anchor" href="#stimuli"><i class="fas fa-link"></i></a>
+</h5>
 <div class="figure">
 <img src="https://upload.wikimedia.org/wikipedia/en/8/89/Ponzo_Illusion.jpg" alt=""><p class="caption">PonzoIllusion</p>
 </div>
 </div>
 </div>
-<div id="results" class="section level3 unnumbered">
-<h3>Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
-</h3>
+<div id="results" class="section level4 unnumbered">
+<h4>Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
+</h4>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
@@ -1260,12 +1254,13 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:lab1-inclass-figure"></span>
-<img src="01-s01-lab01f_files/figure-html/lab1-inclass-figure-1.png" alt="You won't have a caption. We will cover that later!" width="100%"><p class="caption">
+<img src="01-s01-lab01e_files/figure-html/lab1-inclass-figure-1.png" alt="You won't have a caption. We will cover that later!" width="100%"><p class="caption">
 Figure 1.11: You won't have a caption. We will cover that later!
 </p>
 </div>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Comparison!</span></p>
 
+</div>
 </div>
 </div>
 </div>
@@ -1389,7 +1384,7 @@ $( document ).ready(function() {
   );
 });
 </script><div class="chapter-nav">
-<div class="prev"><a href="foreword.html">Foreword</a></div>
+<div class="prev"><a href="index.html">Overview</a></div>
 <div class="next"><a href="acknowledgements.html">Acknowledgements</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
@@ -1404,7 +1399,7 @@ $( document ).ready(function() {
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#preclass-activiy"><span class="header-section-number">1.2</span> PreClass Activiy</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#r-markdown-basics"><span class="header-section-number">1.2</span> R Markdown Basics</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#lets-begin"><span class="header-section-number">1.2.1</span> Let's Begin</a></li>
 <li><a class="nav-link" href="#code-chunks"><span class="header-section-number">1.2.2</span> Code Chunks</a></li>
 <li><a class="nav-link" href="#knitting-code"><span class="header-section-number">1.2.3</span> Knitting Code</a></li>
@@ -1414,7 +1409,7 @@ $( document ).ready(function() {
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#inclass-activiy"><span class="header-section-number">1.3</span> InClass Activiy</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#r-markdown-application"><span class="header-section-number">1.3</span> R Markdown Application</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#r-markdown-and-the-experimental-design-portfolio"><span class="header-section-number">1.3.1</span> R Markdown and The Experimental Design Portfolio</a></li>
 <li><a class="nav-link" href="#the-ponzo-illusion-and-age"><span class="header-section-number">1.3.2</span> The Ponzo Illusion and Age</a></li>
 <li><a class="nav-link" href="#Ch1InClassQueT1"><span class="header-section-number">1.3.3</span> Task 1: Setting up Your R Markdown Portfolio</a></li>
@@ -1428,16 +1423,18 @@ $( document ).ready(function() {
 <li><a class="nav-link" href="#Ch1InClassQueT9"><span class="header-section-number">1.3.11</span> Task 9: Adding a Figure to your Results</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#assignment"><span class="header-section-number">1.4</span> Assignment</a></li>
+<li><a class="nav-link" href="#practice-your-skills"><span class="header-section-number">1.4</span> Practice Your Skills</a></li>
 <li>
-<a class="nav-link" href="#solutions-to-questions"><span class="header-section-number">1.5</span> Solutions to Questions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#inclass-activities"><span class="header-section-number">1.5.1</span> InClass Activities</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#inclass-comparison"><span class="header-section-number">1.6</span> InClass Comparison</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lab-1---the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age">Lab 1 - The Magnitude of the Ponzo Illusion varies as a function of Age</a></li>
-<li><a class="nav-link" href="#introduction">Introduction</a></li>
-<li><a class="nav-link" href="#methods">Methods</a></li>
-<li><a class="nav-link" href="#results">Results</a></li>
+<a class="nav-link" href="#solutions-to-questions"><span class="header-section-number">1.5</span> Solutions to Questions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#task-2-give-your-report-a-heading"><span class="header-section-number">1.5.1</span> Task 2: Give your Report a Heading</a></li>
+<li><a class="nav-link" href="#task-3-creating-a-code-chunk"><span class="header-section-number">1.5.2</span> Task 3: Creating a Code Chunk</a></li>
+<li><a class="nav-link" href="#task-4-writing-your-report"><span class="header-section-number">1.5.3</span> Task 4: Writing your Report</a></li>
+<li><a class="nav-link" href="#task-5-making-text-bold-or-italicized"><span class="header-section-number">1.5.4</span> Task 5: Making Text Bold or Italicized</a></li>
+<li><a class="nav-link" href="#task-6-adding-links-to-the-data-in-your-methods"><span class="header-section-number">1.5.5</span> Task 6: Adding Links to the Data in your Methods</a></li>
+<li><a class="nav-link" href="#task-7-adding-an-image-to-your-methods"><span class="header-section-number">1.5.6</span> Task 7: Adding an Image to your Methods</a></li>
+<li><a class="nav-link" href="#task-8-adding-a-table-to-your-results"><span class="header-section-number">1.5.7</span> Task 8: Adding a Table to your Results</a></li>
+<li><a class="nav-link" href="#task-9-adding-a-figure-to-your-results"><span class="header-section-number">1.5.8</span> Task 9: Adding a Figure to your Results</a></li>
+<li><a class="nav-link" href="#example-of-output-after-completing-all-activities"><span class="header-section-number">1.5.9</span> Example of output after completing all activities</a></li>
 </ul>
 </li>
 </ul>
@@ -1457,7 +1454,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-09-09.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-09-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

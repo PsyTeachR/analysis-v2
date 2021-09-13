@@ -21,14 +21,14 @@ what-is-r-markdown
 advantages-of-using-r-markdown
 creating-an-r-markdown-.rmd-file
 one-last-thing-before-beginning
-preclass-activiy
+r-markdown-basics
 lets-begin
 code-chunks
 knitting-code
 adding-code-chunk-rules-and-options
 adding-inline-code
 formatting-the-r-markdown-file
-inclass-activiy
+r-markdown-application
 r-markdown-and-the-experimental-design-portfolio
 the-ponzo-illusion-and-age
 Ch1InClassQueT1
@@ -40,9 +40,8 @@ Ch1InClassQueT6
 Ch1InClassQueT7
 Ch1InClassQueT8
 Ch1InClassQueT9
-assignment
+practice-your-skills
 solutions-to-questions
-inclass-activities
 task-2-give-your-report-a-heading
 task-3-creating-a-code-chunk
 task-4-writing-your-report
@@ -51,7 +50,7 @@ task-6-adding-links-to-the-data-in-your-methods
 task-7-adding-an-image-to-your-methods
 task-8-adding-a-table-to-your-results
 task-9-adding-a-figure-to-your-results
-inclass-comparison
+example-of-output-after-completing-all-activities
 installing-r
 installing-base-r
 installing-rstudio

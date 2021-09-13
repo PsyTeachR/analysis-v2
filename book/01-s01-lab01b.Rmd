@@ -1,4 +1,4 @@
-## PreClass Activiy
+## R Markdown Basics
 
 ```{r preclass-setup1, echo=FALSE}
 library(webex)

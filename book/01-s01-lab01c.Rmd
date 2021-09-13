@@ -1,4 +1,4 @@
-## InClass Activiy
+## R Markdown Application
 
 ```{r inclass-setup1, echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)

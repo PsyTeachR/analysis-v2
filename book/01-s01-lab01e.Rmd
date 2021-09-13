@@ -2,9 +2,9 @@
 
 Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### InClass Activities
+<!-- ### InClass Activities -->
 
-#### Task 2: Give your Report a Heading 
+### Task 2: Give your Report a Heading 
 
 1. You should have used only one hashtag to give the biggest heading size.
 
@@ -12,7 +12,7 @@ Below you will find the solutions to the questions for the Activities for this c
 
 [Return to Task](#Ch1InClassQueT2)
 
-#### Task 3: Creating a Code Chunk
+### Task 3: Creating a Code Chunk
 
 1. The `echo` rule, `warning` rule and `message` rule should all be set to `FALSE`. As such, the start of the code chunk should look like:
 
@@ -23,7 +23,7 @@ Below you will find the solutions to the questions for the Activities for this c
 
 [Return to Task](#Ch1InClassQueT3)
 
-#### Task 4: Writing your Report
+### Task 4: Writing your Report
 
 1. Task 4 is about setting a title to `Header 2` style. This is done via two `##` at the start of the line - before the word Introduction in this case but don't forget the space. 
 
@@ -40,7 +40,7 @@ Below you will find the solutions to the questions for the Activities for this c
 
 [Return to Task](#Ch1InClassQueT4)
 
-#### Task 5: Making Text Bold or Italicized
+### Task 5: Making Text Bold or Italicized
 
 1. To turn text to bold you need to put two `**` at the start and end of the word or sentence you want as bold, e.g.
 
@@ -50,7 +50,7 @@ Below you will find the solutions to the questions for the Activities for this c
 
 [Return to Task](#Ch1InClassQueT5)
 
-#### Task 6: Adding Links to the Data in your Methods
+### Task 6: Adding Links to the Data in your Methods
 
 1. To set a header as `Header 2` style use `##` at the start of the line.
 2. To set a header as `Header 3` style use `###` at the start of the line.
@@ -60,7 +60,7 @@ Below you will find the solutions to the questions for the Activities for this c
 [Lebowitz and Judisch (2016)](https://www.jstor.org/stable/1420548?seq=1#page_scan_tab_contents)
 ```
 
-#### Task 7: Adding an Image to your Methods
+### Task 7: Adding an Image to your Methods
 
 1. To set a header as `Header 3` style use `###` at the start of the line.
 2. An image is created by putting the words you want to act as the name of the image `[]` and then the link to the image immediately after in `()`. The key thing is to start with an exclamation mark `!`. For example:
@@ -77,7 +77,7 @@ and therefore
 
 [Return to Task](#Ch1InClassQueT7)
 
-#### Task 8: Adding a Table to your Results
+### Task 8: Adding a Table to your Results
 
 1. To set a header as `Header 2` style use `##` at the start of the line.
 
@@ -90,7 +90,7 @@ and therefore
 
 [Return to Task](#Ch1InClassQueT8)
 
-#### Task 9: Adding a Figure to your Results
+### Task 9: Adding a Figure to your Results
 
 1. The code chunk heading should read as follows:
 
@@ -102,3 +102,52 @@ and therefore
 [Return to Task](#Ch1InClassQueT9)
 
 <span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>
+
+
+### Example of output after completing all activities
+
+```{r inclass-comp-setup1, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+ponzo_data <- read_csv("data/01-s01/inclass/PonzoAgeData.csv")
+```
+
+This section shows the output that would be expected if you were to follow the inclass activities correctly.
+
+* **Note:** Headings in this comparison will appear one size smaller than if you were to knit the Rmd due to rendering. Do not worry if yours look a bit bigger, it is more that you have them as **headers** is the key part.Your output should match the output of knitting [the .Rmd document found here](data/01-s01/inclass/ProducedPonzoTemplate.zip)
+
+#### The Magnitude of the Ponzo Illusion varies as a function of Age {-}
+
+```{r load-data, echo = FALSE, warning = FALSE, message = FALSE, eval = FALSE}
+library("tidyverse")
+ponzo_data <- read_csv("PonzoAgeData.csv")
+```
+
+#### Introduction {-}
+
+The Ponzo Illusion is where...
+
+**There are two underlying hypotheses that may explain the Ponzo Illusion. These are: **
+
+1. The Framing hypothesis
+2. The Perspective hypothesis
+
+#### Methods {-}
+
+##### Data {-}
+The data in this report was obtained from within the original paper, [Lebowitz and Judisch (2016)]( https://www.jstor.org/stable/1420548?seq=1#page_scan_tab_contents)
+
+##### Stimuli {-}
+![PonzoIllusion](https://upload.wikimedia.org/wikipedia/en/8/89/Ponzo_Illusion.jpg)
+
+#### Results {-}
+```{r lab1-inclass-table, echo=FALSE, warning = FALSE}
+group_by(ponzo_data, Sex) %>% summarise(NofGroups=n(), mean_length = mean(ComparisonLength))
+```
+
+```{r lab1-inclass-figure, include=TRUE, fig.cap = "You won't have a caption. We will cover that later!"}
+ggplot(ponzo_data, 
+       aes(x = Mean_Age, y = ComparisonLength, color = Sex)) +
+  geom_point()
+```
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Comparison!</span>
