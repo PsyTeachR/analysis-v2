@@ -4,7 +4,7 @@ Below you will find the solutions to the questions for the Activities for this c
 
 <!-- ### InClass Activities -->
 
-### Task 2: Give your Report a Heading 
+### Task 2: Give your Report a Heading
 
 1. You should have used only one hashtag to give the biggest heading size.
 
@@ -101,7 +101,7 @@ and therefore
 
 [Return to Task](#Ch1InClassQueT9)
 
-<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>
+
 
 
 ### Example of output after completing all activities
@@ -113,9 +113,11 @@ ponzo_data <- read_csv("data/01-s01/inclass/PonzoAgeData.csv")
 
 This section shows the output that would be expected if you were to follow the inclass activities correctly.
 
-* **Note:** Headings in this comparison will appear one size smaller than if you were to knit the Rmd due to rendering. Do not worry if yours look a bit bigger, it is more that you have them as **headers** is the key part.Your output should match the output of knitting [the .Rmd document found here](data/01-s01/inclass/ProducedPonzoTemplate.zip)
+* **Note:** Headings in this comparison will appear one size smaller than if you were to knit the Rmd due to rendering. Do not worry if yours look a bit bigger, it is more that you have them as **headers** is the key part. Your output should match the output of knitting [the .Rmd document found here](data/01-s01/inclass/ProducedPonzoTemplate.zip).
 
-#### The Magnitude of the Ponzo Illusion varies as a function of Age {-}
+
+
+#### The Magnitude of the Ponzo Illusion Varies as a Function of Age {-}
 
 ```{r load-data, echo = FALSE, warning = FALSE, message = FALSE, eval = FALSE}
 library("tidyverse")
@@ -150,4 +152,6 @@ ggplot(ponzo_data,
   geom_point()
 ```
 
-<span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Comparison!</span>
+
+
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

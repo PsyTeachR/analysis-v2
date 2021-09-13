@@ -160,10 +160,10 @@ So there's more than one answer to this question! R Markdown can combine report 
 <h2>
 <span class="header-section-number">1.2</span> R Markdown Basics<a class="anchor" aria-label="anchor" href="#r-markdown-basics"><i class="fas fa-link"></i></a>
 </h2>
-<p>Having read the Overview for this lab, and the reason behind using R, we are now going work on making a reproducible code. If you have a laptop, it is best to install R and Rstudio on that for you to use. The videos on Moodle and in the Grassroots book gives a reminder of how to install R and Rstudio. If you don't have it installed yet you can just read along today and try it out when you have access to a machine in the labs or online through a cloud, server or remote access.</p>
-<div id="lets-begin" class="section level3" number="1.2.1">
+<p>Having read the Overview for this chapter, and the reason behind using R, we are now going work on making a reproducible code. If you have a laptop, it is best to install R and Rstudio on that for you to use. In the Appendix below you will find a reminder of how to install R and Rstudio.</p>
+<div id="create-a-new-r-markdown-document" class="section level3" number="1.2.1">
 <h3>
-<span class="header-section-number">1.2.1</span> Let's Begin<a class="anchor" aria-label="anchor" href="#lets-begin"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2.1</span> Create a new R Markdown document<a class="anchor" aria-label="anchor" href="#create-a-new-r-markdown-document"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Create a new R Markdown file (.Rmd) by opening Rstudio, and then on the top menu, selecting <strong><code>File &gt;&gt; New File &gt;&gt; R Markdown...</code></strong>. You should now see the following dialog box:</li>
@@ -290,17 +290,14 @@ If you look at the default setup code chunk you can see the code chunk has the n
 Figure 1.4: The knit button. Clicking this will knit your file.
 </p>
 </div>
-<p>When you click <code>Knit</code> it will ask you to save the file as an .Rmd file. Call the file <code>L2Psych_Lab1_Preclass.Rmd</code> and save it in a folder where you will keep all the information for this lab. When working in the Psychology labs or the University Library you need to save in a location or drive space that you have full access to and can save files to. The best one on campus is your <code>M:</code> drive. If using your own device then anywhere you can save the file should work. However, having a good folder structure will help you navigate the labs better.</p>
+<p>When you click <code>Knit</code> it will ask you to save the file as an .Rmd file. Call the file <code>L2Psych_Ch1_RMarkdownBasics.Rmd</code> and save it in a folder where you will keep all the information for this lab. When working in the Psychology labs or the University Library you need to save in a location or drive space that you have full access to and can save files to. The best one on campus is your <code>M:</code> drive. If using your own device then anywhere you can save the file should work. However, having a good folder structure will help you navigate the labs better.</p>
 <div class="webex-solution">
 <button>
 Helpful Hint - One folder for all your work
 </button>
 <div class="info">
 <p>
-It would be very beneficial to create a folder in your <code>M:</code> drive that will contain all your practical lab work for the rest of Level 2. Maybe something like <code>Psychology_Level_2_Lab_Work</code> and then have folders within that for each lab, e.g <code>Lab1</code>. The clearer the structure of these folders the easier it will be to find and use your files again! This is important as one thing we will keep telling you to do is <strong>LOOK BACK</strong> (politely) at what you previously did.
-</p>
-<p>
-A good way to think about this is if you have an exam, it isn't helpful to be told the location of your exam is 'Glasgow Uni' (i.e. a large folder of many locations). Instead you would need to be told the specific building (a folder within your larger folder), but more specifically the room number in the building where your exam is taking place (the folder which you are working from).
+It would be very beneficial to create a folder in your <code>M:</code> drive that will contain all your data skills work for the rest of Level 2. Maybe something like <code>Psychology_Level2_DataSkills_Work</code> and then have folders within that for each lab, e.g <code>Chapter1</code>. The clearer the structure of these folders the easier it will be to find and use your files again! This is important as one thing we will keep telling you to do is <strong>LOOK BACK</strong> (politely) at what you previously did.
 </p>
 <p>
 Couple of tips:
@@ -310,7 +307,7 @@ Couple of tips:
 Avoid spaces in file names and folder names. It can make life really complicated and is a bad habit to start with. Use underscores between words in filenames and folder names.
 </li>
 <li>
-Never call your folder "R". This will crash your R and potentially lead you to having to reinstall both R and Rstudio. When Rstudio opens it looks for a folder called R which it expects to contain the software and libraries. If they aren't there because it is now looking in a different folder with the same name, things go wrong. Sort of like the Sally-Anne False Belief task, but not as exciting.
+Never call your folder "R". This will crash your R and potentially lead you to having to reinstall both R and Rstudio. When Rstudio opens it looks for a folder called R which it expects to contain the software and libraries. If they aren't there because it is now looking in a different folder with the same name, things go wrong.
 </li>
 </ul>
 </div>
@@ -603,8 +600,7 @@ Finally, in Psychology, the vast majority of journal articles are written in the
 </p>
 </div>
 </div>
-<p><br><span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span></p>
-<p>Well done on working your way through this activity. Be sure to make notes for yourself, and to post any questions on the forums that you may have. See you in the lab!</p>
+<p><br></p>
 
 </div>
 </div>
@@ -612,20 +608,19 @@ Finally, in Psychology, the vast majority of journal articles are written in the
 <h2>
 <span class="header-section-number">1.3</span> R Markdown Application<a class="anchor" aria-label="anchor" href="#r-markdown-application"><i class="fas fa-link"></i></a>
 </h2>
-<p><span style="font-size: 16px; font-weight: bold; color: var(--green);">For all the inclass activities, you will need to have completed the PreClass Activities. You may also need some cheatsheets such as <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" target="_blank">The R Markdown Cheatsheet</a>. Everything you need to complete this inclass activity can be found in those documents. We will tell you which additional material might help where we think it is appropriate.</span></p>
 <div id="r-markdown-and-the-experimental-design-portfolio" class="section level3" number="1.3.1">
 <h3>
 <span class="header-section-number">1.3.1</span> R Markdown and The Experimental Design Portfolio<a class="anchor" aria-label="anchor" href="#r-markdown-and-the-experimental-design-portfolio"><i class="fas fa-link"></i></a>
 </h3>
-<p>In the preclass activity, we asked you to start playing about with R Markdown. Now, in the lab, we are going to continue learning about R Markdown as creating your own files from scratch is a great start to creating reproducible science! We will also start you off in creating your own <strong>Experimental Design and Analysis Portfolio</strong> through R Markdown. The aim of this portfolio is to consolidate your learning in experimental design and analysis, allowing you to reflect back on how your learning has progressed. You should add to it whenever you think "Oh that is a good tip!" or "That is something I want to remember!". Do this after a lab or a lecture, when you are collating all your notes together. Your portfolio is for you, unless you choose to share it of course, and will not be assessed or marked in anyway. It is your learning aid to help you develop your understanding of research methods and analysis in Psychology.</p>
-<p>By the end of these labs you should be able to use your portfolio for exam revision, particularly if you incorporate lecture material, so it's worth maintaining a clear structure to your portfolio! In this first lab, <strong>across 9 tasks</strong>, we will help you to understand how to structure and format R Markdown files; you can then apply what you learn here to your portfolio in your own time. We suggest having your portfolio open in every lab so you can add to it as you go along. Let's begin!</p>
+<p>We are going to create a R Markdown from scratch. This is also a start to create your own <strong>Experimental Design and Analysis Portfolio</strong> through R Markdown. The aim of this portfolio is to consolidate your learning in experimental design and analysis, allowing you to reflect back on how your learning has progressed. You should add to it whenever you think "Oh that is a good tip!" or "That is something I want to remember!". Do this each chapter as a way to consolidate knowledge. Your portfolio is for you and will not be assessed or marked in anyway. It is your learning aid to help you develop your understanding of research methods and analysis in Psychology.</p>
+<p>Across the following nine tasks, we will help you to structure and format R Markdown files; you can then apply what you learn here to your portfolio in your own time. Let's begin!</p>
 <div class="webex-solution">
 <button>
 Portfolio Point - Things you could include
 </button>
 <div class="info">
 <p>
-Throughout the semester you will see these Portfolio Points. They aren't always necessary to complete the lab but sometimes they will be and sometimes they are just things you might consider putting in your Portfolio to remember. What you keep in your portfolio is up to you but here are some examples of the kind of things we would recommend you include:
+Throughout this book you will see these Portfolio Points. These are just points we would suggest that you add to your portfolio. Ultimately, it is up to you what you keep in your portfolio, but here are some examples of the kind of things we would recommend you include:
 </p>
 <ul>
 <li>
@@ -662,7 +657,7 @@ We are developing a glossary which you can send us items to include or get invol
 </ul>
 </li>
 <li>
-Reflection Points on what you have learned in your labs each week.
+Reflection Points on what you have learned each week.
 </li>
 </ul>
 </div>
@@ -672,14 +667,14 @@ Reflection Points on what you have learned in your labs each week.
 <h3>
 <span class="header-section-number">1.3.2</span> The Ponzo Illusion and Age<a class="anchor" aria-label="anchor" href="#the-ponzo-illusion-and-age"><i class="fas fa-link"></i></a>
 </h3>
-<p>The activities in this lab will make use of an <strong>open dataset</strong>.</p>
+<p>The activities in this chapter will make use of an <strong>open dataset</strong>.</p>
 <div class="webex-solution">
 <button>
 Explain This - What is an open dataset?
 </button>
 <div class="info">
 <p>
-An open dataset is made available for everyone to see and is stored on the internet for other researchers to use. In the PreClass activity, you saw an example of this at the very start in the PLOS One article. Many journals now ask researchers to make their data available or to post it somewhere accessible like the <a href="https://www.osf.io" target="_blank">Open Science Framework</a>.
+An open dataset is made available for everyone to see and is stored on the internet for other researchers to use. In the previous section, you saw an example of this at the very start in the PLOS One article. Many journals now ask researchers to make their data available or to post it somewhere accessible like the <a href="https://www.osf.io" target="_blank">Open Science Framework</a>.
 </p>
 <p>
 Interestingly, the art of making your data available was standard in classic older articles. The data we are using today comes from 1967. Sometime between then and more recent times, data started being made unavailable - closed. We believe all data should be made available and will encourage you to do that over the coming years. Transparent science is Open Science!
@@ -701,7 +696,7 @@ The data we will use today is from a paper looking at the <strong>Ponzo illusion
 <h3>
 <span class="header-section-number">1.3.3</span> Task 1: Setting up Your R Markdown Portfolio<a class="anchor" aria-label="anchor" href="#Ch1InClassQueT1"><i class="fas fa-link"></i></a>
 </h3>
-<p>As above our overall goal is to make a reproducible "report" summarising the data in the Leibowitz and Judisch (1967) paper. As we go along, remember to refer back to the PreClass activity and cheatsheets to help you. Let's begin!</p>
+<p>As above our overall goal is to make a reproducible "report" summarising the data in the Leibowitz and Judisch (1967) paper. Let's begin!</p>
 <ol style="list-style-type: decimal">
 <li>Create a new R Markdown document.</li>
 <li>Give it a title, e.g. <strong>My Psychology Research Methods Portfolio</strong>
@@ -718,10 +713,10 @@ Helpful Hint
 Throughout the labs you will see these Helpful Hints. Usually the solutions are nearby or at the end of the chapter to prevent temptation.
 </p>
 <p>
-In setting up this Rmd file, if you have followed these steps correctly, you will probably see a new R Markdown file with a header containing the title, author, date and output information as shown in the PreClass activity.
+In setting up this Rmd file, if you have followed these steps correctly, you will probably see a new R Markdown file with a header containing the title, author, date and output information as shown in the previous section.
 </p>
 <p>
-If you don't see the document header, then you've probably created an R Script instead. Refer back to the PreClass activity and try again. Look further down the list of File options on the top menu. If stuck, speak to a tutor or ask on an appropriate forum.
+If you don't see the document header, then you've probably created an R Script instead. Refer back to the R Markdown Basics activity above and try again. Look further down the list of File options on the top menu.
 </p>
 </div>
 </div>
@@ -733,7 +728,7 @@ Portfolio Point - Code Chunk Reminders
 </button>
 <div class="info">
 <p>
-After the lab it might be handy to write a reminder somewhere in your portfolio about what a code chunk is. Writing it in your own notes somewhere accessible to you will mean you can find it more easily than searching through all the labs for the right information. This is something to keep in mind for any information you come across that you might need to recall later on!
+Write a reminder somewhere in your portfolio about what a code chunk is. Writing it in your own notes somewhere accessible to you will mean you can find it more easily.
 </p>
 </div>
 </div>
@@ -749,7 +744,7 @@ After the lab it might be handy to write a reminder somewhere in your portfolio 
 </ol>
 <div class="webex-solution">
 <button>
-Helpful Hint - hashtags are not just for social media
+Helpful Hint - Hashtags are not just for social media
 </button>
 <div class="info">
 <p>
@@ -793,7 +788,7 @@ Avoid using code to set your working directory as often this will only work on y
 <p><strong>Important</strong>: There is a good chance that, on the webpage that you have knitted, you will see either some warnings or messages. You can suppress these using the <code>message</code> and <code>warning</code> rules within the code chunks as well. Try this now - the PreClass Activities and the R-Markdown cheatsheet will help.</p>
 <div class="webex-solution">
 <button>
-Helpful Hint - what was all that?
+Helpful Hint - What was all that?
 </button>
 <div class="info">
 <p>
@@ -842,7 +837,7 @@ remember <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> 
 <p>Let's start giving this brief report some information and structure as we would a full report.</p>
 <ol style="list-style-type: decimal">
 <li>Underneath the code chunk you entered, put a new heading called <strong>Introduction</strong> and give it a <strong>Header 2</strong> size.</li>
-<li>Next, do a little research with your group on the <strong>Ponzo Illusion</strong> and write a sentence or two describing how it works and what it tells us; include a citation to support your research. There is a link to the wikipedia page on the illusion at the top of this lab which might help.</li>
+<li>Next, do a little research on the <strong>Ponzo Illusion</strong> and write a sentence or two describing how it works and what it tells us; include a citation to support your research. There is a link to the wikipedia page on the illusion at the top of this section which might help.</li>
 <li>Finally, copy the text in the box below into your report and finish the text by putting the names of two hypotheses behind the illusion below the sentence in an <strong>ordered list</strong> style; i.e. 1... 2..., etc. The two hypotheses are <strong>The Framing hypothesis</strong> and <strong>The Perspective hypothesis</strong>.</li>
 </ol>
 <pre><code>"There are two underlying hypotheses that may explain the Ponzo Illusion. These are: ..."</code></pre>
@@ -909,7 +904,7 @@ To stagger points on a list (i.e. indent), leave 4 blank spaces (two tabs) and t
 <option>Order alphabetically by adding a letter to each year</option></select>
 </li>
 </ul>
-<p>Those questions about citations may throw you a little. In late 2019, the APA Style Guide 7th edition was released. One of the biggest changes here was that for papers of three or more authors, the citation would only show the first author and the year, as opposed to listing all authors on first citation. Two author papers and single author papers still always show all authors. For more information on how to format citations, you can look at the highly recommended <a href="https://apastyle.apa.org/style-grammar-guidelines/citations/basic-principles/author-date" target="_blank">APA Style blog</a>.</p>
+<!-- Those questions about citations may throw you a little. In late 2019, the APA Style Guide 7th edition was released. One of the biggest changes here was that for papers of three or more authors, the citation would only show the first author and the year, as opposed to listing all authors on first citation. Two author papers and single author papers still always show all authors. For more information on how to format citations, you can look at the highly recommended <a href = "https://apastyle.apa.org/style-grammar-guidelines/citations/basic-principles/author-date" target = "_blank">APA Style blog</a>. -->
 </div>
 <div id="Ch1InClassQueT5" class="section level3" number="1.3.7">
 <h3>
@@ -946,7 +941,7 @@ To stagger points on a list (i.e. indent), leave 4 blank spaces (two tabs) and t
 <p><strong>Now knit your document again to make sure your formatting is working. Titles should be bigger than normal text and the list should be indented and have numbers at the start of each line.</strong></p>
 <div class="webex-solution">
 <button>
-Helpful Hint - adding links?
+Helpful Hint - Adding links
 </button>
 <div class="info">
 <p>
@@ -975,7 +970,7 @@ Portfolio Point - A good methods section
 </button>
 <div class="info">
 <p>
-Remember that a good methods section will contain all the necessary information that would be required for another researcher to replicate your experiment exactly! It would normally be split into three or four sections including Ethics, Participants, Stimuli, and Procedure.
+Remember that a good methods section will contain all the necessary information that would be required for another researcher to replicate your experiment exactly! It would normally be split into three sections including Participants, Materials, and Procedure.
 </p>
 <p>
 This may sound very obvious but you would be surprised at how many Methods sections don't give enough information for replicating the study. Articles tend to have word counts - just like your assignments. Authors have tended to cut words where they can to fit in further discussion or more results. Methods sections have suffered as a result. But no more!
@@ -1015,14 +1010,14 @@ This may sound very obvious but you would be surprised at how many Methods secti
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="webex-solution">
 <button>
-Portfolio Point - to assign or to not assign
+Portfolio Point - To assign or to not assign
 </button>
 <div class="info">
 <p>
 You may notice above that we assigned our data in the table to <code>my_table</code> and then called <code>my_table</code> to show it. However, we didn't do that for the figure. We just put the code for the figure but did not assign it. Why?
 </p>
 <p>
-There is no great answer and you could assign both or not assign either, and we will chop and change throughout the labs to show you the difference but the tendency is to assign tables but not assign figures. Simply because we often are creating the figures to show them and therefor assigning them and then calling them requires more code. Tables on the other hand are often stored to work on later, so it makes sense to assign them.
+There is no great answer and you could assign both or not assign either, and we will chop and change throughout the labs to show you the difference but the tendency is to assign tables but not assign figures. Simply because we often are creating the figures to show them and therefore assigning them and then calling them requires more code. Tables on the other hand are often stored to work on later, so it makes sense to assign them.
 </p>
 <p>
 Again this is not a hard and fast rule and often we will assign figures but it just makes it quicker not to. If you ever do assign a figure remember to call it, or your figure won't be displayed!
@@ -1031,9 +1026,9 @@ Again this is not a hard and fast rule and often we will assign figures but it j
 </div>
 <p><br></p>
 <p><strong>Again, knit your document to make sure it is working correctly. Below your table you should now have the ggplot code followed by the nice scatterplot.</strong></p>
-<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);"> <strong>Group Discussion Point</strong> </span></p>
-<p>In your group, have a brief discussion about the figure to answer the following question.</p>
-<p>"Based on the distibrution of the data, shown in the above Figure, ..." <select class="webex-solveme" data-answer='["as age increases, people perceive a shorter vertical line to be of same length as the standard vertical line"]'><option></option>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);"> <strong>Thinking Cap Point</strong> </span></p>
+<p>Have a think about the figure to answer the following question.</p>
+<p>"Based on the distribution of the data, shown in the above Figure, ..." <select class="webex-solveme" data-answer='["as age increases, people perceive a shorter vertical line to be of same length as the standard vertical line"]'><option></option>
 <option>as age increases, people perceive a shorter vertical line to be of same length as the standard vertical line</option>
 <option>as age increases, people perceive a longer vertical line to be of same length as the standard vertical linge</option>
 <option>There is no relationship between Age and the Ponzo illusion</option>
@@ -1049,24 +1044,24 @@ What does each dot represent in the Figure, and what is the pattern of the dots?
 </div>
 </div>
 <p><br></p>
-<p>We will learn more about how to improve the visualisations as we progress but for now you have completed the bones of your first report! Compare your report to the one we have created to see if they match, which can be found at the end of this chapter using menu on the left (i.e. InClass Comparison) or <a href="data/01-s01/inclass/ProducedPonzoTemplate.zip">click here to download the .Rmd file in a zip folder</a>. <strong>Fix anything that is not formatted as in our template.</strong></p>
+<p>We will learn more about how to improve the visualisations as we progress, but for now you have completed the bones of your first report! Compare your report to the one we have created to see if they match, which can be found at the end of this chapter or <a href="data/01-s01/inclass/ProducedPonzoTemplate.zip">click here to download the .Rmd file in a zip folder</a>. <strong>Fix anything that is not formatted as in our template.</strong></p>
 <div class="webex-solution">
 <button>
 Portfolio Point - The Power of R Markdown and the ggplot Package
 </button>
 <div class="info">
 <p>
-Here is a real-world scenario of why plotting in R Markdown can save a lot of effort. Say you carried out an experiment, made a figure of the results using an R Script, and wrote up the report using Microsoft Word. Then you realised you forgot to include 2 participants. To fix this, you would have to re-run the R script, make a new plot, save the plot, and <strong>then</strong> transfer that to your Word document. However, had you used <strong>R Markdown</strong> to begin with and both analysis and report were in the same place, then you can simply update the code within the document and a new figure will be created in the exact same place as the old one. <strong>Magic!</strong>
+Here is a real-world scenario of why plotting in R Markdown can save a lot of effort. Say you carried out an experiment, made a figure of the results using an R Script, and wrote up the report using Microsoft Word. Then you realised you forgot to include two participants. To fix this, you would have to re-run the R script, make a new plot, save the plot, and <strong>then</strong> transfer that to your Word document. However, had you used <strong>R Markdown</strong> to begin with and both analysis and report were in the same place, then you can simply update the code within the document and a new figure will be created in the exact same place as the old one. <strong>Magic!</strong>
 </p>
 <p>
-The code above uses the <code>ggplot2</code> package you used in Level 1. This is the main package we use for plots, figures, visualisations, or however you like to call them. It can be called into the library by itself, or is automatically called in when you call in the <code>tidyverse</code> package. Later this semester we will revist <code>ggplot2</code> in more detail. For now, we are using it to make a scatterplot (<code>geom_point</code>) of Age (<code>Mean_Age</code>) and Comparison Length (<code>ComparisonLength</code>), and splitting the data for males and females.
+The code above uses the <code>ggplot2</code> package you used before. This is the main package we use for plots, figures, visualisations, or however you like to call them. It can be called into the library by itself, or is automatically called in when you call in the <code>tidyverse</code> package. Later, we will revist <code>ggplot2</code> in more detail. For now, we are using it to make a scatterplot (<code>geom_point</code>) of Age (<code>Mean_Age</code>) and Comparison Length (<code>ComparisonLength</code>), and splitting the data for males and females.
 </p>
 </div>
 </div>
 <p><br></p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span></p>
-<p><strong>Great work!</strong> We have now created a rough layout of a report. The only section we are missing is the Discussion where you relate the information from previous research to what your study showed. Feel free to add one in your own time; read the short summary at the end of the actual paper to help get your thoughts together. We will talk more about the structuring of reports all throughout the year so you will have a great idea of how to write one by the end of Level 2. Well done on succesfully creating your own R Markdown file!</p>
-<p>You should now be ready to complete the Homework Assignment for this lab. <strong>The assignment for this Lab is FORMATIVE and is NOT to be submitted and will NOT count towards the overall grade for this module</strong>. However you are strongly encouraged to do the assignment as it will continue to boost the skills which you will need in future assignments. If you have any questions, please post them on the forums. Finally, don't forget to add any useful information to your Portfolio before you leave it too long and forget.</p>
+<p>Great work! We have now created a rough layout of a report. The only section we are missing is the Discussion where you relate the information from previous research to what your study showed. Feel free to add one in your own time; read the short summary at the end of the actual paper to help get your thoughts together. Well done on successfully creating your own R Markdown file!</p>
+<p>To practice your newly acquired skills and really strengthen them, complete the exercise below.</p>
 
 </div>
 </div>
@@ -1074,7 +1069,11 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 <h2>
 <span class="header-section-number">1.4</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills"><i class="fas fa-link"></i></a>
 </h2>
-<p>This is a formative activity for you to practice the skills taught in this chapter. Instructions as to how to access this assignment will be made available on Moodle during the course. Please note though that this assignment will not be graded and does not count towards obtaining course credit or your overall grade.</p>
+<p>This is a brief exercise for you to practice the skills taught in this chapter. In future assignments we will ask you to do some coding and interpretation, but for this exercise we just want you to familiarise yourself again with working with .Rmd files.</p>
+<p>We have set up this task so that you can practice 1) downloading the assignment files, 2) renaming the files, 3) editing the .Rmd file, and 4) saving the edited .Rmd file.</p>
+<p><strong>Download the files</strong></p>
+<p>You will first need to download the file from the zip folder on Moodle and then open it in R through RStudio. For this exercise, you can also download <a href="data/01-s01/GUID_L2_Ch1_PracticeSkills.zip">the ZIP file here</a>.</p>
+<p>Simply follow the instructions in the .Rmd document that you will find in the ZIP file. Enjoy!</p>
 
 </div>
 <div id="solutions-to-questions" class="section level2" number="1.5">
@@ -1182,7 +1181,6 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 <pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
 </div>
 <p><a href="starting-with-r-markdown.html#Ch1InClassQueT9">Return to Task</a></p>
-<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span></p>
 </div>
 <div id="example-of-output-after-completing-all-activities" class="section level3" number="1.5.9">
 <h3>
@@ -1191,11 +1189,10 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 <p>This section shows the output that would be expected if you were to follow the inclass activities correctly.</p>
 <ul>
 <li>
-<strong>Note:</strong> Headings in this comparison will appear one size smaller than if you were to knit the Rmd due to rendering. Do not worry if yours look a bit bigger, it is more that you have them as <strong>headers</strong> is the key part.Your output should match the output of knitting <a href="data/01-s01/inclass/ProducedPonzoTemplate.zip">the .Rmd document found here</a>
-</li>
+<strong>Note:</strong> Headings in this comparison will appear one size smaller than if you were to knit the Rmd due to rendering. Do not worry if yours look a bit bigger, it is more that you have them as <strong>headers</strong> is the key part. Your output should match the output of knitting <a href="data/01-s01/inclass/ProducedPonzoTemplate.zip">the .Rmd document found here</a>.</li>
 </ul>
 <div id="the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age" class="section level4 unnumbered">
-<h4>The Magnitude of the Ponzo Illusion varies as a function of Age<a class="anchor" aria-label="anchor" href="#the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age"><i class="fas fa-link"></i></a>
+<h4>The Magnitude of the Ponzo Illusion Varies as a Function of Age<a class="anchor" aria-label="anchor" href="#the-magnitude-of-the-ponzo-illusion-varies-as-a-function-of-age"><i class="fas fa-link"></i></a>
 </h4>
 </div>
 <div id="introduction" class="section level4 unnumbered">
@@ -1258,7 +1255,7 @@ The code above uses the <code>ggplot2</code> package you used in Level 1. This i
 Figure 1.11: You won't have a caption. We will cover that later!
 </p>
 </div>
-<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Comparison!</span></p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span></p>
 
 </div>
 </div>
@@ -1400,7 +1397,7 @@ $( document ).ready(function() {
 </li>
 <li>
 <a class="nav-link" href="#r-markdown-basics"><span class="header-section-number">1.2</span> R Markdown Basics</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lets-begin"><span class="header-section-number">1.2.1</span> Let's Begin</a></li>
+<li><a class="nav-link" href="#create-a-new-r-markdown-document"><span class="header-section-number">1.2.1</span> Create a new R Markdown document</a></li>
 <li><a class="nav-link" href="#code-chunks"><span class="header-section-number">1.2.2</span> Code Chunks</a></li>
 <li><a class="nav-link" href="#knitting-code"><span class="header-section-number">1.2.3</span> Knitting Code</a></li>
 <li><a class="nav-link" href="#adding-code-chunk-rules-and-options"><span class="header-section-number">1.2.4</span> Adding Code Chunk Rules and Options</a></li>

@@ -1,6 +1,11 @@
 ## Practice Your Skills
 
-This is a formative activity for you to practice the skills taught in this chapter. Instructions as to how to access this assignment will be made available on Moodle during the course. Please note though that this assignment will not be graded and does not count towards obtaining course credit or your overall grade.
+This is a brief exercise for you to practice the skills taught in this chapter. In future assignments we will ask you to do some coding and interpretation, but for this exercise we just want you to familiarise yourself again with working with .Rmd files.
 
+We have set up this task so that you can practice 1) downloading the assignment files, 2) renaming the files, 3) editing the .Rmd file, and 4) saving the edited .Rmd file. 
 
+**Download the files**
 
+You will first need to download the file from the zip folder on Moodle and then open it in R through RStudio. For this exercise, you can also download [the ZIP file here](data/01-s01/GUID_L2_Ch1_PracticeSkills.zip).
+
+Simply follow the instructions in the .Rmd document that you will find in the ZIP file. Enjoy!

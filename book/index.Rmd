@@ -48,11 +48,11 @@ knitr::write_bib(c(
 <!-- **Cite as:** McAleer, P., Kuepper-Tetzel, C. E., & Paterson, H. M. (2021, July 14). Analysis (Version 2). Zenodo. <a href = "http://doi.org/10.5281/zenodo.3822464" target = "_blank">http://doi.org/10.5281/zenodo.3822464</a> -->
 
 
-<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Welcome to the Analysis Book</span>
-
+<!-- <span style="font-size: 22px; font-weight: bold; color: var(--purple);">Welcome to the Analysis Book</span> -->
+<br>
 This book we will help you learn a whole host of skills and methods based around being a psychologist. If you have completed the Data Skills book in the **PsyTeachR** series (<a href="https://psyteachr.github.io/" target = "_blank">https://psyteachr.github.io/</a>) the first few chapters will be familiar to you, with some additions. This is deliberate in order to refresh your knowledge and skills before moving on to more advanced topics. First, we will remind you how to work with R Markdown, before recapping the main functions we use for visualisation and data wrangling. From there we will build your understanding of probability before going on to using all these refreshed skills to analyse a variety of different experiments. The main idea of this book is being reproducible in our data analysis approach. 
 
-This book requires a higher level of self-directed learning than the first book; part of learning is trying things out yourself and recognising where you need help. However, we are here to help if you get stuck. You can seek help via the Teams channels, student office hours, or GTA drop-in sessions.
+This book requires a higher level of self-directed learning than the first book; part of learning is trying things out yourself and recognising where you need help. If you get stuck, google the problem or what you would like to do and see if that helps.
 
 When working through this book remember that this is not about learning a software. We do not teach R independent of statistical knowledge and content. Rather, we teach data and analytical skills and knowledge within R. The goal is to continuously improve your data analysis skills! 
 

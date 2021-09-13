@@ -22,7 +22,7 @@ advantages-of-using-r-markdown
 creating-an-r-markdown-.rmd-file
 one-last-thing-before-beginning
 r-markdown-basics
-lets-begin
+create-a-new-r-markdown-document
 code-chunks
 knitting-code
 adding-code-chunk-rules-and-options
