@@ -84,11 +84,11 @@ agg <- evaluators %>%
 
 m_age <- agg %>%
   pull(mean_age) %>%
-  webex::round2(1)
+  webexercises::round2(1)
 
 m_sd <- agg %>%
   pull(sd) %>%
-  webex::round2(2)
+  webexercises::round2(2)
 
 counts <- evaluators %>%
   count(sex)
@@ -394,29 +394,29 @@ results <- bind_rows(intellect_t %>% mutate(Category = "intellect"),
                      impression_t %>% mutate(Category = "impression")) %>%
   select(Category, everything())
 .hire_e1 <- results %>% filter(Category == "hire") %>%
-  pull(estimate1) %>% webex::round2(2)
+  pull(estimate1) %>% webexercises::round2(2)
 .hire_e2 <- results %>% filter(Category == "hire") %>% 
-  pull(estimate2) %>% webex::round2(2)
+  pull(estimate2) %>% webexercises::round2(2)
 .hire_df <- results %>% filter(Category == "hire") %>%
   pull(parameter)
 .hire_t <- results %>% filter(Category == "hire") %>%
   pull(statistic) %>%
-  webex::round2(2)
+  webexercises::round2(2)
 .hire_p <- results %>% filter(Category == "hire") %>%
   pull(p.value) %>%
-  webex::round2(3)
+  webexercises::round2(3)
 .imp_e1 <- results %>% filter(Category == "impression") %>%
-  pull(estimate1) %>% webex::round2(2)
+  pull(estimate1) %>% webexercises::round2(2)
 .imp_e2 <- results %>% filter(Category == "impression") %>% 
-  pull(estimate2) %>% webex::round2(2)
+  pull(estimate2) %>% webexercises::round2(2)
 .imp_df <- results %>% filter(Category == "impression") %>%
   pull(parameter)
 .imp_t <- results %>% filter(Category == "impression") %>%
   pull(statistic) %>%
-  webex::round2(2)
+  webexercises::round2(2)
 .imp_p <- results %>% filter(Category == "impression") %>%
   pull(p.value) %>%
-  webex::round2(3)
+  webexercises::round2(3)
 ```
 
 ```{r lab6-task4-table2, echo = FALSE, results = 'asis'}

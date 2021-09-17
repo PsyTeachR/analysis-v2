@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this book, please cite it as below."
+authors:
+- family-names: "McAleer"
+  given-names: "Phil"
+  orcid: "https://orcid.org/0000-0002-4523-2097"
+- family-names: "Kuepper-Tetzel"
+  given-names: "Carolina E."
+  orcid: "https://orcid.org/0000-0003-0830-7915"
+- family-names: "Paterson"
+  given-names: "Helena"
+  orcid: "https://orcid.org/0000-0001-7715-5973"
+title: "Analysis"
+version: 2.0
+date-released: 2021-09-17
+url: "https://github.com/psyteachr/analysis-v2/"

@@ -248,7 +248,7 @@ Answer the following question to check your answers. The solutions are at the en
 ```{r hidden-2, include = FALSE}
 .esize <- pwr.t.test(50L, sig.level = .05, power = .9) %>%
   pluck("d") %>%
-  webex::round2(2)
+  webexercises::round2(2)
 ```
 
 `r hide("Helpful Hint")`
