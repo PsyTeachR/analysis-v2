@@ -1,7 +1,7 @@
 ## R Markdown Basics
 
 ```{r preclass-setup1, echo=FALSE}
-library(webex)
+
 ```
 
 Having read the Overview for this chapter, and the reason behind using R, we are now going work on making a reproducible code. If you have a laptop, it is best to install R and Rstudio on that for you to use. In the Appendix below you will find a reminder of how to install R and Rstudio.

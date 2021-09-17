@@ -121,7 +121,7 @@ knitr::kable(descriptives, align = "c", caption = "Descriptive data for the curr
 ```{r hidden-1, include = FALSE}
 desc2 <- descriptives %>%
   mutate_at(vars(mean, sd, se, LowerCI, UpperCI),
-            webex::round2, digits = 2)
+            webexercises::round2, digits = 2)
 .d12 <- desc2 %>% filter(Timepoint == "Twelve")
 .d13 <- desc2 %>% filter(Timepoint == "Thirteen")
 ```
