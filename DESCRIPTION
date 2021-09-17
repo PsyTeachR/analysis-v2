@@ -1,0 +1,26 @@
+Package: analysis-v2
+Title: Analysis
+Version: 2.0
+Description: 
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    webexercises,
+    glossary (>= 0.0.0.9001),
+    bookdown, 
+    broom,
+    pwr,
+    rtweet,
+    meme,
+    gganimate,
+    ggforce,
+    knitr,
+    faux,
+    patchwork,
+    statcheck
+Remotes: 
+    psyteachr/glossary
+Depends: 
+    tidyverse
