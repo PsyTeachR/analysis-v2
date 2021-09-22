@@ -7,19 +7,19 @@
 <title>Chapter 1 Starting with R Markdown | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Starting with R Markdown | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/starting-with-r-markdown.html">
-<meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
 <meta property="og:description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 1 Starting with R Markdown | Analysis">
 <meta name="twitter:description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
-<meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10.6/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -131,10 +131,10 @@ For any of the practical data assignments, one check to run before submitting is
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <p>We have put questions throughout to help you test your knowledge. When you type in or choose the correct answer, the dashed box will change color and become solid.</p>
 <ul>
-<li>From the following options, why are we creating an R Markdown document instead of simply using an R script? <select class="webex-solveme" data-answer='["R Markdown can combine report writing and analysis","Reproducible Science!"]'><option></option>
-<option>R Markdown can combine report writing and analysis</option>
-<option>R Scripts can't run code</option>
-<option>Reproducible Science!</option></select>
+<li>From the following options, why are we creating an R Markdown document instead of simply using an R script? <select class="webex-select"><option value="blank"></option>
+<option value="answer">R Markdown can combine report writing and analysis</option>
+<option value="">R Scripts can't run code</option>
+<option value="answer">Reproducible Science!</option></select>
 </li>
 </ul>
 <div class="webex-solution">
@@ -188,7 +188,9 @@ Figure 1.1: Starting an R Markdown file
 Figure 1.2: An Rmd yaml header
 </p>
 </div>
-<p>By default the file header includes the info shown in Figure <a href="starting-with-r-markdown.html#fig:img-yaml-header">1.2</a> but there are many other options available. You can learn more about this in your spare time if you like through these links: <a href="http://rmarkdown.rstudio.com/html_document_format.html" target="_blank">http://rmarkdown.rstudio.com/html_document_format.html</a> for <strong>.html</strong> options or <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html" target="_blank">http://rmarkdown.rstudio.com/pdf_document_format.html</a> for <strong>.pdf</strong> options.</p>
+<p>By default the file header includes the info shown in Figure <a href="starting-with-r-markdown.html#fig:img-yaml-header">1.2</a> but there are many other options available. You can learn more about this in your spare time if you like through these links for
+<a href="http://rmarkdown.rstudio.com/html_document_format.html"><strong>.html</strong> options</a>{_target="_blank"} or
+<a href="http://rmarkdown.rstudio.com/pdf_document_format.html" target="_blank"><strong>.pdf</strong> options</a>.</p>
 <div class="try">
 <p>
 <strong>BUT WAIT</strong>!! What if you spelt your name wrong? How would you change this?
@@ -234,7 +236,7 @@ Figure 1.3: The defualt setup code chunk
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></code></pre></div>
 <pre class="sourceCode r"><code class="sourceCode R">```</code></pre>
 </div>
-<p>Within the curly brackets, on the first line of the chunk, the word <code>cars</code> is included after the letter <code>r</code>. This is simply the <strong>name</strong> or the <strong>label</strong> for the code chunk and it really could have been called anything. For example, you could have called this code chunk <code>cars1</code> and a later chunk <code>cars2</code> to show it was the first and second chunk relating to cars. Whilst it is always advisable you name your code chunks, you do not need to name them. However, if you do put in names for the chunks <strong>do not use the same name twice</strong> as this will cause your script to crash when you knit it, e.g. Do not use <code>data</code> and <code>data</code>; instead maybe use <code>personality_data</code> and <code>participant_info</code> or whatever makes sense to what you are doing in the chunk. OK? Different names for different chunks! They are all individual.</p>
+<p>Within the curly brackets, on the first line of the chunk, the word <code>cars</code> is included after the letter <code>r</code>. This is simply the <strong>name</strong> or the <strong>label</strong> for the code chunk and it really could have been called anything. For example, you could have called this code chunk <code>cars1</code> and a later chunk <code>cars2</code> to show it was the first and second chunk relating to cars. Whilst it is always advisable you name your code chunks, you do not need to name them. However, if you do put in names for the chunks <strong>do not use the same name twice</strong> as this will cause your script to crash when you knit it, e.g. Do not use <code>data</code> and <code>data</code>; instead maybe use <code>personality-data</code> and <code>participant-info</code> or whatever makes sense to what you are doing in the chunk. OK? Different names for different chunks! They are all individual.</p>
 <div class="webex-solution">
 <button>
 Explain This - You can crash whilst knitting?
@@ -261,11 +263,11 @@ When people are first starting out using R Markdown, a common issue is code not 
 <p><br></p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <ul>
-<li>From the following options what was the name, or label, of the <strong>default setup code chunk</strong> (i.e. the first code chunk in an R Markdown file)? <select class="webex-solveme" data-answer='["setup"]'><option></option>
-<option>include</option>
-<option>r</option>
-<option>setup</option>
-<option>FALSE</option></select>
+<li>From the following options what was the name, or label, of the <strong>default setup code chunk</strong> (i.e. the first code chunk in an R Markdown file)? <select class="webex-select"><option value="blank"></option>
+<option value="">include</option>
+<option value="">r</option>
+<option value="answer">setup</option>
+<option value="">FALSE</option></select>
 </li>
 </ul>
 <div class="webex-solution">
@@ -437,11 +439,11 @@ Autocomplete also works for a lot of functions you can't quite remember how to s
 <p>You've got a large dataset of thousands of participants' personality and happiness scores that you want to analyse and present in RMarkdown.</p>
 <ul>
 <li><p>You want to show the code you are running in your analysis but not show the output as this would be too much to display. Note that you want the code to run. Type in the box (e.g. <code>rule = set</code>) how you would set the <code>results</code> rule to do this? <input class="webex-solveme nospaces" size="20" data-answer='["results = \"hide\""]'></p></li>
-<li><p>You create a plot of happiness versus neuroticism scores but you want to hide the code and only show the output. How can you do this? <select class="webex-solveme" data-answer='["echo = FALSE"]'><option></option>
-<option>echo = TRUE</option>
-<option>include = FALSE</option>
-<option>code = HIDE</option>
-<option>echo = FALSE</option></select></p></li>
+<li><p>You create a plot of happiness versus neuroticism scores but you want to hide the code and only show the output. How can you do this? <select class="webex-select"><option value="blank"></option>
+<option value="">echo = TRUE</option>
+<option value="">include = FALSE</option>
+<option value="">code = HIDE</option>
+<option value="answer">echo = FALSE</option></select></p></li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -461,9 +463,9 @@ Remember, the aim of these questions aren't to help you memorise these codes (no
 </div>
 <p><br></p>
 <ul>
-<li>True or False, writing <code>echo = TRUE</code> has the same effect on the output of a code chunk as if you had no echo rule at all: <select class="webex-solveme" data-answer='["TRUE"]'><option></option>
-<option>TRUE</option>
-<option>FALSE</option></select>
+<li>True or False, writing <code>echo = TRUE</code> has the same effect on the output of a code chunk as if you had no echo rule at all: <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="">FALSE</option></select>
 </li>
 </ul>
 <div class="webex-solution">
@@ -478,9 +480,9 @@ All of the code chunk rules have a default option. For example, <code>echo</code
 </div>
 <p><br></p>
 <ul>
-<li>True or False, there is no difference between setting <code>results = "hide"</code> and <code>eval = FALSE</code> as they both hide the output: <select class="webex-solveme" data-answer='["FALSE"]'><option></option>
-<option>TRUE</option>
-<option>FALSE</option></select>
+<li>True or False, there is no difference between setting <code>results = "hide"</code> and <code>eval = FALSE</code> as they both hide the output: <select class="webex-select"><option value="blank"></option>
+<option value="">TRUE</option>
+<option value="answer">FALSE</option></select>
 </li>
 </ul>
 <div class="webex-solution">
@@ -506,14 +508,14 @@ Which when knitted becomes:
 <p>So inline coding is really useful if you want to do calculations <strong>within your text</strong> or insert values into text, say from a dataframe, to make an informative sentence. We will look at more complex examples later in the labs but again this is a really useful tool for writing manuscripts through R Markdown the more comfortable you get with it.</p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <ul>
-<li><p>You need <select class="webex-solveme" data-answer='["Three"]'><option></option>
-<option>Two</option>
-<option>One</option>
-<option>Three</option></select> back tick(s) to insert <strong>code chunks</strong></p></li>
-<li><p>Why is this inline code, <code>`{r} 6 * 8`</code> , not going to show the calculated answer when you knit the file? Try editing the code line in Rmarkdown and knitting it to get it to work. <select class="webex-solveme" data-answer='["Curly brackets around the r are only needed for code chunks"]'><option></option>
-<option>You need a space between each back tick and the code</option>
-<option>Inline code cannot complete calcuations</option>
-<option>Curly brackets around the r are only needed for code chunks</option></select></p></li>
+<li><p>You need <select class="webex-select"><option value="blank"></option>
+<option value="">Two</option>
+<option value="">One</option>
+<option value="answer">Three</option></select> back tick(s) to insert <strong>code chunks</strong></p></li>
+<li><p>Why is this inline code, <code>`{r} 6 * 8`</code> , not going to show the calculated answer when you knit the file? Try editing the code line in Rmarkdown and knitting it to get it to work. <select class="webex-select"><option value="blank"></option>
+<option value="">You need a space between each back tick and the code</option>
+<option value="">Inline code cannot complete calcuations</option>
+<option value="answer">Curly brackets around the r are only needed for code chunks</option></select></p></li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -575,14 +577,14 @@ Figure 1.10: Inputting different Header levels using #s
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <ul>
 <li><p>If * puts words into italics, and ** puts words into bold, type in the box what might you put before (and technically after) a word to put it into italics with bold? <input class="webex-solveme nospaces" size="3" data-answer='["***"]'></p></li>
-<li><p>True or False: The <strong>more</strong> '#'s you include, the <strong>smaller</strong> the header is: <select class="webex-solveme" data-answer='["TRUE"]'><option></option>
-<option>TRUE</option>
-<option>FALSE</option></select></p></li>
-<li><p>From the options, the most common order of headings found in a Psychology Journal are: <select class="webex-solveme" data-answer='["Introduction, Methods, Results, Discussion"]'><option></option>
-<option>Discussion, Introduction, Methods, Results</option>
-<option>Discussion, Results, Methods, Introduction</option>
-<option>Introduction, Methods, Results, Discussion</option>
-<option>Introduction, Results, Methods, Discussion</option></select></p></li>
+<li><p>True or False: The <strong>more</strong> '#'s you include, the <strong>smaller</strong> the header is: <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="">FALSE</option></select></p></li>
+<li><p>From the options, the most common order of headings found in a Psychology Journal are: <select class="webex-select"><option value="blank"></option>
+<option value="">Discussion, Introduction, Methods, Results</option>
+<option value="">Discussion, Results, Methods, Introduction</option>
+<option value="answer">Introduction, Methods, Results, Discussion</option>
+<option value="">Introduction, Results, Methods, Discussion</option></select></p></li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -873,35 +875,35 @@ To stagger points on a list (i.e. indent), leave 4 blank spaces (two tabs) and t
 <p>Here are a couple of questions to try out in your group to remind you about using citations:</p>
 <p>When writing a report, how would you cite:</p>
 <ul>
-<li>Papers with <strong>five</strong> authors on the <strong>first</strong> mention? <select class="webex-solveme" data-answer='["Author 1 et al., Year"]'><option></option>
-<option>Author 1, Author 2, Author 3, Author 4, &amp; Author 5</option>
-<option>Author 1, Author 2, Author 3, Author 4, &amp; Author 5, Year</option>
-<option>Author 1 et al., Year</option></select>
+<li>Papers with <strong>five</strong> authors on the <strong>first</strong> mention? <select class="webex-select"><option value="blank"></option>
+<option value="">Author 1, Author 2, Author 3, Author 4, &amp; Author 5</option>
+<option value="">Author 1, Author 2, Author 3, Author 4, &amp; Author 5, Year</option>
+<option value="answer">Author 1 et al., Year</option></select>
 </li>
-<li>Papers with <strong>five</strong> authors on the <strong>second</strong> mention? <select class="webex-solveme" data-answer='["Author 1 et al., Year"]'><option></option>
-<option>Author 1, Author 2, Author 3, Author 4, &amp; Author 5</option>
-<option>Author 1, Author 2, Author 3, Author 4, &amp; Author 5, Year</option>
-<option>Author 1 et al., Year</option></select>
+<li>Papers with <strong>five</strong> authors on the <strong>second</strong> mention? <select class="webex-select"><option value="blank"></option>
+<option value="">Author 1, Author 2, Author 3, Author 4, &amp; Author 5</option>
+<option value="">Author 1, Author 2, Author 3, Author 4, &amp; Author 5, Year</option>
+<option value="answer">Author 1 et al., Year</option></select>
 </li>
-<li>Papers with <strong>seven</strong> authors on the <strong>first</strong> mention? <select class="webex-solveme" data-answer='["Author 1 et al., Year"]'><option></option>
-<option>Author 1, Author 2, Author 3, Author 4, Author 5, Author 6, &amp; Author 7</option>
-<option>Author 1, Author 2, Author 3, Author 4, Author 5, Author 6, &amp; Author 7, Year</option>
-<option>Author 1 et al., Year</option></select>
+<li>Papers with <strong>seven</strong> authors on the <strong>first</strong> mention? <select class="webex-select"><option value="blank"></option>
+<option value="">Author 1, Author 2, Author 3, Author 4, Author 5, Author 6, &amp; Author 7</option>
+<option value="">Author 1, Author 2, Author 3, Author 4, Author 5, Author 6, &amp; Author 7, Year</option>
+<option value="answer">Author 1 et al., Year</option></select>
 </li>
-<li>Papers with <strong>two</strong> authors in a citation? <select class="webex-solveme" data-answer='["(Author 1 &amp; Author 2)"]'><option></option>
-<option>(Author 1 &amp; Author 2)</option>
-<option>(Author 1 et al., Year)</option></select>
-</li>
-<li>
-<strong>Two</strong> papers in <strong>one</strong> paretheses? <select class="webex-solveme" data-answer='["Order alphabetically according to first author surname, separated by a semi-colon"]'><option></option>
-<option>Order chronologically according to year, separated by a semi-colon</option>
-<option>Order alphabetically according to first author surname, separated by a semi-colon</option></select>
+<li>Papers with <strong>two</strong> authors in a citation? <select class="webex-select"><option value="blank"></option>
+<option value="answer">(Author 1 &amp; Author 2)</option>
+<option value="">(Author 1 et al., Year)</option></select>
 </li>
 <li>
-<strong>Two</strong> papers of the <strong>same</strong> author? <select class="webex-solveme" data-answer='["Order chronologically according to year, separated by a comma"]'><option></option>
-<option>Order chronologically according to year, separated by a semi-colon</option>
-<option>Order chronologically according to year, separated by a comma</option>
-<option>Order alphabetically by adding a letter to each year</option></select>
+<strong>Two</strong> papers in <strong>one</strong> paretheses? <select class="webex-select"><option value="blank"></option>
+<option value="">Order chronologically according to year, separated by a semi-colon</option>
+<option value="answer">Order alphabetically according to first author surname, separated by a semi-colon</option></select>
+</li>
+<li>
+<strong>Two</strong> papers of the <strong>same</strong> author? <select class="webex-select"><option value="blank"></option>
+<option value="">Order chronologically according to year, separated by a semi-colon</option>
+<option value="answer">Order chronologically according to year, separated by a comma</option>
+<option value="">Order alphabetically by adding a letter to each year</option></select>
 </li>
 </ul>
 <!-- Those questions about citations may throw you a little. In late 2019, the APA Style Guide 7th edition was released. One of the biggest changes here was that for papers of three or more authors, the citation would only show the first author and the year, as opposed to listing all authors on first citation. Two author papers and single author papers still always show all authors. For more information on how to format citations, you can look at the highly recommended <a href = "https://apastyle.apa.org/style-grammar-guidelines/citations/basic-principles/author-date" target = "_blank">APA Style blog</a>. -->
@@ -916,11 +918,11 @@ To stagger points on a list (i.e. indent), leave 4 blank spaces (two tabs) and t
 </ol>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Question</span></p>
 <ul>
-<li>Bold text and italicized text are created similarly, how do you create italicized text? <select class="webex-solveme" data-answer='["* (before and after text)"]'><option></option>
-<option>* (before text)</option>
-<option>** (before and after text)</option>
-<option>* (before and after text)</option>
-<option>** (before text)</option></select>
+<li>Bold text and italicized text are created similarly, how do you create italicized text? <select class="webex-select"><option value="blank"></option>
+<option value="">* (before text)</option>
+<option value="">** (before and after text)</option>
+<option value="answer">* (before and after text)</option>
+<option value="">** (before text)</option></select>
 </li>
 </ul>
 <p><strong>It's a good idea to <code>knit</code> the file at this point to make sure the codes are all working correctly.</strong></p>
@@ -1028,11 +1030,11 @@ Again this is not a hard and fast rule and often we will assign figures but it j
 <p><strong>Again, knit your document to make sure it is working correctly. Below your table you should now have the ggplot code followed by the nice scatterplot.</strong></p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--purple);"> <strong>Thinking Cap Point</strong> </span></p>
 <p>Have a think about the figure to answer the following question.</p>
-<p>"Based on the distribution of the data, shown in the above Figure, ..." <select class="webex-solveme" data-answer='["as age increases, people perceive a shorter vertical line to be of same length as the standard vertical line"]'><option></option>
-<option>as age increases, people perceive a shorter vertical line to be of same length as the standard vertical line</option>
-<option>as age increases, people perceive a longer vertical line to be of same length as the standard vertical linge</option>
-<option>There is no relationship between Age and the Ponzo illusion</option>
-<option>This figure tells me nothing about the relationship between Age and the Ponzo illusion</option></select></p>
+<p>"Based on the distribution of the data, shown in the above Figure, ..." <select class="webex-select"><option value="blank"></option>
+<option value="answer">as age increases, people perceive a shorter vertical line to be of same length as the standard vertical line</option>
+<option value="">as age increases, people perceive a longer vertical line to be of same length as the standard vertical linge</option>
+<option value="">There is no relationship between Age and the Ponzo illusion</option>
+<option value="">This figure tells me nothing about the relationship between Age and the Ponzo illusion</option></select></p>
 <div class="webex-solution">
 <button>
 Helpful Hint
@@ -1268,15 +1270,22 @@ Figure 1.11: You won't have a caption. We will cover that later!
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
+  console.log("webex: update total_correct");
+
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -1287,6 +1296,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -1330,7 +1341,50 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -1366,6 +1420,18 @@ window.onload = function() {
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
 
   update_total_correct();
 }
@@ -1379,6 +1445,24 @@ $( document ).ready(function() {
   $("footer div.row div:eq(1) p").html(
     psyteachr + license + cite
   );
+  
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+  
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
 });
 </script><div class="chapter-nav">
 <div class="prev"><a href="index.html">Overview</a></div>
@@ -1451,7 +1535,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-09-13.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-09-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

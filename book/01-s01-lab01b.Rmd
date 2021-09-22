@@ -30,7 +30,9 @@ knitr::include_graphics("images/s01-lab01/preclass/rmd_header.png")
 
 ```
 
-By default the file header includes the info shown in Figure \@ref(fig:img-yaml-header) but there are many other options available. You can learn more about this in your spare time if you like through these links: <a href="http://rmarkdown.rstudio.com/html_document_format.html" target = "_blank">http://rmarkdown.rstudio.com/html_document_format.html</a> for **.html** options or <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html" target = "_blank">http://rmarkdown.rstudio.com/pdf_document_format.html</a> for **.pdf** options.
+By default the file header includes the info shown in Figure \@ref(fig:img-yaml-header) but there are many other options available. You can learn more about this in your spare time if you like through these links for
+[**.html** options](http://rmarkdown.rstudio.com/html_document_format.html){_target="_blank"} or 
+[**.pdf** options](http://rmarkdown.rstudio.com/pdf_document_format.html){target="_blank"}.
 
 ```{block, type = "try"}
 **BUT WAIT**!! What if you spelt your name wrong? How would you change this?
@@ -71,7 +73,7 @@ The next code chunk in your file will look a bit like this:
 summary(cars)
 ```
 
-Within the curly brackets, on the first line of the chunk, the word `cars` is included after the letter `r`. This is simply the **name** or the **label** for the code chunk and it really could have been called anything. For example, you could have called this code chunk `cars1` and a later chunk `cars2` to show it was the first and second chunk relating to cars. Whilst it is always advisable you name your code chunks, you do not need to name them. However, if you do put in names for the chunks **do not use the same name twice** as this will cause your script to crash when you knit it, e.g. Do not use `data` and `data`; instead maybe use `personality_data` and `participant_info` or whatever makes sense to what you are doing in the chunk. OK? Different names for different chunks! They are all individual.
+Within the curly brackets, on the first line of the chunk, the word `cars` is included after the letter `r`. This is simply the **name** or the **label** for the code chunk and it really could have been called anything. For example, you could have called this code chunk `cars1` and a later chunk `cars2` to show it was the first and second chunk relating to cars. Whilst it is always advisable you name your code chunks, you do not need to name them. However, if you do put in names for the chunks **do not use the same name twice** as this will cause your script to crash when you knit it, e.g. Do not use `data` and `data`; instead maybe use `personality-data` and `participant-info` or whatever makes sense to what you are doing in the chunk. OK? Different names for different chunks! They are all individual.
 
 `r hide("Explain This - You can crash whilst knitting?")`
 ```{block, type = "info"}
@@ -279,7 +281,7 @@ So inline coding is really useful if you want to do calculations **within your t
 
 The last thing we want to show you in this preclass activity is how to format your text. 
 
-When you're not writing in code chunks you can format your document in lots of different ways just like you would in a Word document (or other expensive license-based software). The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" target = "_blank">R Markdown cheatsheet</a> provides lots of information about how to do this but we will show you a couple of things that you might want to try out. 
+When you're not writing in code chunks you can format your document in lots of different ways just like you would in a Word document (or other expensive license-based software). The [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf){target="_blank"} provides lots of information about how to do this but we will show you a couple of things that you might want to try out. 
 
 We can make text **bold** by including two \*\* (two asterisks) at the start and end of the text we want to present in bold font. For example:
 <br><br>

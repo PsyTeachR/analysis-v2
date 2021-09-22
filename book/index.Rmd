@@ -22,7 +22,7 @@ favicon: images/logos/favicon.ico
 # add any packages you want to cite here
 knitr::write_bib(c(
   .packages(), 'bookdown', 'tidyverse', 'broom', 'pwr', 'rtweet',
-  'meme', 'gganimate', 'webexercises', 'ggforce', 'knitr', 'faux', 'patchwork', 'statcheck'
+  'meme', 'gganimate', 'webexercises', 'ggforce', 'knitr', 'faux', 'patchwork', 'statcheck', 'tinytex'
 ), 'packages.bib')
 
 ```

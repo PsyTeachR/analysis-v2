@@ -1,18 +1,17 @@
 --- 
 title: "Analysis"
 author: "Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson"
-date: "2021-09-13"
+date: "2021-09-22"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-biblio-style: apa
 csl: include/apa.csl
 link-citations: yes
 description: |
   This book covers data skills such as R Markdown, data wrangling with tidyverse, and data visualisation with ggplot2. It also introduces statistical concepts such as permutation tests, NHST, alpha, power, effect size, and sample size as well as statistical procedures such as correlations and the general linear model.
 url: https://psyteachr.github.io/analysis-v2
 github-repo: psyteachr/analysis-v2
-cover-image: images/logos/twitter_card.png
+cover-image: images/logos/logo.png
 apple-touch-icon: images/logos/apple-touch-icon.png
 apple-touch-icon-size: 180
 favicon: images/logos/favicon.ico
