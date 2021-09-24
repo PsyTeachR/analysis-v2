@@ -1,29 +1,22 @@
-## Test Yourself
+## Practice Your Skills
 
-This is a **formative** assignment meaning that it is purely for you to test your own knowledge, skill development, and learning, and does not count towards an overall grade. However, you are strongly encouraged to do the assignment as it will continue to boost your skills which you will need in future assignments. You will be instructed by the Course Lead on Moodle as to when you should attempt this assignment. Please check the information and schedule on the Level 2 Moodle page.
+In order to complete these tasks you will need to download the data .csv files and the .Rmd file, which you need to edit, titled `Ch2_PracticeSkills_Template.Rmd`. These can be downloaded within a zip file from the below link. Once downloaded and unzipped, you should create a new folder that you will use as your working directory; put the data files and the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top. [**Download the Exercises .zip file from here**](data/02-s01/homework/Ch2_PracticeSkills.zip).
 
-One thing to keep in mind in all assignments is that spelling it really important when learning about being reproducible. Remember that `Mycolumn` is a different column to `mycolumn` and when being reproducible only one is correct. Likewise, `Mydata` and `mydata` are two different tibbles, and `read_csv()` and `read.csv()` are two different functions. Check the instructions and check your work! 
+Now open the .Rmd file within RStudio. You will see there is a code chunk for each task. Follow the instructions on what to edit in each code chunk. This will often be entering code based on what we have covered up until this point. 
 
-**Lab 2: Formative Data Wrangling Assignment**
-
-In order to complete this assignment you will need to download the data .csv files, as well as the assignment .Rmd file, which you need to edit, titled `GUID_Level2_Semester1_Lab2.Rmd`. These can be downloaded within a zip file from the below link. Once downloaded and unzipped, you should create a new folder that you will use as your working directory; put the data files and the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top. [**Download the Assignment .zip file from here**](data/02-s01/homework/ch2-assign-data-2020.zip).
-
-Now open the assignment .Rmd file within RStudio. You will see there is a code chunk for each task. As you did in previous assignments, follow the instructions on what to edit in each code chunk. This will often be entering code based on what we have covered up until this point, either entering code or a value. 
-
-In this chapter we recapped on data-wrangling using the Wickham 6 verbs, looked at additional functions such as `pivot_longer()` and `inner_join()`, and at piping chains of code for efficiency using `%>%`. You will need these skills to complete the following assignment so please make sure you have carried out the PreClass and InClass activities before attempting this formative assignment. Remember to follow the instructions and if you get stuck at any point to post questions on the available forums. Also, two useful online resources are:
+In this chapter we recapped on data-wrangling using the Wickham 6 verbs, looked at additional functions such as `pivot_longer()` and `inner_join()`, and at piping chains of code for efficiency using `%>%`. You will need these skills to complete the following exercises, so make sure you have worked through this chapter before attempting this exercise. Two other useful online resources are:
 
 * <a href="http://r4ds.had.co.nz" target = "_blank">Hadley Wickham's R for Data Science book @ http://r4ds.had.co.nz</a>
 * <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" target = "_blank"> RStudio's dplyr cheatsheet @ Rstudio.com</a>
+* <a href="https://psyteachr.github.io/" target = "_blank">PsyTeachR Data Skills book</a> 
 
-As well as the <a href="https://psyteachr.github.io/" target = "_blank">PsyTeachR Grassroots book</a> and remembering some of the work you did there. 
+### The Ageing Brain 
 
-### Today's Topic - The Ageing Brain 
+A key topic in current psychological research, and one which forms a main focus for some of the research in our School, is that of human ageing. In this research we use brain imaging techniques to understand how changes in brain function and structure relate to changes in perception and behaviour. A typical 'ageing' experiment will compare a measure (or a number of measures) such as performance on a cognitive or perceptual task between younger and older adults (i.e., a between-subjects design experiment).
 
-A key topic in current psychologial research, and one which forms a main focus for some of the research in our School, is that of human ageing. In this research we use brain imaging techniques to understand how changes in brain function and structure relate to changes in perception and behaviour. A typical 'ageing' experiment will compare a measure (or a number of measures) such as performance on a cognitive or perceptual task between younger and older adults (i.e. a between-subjects design experiment).
+However, in order to make sure we are studying 'healthy' ageing, we first have to 'screen' our older participants for symptoms of age-related dementia (Alzheimer's Disease), where cognitive function can be significantly impaired. We do this using a range of cognitive tests. Some studies will also test participants' *sensory acuity* (ability to perceive something), as a function of age (particularly eyesight and hearing). 
 
-However, in order to make sure we are studying 'healhty' ageing, we first have to 'screen' our older participants for symptoms of age-related dementia (Alzheimer's Disease), where cognitive function can be significantly impaired. We do this using a range of cognitive tests. Some studies will also test participants' *sensory acuity* (ability to perceive something), as a function of age (particularly eyesight and hearing). 
-
-The data you have downloaded for this lab is example screening data taken from research investigating how the ageing brain processes different types of sounds. The tests used in this study are detailed below. Please note that the links are there to provide you with further information and examples of the tests once you have completed the assignment if you so wish; you do not have to read them to complete the assignment.
+The data you have downloaded for this exercise is example screening data taken from research investigating how the ageing brain processes different types of sounds. The tests used in this study are detailed below. Please note that the links are there to provide you with further information and examples of the tests once you have completed the assignment if you so wish; you do not have to read them to complete the exercises.
 
 * [Montreal Cognitive Assessment (MoCA)](https://www.mocatest.org) : a test specifically devised as a stand-alone screening tool for mild cognitive impairment. Assesses visuospatial skills, memory, language, attention, orientation, and abstraction skills. <a href="http://www.mocatest.org/pdf_files/test/MoCA-Test-English_7_1.pdf" target="_blank">Example here</a> 
 
@@ -31,7 +24,7 @@ The data you have downloaded for this lab is example screening data taken from r
 
 * [D2 Test of Attention](https://en.wikipedia.org/wiki/D2_Test_of_Attention#cite_note-LeclercqZimmermann2002-3): measures participants' selective and sustained concentration and visual scanning speed.
 
-* **Better Hearing Institute Quick Hearing Check**: a self-report questionnaire which measures participants' subjective experience of their own hearing abilities. <a href="http://www.betterhearing.org/check-your-hearing" target = "_blank">Main Webpage for Group here</a>
+* [Better Hearing Institute Quick Hearing Check](http://www.betterhearing.org/check-your-hearing): a self-report questionnaire which measures participants' subjective experience of their own hearing abilities.
 
 **The Data Files**  
 
@@ -49,7 +42,7 @@ You have just downloaded the three `.csv` files containing all the data you need
     + `D-SPAN` Working Memory Digit Span test score 
     + `D2` D2 Test of Attention score
 
-* `QHC_responses.csv` contains participants' responses to each question on the ***Better Hearing Institute Quick Hearing Check (QHC)*** questionnaire. 
+* `QHC_responses.csv` contains participants' responses to each question on the "Better Hearing Institute Quick Hearing Check (QHC)" questionnaire. 
     + Column 1 represents participants' `ID` (matching up to that in `p_screen.csv`). 
     + Each column thereafter represents the 15 questions from the questionnaire. 
     + Each row represents a participant and their response to each question. 
@@ -62,7 +55,7 @@ You have just downloaded the three `.csv` files containing all the data you need
 
 1. The `.csv` files are saved into a folder on your computer and you have manually set this folder as your working directory. 
 
-2. The `.Rmd` file is saved in the same folder as the `.csv` files. For assessments we ask that you save it with the format `GUID_Level2_Semester1_Lab2.Rmd` where `GUID` is replaced with your `GUID`. Though this is a formative assessment, it may be good practice to do the same here.
+2. The `.Rmd` file is saved in the same folder as the `.csv` files.
 
 ### Load in the data
 
@@ -82,11 +75,11 @@ scoring <- read_csv("QHC_scoring.csv")
 
 **The Tasks:**
 
-Now that we have the data loaded, tidyverse attached, and have viewed our data, you should now try to complete the following 9 tasks. You may want to practice them first to get the correct code and format, and to make sure they work. You can do this in the console or a script, but remember, once you have the correct code, edit the necessary parts of the assignment `.Rmd` file to produce a reproducible Rmd file. This is what you will do from now on for all other assessment files so practicing this now will really help. In short, go through the tasks and change only the `NULL` with what the question asks for and then make sure that the file `knits` at the end so that you have a fully reproducible code.
+Now that we have the data loaded, tidyverse attached, and have viewed our data, you should now try to complete the following 9 tasks. You may want to practice them first to get the correct code and format, and to make sure they work. You can do this in the console or a script, but remember, once you have the correct code, edit the necessary parts of the assignment `.Rmd` file to produce a reproducible .Rmd file. This is what you will do from now on for all other assessment files so practicing this now will really help. In short, go through the tasks and change only the `NULL` with what the question asks for and then make sure that the file `knits` at the end so that you have a fully reproducible code.
 
 ### Task 1 - Oldest Participant {#Ch2AssignQueT1}
 
-Replace the `NULL` in the `T1` code chunk with the Participant ID of the oldest participant. Store this single value in `oldest_participant` (e.g. `oldest_participant <- 999`.
+Replace the `NULL` in the `T1` code chunk with the Participant ID of the oldest participant. Store this single value in `oldest_participant` (e.g. `oldest_participant <- 999`).
 
 * **hint:** look at your data, who is oldest?
 
@@ -136,13 +129,12 @@ Now that we have our MoCA score expressed as a percentage `MOCA_Perc` we no long
 screening <- NULL
 ```
 
-**Halfway There!**
 
 The remaining tasks focus on merging two tables. 
 
-You suspect that the older adults with musical experience might report more finely-tuned hearing abilities than those without musical experience. You therefore decide to check whether this trend exists in your data. You measured participants' self reported hearing abilties using the Better Hearing Institute Quick Hearing Check Questionnaire. In this questionnaire, participants rated the extent to which they agree or disagree with a list of statements (e.g. 'I have a problem hearing over the telephone') using a 5 point Likert scale (Strongly Disagree, Slightly Disagree, Neutral, Slightly Agree, Strongly Agree). 
+You suspect that the older adults with musical experience might report more finely-tuned hearing abilities than those without musical experience. You therefore decide to check whether this trend exists in your data. You measured participants' self reported hearing abilities using the Better Hearing Institute Quick Hearing Check Questionnaire. In this questionnaire, participants rated the extent to which they agree or disagree with a list of statements (e.g., 'I have a problem hearing over the telephone') using a 5 point Likert scale (Strongly Disagree, Slightly Disagree, Neutral, Slightly Agree, Strongly Agree). 
 
-Each participant's response to each question is contained in the `responses` dataframe in your environment. Each response type is worth a certain number of points (e.g. Strongly Disagree = 0, Strongly Agree = 5) and the scoring key is contained in the `scoring` dataframe. A score for each participant is calculated by totalling up the number of points across all the questions to derive an overall score. The lower the overall score, the better the participants' self-reported hearing ability.  
+Each participant's response to each question is contained in the `responses` dataframe in your environment. Each response type is worth a certain number of points (e.g., Strongly Disagree = 0, Strongly Agree = 5) and the scoring key is contained in the `scoring` dataframe. A score for each participant is calculated by totaling up the number of points across all the questions to derive an overall score. The lower the overall score, the better the participants' self-reported hearing ability.  
 
 In order to score the questionnaire we first need to perform a couple of steps.
 
@@ -150,7 +142,7 @@ In order to score the questionnaire we first need to perform a couple of steps.
 
 Replace the `NULL` in the `T6` code chunk using code to gather the responses to all the questions of the QHC from wide format to tidy/long format. Put the names in `Question` and the values in `RESPONSE`. Store this output in `responses_long`.
 
-* **hint:** pivot_lnger()
+* **hint:** pivot_longer()
 * **hint:** names to "Question"
 * **hint:** values to "RESPONSE"
 
@@ -172,7 +164,7 @@ responses_points <- NULL
 
 ### Task 8 - Working the Pipes {#Ch2AssignQueT8}
 
-Below we have given you five lines of code that takes the data in its current long format and then creates a QHC score for each participant (`group_by()...summarise()`). It then joins the screening information (`inner_join()`) before calculating a mean QHC score for the two groups of participants - those that play musical intruments and those that don't. This final step is stored as a tibble called `musical_means`.  
+Below we have given you five lines of code that takes the data in its current long format and then creates a QHC score for each participant (`group_by()...summarise()`). It then joins the screening information (`inner_join()`) before calculating a mean QHC score for the two groups of participants - those that play musical instruments and those that don't. This final step is stored as a tibble called `musical_means`.  
 
 ```
 participant_groups <- group_by(responses_points, ID)
@@ -201,6 +193,5 @@ Finally, replace the `NULL` in the `T9` code chunk with the value of how much hi
 QHC_diff <- NULL
 ```
 
-<span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span>
 
-Well done, you are finished! Now you should go check your answers against the solutions at the end of this chapter. You are looking to check that the answers you have submitted are exactly the same as the ones in the solution - for example, remember that `Mycolumn` is different to `mycolumn` and only one is correct. If you have any questions, please post them on the forums.
+Well done, you are finished! Now you should go check your answers against the solutions at the end of this chapter. You are looking to check that the answers you have submitted are exactly the same as the ones in the solution - for example, remember that `Mycolumn` is different to `mycolumn` and only one is correct.

@@ -12,9 +12,9 @@ pinfo <- read_csv("./data/02-s01/inclass/pinfo.csv")
 
 Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### PreClass Activities
+### Data Wrangling Basics
 
-#### PreClass Task 1
+#### Task 1
 
 * Using `select()` to include only stated columns:
 
@@ -36,7 +36,7 @@ select(pong_data, BallSpeed, HitOrMiss, JudgedSpeed, Participant, TrialNumber)
 
 [Return to Task](#Ch2PreClassQueT1)
 
-#### PreClass Task 2
+#### Task 2
 
 ```{r Ch2PreClassTask2, eval = FALSE}
 arrange(pong_data, desc(HitOrMiss), desc(JudgedSpeed))
@@ -44,7 +44,7 @@ arrange(pong_data, desc(HitOrMiss), desc(JudgedSpeed))
 
 [Return to Task](#Ch2PreClassQueT2)
 
-#### PreClass Task 3
+#### Task 3
 
 ``` {r Ch2PreClassTask3, eval = FALSE}
 filter(pong_data, 
@@ -55,7 +55,7 @@ filter(pong_data,
 
 [Return to Task](#Ch2PreClassQueT3)
 
-#### PreClass Task 4
+#### Task 4
 
 * first step is created with `filter()`
 * the second step is created with `mutate()`
@@ -67,7 +67,7 @@ pong_data2 <- mutate(pong_data_filt, TrialNumber = TrialNumber - 1)
 
 [Return to Task](#Ch2PreClassQueT4)
 
-#### PreClass Task 5
+#### Task 5
 
 ``` {r Ch2PreClassTask5, eval = FALSE}
 group_by(pong_data2, BlockNumber, BackgroundColor)
@@ -75,7 +75,7 @@ group_by(pong_data2, BlockNumber, BackgroundColor)
 
 [Return to Task](#Ch2PreClassQueT5)
 
-#### PreClass Task 6
+#### Task 6
 
 ``` {r Ch2PreClassTask6, eval = FALSE}
 pong_data2_group <- group_by(pong_data2, BackgroundColor, PaddleLength)
@@ -101,9 +101,9 @@ pong_data2_hits_red_small <- filter(pong_data2_hits, BackgroundColor == "red", P
 
 [Return to Task](#Ch2PreClassQueT6)
 
-### InClass Actitivies
+### Data Wrangling Application
 
-#### InClass Task 2
+#### Task 2
 
 ```{r Ch2InClassTask2-1, eval = FALSE}
 library(tidyverse)
@@ -119,7 +119,7 @@ library("tidyverse")
 
 [Return to Task](#Ch2InClassQueT2)
 
-#### InClass Task 3
+#### Task 3
 
 ```{r Ch2InClassTask3, eval = FALSE}
 responses <- read_csv("responses.csv")                  
@@ -132,7 +132,7 @@ pinfo <- read_csv("pinfo.csv")
 
 [Return to Task](#Ch2InClassQueT3)
 
-#### InClass Task 7 
+#### Task 7 
 
 ```{r Ch2InClassTask7, eval = FALSE}
 aq_scores <- rscores %>% 
@@ -143,7 +143,7 @@ aq_scores <- rscores %>%
 [Return to Task](#Ch2InClassQueT7)
 
 
-#### InClass Task 8
+#### Task 8
 
 ```{r Ch2InClassTask8, eval = FALSE}
 aq_scores2 <- responses %>% 
@@ -158,7 +158,7 @@ aq_scores2 <- responses %>%
 
 [Return to Task](#Ch2InClassQueT8)
 
-### Test Yourself Activities
+### Practice Your Skills
 
 ```{r lab2-assignment-solutions-data, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE}
 # assignment
@@ -167,7 +167,7 @@ responses <- read_csv("./data/02-s01/homework/QHC_responses.csv")
 scoring <- read_csv("./data/02-s01/homework/QHC_scoring.csv")
 ``` 
 
-#### Assignment Task 1 - Oldest Participant
+#### Task 1 - Oldest Participant
 
 * Whether you coded this answer or just read from the data, the Participant with ID Number 3 is the oldest.
 
@@ -185,7 +185,7 @@ oldest_participant_code <- arrange(screening, desc(AGE)) %>%
 
 [Return to Task](#Ch2AssignQueT1)
 
-#### Assignment Task 2 - Arranging D-SPAN
+#### Task 2 - Arranging D-SPAN
 
 * `arrange()` is the main function here
 * You also needed to use `desc()` to sort from high to low
@@ -196,7 +196,7 @@ cogtest_sort <- arrange(screening, desc(DSPAN))
 
 [Return to Task](#Ch2AssignQueT2)
 
-#### Assignment Task 3 - Foreign Language Speakers
+#### Task 3 - Foreign Language Speakers
 
 1. First group the screening data by FLANG using `group_by()`
 2. Next, summarise, paying attention to use the variable names as instructed
@@ -212,7 +212,7 @@ descriptives <- summarise(screen_groups,
 
 [Return to Task](#Ch2AssignQueT3)
 
-#### Assignment Task 4 - Creating Percentage MOCA scores
+#### Task 4 - Creating Percentage MOCA scores
 
 * `mutate()` is the function to add a new column to data
 * Here we are mutating/adding on a column called `MOCA_Perc` which shows a participant's MOCA score divided by 30 and multiplied by 100.
@@ -223,7 +223,7 @@ screening <- mutate(screening, MOCA_Perc = (MOCA / 30) * 100)
 
 [Return to Task](#Ch2AssignQueT4)
 
-#### Assignment Task 5 - Remove the MOCA column
+#### Task 5 - Remove the MOCA column
 
 * `select()` is the key function to keep and remove certain columns.
 * Two options here; both would give the same dataframe.
@@ -245,7 +245,7 @@ screening <- select(screening, ID, AGE, SEX, HANDEDNESS, EDUCATION, MUSICAL, FLA
 
 [Return to Task](#Ch2AssignQueT5)
 
-#### Assignment Task 6 - Gather the Responses together
+#### Task 6 - Gather the Responses together
 
 * `pivot_longer()` is the function to use here.
 * People take a while to understand this function but spend some time looking at the example below and it will start to make some sense.
@@ -270,7 +270,7 @@ responses_long <- pivot_longer(responses,
 
 [Return to Task](#Ch2AssignQueT6)
 
-#### Assignment Task 7 - Joining the data
+#### Task 7 - Joining the data
 
 * `inner_join()` will combine all common information in two sets of data by a common column or columns.
 * Here we are joining the data in `responses_long` with the data in `scoring` by the common column `RESPONSE`.
@@ -283,7 +283,7 @@ responses_points <- inner_join(responses_long, scoring, "RESPONSE")
 
 [Return to Task](#Ch2AssignQueT7)
 
-#### Assignment Task 8 - Working the Pipes
+#### Task 8 - Working the Pipes
 
 * This is the code we started with.  
 
@@ -308,7 +308,7 @@ musical_means <- group_by(responses_points, ID) %>%
 
 [Return to Task](#Ch2AssignQueT8)
 
-#### Assignment Task 9 - Difference in Musical Means
+#### Task 9 - Difference in Musical Means
 
 * People who play music have a QHC score that is 1.53 units higher than people who don't play music.
 * You can do this by looking in `musical_means`, reading the values, and doing some quick maths.
@@ -330,4 +330,3 @@ QHC_diff_code <- pivot_wider(musical_means,
 
 [Return to Task](#Ch2AssignQueT9)
 
-<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>

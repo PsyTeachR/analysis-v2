@@ -1,6 +1,6 @@
 ---
-title: "Psych 2A Lab 2: Formative Data-Wrangling Assignment"
-author: "My GUID"
+title: "Ch2_PracticeSkills_Template"
+author: "My name"
 output: html_document
 ---
 
@@ -14,7 +14,7 @@ One thing to keep in mind in all assignments is that spelling it really importan
 
 1. The `.csv` files are saved into a folder on your computer and you have manually set this folder as your working directory. 
 
-2. The `.Rmd` file is saved in the same folder as the `.csv` files. For assessments we ask that you save it with the format `GUID_Level2_Semester1_Lab2.Rmd` where `GUID` is replaced with your `GUID`. Though this is a formative assessment, it may be good practice to do the same here.
+2. The `.Rmd` file is saved in the same folder as the `.csv` files.
 
 ## Load in the data
 
@@ -90,7 +90,7 @@ screening <- NULL
 
 Replace the `NULL` in the `T6` code chunk using code to gather the responses to all the questions of the QHC from wide format to tidy/long format. Put the names in `Question` and the values in `RESPONSE`. Store this output in `responses_long`.
 
-* **hint:** pivot_lnger()
+* **hint:** pivot_longer()
 * **hint:** names to "Question"
 * **hint:** values to "RESPONSE"
 
@@ -112,7 +112,7 @@ responses_points <- NULL
 
 ### Task 8 - Working the Pipes
 
-Below we have given you five lines of code that takes the data in its current long format and then creates a QHC score for each participant (`group_by()...summarise()`). It then joins the screening information (`inner_join()`) before calculating a mean QHC score for the two groups of participants - those that play musical intruments and those that don't. This final step is stored as a tibble called `musical_means`.  
+Below we have given you five lines of code that takes the data in its current long format and then creates a QHC score for each participant (`group_by()...summarise()`). It then joins the screening information (`inner_join()`) before calculating a mean QHC score for the two groups of participants - those that play musical instruments and those that don't. This final step is stored as a tibble called `musical_means`.  
 
 ```
 participant_groups <- group_by(responses_points, ID)
@@ -143,4 +143,4 @@ QHC_diff <- NULL
 
 ## Finished
 
-Well done, you are finshed! Now you should go check your answers against the solutions at the end of the chapter. You are looking to check that the answers you have submitted are exactly the same as the ones in the solution - for example, remember that `Mycolumn` is different to `mycolumn` and only one is correct. If you have any questions, please post them on the forums.
+Well done, you are finshed! Now you should go check your answers against the solutions at the end of the chapter. You are looking to check that the answers you have submitted are exactly the same as the ones in the solution - for example, remember that `Mycolumn` is different to `mycolumn` and only one is correct.
