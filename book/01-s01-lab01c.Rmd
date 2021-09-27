@@ -201,7 +201,7 @@ Good practice in a Report is to include information about where we got the data 
 2. Below **Methods** write a new heading called **Data** and set it as **Header 3** size.
 3. Underneath the Methods heading, copy and paste in the below sentence and turn the citation into an internet link to the paper. 
 
-> "The data in this report was obtained from within the original paper, (Lebowitz and Judisch, 2016). "
+> "The data in this report was obtained from within the original paper (Lebowitz & Judisch, 1967). "
 
 **Now knit your document again to make sure your formatting is working. Titles should be bigger than normal text and the list should be indented and have numbers at the start of each line.**  
 
