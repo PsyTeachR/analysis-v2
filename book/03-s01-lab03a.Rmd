@@ -1,0 +1,22 @@
+# Data Visualisation Through **`ggplot2`**
+
+## Overview
+
+Data visualisation is very important for understanding your data. It is a key part of data analysis in exploring data, checking assumptions, and displaying results. Figures and plots allow you to get insight into patterns in your data. For example, in regards to seeing differences between groups, but also for seeing where things don't quite match up with what you think should be happening. A great example of this is Anscombe's Quartet, which you can read up about at a later date if you like - <a href = "https://en.wikipedia.org/wiki/Anscombe%27s_quartet" target = "_blank">see here</a> - four datasets given exact same means, but with very different underlying structures when visualised. The key point is that it is always good to visualise your data and visualisation should be a common step in your data skills set.
+
+In the PsyTeachR <a href="https://psyteachr.github.io/" target = "_blank">Data Skills book</a> we introduced data visualisation using `ggplot2`, the main visualisation package of `tidyverse`. You should look back at that when working through this chapter, and you can find additional info here at the main page for the package: <a href = "https://ggplot2.tidyverse.org/" target = "_blank">ggplot2</a>.
+
+For visualisaion we use `ggplot2` and below we have listed some great online resources that you might want to consult if you want a fuller understanding: 
+
+* <a href="http://www.cookbook-r.com/Graphs/" target = "_blank">R Graphics Cookbook</a>
+* <a href="https://ggplot2-book.org/" target = "_blank">ggplot2 book</a>
+* <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" target = "_blank">ggplot2 cheatsheet</a>
+* <a href="http://ggplot2.tidyverse.org/reference/" target = "_blank">ggplot2 Reference Guide</a>
+
+In this chapter, we will revisit plotting data and expand your skills in order to make effective and informative figures. This will become really beneficial to you as your progress because data visualisation is a skill that applies to multiple careers, not just Psychology.
+
+In this chapter you will:
+
+1. Recap on data visualisation
+2. Expand your skills to produce new figures
+3. Learn about Mental Rotation research

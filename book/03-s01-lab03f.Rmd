@@ -1,15 +1,15 @@
 ## Additional Material
 
-Below is some additional material that might help you understand figures a bit more and how to present them in reports
+Below is some additional material that might help you understand figures a bit more and how to present them in reports. Thus, if you want further clarification on the `aes()` call or want to know how to combine several plots into one, then read on!
 
 ```{r lab3-preclass-data, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE}
 menrot <-read_csv("./data/03-s01/preclass/MentalRotationBehavioralData.csv")
 demog <- read_csv("./data/03-s01/preclass/demographics.csv")
 ``` 
 
-### More on `aes()` - when to and when not to! {-}
+### More on `aes()`
 
-The inclass activity has a short note about using the `aes()` call but we see people having issues with this so we thought a quick demonstration might help. Here is the code from the activity
+In this chapter, we added a short note about using the `aes()` call, but we see people having issues with this so we thought a quick demonstration might help. Here is the code from the previous activity:
 
 ```{r Ch3InClassTask6-more-hidden, echo=TRUE, fig.cap='Changing Shape and Size of Data Points'}
 menrot_angle_sex <- filter(menrot, CorrectResponse == "Correct") %>%
@@ -24,7 +24,7 @@ ggplot(data = menrot_angle_sex, aes(x = Angle, y = mean_Resp, group = Sex)) +
   theme_gray()
 ```
 
-Specifically, we are going to focus on the `geom_point()` line. Inside the `aes()` we stated `color = Sex, shape = Sex` and outside the `aes()` we stated, `size = 3`. Earlier we said, outside `aes()` means that all observations take the one value or color or type. Inside means that each observation within a condition takes the same value or color or type, but different conditions have different values/color/type. So based on that understanding, in the above plot, all shapes have the same size (i.e. 3), but there is a different shape and color of shape for each sex. Now let's demonstrate some alternatives.
+Specifically, we are going to focus on the `geom_point()` line. Inside the `aes()` we stated `color = Sex, shape = Sex` and outside the `aes()` we stated, `size = 3`. Earlier we said, outside `aes()` means that all observations take the one value or color or type. Inside means that each observation within a condition takes the same value or color or type, but different conditions have different values/color/type. So based on that understanding, in the above plot, all shapes have the same size (i.e., 3), but there is a different shape and color of shape for each sex. Now let's demonstrate some alternatives.
 
 1. All points have the same shape, color and size - nothing is in an `aes()`.
     i. here we need to state the color, shape and size we want all observations to have. We have chosen red for color (in quotes) shape style 3 (+) and size 6. We are not using a variable to split observations into groups.
@@ -38,8 +38,8 @@ ggplot(data = menrot_angle_sex, aes(x = Angle, y = mean_Resp, group = Sex)) +
   theme_bw()
 ```
 
-2. All points have the same shape and size but color is determined by `Sex` (so goes inside the `aes()`).
-    i. here we need to state the shape and size we want all dots to have. But this time we are giving the different levels within `Sex` (i.e male and female) different colors - by putting that inside the `aes()`
+2. All points have the same shape and size, but color is determined by `Sex` (so goes inside the `aes()`).
+    i. here we need to state the shape and size we want all dots to have. But this time we are giving the different levels within `Sex` (i.e., male and female) different colors - by putting that inside the `aes()`
 
 ```{r Ch3InClassTask6-more-hidden-12, echo=TRUE, fig.cap='All points have the same shape and size but color is determined by Sex'}
 ggplot(data = menrot_angle_sex, aes(x = Angle, y = mean_Resp, group = Sex)) + 
@@ -60,7 +60,7 @@ ggplot(data = menrot_angle_sex, aes(x = Angle, y = mean_Resp, group = Sex)) +
   theme_bw()
 ```
 
-You actually get a warning when doing this option. Why? Because if you had numerous options then you would have too many different shapes being created and it would cause issue with the code and may even crash it. Pay attention to warnings.
+You actually get a warning when doing this option. Why? Because if you had numerous options then you would have too many different shapes being created and it would cause issues with the code and may even crash it. Pay attention to warnings.
 
 And the reason you have to decide what is the best approach for displaying your data is because if all observations within a condition are the same, then showing them as all different colors and shapes makes very little sense. You always need to think about what you are trying to convey. Look at these two figures and think about which one is easier to understand that all observations are from the same condition. The one on the left! The one on the right suggests there is something different about all the observations.
 
@@ -81,9 +81,9 @@ a + b
 
 Hopefully that is beginning to become clearer. Insider the `aes()` means that all observations within a variable/condition are shown the same, but are different from observations from a different variable/condition. Outside the `aes()` means that all observations are shown as the same regardless of condition.
 
-### Combining Plots into one Figure {-}
+### Combining Plots into one Figure
 
-Space within a report is a commodity. Figures can be incredibly useful in getting information across in a very efficient manner, but when you have a strict word count, having multiple figures can really chew into the limit, given that each figure needs a legend and each legend counts.  One way to get around this is to merge figures together into one big figure that perhaps convey similar or related information. We are going to show you how to do that using a package called `patchwork`. 
+Space within a report is a commodity. Figures can be incredibly useful in getting information across in a very efficient manner, but when you have a strict word count, having multiple figures can really chew into the limit, given that each figure needs a legend and each legend counts. One way to get around this is to merge figures together into one big figure that perhaps convey similar or related information. We are going to show you how to do that using a package called `patchwork`. 
 
 ```{block, type = "danger"}
 **DO NOT install packages in the Boyd Orr labs; most are already there and just need called in through `library()`. If it is not there, speak to a member of the team.** 
@@ -92,7 +92,7 @@ Space within a report is a commodity. Figures can be incredibly useful in gettin
 ```
 <br>
 
-Thinking back to the preclass, plots like boxplots and histograms, when combined, can be incredibly useful in understanding the overall shape of your data and whether or not it fits the assumptions of inferential tests, something we will come on to later. If we were to create two separate plots, we might get something like this:
+Plots like boxplots and histograms, when combined, can be incredibly useful in understanding the overall shape of your data and whether or not it fits the assumptions of inferential tests, something we will come on to later. If we were to create two separate plots, we might get something like this:
 
 ```{r ch3-add-1, include=TRUE, message=FALSE, fig.cap='A histogram of distribution of Mean Time counts by Sex'}
 
@@ -127,7 +127,7 @@ ggplot(data = menrot_box_correct,
 ```
 <br>
 
-Now given that they both divide the data by sex, you can start to see how the figure legend for each plot becomes a bit repetitive, and how combining them into one figure would potentially make things easier.  There are a number of packages to do this, but `patchwork` is very straightforward and flexible.
+Now given that they both divide the data by sex, you can start to see how the figure legend for each plot becomes a bit repetitive, and how combining them into one figure would potentially make things easier. There are a number of packages to do this, but `patchwork` is very straightforward and flexible.
 
 Let's now call in `patchwork`
 
@@ -174,7 +174,7 @@ p_hist
 
 **Note:** You will see a warning from the histogram plot about selecting a binwidth. We haven't really looked at this yet but will do in due course. If you wanted to "fix" that warning then changing the histrogram code to something like `+ geom_histogram(binwidth = 100)` might work. The value that you enter is relative to the scale of your data. A binwidth of 1 would create a bin every increase of 1 ms. A binwidth of 100 creates a bin every 100 ms. 
 
-So far so nothing exciting. Looks just like what we have seen in the lab. Didn't we say we wanted both the plots in a single figure, right? Well to do that in patchwork, we simply "add" the plots together using a plus sign (+), as such:
+So far so nothing exciting. Looks just like what we have seen before. Didn't we say we wanted both the plots in a single figure, right? Well to do that in patchwork, we simply "add" the plots together using a plus sign (+), as such:
 
 ```{r comb1, fig.cap='A boxplot (A - left) of the spreads of Mean Time for Correct Responses, and histogram (B - right) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)'}
 p_box + p_hist
@@ -188,7 +188,7 @@ Awesome, that it? No! We can also change the configuration of the plots in the c
 p_box / p_hist
 ```
 
-And now we refer to top and bottom, rather than left and right.  In fact, `patchwork` is really flexible and can work with multiple plots and arrangements.  Hypothetically, say you had three plots and wanted two on top of one, then you would use the approach of combining "+" and "/" as such:
+And now we refer to top and bottom, rather than left and right.  In fact, `patchwork` is really flexible and can work with multiple plots and arrangements. Hypothetically, say you had three plots and wanted two on top of one, then you would use the approach of combining "+" and "/" as such:
 
 ```{r comb3, eval = FALSE}
 (plot1 + plot2)/plot3
