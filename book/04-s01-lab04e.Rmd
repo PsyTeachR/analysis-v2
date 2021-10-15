@@ -2,9 +2,9 @@
 
 Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### InClass Activities
+### Continuous Data and Normal Distribution Tasks
 
-#### InClass Task 1
+#### Task 1
 
 * First we set up our range of IQ values from 40 to 160
 * Then we plot the distribution of IQ_data, where we have M = 100 and SD = 10
@@ -23,7 +23,7 @@ ggplot(IQ_data, aes(IQ_range)) +
 
 [Return to Task](#Ch4InClassQueT1)
 
-#### InClass Task 2
+#### Task 2
 
 ```{r, fig.cap = 'Normal Distribution shown on a scale of -10 to 10, with a mean = 0, sd = 1'}
 ND_data <- tibble(ND_range = seq(-10,10,0.05))
@@ -36,7 +36,7 @@ ggplot(ND_data, aes(ND_range)) +
 
 [Return to Task](#Ch4InClassQueT2)
 
-#### InClass Task 3
+#### Task 3
 
 * Key thing is to set lower.tail to FALSE to calculate the above area. When using `pnorm()` you state the actual cut-off even if using `lower.tail = FALSE`. If using `pbinom()` you state the cut-off minus one if using `lower.tail = FALSE`
 
@@ -46,7 +46,7 @@ pnorm(190, 170, 7, lower.tail = FALSE)
 
 [Return to Task](#Ch4InClassQueT3)
 
-#### InClass Task 4
+#### Task 4
 
 * The highlighted area is 185cm and above. 
 * Key thing is to set lower.tail to FALSE to calculate the area from the cut-off and above.
@@ -57,7 +57,7 @@ pnorm(185, 170, 7, lower.tail = FALSE)
 
 [Return to Task](#Ch4InClassQueT4)
 
-#### InClass Task 5
+#### Task 5
 
 * Question 1 - the lowest IQ score a student must have to be in the top 5% of the above distribution.
 
@@ -75,21 +75,21 @@ pnorm(105, 100, 15, lower.tail = FALSE) -
 [Return to Task](#Ch4InClassQueT5)
 
 
-### Return of the Binomial
+<!-- ### Return of the Binomial -->
 
-#### Task 1
+<!-- #### Task 1 -->
 
-```{r, eval = FALSE}
-blocks_5k <- replicate(n = 5000, 
-                       sample(0:1,
-                              size = 60, 
-                              replace = TRUE, 
-                              c(2/3,1/3)) %>% sum())
-```
+<!-- ```{r, eval = FALSE} -->
+<!-- blocks_5k <- replicate(n = 5000,  -->
+<!--                        sample(0:1, -->
+<!--                               size = 60,  -->
+<!--                               replace = TRUE,  -->
+<!--                               c(2/3,1/3)) %>% sum()) -->
+<!-- ``` -->
 
-[Return to Task](#Ch4InClassQueBinomial)
+<!-- [Return to Task](#Ch4InClassQueBinomial) -->
 
-### Test Yourself Activities
+### Practice Your Skills
 
 #### Load in the Library
 
@@ -104,7 +104,7 @@ set.seed(1409)
 
 [Return to Task](#Ch4AssignQueLib)
 
-#### Assignment Task 1
+#### Task 1
 
 ```{r t1}
 t1 <- 3/4
@@ -115,7 +115,7 @@ t1 <- .75
 
 [Return to Task](#Ch4AssignQueT1)
 
-#### Assignment Task 2
+#### Task 2
 
 ```{r t2}
 t2 <- (1/4) * (1/4) * (1/4) * (1/4)
@@ -126,7 +126,7 @@ t2 <- .004
 
 [Return to Task](#Ch4AssignQueT2)
 
-#### Assignment Task 3
+#### Task 3
 
 ```{r t3}
 t3 <- (1/4) * (1/3) * (1/2) * (0/1)
@@ -138,7 +138,7 @@ t3 <- 0
 
 [Return to Task](#Ch4AssignQueT3)
 
-#### Assignment Task 4
+#### Task 4
 
 ```{r t4}
 t4 <- dbinom(17, 100, 1/4)
@@ -148,7 +148,7 @@ t4 <- dbinom(17, 100, 1/4)
 
 [Return to Task](#Ch4AssignQueT4)
 
-#### Assignment Task 5
+#### Task 5
 
 * This could have been answered using either `pbinom()` or `dbinom()`. The trick is to remember where to set the cut-off depending on the function used.
 
@@ -161,7 +161,7 @@ t5 <- dbinom(30:100, 100, 1/4) %>% sum()
 
 [Return to Task](#Ch4AssignQueT5)
 
-#### Assignment Task 6
+#### Task 6
 
 * The appropriate code would be: 
 
@@ -177,7 +177,7 @@ glimpse(t6)
 
 [Return to Task](#Ch4AssignQueT6)
 
-#### Assignment Task 7
+#### Task 7
 
 ```{r t7}
 t7 <- pnorm(90, 100, 10, lower.tail = TRUE)
@@ -187,7 +187,7 @@ t7 <- pnorm(90, 100, 10, lower.tail = TRUE)
 
 [Return to Task](#Ch4AssignQueT7)
 
-#### Assignment Task 8
+#### Task 8
 
 ```{r t8}
 t8 <- pnorm(120, 100, 10, lower.tail = FALSE)
@@ -197,7 +197,7 @@ t8 <- pnorm(120, 100, 10, lower.tail = FALSE)
 
 [Return to Task](#Ch4AssignQueT8)
 
-#### Assignment Task 9
+#### Task 9
 
 ```{r t9}
 t9 <- qnorm(.95, 100, 10) - qnorm(.05, 100, 10)
@@ -207,7 +207,7 @@ t9 <- qnorm(.95, 100, 10) - qnorm(.05, 100, 10)
 
 [Return to Task](#Ch4AssignQueT9)
 
-#### Assignment Task 10
+#### Task 10
 
 ```{r t10}
 t10 <- 79.46

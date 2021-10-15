@@ -1,0 +1,51 @@
+# Revisiting Probability Distributions
+
+## Overview
+
+Probability is to some degree the cornerstone of any Psychological theory that is based on quantitative analysis. We establish an outcome (e.g., a difference between two events), then establish the probability of that outcome against some model or standard. Probability is important for quantifying the uncertainty in our conclusions. You will have already heard about probability in lectures/journal articles/etc., but we will try to help you gain a deeper understanding of probability through the course of the next few chapters and in how we use it to make an inference about a `r glossary("population")`. 
+
+We will start by looking at some of the general ideas behind probability. We won't be using a lot of Psychology data or concepts here as it can be easier to understand probability first in everyday concrete examples. That said, whilst reading the examples, and trying them out, think about how they might relate to Psychology examples and be sure to ask questions. 
+
+This preclass is a bit of a read so take your time and try to understand it fully. Much of it will be familiar though from the PsyTeachR <a href="https://psyteachr.github.io/" target = "_blank">Data Skills book</a> as it recaps some of the ideas. Also, there are no cheatsheets for this chapter as we will not be using a specific package. However you can make full use of the R help function (e.g. `?sample`) when you are not clear on what a function does. Also, remember what we have said previously; do not be shy to do what we do and run a Google Search for finding out more about some of the stats concepts covered here. There are loads of videos and help pages out there with clear examples to explain difficult concepts. 
+
+In this chapter you will:
+
+1. Revise probability concepts that we discussed in the PsyTeachR <a href="https://psyteachr.github.io/" target = "_blank">Data Skills book</a>
+2. Calculate probabilities 
+3. Create probability distributions
+4. Make estimations from probability distributions.
+
+`r hide("Portfolio Point - Samples, Populations and Inference")`
+```{block, type ="info"}
+The population is the whole group that you want to know something about - everyone or everything in that group. The sample is the part of the population that you are testing. The sample is always smaller than the population as it is unlikely that you would ever be able to test everyone in a population, but the sample should be representative of the population based on random sampling. This means that even though you are not using the whole population, the sample you are using represents the whole population because you randomly sampled people into it. If this is true, that the sample is representative of the population, then testing on the sample allows you to make some inference about the population; you infer a characteristic of the population from testing on the sample.
+```
+`r unhide()`
+
+<br>
+<span style="font-size: 22px; font-weight: bold; color: var(--black);">Discrete versus Continuous Data</span>
+
+Let's recap questions on how the **level of measurement** can alter the way you tackle probability - i.e., whether the data is `r glossary("discrete")` or `r glossary("continuous")`.
+
+<span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>
+
+**Discrete** data can only take specific/certain/exact values (e.g., groups, integers). For example, the number of  participants in an experiment would be discrete - we can't have half a participant! Discrete variables can also be further broken down into **nominal/categorical** and **ordinal** variables. 
+<br>
+Fill in the blanks in the below sentences using the words: ordinal, nominal/categorical.
+
+* `r mcq(c(answer = "Nominal", "Ordinal"))` data is based on a set of categories that have no natural ordering (e.g., left or right handed). For example, you could separate participants according to left or right handedness or by course of study (e.g., psychology, biology, history, etc.).
+
+* `r mcq(c("Nominal", answer="Ordinal"))` data is a set of categories that have a natural ordering; you know which is the top/best and which is the worst/lowest, but the difference between categories may not be constant. For example, you could ask participants to rate the attractiveness of different faces based on a 5-item Likert scale (very unattractive, unattractive, neutral, attractive, very attractive).
+
+**Continuous** data on the other hand can take any value in the scale being measured. For example, we can measure age on a continuous scale (e.g., we can have an age of 26.55 years), also reaction time or the distance you travel to university. 
+
+Fill in the blanks in the below sentences using the two remaining levels of measurement not offered above:
+
+* Continuous data can be broken into `r fitb(c("interval", "ratio"), width = 10, ignore_case = TRUE)` or `r fitb(c("interval", "ratio"), width = 10, ignore_case = TRUE)` data.
+
+When you read journal articles or when you are working with data, it is really good practice to take a minute or two to figure out the type of variables you are reading about and/or working with. 
+
+`r hide("Explain This - I don't get these answers")`
+```{block, type ="info"}
+The four level of measurements are nominal (also called categorical), ordinal, interval, and ratio. Discrete data only uses categories or whole numbers and is therefore either nominal or ordinal data. Continuous data can take any value, e.g., 9.00 or 9.999999999, and so is either interval or ratio data.
+```
+`r unhide()`

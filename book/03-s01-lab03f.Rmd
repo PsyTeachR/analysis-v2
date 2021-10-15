@@ -86,8 +86,6 @@ Hopefully that is beginning to become clearer. Insider the `aes()` means that al
 Space within a report is a commodity. Figures can be incredibly useful in getting information across in a very efficient manner, but when you have a strict word count, having multiple figures can really chew into the limit, given that each figure needs a legend and each legend counts. One way to get around this is to merge figures together into one big figure that perhaps convey similar or related information. We are going to show you how to do that using a package called `patchwork`. 
 
 ```{block, type = "danger"}
-**DO NOT install packages in the Boyd Orr labs; most are already there and just need called in through `library()`. If it is not there, speak to a member of the team.** 
-
 `patchwork` is unlikely to be on our lab machines so please only try this on your own machine. If you haven't previously installed the `patchwork` package on your own machine before, you will have to install it first, e.g. `install.packages("patchwork")`.
 ```
 <br>
