@@ -367,7 +367,7 @@ This tells us that the probability is p = `r p1`. If we now put that probability
 qbinom(p1, 100, .5, lower.tail = TRUE)
 ```
 
-This can be stated as the number of heads required to obtain a probability of `r p1` is `r pbinom(49, 100, .5)`. So the `qbinom()` function is useful if you want to know the minimum number of successes (‘heads’) that would be needed to achieve a particular probability. This time the cut-off we specify is not the number of ‘heads’ we want but the **probability** we want.
+This can be stated as the number of heads required to obtain a probability of `r p1` is `r qbinom(p1, 100, .5)`. So the `qbinom()` function is useful if you want to know the minimum number of successes (‘heads’) that would be needed to achieve a particular probability. This time the cut-off we specify is not the number of ‘heads’ we want but the **probability** we want.
 
 For example say we want to know the minimum number of ‘heads’ out of 10 flips that would result in a 5% heads success rate (a probability of .05), we would use the following code.
 
