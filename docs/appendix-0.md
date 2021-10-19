@@ -6,6 +6,8 @@ This book has been the work of many people, both staff and students within the S
 
 We hugely appreciate all comments and help in creating the material contained within this book.
 
+A special shout-out to all students who worked through this book and pointed out errors or made suggestions: You helped us to consistently increase the quality of this book. Thanks.
+
 
 <!-- # Stats by Hand {-} -->
 
