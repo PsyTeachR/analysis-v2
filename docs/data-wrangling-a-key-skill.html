@@ -1666,14 +1666,15 @@ musical_means &lt;- summarise(screening_groups_new, mean_score = mean(Total_QHC)
 <h4>
 <span class="header-section-number">2.5.2.4</span> Task 8<a class="anchor" aria-label="anchor" href="#task-8"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data-wrangling-a-key-skill.html#cb74-1" aria-hidden="true" tabindex="-1"></a>aq_scores2 <span class="ot">&lt;-</span> responses <span class="sc">%&gt;%</span> </span>
-<span id="cb74-2"><a href="data-wrangling-a-key-skill.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Q1<span class="sc">:</span>Q10,</span>
-<span id="cb74-3"><a href="data-wrangling-a-key-skill.html#cb74-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Question"</span>,</span>
-<span id="cb74-4"><a href="data-wrangling-a-key-skill.html#cb74-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Response"</span>),</span>
-<span id="cb74-5"><a href="data-wrangling-a-key-skill.html#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(qformats, <span class="st">"Question"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb74-6"><a href="data-wrangling-a-key-skill.html#cb74-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(scoring, <span class="fu">c</span>(<span class="st">"QFormat"</span>, <span class="st">"Response"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb74-7"><a href="data-wrangling-a-key-skill.html#cb74-7" aria-hidden="true" tabindex="-1"></a>             <span class="fu">group_by</span>(Id) <span class="sc">%&gt;%</span> </span>
-<span id="cb74-8"><a href="data-wrangling-a-key-skill.html#cb74-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(Score))</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">aq_scores2</span> <span class="op">&lt;-</span> <span class="va">responses</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span>,
+               names_to <span class="op">=</span> <span class="st">"Question"</span>,
+               values_to <span class="op">=</span> <span class="st">"Response"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">inner_join</span><span class="op">(</span><span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">inner_join</span><span class="op">(</span><span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+             <span class="fu">group_by</span><span class="op">(</span><span class="va">Id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+             <span class="fu">summarise</span><span class="op">(</span>AQ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><a href="data-wrangling-a-key-skill.html#Ch2InClassQueT8">Return to Task</a></p>
 </div>
 </div>
@@ -2136,7 +2137,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-10-15.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-10-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
