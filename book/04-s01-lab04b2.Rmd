@@ -220,7 +220,7 @@ Another example might be, what would be the probability of a given student being
 pnorm(195, 170, 7, lower.tail = FALSE)
 ```
 
-This tells us that finding the probability of someone 150cm or shorter in our class is about **p = `r pnorm(195, 170, 7, lower.tail = TRUE)`**. Or **`r round(pnorm(195, 170, 7, lower.tail = TRUE)*100, 2)`%**. So again, really unlikely.
+This tells us that finding the probability of someone 195cm or taller in our class is **`r round(pnorm(195, 170, 7, lower.tail = FALSE)*100, 2)`%**. So again, really unlikely.
 
 Did you notice something different about the cut-off for this example and from when using the `dbinom()` function and looking above a cut-off? Why might that be? We will discuss in a second but first a quick task.
 
