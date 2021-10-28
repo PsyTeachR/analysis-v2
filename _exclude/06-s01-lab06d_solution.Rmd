@@ -6,9 +6,9 @@
 
 Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### PreClass Activities
+### Binomial Test Activities
 
-#### PreClass Task 1
+#### Task 1
 ```{r ns_data_temp, eval  = TRUE}
 ns_data <- tibble(participant = 1:22,
                   valid_rt = c(631.2,800.8,595.4,502.6,604.5,
@@ -20,7 +20,7 @@ ns_data <- tibble(participant = 1:22,
 
 [Return to Task](#Ch6PreClassQueT1)
 
-#### PreClass Task 2
+#### Task 2
 ```{r count_years, eval  = TRUE}
 woods_mean <- 590
 
@@ -33,7 +33,7 @@ n_participants <- ns_data %>%
 
 [Return to Task](#Ch6PreClassQueT2)
 
-#### PreClass Task 3
+#### Task 3
 
 * You can use the density function:
 ```{r Ch6PreClassQueT3-1, eval  = TRUE}
@@ -59,7 +59,9 @@ It is better practice to use the first two solutions, which pull the values stra
 
 [Return to Task](#Ch6PreClassQueT3)
 
-#### PreClass Task 4
+### One-Sample t-test Activities
+
+#### Task 4
 
 * For `ns_data_mean` use `summarise()` to calculate the mean and then `pull()` the value.
 * For `ns_data_sd` use `summarise()` to calculate the sd and then `pull()` the value.
@@ -84,7 +86,7 @@ cat("The standard deviation was", ns_data_sd, "\n")
 
 [Return to Task](#Ch6PreClassQueT4)
 
-#### PreClass Task 5
+#### Task 5
 ```{r t_obs, eval  = TRUE}
 t_obs <- (ns_data_mean - woods_mean) / (ns_data_sd / sqrt(nrow(ns_data)))
 ```
@@ -93,7 +95,7 @@ t_obs <- (ns_data_mean - woods_mean) / (ns_data_sd / sqrt(nrow(ns_data)))
 
 [Return to Task](#Ch6PreClassQueT5)
 
-#### PreClass Task 6
+#### Task 6
 
 If using values straight from ns_data, and multiplying by 2 for a two-tailed test, you would do the following:
 ```{r p_value1, eval  = TRUE}
@@ -111,7 +113,7 @@ pval2 <- pt(t_obs, 21, lower.tail = FALSE) * 2
 
 [Return to Task](#Ch6PreClassQueT6)
 
-#### PreClass Task 7
+#### Task 7
 
 The t-test would be run as follows, with the output shown below:
 
@@ -121,7 +123,7 @@ t.test(pull(ns_data, valid_rt), mu = woods_mean)
 
 [Return to Task](#Ch6PreClassQueT7)
 
-#### PreClass Task 8
+#### Task 8
 
 According to the one-sample t-test these participants are responding in a similar manner as the participants from the original study, and as such, we may be inclined to assume that the recruitment process of our pilot experiment is working well.
 

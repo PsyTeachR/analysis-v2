@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis</title>
+<meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
+<meta name="description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/analysis-v2/nhst-binomial-test-and-one-sample-t-test.html">
+<meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
+<meta property="og:description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis">
+<meta name="twitter:description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
+<meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Analysis</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="starting-with-r-markdown.html"><span class="header-section-number">1</span> Starting with R Markdown</a></li>
+<li><a class="" href="data-wrangling-a-key-skill.html"><span class="header-section-number">2</span> Data-Wrangling: A Key Skill</a></li>
+<li><a class="" href="data-visualisation-through-ggplot2.html"><span class="header-section-number">3</span> Data Visualisation Through ggplot2</a></li>
+<li><a class="" href="revisiting-probability-distributions.html"><span class="header-section-number">4</span> Revisiting Probability Distributions</a></li>
+<li><a class="active" href="nhst-binomial-test-and-one-sample-t-test.html"><span class="header-section-number">5</span> NHST: Binomial test and One-Sample t-test</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/analysis-v2">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="nhst-binomial-test-and-one-sample-t-test" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> NHST: Binomial test and One-Sample t-test<a class="anchor" aria-label="anchor" href="#nhst-binomial-test-and-one-sample-t-test"><i class="fas fa-link"></i></a>
+</h1>
+<div id="overview-5" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-5"><i class="fas fa-link"></i></a>
+</h2>
+<p>This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use probability to establish the likelihood of that statistic occurring given certain situations. The aim is to draw inferences from a <a class="glossary" target="_blank" title="A subset of the population that you wish to make an inference about through your test." href="https://psyteachr.github.io/glossary/s#sample">sample</a> to a <a class="glossary" target="_blank" title="All members of a group that we wish to generalise our findings to. E.g. all students taking Psychology at the University of Glasgow. We draw our testing sample from the population." href="https://psyteachr.github.io/glossary/p#population">population</a>.</p>
+<p>However these concepts and ideas are hard to grasp at first and take playing around with data a few times to help get a better understanding of them. As such, to demonstrate these ideas further, and to start introducing commonly used tests and approaches to reproducible science, we will look at data related to sleep. The study we will look at, to explore NHST more, is by one of our team members and makes use of a well known task in Psychology, the Posner Paradigm: <a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods et al. (2009). The clock as a focus of selective attention in those with primary insomnia: An experimental study using a modified Posner paradigm </a>.</p>
+<p>In this chapter, through the activities, we will:</p>
+<ol style="list-style-type: decimal">
+<li>Introduce testing a hypothesis through null hypothesis significance testing (NHST).</li>
+<li>Learn about Binomial tests.</li>
+<li>Learn about One-sample t-tests.</li>
+</ol>
+</div>
+<div id="brief-introduction-to-nhst" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Brief Introduction to NHST<a class="anchor" aria-label="anchor" href="#brief-introduction-to-nhst"><i class="fas fa-link"></i></a>
+</h2>
+<p>This will be a very short introduction to the concept of NHST before we dive into the more practical aspects. The main idea of NHST is that you are testing that there is no significant difference between two values - let's say two means for the moment. The null hypothesis states that there is no difference between the two means (or groups) of interest. And as such, any test that you do on the difference between the means of those two groups is trying to determine the probability of finding a difference of the size you found, or larger, in the sample you are using in your experiment, if there is actually no real difference between the two groups in the population.</p>
+<p>Let's say we ran an experiment and collected a sample for it: In the experiment, we have two groups, A and B, and we calculated the difference between the means of those two groups to be <code>D_diff = 7.39</code>. Putting that in terms of the Null Hypothesis (<code>H_0</code>) we are now wanting to know: What is the probability of finding a difference between means of -7.39 (or larger) if there is no real difference between the two groups in the population? In order to test this question (our Null Hypothesis) we need to compare our observed difference against a distribution of possible differences to see how likely the observed difference is in that distribution - extreme values, i.e., large differences between groups, are located in the tails of a distribution.</p>
+<p>The <strong>p-value</strong> is the probability of finding a difference equal to or greater than the one we found in our sample if there is no difference in the population. Thus, let's say our p-value is <code>p = .017</code>. This indicates a very small probability of finding a difference equal or greater in the population if there was no difference. The obtained p-value is also smaller than the standard cut-off that we use in Psychology of <span class="math inline">\(p &lt;= .05\)</span>. As such we would reject our null hypothesis and suggest that there is a significant difference between the two groups.</p>
+<p>The following resource by Daniel Lakens is very helpful in deepening the understanding of the p-value and we recommend taking a look at it: <a href="data/06-s01/Understanding-common-misconceptions-about-p-values.pdf">Understanding common misconceptions about p-values</a></p>
+<!-- 
+<div class='webex-solution'><button>Portfolio Point - Additional background on The Posner Paradigm</button>
+ -->
+<!-- ```{block, type ="info"} -->
+<!-- You don't need to read this to complete the activities it might help it make more sense.  -->
+<!-- The Posner paradigm (Posner, 1980), or the Posner Cueing task, is an attentional shift task, often used in a variety of fields to test spatial attention and how this is impacted by disorders or injury. It works by having participants look at a fixation cross in the center of a screen. To either side is an empty box. After a short delay, a cue (e.g. an arrow, an asterisk, or some other attention grabbing image) appears in one of the boxes (e.g. the box to the left of the fixation). This stays on screen for a few hundred milliseconds and is then replaced by a second image called the target (e.g. a different shape or image). Participants then have to respond left or right depending on which side of the fixation the target appeared. The dependent variable (DV) is the time taken to respond to the target appearing.  -->
+<!-- Key to the task is that in most trials the target will appear on the same side as the cue - the cue facilitates the target - and so participants will be quicker to respond. These are called valid trials. However, on some occasions the target will appear on the other side from the cue - e.g. the cue is on the left but the target appears on the right - and these are called invalid trials; participants will be slower to respond here as the cue misleads the participant.  -->
+<!-- From that, you should be starting to get an idea of how a Posner paradigm can help to measure attention and how it can help determine if people have issues in shifting attention (particularly from the invalid trials). -->
+<!-- Reference: -->
+<!-- <a href="https://www.tandfonline.com/doi/abs/10.1080/00335558008248231" target = "_blank">Posner, M. (1980) Orienting of attention. Quarterly Journal of Experimental Psychology, 32(1), 3-25</a> -->
+<!-- ``` -->
+<!-- 
+</div>
+ -->
+
+</div>
+<div id="background-of-data-sleep" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Background of data: Sleep<a class="anchor" aria-label="anchor" href="#background-of-data-sleep"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods and colleagues (2009)</a> were interested in how the attention of people with poor sleep (Primary Insomnia - PI) was more tuned towards sleep-related stimuli than the attention of people with normal sleep (NS). Woods et al. hypothesised that participants with poor sleep would be more attentive to images related to a lack of sleep (i.e., an alarm clock showing 2AM) than participants with normal sleep would be. To test their hypothesis, the authors used a modified Posner paradigm, shown in Figure 1 of the paper, where images of an alarm clock acted as the cue on both valid and invalid trials, with the symbol <strong>( .. )</strong> being the target.</p>
+<p>As can be seen in Figure 3 of <a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods et al.</a> found that, on valid trials, whilst Primary Insomnia participants were faster in responding to the target, suggesting a slight increase in attention to the sleep related cue compared to the Normal Sleepers, there was no difference between groups. In contrast, for invalid trials, where poor sleep participants were expected to be distracted by the cue, the authors did indeed find a significant difference between groups consistent with their alternative hypothesis <span class="math inline">\(H_{1}\)</span>. Woods et al., concluded that poor sleepers (Primary Insomnia participants) were slower to respond to the target on invalid trials, compared to Normal Sleepers, due to the attention of the Primary Insomnia participants being drawn to the misleading cue (the alarm clock) on the invalid trials. This increased attention to the sleep-related cue led to an overall slower response to the target on these invalid trials.</p>
+<p>Now, imagine you are looking to replicate this finding from Woods et al. (2009). As a pilot study, to test recruitment procedures, you gather data from 22 Normal Sleepers. It is common to use only the control participants in a pilot (in this case the NS participants) as they are more plentiful in the population than the experimental group (in this case PI participants) and saves using participants from the PI group which may be harder to obtain in the long run.</p>
+<p>After gathering your data, you want to check the recruitment process: Whether or not you were able to draw a sample of normal sleepers similar to the sample drawn by Woods et al. To keep things straightforward, allowing us to understand the analyses better, we will only look at valid trials today, in NS participants, but in effect you could perform this test on all groups and conditions.</p>
+<!-- **ManyLabs - an approach to reproducible science** -->
+<!-- As you will learn from reading papers around the reproduciblity crisis, findings from experiments tend to be more reproducible when we increase participant numbers as this increases the <a class='glossary' target='_blank' title='The probability of rejecting the null hypothesis when it is false.' href='https://psyteachr.github.io/glossary/p#power'>power</a> of the study's design; the likelihood of an experimental design detecting an effect, of a given size, when there is an effect to detect.  -->
+<!-- 
+<div class='webex-solution'><button>Portfolio Point - The power of what?</button>
+ -->
+<!-- ```{block, type ="info"} -->
+<!-- Power is a rather tricky concept in research that essentially amounts to the probability of your design being able to detect a significant difference when there is actually a significant difference to detect.  -->
+<!-- Power is an interplay between three other aspects of research design:  -->
+<!-- * alpha - your critical p-value (normally .05);  -->
+<!-- * the sample size (n);  -->
+<!-- * the effect size - how big is the difference (measured in a number of ways).  -->
+<!-- If you know any three of these four elements (power, alpha, effect size, n) you can calculate the fourth. We will save further discussion of power until Chapter 8 but if you want to read ahead then this blog is highly recommended: <a href="https://pigee.wordpress.com/2016/09/13/the-power-dialogues/" target ="_blank">The Power Dialogues</a>. -->
+<!-- ``` -->
+<!-- 
+</div>
+ -->
+<!-- <br> -->
+<!-- However, running several hundred participants in your one study can be a significant time and financial investment. Fortunately, the idea of a "ManyLabs" project can solve this problem. In this scenario the same experiment is run in various locations, all using the same procedure, and then the data is collapsed together and analysed as one. You can see a nice example of a Many Labs project in the paper <a href="" target = "_blank">Investigating Variation in Replicability (Klein et al., 2014)</a>. See how many labs and researchers are involved? Perhaps this is a better approach than lots of researchers working individually?  -->
+<!-- You think this all sounds a great idea so in your quest to be a collaborative reproducible researcher, and as a high-five to #TeamScience, you have joined a ManyLabs study replicating the findings of Woods et al. (2009). And that study is the premis for today's activities so let's start by having a quick-run through of the background of the experiment. -->
+<!-- **The Background** -->
+<!-- <a href = "https://www.sciencedirect.com/science/article/pii/S0005796708002738" target = "_blank">Woods and colleagues (2009)</a> were interested in how the attention of people with poor sleep (Primary Insomnia - PI) was more tuned towards sleep-related stimuli than the attention of people with normal sleep (NS). Woods et al., hypothesised that participants with poor sleep would be more attentive to images related to a lack of sleep (i.e. an alarm clock showing 2AM) than participants with normal sleep would be. To test their hypothesis, the authors used a modified Posner paradigm, shown in Figure 1 of the paper, where images of an alarm clock acted as the cue on both valid and invalid trials, with the symbol **( .. )** being the target.  -->
+<!-- As can be seen in Figure 3 of <a href = "https://www.sciencedirect.com/science/article/pii/S0005796708002738" target = "_blank">Woods et al.,</a> the authors found that, on valid trials, whilst Primary Insomnia participants were faster in responding to the target, suggesting a slight increase in attention to the sleep related cue compared to the Normal Sleepers, there was no difference between groups. In contrast, for invalid trials, where poor sleep participants were expected to be distracted by the cue, the authors did indeed find a significant difference between groups consistent with their alternative hypothesis $H_{1}$. Woods et al., concluded that poor sleepers (Primary Insomnia participants) were slower to respond to the target on invalid trials, compared to Normal Sleepers, due to the attention of the Primary Insomnia participants being drawn to the misleading cue (the alarm clock) on the invalid trials. This increased attention to the sleep-related cue led to an overall slower reponse to the target on these invalid trials. -->
+<!-- ```{r ch6-preclass-setup, echo = FALSE, message=FALSE, warning=FALSE, results='asis'} -->
+<!-- # all data in here to make inline code work  -->
+<!-- # solutions are shown for students at the bottom -->
+<!-- # key values -->
+<!-- n_new <- 22 -->
+<!-- orig_mean <- 590 -->
+<!-- orig_sd <- 94 -->
+<!-- #Task 1 -->
+<!-- ns_data <- tibble(participant = 1:n_new, -->
+<!--                   valid_rt = c(631.2,800.8,595.4,502.6,604.5, -->
+<!--                                516.9,658.0,502.0,496.7,600.3, -->
+<!--                                714.6,623.7,634.5,724.9,815.7, -->
+<!--                                456.9,703.4,647.5,657.9,613.2, -->
+<!--                                585.4,674.1)) -->
+<!-- #Task 2 -->
+<!-- woods_mean <- 590 -->
+<!-- n_participants <- ns_data %>% -->
+<!--   filter(valid_rt > woods_mean) %>% -->
+<!--   nrow() -->
+<!-- #Task 3 -->
+<!-- pval_dbinom <- sum(dbinom(n_participants:nrow(ns_data), nrow(ns_data), .5)) -->
+<!-- #Task 4 -->
+<!-- ns_data_mean <- ns_data %>% summarise(m = mean(valid_rt)) %>% pull(m)   -->
+<!-- ns_data_sd <- ns_data %>% summarise(sd = sd(valid_rt)) %>% pull(sd)  -->
+<!-- #Task 5 -->
+<!-- t_obs <- (ns_data_mean - woods_mean) / (ns_data_sd / sqrt(nrow(ns_data))) -->
+<!-- #Task 6 -->
+<!-- pval <- pt(abs(t_obs), nrow(ns_data) - 1L, lower.tail = FALSE) * 2L -->
+<!-- #Task 7 -->
+<!-- ttest <- t.test(pull(ns_data, valid_rt), mu = woods_mean) -->
+<!-- ``` -->
+<!-- As we said above, your lab is now part of a ManyLabs project that is looking to replicate this finding from Woods et al., (2009). As a <a class='glossary' target='_blank' title='' href='https://psyteachr.github.io/glossary/p#pilot'>pilot study</a>, to test recruitment procedures, as well as the experimental paradigm and analyses pipeline, each lab gathers data from 22 Normal Sleepers. It is common to use only the control participants in a pilot (in this cas the NS participants) as they are more plentiful in the population than the experimental group (in this case PI participants) and saves using participants from the PI group which may be harder to obtain in the long run. -->
+<!-- After gathering your data, we want to check the recruitment process and whether or not you have been able to draw a sample of normal sleepers similar to the sample drawn by Woods et al. To keep things straightforward, allowing us to understand the analyses better, we will only look at valid trials today, in NS participants, but in effect you could perform this test on all groups and conditions. -->
+<p><strong>Are These Participants Normal Sleepers (NS)?</strong></p>
+<p>Below is the data from the 22 participants you have collected in your pilot study. Their mean reaction time for valid trials (in milliseconds) is shown in the right hand column, <code>valid_rt</code>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ch6-preclass-nsdata">Table 5.1: </span>Pilot Data for 22 Participants on a Sleep-Related Posner Paradigm. ID is shown in participant column and mean reaction time (ms) on valid trails is shown in valid_rt column.</caption>
+<thead><tr class="header">
+<th align="center">participant</th>
+<th align="center">valid_rt</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">631.2</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">800.8</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">595.4</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">502.6</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">604.5</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">516.9</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">658.0</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">502.0</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">496.7</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">600.3</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">714.6</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">623.7</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">634.5</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">724.9</td>
+</tr>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">815.7</td>
+</tr>
+<tr class="even">
+<td align="center">16</td>
+<td align="center">456.9</td>
+</tr>
+<tr class="odd">
+<td align="center">17</td>
+<td align="center">703.4</td>
+</tr>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">647.5</td>
+</tr>
+<tr class="odd">
+<td align="center">19</td>
+<td align="center">657.9</td>
+</tr>
+<tr class="even">
+<td align="center">20</td>
+<td align="center">613.2</td>
+</tr>
+<tr class="odd">
+<td align="center">21</td>
+<td align="center">585.4</td>
+</tr>
+<tr class="even">
+<td align="center">22</td>
+<td align="center">674.1</td>
+</tr>
+</tbody>
+</table></div>
+<p>If you look at <a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods et al (2009)</a> Figure 3 you will see that, on valid trials, the mean reaction time for NS participants was 590 ms with a SD = 94 ms. As above, as part of our pilot study, we want to confirm that the 22 participants we have gathered are indeed Normal Sleepers. We will use the mean and SD from Woods et al., to confirm this. Essentially we are asking if the participants in the pilot are responding in a similar fashion as NS participants in the original study.</p>
+<p>When using NHST we are working with both a null hypothesis (<span class="math inline">\(H_{0}\)</span>) and an alternative hypothesis (<span class="math inline">\(H_{1}\)</span>). Thinking about this experiment it makes some logical sense to think about it in terms of the null hypothesis (<span class="math inline">\(\mu1 = \mu2\)</span>). So we could phrase our hypothesis as: "We hypothesise that there is no significant difference in mean reaction times to valid trials on the modified Posner task between the participants in the pilot study and the participants in the original study by Woods et al."</p>
+<p>There is actually a few ways to test this null hypothesis. Today we will show you how to do two of these: In tasks 1-3 we will use a <strong>binomial test</strong> and in tasks 4-8 we will use a <strong>one-sample t-test</strong></p>
+<div class="webex-solution">
+<button>
+Thinking Cap Point - Binomial test and the one-sample t-test
+</button>
+<div class="info">
+<p>
+The <strong>Binomial test</strong> is a very simple test that converts all participants to either being above or below a cut-off point, e.g. a mean value, and looking at the probability of finding that number of participants above that cut-off.
+</p>
+<p>
+The <strong>One-sample t-test</strong> is similar in that it compares participants to a cut-off, but it compares the mean and standard deviation of the collected sample to an ideal mean and standard deviation. By comparing the difference in means, divided by the standard deviation of the difference (a measure of the variance), we can determine if the sample is similar or not to the ideal mean.
+</p>
+</div>
+</div>
+
+</div>
+<div id="the-binomial-test" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> The Binomial Test<a class="anchor" aria-label="anchor" href="#the-binomial-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>The Binomial test is one of the most "basic tests" in null hypothesis testing in that it uses very little information. The binomial test is used when a study has two possible outcomes (success or failure) and you have an idea about what the probability of success is. This will sound familiar from the work we did in Chapter 4 and the Binomial distribution.</p>
+<p>A Binomial test tests if an observed result is different from what was expected. For example, is the number of heads in a series of coin flips different from what was expected. Or in our case for this chapter, we want to test whether our normal sleepers are giving reaction times that are the same or different from those measured by Woods et al. The following tasks will take you through the process.</p>
+<div id="Ch6PreClassQueT1" class="section level3" number="5.4.1">
+<h3>
+<span class="header-section-number">5.4.1</span> Task 1: Creating a Dataframe<a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT1"><i class="fas fa-link"></i></a>
+</h3>
+<p>First we need to create a tibble with our data so that we can work with it.</p>
+<ul>
+<li>Enter the data for the 22 participants displayed above into a tibble and store it in <code>ns_data</code>. Have one column showing the participant number (called <code>participant</code>) and another column showing the mean reaction time (called <code>valid_rt</code>).</li>
+</ul>
+<p><code>ns_data &lt;- tibble(participant = c(NULL,NULL,...), valid_rt = c(NULL,NULL,...))</code></p>
+<ul>
+<li>You could type each value out or copy and paste them from the hint below.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+You can use this code structure and replace the NULL values:
+</p>
+<p>
+<code>ns_data &lt;- tibble(participant = c(NULL,NULL,...), valid_rt = c(NULL,NULL,...))</code>
+</p>
+<p>
+The values are: 631.2, 800.8, 595.4, 502.6, 604.5, 516.9, 658.0, 502.0, 496.7, 600.3, 714.6, 623.7, 634.5, 724.9, 815.7, 456.9, 703.4, 647.5, 657.9, 613.2, 585.4, 674.1
+</p>
+</div>
+</div>
+<p><br></p>
+</div>
+<div id="Ch6PreClassQueT2" class="section level3" number="5.4.2">
+<h3>
+<span class="header-section-number">5.4.2</span> Task 2: Comparing Original and New Sample Reaction Times<a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Our next step is to establish how many participants from our pilot study are above the mean in the original study by Woods et al.</p>
+<ul>
+<li>In the original study the mean reaction time for valid trials was 590 ms. Store this value in <code>woods_mean</code>.<br>
+</li>
+<li>Now write code to calculate the number of participants in the new sample (<code>ns_data</code> created in Task 1) that had a mean reaction time greater than the original paper's mean. Store this <strong>single value</strong> in <code>n_participants</code>.</li>
+<li>The function <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> may help here.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> is similar to <code>count()</code> or <code>n()</code>, but <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> returns the number as a single value and not in a tibble.</li>
+<li>Be sure whatever method you use you end up with a single value, not a tibble. You may need to use <code>pull()</code> or <code>pluck()</code>.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+<strong>Part 1</strong>
+</p>
+<p>
+<code>woods_mean &lt;- value</code>
+</p>
+<p>
+<strong>Part 2</strong>
+</p>
+<ul>
+<li>
+A few ways to achieve this. Here are a couple you could try
+</li>
+</ul>
+<p>
+<code>ns_data %&gt;% filter(x ? y) %&gt;% count() %&gt;% pull(?)</code>
+</p>
+<p>
+or
+</p>
+<p>
+<code>ns_data %&gt;% filter(x ? y) %&gt;% summarise(n = ?) %&gt;% pull(?)</code>
+</p>
+<p>
+or
+</p>
+<p>
+<code>ns_data %&gt;% filter(x ? y) %&gt;% nrow()</code>
+</p>
+<p>
+or
+</p>
+<p>
+<code>dim[] %&gt;% pluck()</code>
+</p>
+</div>
+</div>
+<p><br><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<ul>
+<li>The number of participants that have a mean reaction time for valid trials greater than that of the original paper is: <select class="webex-select"><option value="blank"></option>
+<option value="">6</option>
+<option value="">10</option>
+<option value="answer">16</option>
+<option value="">16</option></select>
+</li>
+</ul>
+</div>
+<div id="Ch6PreClassQueT3" class="section level3" number="5.4.3">
+<h3>
+<span class="header-section-number">5.4.3</span> Task 3: Calculating Probability<a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Our final step for the binomial test is to compare our value from Task 2, 16 participants, to our hypothetical cut-off. We will work under the assumption that the mean reaction time from the original paper, i.e. 590 ms, is a good estimate for the population of good sleepers (NS). If that is true then each new participant that we have tested should have a .5 chance of being above this mean reaction time (<span class="math inline">\(p = .5\)</span> for each participant).</p>
+<p>To phrase this another way, the expected number of participants above the cut-off would be <span class="math inline">\(.5 \times N\)</span>, where <span class="math inline">\(N\)</span> is the number of participants, or <span class="math inline">\(.5 \times 22\)</span> = 11 participants.
+* Calculate what would be the probability of observing at least 16 participants out of your 22 participants that had a <code>valid_rt</code> greater than the Woods et al (2009) mean value.<br>
+* <strong>hint:</strong> We looked at very similar questions in Chapter 4 using <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> and <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>
+* <strong>hint:</strong> The key thing is that you are asking about obtaining <strong>X or more</strong> successes. You will need to think back about cut-offs and <code>lower.tails</code>.</p>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+Think back to Chapter 4 where we used the binomial distribution. This question can be phrased as, what is the probability of obtaining X or more successes out of Y trials, given the expected probability of Z.
+</p>
+<ul>
+<li>
+How many Xs? (see question)
+</li>
+<li>
+How many Ys? (see question)
+</li>
+<li>
+What is the probability of being either above or below the mean/cut-off? (see question)
+</li>
+<li>
+You can use a dbinom() %&gt;% sum() for this or maybe a <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>
+</li>
+</ul>
+</div>
+</div>
+<p><br><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<ul>
+<li>Using the Psychology standard <span class="math inline">\(\alpha = .05\)</span>, do you think these NS participants are responding in a similar fashion as the participants in the original paper? Select the appropriate answer: <select class="webex-select"><option value="blank"></option>
+<option value="answer">No</option>
+<option value="">Yes</option></select>
+</li>
+<li>According to the Binomial test would you accept or reject the null hypothesis that we set at the start of this test? <select class="webex-select"><option value="blank"></option>
+<option value="answer">Reject</option>
+<option value="">Accept</option></select>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Explain This - I don't get this answer
+</button>
+<div class="info">
+<p>
+The probability of obtaining 16 participants with a mean reaction time greater than the cut-off of 590 ms is p = .026. This is smaller than the field norm of p = .05. As such we can say that, using the binomial test, the new sample appears to be significantly different from the old sample as there is a significantly larger number of participants above the cut-off (M = 590ms) than would be expected if the new sample and the old sample were responding in a similar fashion. We would therefore reject our null hypothesis!
+</p>
+</div>
+</div>
+
+</div>
+</div>
+<div id="the-one-sample-t-test" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> The One-Sample t-test<a class="anchor" aria-label="anchor" href="#the-one-sample-t-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>The binomial test of the null hypothesis testing suggested that there was a significant difference in mean reaction times to valid trials on the modified Posner task between the participants in the pilot study and the participants in the original study by Woods et al. However, the binomial test did not use all the available information in the data because each participant was simply classified as being above or below the mean of the original paper, i.e. yes or no. Information about the <strong>magnitude</strong> of the discrepancy from the mean was discarded. This information is really interesting and important however and if we wanted to maintain that information then we would need to use a <strong>One-sample <span class="math inline">\(t\)</span>-test</strong>.</p>
+<p>In a One-sample <span class="math inline">\(t\)</span>-test, you test the null hypothesis <span class="math inline">\(H_0: \mu = \mu_0\)</span> where:</p>
+<ul>
+<li>
+<span class="math inline">\(H_0\)</span> is the symbol for the null hypothesis,</li>
+<li>
+<span class="math inline">\(\mu\)</span> (pronounced mu - like few with an m) is the unobserved population mean. It is the unobserved true mean of all possible participants. We don't know this value. Our best guess is the mean of the sample of 22 participants so we will use that mean here. As such will substitute this value into our formula, which we call <span class="math inline">\(\bar{X}\)</span> (pronounced X-bar), instead of <span class="math inline">\(\mu\)</span>.</li>
+<li>and <span class="math inline">\(\mu_0\)</span> (mu-zero) is some other mean to compare against (which could be an alternative population or sample mean or a constant). For us this is the mean of the original paper which we observed to be 590 ms.</li>
+</ul>
+<p>And we will do this by calculating the test statistic <span class="math inline">\(t\)</span> which comes from the <span class="math inline">\(t\)</span>-distribution - more on that distribution below and in the lectures. The formula to calculate the observed test statistic <span class="math inline">\(t\)</span> for the one-sample <span class="math inline">\(t\)</span>-test is:</p>
+<p><span class="math display">\[t = \frac{\mu - \mu_0}{s\ / \sqrt(n)}\]</span></p>
+<ul>
+<li>
+<span class="math inline">\(s\)</span> is the standard deviation of the sample collected,</li>
+<li>and <span class="math inline">\(n\)</span> is the number of participants in the sample.</li>
+</ul>
+<p><br></p>
+<p>So, we are testing the null hypothesis that <span class="math inline">\(H_0: \bar{X} =\)</span> 590. As such the formula for our one-sample <span class="math inline">\(t\)</span>-test becomes:</p>
+<p><span class="math display">\[t = \frac{\bar{X} - \mu_0}{s\ / \sqrt(n)}\]</span></p>
+<p>Now we just need to fill in the numbers.</p>
+<div id="Ch6PreClassQueT4" class="section level3" number="5.5.1">
+<h3>
+<span class="header-section-number">5.5.1</span> Task 4: Calculating the Mean and Standard Deviation<a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT4"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Calculate the mean and standard deviation of <code>valid_rt</code> for our 22 participants (i.e., for <strong>all</strong> participant data).</li>
+<li>Store the mean in <code>ns_data_mean</code> and store the standard deviation in <code>ns_data_sd</code>. Make sure to store them both as single values!</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+In the below code, replace NULL with the code that would find the mean, <code>m</code>, of <code>ns_data</code>.
+</p>
+<p>
+<code>ns_data_mean &lt;- summarise(NULL) %&gt;% pull(NULL)</code>
+</p>
+<p>
+Replace NULL with the code that would find the standard deviation, <code>sd</code>, of <code>ns_data</code>.
+</p>
+<p>
+<code>ns_data_sd &lt;- summarise(NULL) %&gt;% pull(NULL)</code>
+</p>
+</div>
+</div>
+</div>
+<div id="Ch6PreClassQueT5" class="section level3" number="5.5.2">
+<h3>
+<span class="header-section-number">5.5.2</span> Task 5: Calculating the Observed Test Statistic<a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT5"><i class="fas fa-link"></i></a>
+</h3>
+<p>From Task 4, you found out that <span class="math inline">\(\bar{X}\)</span>, the sample mean, was 625.464 ms, and <span class="math inline">\(s\)</span>, the sample standard deviation, was 94.307 ms. Now, keeping in mind that <span class="math inline">\(n\)</span> is the number of observations/participants in the sample, and <span class="math inline">\(\mu_0\)</span> is the mean from Woods et al. (2009):</p>
+<ul>
+<li>Use the One-sample t-test formula above to compute your observed test statistic. Store the answer in <code>t_obs</code> .</li>
+<li><code>t_obs &lt;- (x - y)/(s/sqrt(n))</code></li>
+</ul>
+<p><br><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<p>Answering this question will help you in this task as you'll also need these numbers to substitute into the formula:</p>
+<ul>
+<li>The mean from Woods et al. (2009) was <select class="webex-select"><option value="blank"></option>
+<option value="">595</option>
+<option value="answer">590</option>
+<option value="">580</option>
+<option value="">585</option></select>, and the number of participants in our sample is: (type in numbers) <input class="webex-solveme nospaces" size="3" data-answer='["22"]'>.</li>
+<li>Remember the solutions at the end of the chapter if you are stuck. To check that you are correct without looking at the solutions though - the observed <span class="math inline">\(t\)</span>-value in <code>t_obs</code>, to two decimal places, is <select class="webex-select"><option value="blank"></option>
+<option value="">1.66</option>
+<option value="answer">1.76</option>
+<option value="">1.86</option>
+<option value="">1.96</option></select>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+Remember BODMAS and/or PEDMAS when given more than one operation to calculate. (i.e. Brackets/Parenthesis, Orders/Exponents, Division, Multiplication, Addition, Subtraction)
+</p>
+<p>
+<code>t_obs &lt;- (sample mean - woods mean) / (sample standard deviation / square root of n)</code>
+</p>
+</div>
+</div>
+</div>
+<div id="Ch6PreClassQueT6" class="section level3" number="5.5.3">
+<h3>
+<span class="header-section-number">5.5.3</span> Task 6: Comparing the Observed Test Statistic to the t-distribution using <strong><code>pt()</code></strong><a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT6"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now you need to compare <code>t_obs</code> to the t-distribution to determine how likely the observation (i.e. your test statistic) is under the null hypothesis of no difference. To do this you need to use the <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function.</p>
+<ul>
+<li>Use the <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function to get the <span class="math inline">\(p\)</span>-value for a <a class="glossary" target="_blank" title="A statistical test for which the critical region consists of all values of the test statistic greater than a given value plus all values less than another given value." href="https://psyteachr.github.io/glossary/t#two-tailed">two-tailed</a> test with <span class="math inline">\(\alpha\)</span> level set to .05. The test has <span class="math inline">\(n - 1\)</span> degrees of freedom, where <span class="math inline">\(n\)</span> is the number of observations contributing to the sample mean <span class="math inline">\(\bar{X}\)</span>. Store the <span class="math inline">\(p\)</span> value in the variable <code>pval</code>.<br>
+</li>
+<li>Do you reject the null?</li>
+<li>
+<strong>Hint:</strong> The <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function works similar to <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>.</li>
+<li>
+<strong>Hint:</strong> Because we want the p-value for a <strong>two-tailed</strong> test, <strong>multiply <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> by two</strong>.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+Remember to get help you can enter <code><a href="https://rdrr.io/r/stats/TDist.html">?pt</a></code> in the console.
+</p>
+<p>
+The <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function works similar to <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>:
+</p>
+<ul>
+<li>
+<code>pval &lt;- pt(test statistic, df, lower.tail = FALSE) * 2</code>
+</li>
+<li>
+Use the <strong>absolute value</strong> of the test statistic; i.e. ignore minus signs.
+</li>
+<li>
+Remember, <code>df</code> is equal to <code>n-1</code>.
+</li>
+<li>
+Use <code>lower.tail = FALSE</code> because we are wanting to know the probability of obtaining a value higher than the one we got.
+</li>
+<li>
+Reject the null at the field standard of p &lt; .05
+</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+</div>
+<div id="Ch6PreClassQueT7" class="section level3" number="5.5.4">
+<h3>
+<span class="header-section-number">5.5.4</span> Task 7: Comparing the Observed Test Statistic to the t-distribution using <strong><code>t.test()</code></strong><a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT7"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now that you have done this by hand, try using the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function to get the same result. Take a moment to read the documentation for this function by typing <code><a href="https://rdrr.io/r/stats/t.test.html">?t.test</a></code> in the console window. No need to store the t-test output in a dataframe, but do check that the p-value matches the <code>pval</code> in Task 6.</p>
+<ul>
+<li>The structure of the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function is <code><a href="https://rdrr.io/r/stats/t.test.html">t.test(column_of_data, mu = mean_to_compare_against)</a></code>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+The function requires a vector, not a table, as the first argument. You can use the <code>pull()</code> function to pull out the <code>valid_rt</code> column from the tibble <code>ns_data</code> with <code>pull(ns_data, valid_rt)</code>.
+</p>
+<p>
+You also need to include <code>mu</code> in the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, where <code>mu</code> is equal to the mean you are comparing to.
+</p>
+</div>
+</div>
+<p><br><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<p>To make sure you are understanding the output of the t-test, try to answer the following questions.</p>
+<ol style="list-style-type: decimal">
+<li><p>To three decimal places, type in the p-value for the t-test in Task 7 <input class="webex-solveme nospaces" size="6" data-answer='["0.092",".092"]'></p></li>
+<li><p>As such this One-sample t-test is <select class="webex-select"><option value="blank"></option>
+<option value="">significant</option>
+<option value="answer">not significant</option></select></p></li>
+<li><p>The outcome of the binomial test and the one sample t-test produce <select class="webex-select"><option value="blank"></option>
+<option value="">the same</option>
+<option value="answer">a different</option></select> answer</p></li>
+</ol>
+</div>
+<div id="Ch6PreClassQueT8" class="section level3" number="5.5.5">
+<h3>
+<span class="header-section-number">5.5.5</span> Task 8: Drawing Conclusions about the new data<a class="anchor" aria-label="anchor" href="#Ch6PreClassQueT8"><i class="fas fa-link"></i></a>
+</h3>
+<p>Given these results, what do you conclude about how similar these 22 participants are to the original participants in <a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods et al (2009)</a> and whether or not you have managed to recruit sleepers similar to that study?</p>
+<ul>
+<li>Think about which test used more of the available information?</li>
+<li>Also, how reliable is the finding if the two tests give different answers?</li>
+</ul>
+<p>We have given some of our thoughts at the end of the chapter.</p>
+
+</div>
+</div>
+<div id="practice-your-skills-6" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>This activity uses open data from Experiment 1 of <a href="https://journals.sagepub.com/stoken/default+domain/d5HcBHg85XamSXGdYqYN/full" target="_blank">Mehr, Song, and Spelke (2016)</a>. This exercise is taken from the <a href="https://sites.google.com/view/openstatslab/home?authuser=0" target="_blank">Open Stats Lab at Trinity University, US</a>.</p>
+<p>In order to complete these tasks you will need to download the data .csv file and the .Rmd file, which you need to edit, titled <code>Ch5_PracticeSkills_Template.Rmd</code>. These can be downloaded within a zip file from the link below. Once downloaded and unzipped, you should create a new folder that you will use as your working directory; put the data file and the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top. <a href="data/06-s01/Ch5_PracticeSkills.zip"><strong>Download the Exercises .zip file from here</strong></a>.</p>
+<p>Now open the .Rmd file within RStudio. You will see there is a code chunk for each task. Follow the instructions on what to edit in each code chunk. The exercises in this section will guide you to do some data wrangling, run One-Sample t-tests on published data, and visualise data. Thus, you can check the published paper to see if you were able to replicate their results.</p>
+<div id="does-music-convey-social-information-to-infants" class="section level3" number="5.6.1">
+<h3>
+<span class="header-section-number">5.6.1</span> Does Music Convey Social Information to Infants?<a class="anchor" aria-label="anchor" href="#does-music-convey-social-information-to-infants"><i class="fas fa-link"></i></a>
+</h3>
+<p>Parents often sing to their children and, even as infants, children listen to and look at their parents while they are singing. Research by Mehr, Song, and Spelke (2016) sought to explore the psychological function that music has for parents and infants, by examining the hypothesis that particular melodies convey important social information to infants. Specifically, melodies convey information about social affiliation.</p>
+<p>The authors argue that melodies are shared within social groups. Whereas children growing up in one
+culture may be exposed to certain songs as infants (e.g., “Rock-a-bye Baby”), children growing up in
+other cultures (or even other groups within a culture) may be exposed to different songs. Thus, when a novel person (someone who the infant has never seen before) sings a familiar song, it may signal to the infant that this new person is a member of their social group.</p>
+<p>To test this hypothesis, the researchers recruited 32 infants and their parents to complete an
+experiment. During their first visit to the lab, the parents were taught a new lullaby (one that neither they nor their infants had heard before). The experimenters asked the parents to sing the new lullaby to their child every day for the next 1-2 weeks.</p>
+<p>Following this 1-2 week exposure period, the parents and their infant returned to the lab to complete
+the experimental portion of the study. Infants were first shown a screen with side-by-side videos of
+two unfamiliar people, each of whom were silently smiling and looking at the infant. The researchers
+recorded the looking behavior (or gaze) of the infants during this ‘baseline’ phase. Next, one by one, the two unfamiliar people on the screen sang either the lullaby that the parents learned or a different lullaby (that had the same lyrics and rhythm, but a different melody). Finally, the infants saw the same silent video used at baseline, and the researchers again recorded the looking behavior of the infants during this ‘test’ phase. For more details on the experiment’s methods, please refer to Mehr et al. (2016) Experiment 1.</p>
+<p>For the exercise here we will be looking at the baseline data and test trial data for gazing proportion specifically.</p>
+<p><strong>Before starting let's check:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>The <code>.csv</code> file is saved into a folder on your computer and you have manually set this folder as your working directory.</p></li>
+<li><p>The <code>.Rmd</code> file is saved in the same folder as the <code>.csv</code> files.</p></li>
+</ol>
+</div>
+<div id="Ch5PracticeSkillsT0" class="section level3" number="5.6.2">
+<h3>
+<span class="header-section-number">5.6.2</span> Load in the data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT0"><i class="fas fa-link"></i></a>
+</h3>
+<p>Call <code>tidyverse</code> to the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> and load in the data (<code>socialmelodies_exp1.csv</code>) and store them in object <code>melodydata</code>.</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
+
+<span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<p><strong>View the data</strong></p>
+<ol style="list-style-type: decimal">
+<li>It is always a good idea to familiarise yourself with the layout of the data that you have just loaded in. You can do this through using <code>glimpse()</code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> in the Console window. Note, you will not analyse all of these variables. Try to find the variables that are relevant to the study description above.</li>
+</ol>
+<p><strong>The Tasks:</strong></p>
+<p>Now that we have the data loaded, tidyverse attached, and have viewed our data, you should now try to complete the following tasks. Go through the tasks and change only the <code>NULL</code> with what the question asks for and then make sure that the file <code>knits</code> at the end so that you have a fully reproducible code.</p>
+</div>
+<div id="Ch5PracticeSkillsT1" class="section level3" number="5.6.3">
+<h3>
+<span class="header-section-number">5.6.3</span> Task 1 - Filter data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT1"><i class="fas fa-link"></i></a>
+</h3>
+<p>This data file includes the variables for all 5 experiments reported in the paper. We only want
+to analyze the data for Experiment 1. Using the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function, create a new data frame <code>melodydata_exp1</code> that only contains data of Experiment 1 (variable <code>exp1</code> with value 1 indicates all data fro Experiment 1). Hint: The new data frame should have 32 observations.</p>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+</div>
+<div id="Ch5PracticeSkillsT2" class="section level3" number="5.6.4">
+<h3>
+<span class="header-section-number">5.6.4</span> Task 2 - Select data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT2"><i class="fas fa-link"></i></a>
+</h3>
+<p>As noted above, we will not be using all variables from <code>melodydata_exp1</code> and in order to get a better overview of the variables we are particularly interested in, we want to create an object that only contains the variables we are focusing on here.</p>
+<p>Some context:
+* First, you want to show that infants' looking behavior did not differ from chance during the
+baseline trial (<code>Baseline_Proportion_Gaze_to_Singer</code>). In other words, the infants did not show an attentional bias prior to hearing the unfamiliar others sign the song.
+* Second, you want to examine whether the proportion of infants' looking
+behaviour toward the singer of the familiar melody (<code>Test_Proportion_Gaze_to_Singer</code>) was higher than chance at the test phase.</p>
+<p>Thus, create a new data frame called <code>melodydata_exp1_reduced</code> that only contains the variables <code>id</code>, <code>Baseline_Proportion_Gaze_to_Singer</code>, and <code>Test_Proportion_Gaze_to_Singer</code>.</p>
+<p>Hint: The new data frame contains 32 observations and 3 variables.</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+</div>
+<div id="Ch5PracticeSkillsT3" class="section level3" number="5.6.5">
+<h3>
+<span class="header-section-number">5.6.5</span> Task 3 - Testing baseline gazing proportion<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Perform a One-sample t-test to examine whether the proportion of time spent looking at the person singing the familiar song at baseline did not differ from chance (0.5).</p>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="Ch5PracticeSkillsT4" class="section level3" number="5.6.6">
+<h3>
+<span class="header-section-number">5.6.6</span> Task 4 - Testing test trial gazing proportion<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT4"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now, perform a One-sample t-test to examine whether the proportion of infants' looking
+behaviour toward the singer of the familiar melody was higher than chance at the test phase
+(0.5).</p>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="Ch5PracticeSkillsT5" class="section level3" number="5.6.7">
+<h3>
+<span class="header-section-number">5.6.7</span> Task 5 - Gathering data into a different format<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT5"><i class="fas fa-link"></i></a>
+</h3>
+<p>We want to create a boxplot to depict the proportion of time infants spent looking at the singer of the familiar song at the baseline and test trials. However, before we can do that, we need to slightly change the format of our <code>melodydata_exp1_reduced</code> data frame: Because we need to represent the same cases (individuals) twice in the same figure, we need to reorganise the data so it has all of the gaze proportions as one variable (<code>Proportion</code>), but with a separate variable indicating whether it belongs to the baseline or test trial (<code>TrialType</code>). Put differently, each participant should be represented by two rows; one row with the baseline proportion and another row with the test trial proportion.</p>
+<p>Store the new data frame in object <code>melodydata_exp1_wide</code>.</p>
+<p>Hint: You will need <code>pivot_longer</code> function for this step.
+Hint: The new data frame has 64 observations and 3 variables (<code>id</code>, <code>TrialType</code>, <code>Proportion</code>).</p>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="cn">NULL</span>,
+               names_to <span class="op">=</span> <span class="cn">NULL</span>,
+               values_to <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="Ch5PracticeSkillsT6" class="section level3" number="5.6.8">
+<h3>
+<span class="header-section-number">5.6.8</span> Task 6 - Visualise baseline and test trial data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT6"><i class="fas fa-link"></i></a>
+</h3>
+<p>Generate a boxplot to depict the proportion of time infants spent looking at the singer of the
+familiar song at the baseline and test trials.</p>
+<ul>
+<li>Turn off the legend using the <code>guides()</code> as it isn't needed because the x-axis tells you which trial is which.</li>
+</ul>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="Ch5PracticeSkillsT7" class="section level3" number="5.6.9">
+<h3>
+<span class="header-section-number">5.6.9</span> Task 7 - Compare your analyses with the analyses reported in the published paper<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT7"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, check the results section for Experiment 1 in the published paper and compare the results from your analyses with the ones reported in the paper: <a href="https://journals.sagepub.com/stoken/default+domain/d5HcBHg85XamSXGdYqYN/full" target="_blank">Mehr, Song, and Spelke (2016)</a>. What do you find?</p>
+<p>Well done, you are finished! Make sure to <code>knit</code> this <code>.Rmd</code> file. You have successfully replicated analyses and data visualisation from a published paper. Check your answers against the solutions at the end of the chapter, too.</p>
+
+</div>
+</div>
+<div id="solutions-to-questions-4" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Solutions to Questions<a class="anchor" aria-label="anchor" href="#solutions-to-questions-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.</p>
+<div id="the-binomial-test-1" class="section level3" number="5.7.1">
+<h3>
+<span class="header-section-number">5.7.1</span> The Binomial Test<a class="anchor" aria-label="anchor" href="#the-binomial-test-1"><i class="fas fa-link"></i></a>
+</h3>
+<div id="task-1-4" class="section level4" number="5.7.1.1">
+<h4>
+<span class="header-section-number">5.7.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-4"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ns_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>participant <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">22</span>,
+                  valid_rt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">631.2</span>,<span class="fl">800.8</span>,<span class="fl">595.4</span>,<span class="fl">502.6</span>,<span class="fl">604.5</span>,
+                               <span class="fl">516.9</span>,<span class="fl">658.0</span>,<span class="fl">502.0</span>,<span class="fl">496.7</span>,<span class="fl">600.3</span>,
+                               <span class="fl">714.6</span>,<span class="fl">623.7</span>,<span class="fl">634.5</span>,<span class="fl">724.9</span>,<span class="fl">815.7</span>,
+                               <span class="fl">456.9</span>,<span class="fl">703.4</span>,<span class="fl">647.5</span>,<span class="fl">657.9</span>,<span class="fl">613.2</span>,
+                               <span class="fl">585.4</span>,<span class="fl">674.1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT1">Return to Task</a></p>
+</div>
+<div id="task-2-5" class="section level4" number="5.7.1.2">
+<h4>
+<span class="header-section-number">5.7.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-5"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">woods_mean</span> <span class="op">&lt;-</span> <span class="fl">590</span>
+
+<span class="va">n_participants</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">valid_rt</span> <span class="op">&gt;</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Giving an n_participants value of 16</li>
+</ul>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT2">Return to Task</a></p>
+</div>
+<div id="task-3-5" class="section level4" number="5.7.1.3">
+<h4>
+<span class="header-section-number">5.7.1.3</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-5"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>You can use the density function:</li>
+</ul>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">n_participants</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.0262394</code></pre>
+<ul>
+<li>Or, the cumulative probability function:</li>
+</ul>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">n_participants</span> <span class="op">-</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.0262394</code></pre>
+<ul>
+<li>Or, If you were to plug in the numbers directly into the code:</li>
+</ul>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">16</span><span class="op">:</span><span class="fl">22</span>,<span class="fl">22</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.0262394</code></pre>
+<ul>
+<li>Or, finally, remembering we need to specify a value lower than our minimum participant number as <code>lower.tail = FALSE</code>.</li>
+</ul>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">22</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0.0262394</code></pre>
+<p>It is better practice to use the first two solutions, which pull the values straight from ns_data, as you run the risk of entering an error into your code if you plug in the values manually.</p>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT3">Return to Task</a></p>
+</div>
+</div>
+<div id="the-one-sample-t-test-1" class="section level3" number="5.7.2">
+<h3>
+<span class="header-section-number">5.7.2</span> The One-Sample t-test<a class="anchor" aria-label="anchor" href="#the-one-sample-t-test-1"><i class="fas fa-link"></i></a>
+</h3>
+<div id="task-4-4" class="section level4" number="5.7.2.1">
+<h4>
+<span class="header-section-number">5.7.2.1</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-4"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>For <code>ns_data_mean</code> use <code>summarise()</code> to calculate the mean and then <code>pull()</code> the value.</li>
+<li>For <code>ns_data_sd</code> use <code>summarise()</code> to calculate the sd and then <code>pull()</code> the value.</li>
+</ul>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># the mean</span>
+<span class="va">ns_data_mean</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pull</span><span class="op">(</span><span class="va">m</span><span class="op">)</span>  
+
+<span class="co"># the sd</span>
+<span class="va">ns_data_sd</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pull</span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></code></pre></div>
+<p><strong>NOTE:</strong> You could print them out on the screen if you wanted to "\n" is the end of line symbol so that they print on different lines</p>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The mean number of hours was"</span>, <span class="va">ns_data_mean</span>, <span class="st">"\n"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The standard deviation was"</span>, <span class="va">ns_data_sd</span>, <span class="st">"\n"</span><span class="op">)</span></code></pre></div>
+<pre><code>## The mean number of hours was 625.4636 
+## The standard deviation was 94.30693</code></pre>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT4">Return to Task</a></p>
+</div>
+<div id="task-5-4" class="section level4" number="5.7.2.2">
+<h4>
+<span class="header-section-number">5.7.2.2</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-4"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t_obs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">ns_data_mean</span> <span class="op">-</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">ns_data_sd</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Giving a t_obs value of 1.7638067</li>
+</ul>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT5">Return to Task</a></p>
+</div>
+<div id="task-6-3" class="section level4" number="5.7.2.3">
+<h4>
+<span class="header-section-number">5.7.2.3</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>If using values straight from ns_data, and multiplying by 2 for a two-tailed test, you would do the following:</p>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pval</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_obs</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2L</span></code></pre></div>
+<ul>
+<li>Giving a pval of 0.0923092</li>
+</ul>
+<p>But you can also get the same answer by plugging the values in yourself - though this method runs the risk of error and you are better off using the first calculation as those values come straight from ns_data. :</p>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pval2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="fl">21</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span></code></pre></div>
+<ul>
+<li>Giving a pval of 0.0923092</li>
+</ul>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT6">Return to Task</a></p>
+</div>
+<div id="task-7-3" class="section level4" number="5.7.2.4">
+<h4>
+<span class="header-section-number">5.7.2.4</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>The t-test would be run as follows, with the output shown below:</p>
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="va">ns_data</span>, <span class="va">valid_rt</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">woods_mean</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  pull(ns_data, valid_rt)
+## t = 1.7638, df = 21, p-value = 0.09231
+## alternative hypothesis: true mean is not equal to 590
+## 95 percent confidence interval:
+##  583.6503 667.2770
+## sample estimates:
+## mean of x 
+##  625.4636</code></pre>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT7">Return to Task</a></p>
+</div>
+<div id="task-8-3" class="section level4" number="5.7.2.5">
+<h4>
+<span class="header-section-number">5.7.2.5</span> Task 8<a class="anchor" aria-label="anchor" href="#task-8-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>According to the one-sample t-test these participants are responding in a similar manner as the participants from the original study, and as such, we may be inclined to assume that the recruitment process of our pilot experiment is working well.</p>
+<p>However, according to the binomial test the participants are responding differently from the original sample. So which test result should you take as the finding?</p>
+<p>Keep in mind that the binomial test is very rough and categorises participants into yes or no. The one-sample t-test uses much more of the available data and to some degree would give a more accurate answer. However, the fact that two tests give really different answers may give you reason to question whether or not the results are stable and potentially you should look to gather a larger sample to get a more accurate representation of the population.</p>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT8">Return to Task</a></p>
+</div>
+</div>
+<div id="practice-your-skills-7" class="section level3" number="5.7.3">
+<h3>
+<span class="header-section-number">5.7.3</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills-7"><i class="fas fa-link"></i></a>
+</h3>
+<div id="load-in-the-data-1" class="section level4" number="5.7.3.1">
+<h4>
+<span class="header-section-number">5.7.3.1</span> Load in the data<a class="anchor" aria-label="anchor" href="#load-in-the-data-1"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
+
+<span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"socialmelodies_exp1.csv"</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT0">Return to Task</a></p>
+</div>
+<div id="task-1---filter-data" class="section level4" number="5.7.3.2">
+<h4>
+<span class="header-section-number">5.7.3.2</span> Task 1 - Filter data<a class="anchor" aria-label="anchor" href="#task-1---filter-data"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="va">melodydata</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">exp1</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT1">Return to Task</a></p>
+</div>
+<div id="task-2---select-data" class="section level4" number="5.7.3.3">
+<h4>
+<span class="header-section-number">5.7.3.3</span> Task 2 - Select data<a class="anchor" aria-label="anchor" href="#task-2---select-data"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT2">Return to Task</a></p>
+</div>
+<div id="task-3---testing-baseline-gazing-proportion" class="section level4" number="5.7.3.4">
+<h4>
+<span class="header-section-number">5.7.3.4</span> Task 3 - Testing baseline gazing proportion<a class="anchor" aria-label="anchor" href="#task-3---testing-baseline-gazing-proportion"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT3">Return to Task</a></p>
+</div>
+<div id="task-4---testing-test-trial-gazing-proportion" class="section level4" number="5.7.3.5">
+<h4>
+<span class="header-section-number">5.7.3.5</span> Task 4 - Testing test trial gazing proportion<a class="anchor" aria-label="anchor" href="#task-4---testing-test-trial-gazing-proportion"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT4">Return to Task</a></p>
+</div>
+<div id="task-5---gathering-data-into-a-different-format" class="section level4" number="5.7.3.6">
+<h4>
+<span class="header-section-number">5.7.3.6</span> Task 5 - Gathering data into a different format<a class="anchor" aria-label="anchor" href="#task-5---gathering-data-into-a-different-format"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">:</span><span class="va">Test_Proportion_Gaze_to_Singer</span>,
+               names_to <span class="op">=</span> <span class="st">"TrialType"</span>,
+               values_to <span class="op">=</span> <span class="st">"Proportion"</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT5">Return to Task</a></p>
+</div>
+<div id="task-6---visualise-baseline-and-test-trial-data" class="section level4" number="5.7.3.7">
+<h4>
+<span class="header-section-number">5.7.3.7</span> Task 6 - Visualise baseline and test trial data<a class="anchor" aria-label="anchor" href="#task-6---visualise-baseline-and-test-trial-data"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">melodydata_exp1_wide</span>, 
+       <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">TrialType</span>, 
+           y <span class="op">=</span> <span class="va">Proportion</span>, 
+           fill <span class="op">=</span> <span class="va">TrialType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT6">Return to Task</a></p>
+</div>
+<div id="task-7---compare-your-analyses-with-the-analyses-reported-in-the-published-paper" class="section level4" number="5.7.3.8">
+<h4>
+<span class="header-section-number">5.7.3.8</span> Task 7 - Compare your analyses with the analyses reported in the published paper<a class="anchor" aria-label="anchor" href="#task-7---compare-your-analyses-with-the-analyses-reported-in-the-published-paper"><i class="fas fa-link"></i></a>
+</h4>
+<p>When looking at the results section you should see that the two reported one-sample t-tests in the published paper and are the same that you have produced as part of this exercise. In addition, Fig 2a in the published paper should resemble yours. Well done!</p>
+<p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT7">Return to Task</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+  
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+  
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="revisiting-probability-distributions.html"><span class="header-section-number">4</span> Revisiting Probability Distributions</a></div>
+<div class="next"><a href="acknowledgements.html">Acknowledgements</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#nhst-binomial-test-and-one-sample-t-test"><span class="header-section-number">5</span> NHST: Binomial test and One-Sample t-test</a></li>
+<li><a class="nav-link" href="#overview-5"><span class="header-section-number">5.1</span> Overview</a></li>
+<li><a class="nav-link" href="#brief-introduction-to-nhst"><span class="header-section-number">5.2</span> Brief Introduction to NHST</a></li>
+<li><a class="nav-link" href="#background-of-data-sleep"><span class="header-section-number">5.3</span> Background of data: Sleep</a></li>
+<li>
+<a class="nav-link" href="#the-binomial-test"><span class="header-section-number">5.4</span> The Binomial Test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#Ch6PreClassQueT1"><span class="header-section-number">5.4.1</span> Task 1: Creating a Dataframe</a></li>
+<li><a class="nav-link" href="#Ch6PreClassQueT2"><span class="header-section-number">5.4.2</span> Task 2: Comparing Original and New Sample Reaction Times</a></li>
+<li><a class="nav-link" href="#Ch6PreClassQueT3"><span class="header-section-number">5.4.3</span> Task 3: Calculating Probability</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#the-one-sample-t-test"><span class="header-section-number">5.5</span> The One-Sample t-test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#Ch6PreClassQueT4"><span class="header-section-number">5.5.1</span> Task 4: Calculating the Mean and Standard Deviation</a></li>
+<li><a class="nav-link" href="#Ch6PreClassQueT5"><span class="header-section-number">5.5.2</span> Task 5: Calculating the Observed Test Statistic</a></li>
+<li><a class="nav-link" href="#Ch6PreClassQueT6"><span class="header-section-number">5.5.3</span> Task 6: Comparing the Observed Test Statistic to the t-distribution using pt()</a></li>
+<li><a class="nav-link" href="#Ch6PreClassQueT7"><span class="header-section-number">5.5.4</span> Task 7: Comparing the Observed Test Statistic to the t-distribution using t.test()</a></li>
+<li><a class="nav-link" href="#Ch6PreClassQueT8"><span class="header-section-number">5.5.5</span> Task 8: Drawing Conclusions about the new data</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#practice-your-skills-6"><span class="header-section-number">5.6</span> Practice Your Skills</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#does-music-convey-social-information-to-infants"><span class="header-section-number">5.6.1</span> Does Music Convey Social Information to Infants?</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT0"><span class="header-section-number">5.6.2</span> Load in the data</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT1"><span class="header-section-number">5.6.3</span> Task 1 - Filter data</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT2"><span class="header-section-number">5.6.4</span> Task 2 - Select data</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT3"><span class="header-section-number">5.6.5</span> Task 3 - Testing baseline gazing proportion</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT4"><span class="header-section-number">5.6.6</span> Task 4 - Testing test trial gazing proportion</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT5"><span class="header-section-number">5.6.7</span> Task 5 - Gathering data into a different format</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT6"><span class="header-section-number">5.6.8</span> Task 6 - Visualise baseline and test trial data</a></li>
+<li><a class="nav-link" href="#Ch5PracticeSkillsT7"><span class="header-section-number">5.6.9</span> Task 7 - Compare your analyses with the analyses reported in the published paper</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#solutions-to-questions-4"><span class="header-section-number">5.7</span> Solutions to Questions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-binomial-test-1"><span class="header-section-number">5.7.1</span> The Binomial Test</a></li>
+<li><a class="nav-link" href="#the-one-sample-t-test-1"><span class="header-section-number">5.7.2</span> The One-Sample t-test</a></li>
+<li><a class="nav-link" href="#practice-your-skills-7"><span class="header-section-number">5.7.3</span> Practice Your Skills</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/analysis-v2/blob/master/book/06-s01-lab06a.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/analysis-v2/edit/master/book/06-s01-lab06a.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-10-28.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

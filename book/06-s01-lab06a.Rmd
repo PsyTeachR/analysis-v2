@@ -1,0 +1,41 @@
+# NHST: Binomial test and One-Sample t-test
+
+## Overview
+
+This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use probability to establish the likelihood of that statistic occurring given certain situations. The aim is to draw inferences from a `r glossary("sample")` to a `r glossary("population")`. 
+
+However these concepts and ideas are hard to grasp at first and take playing around with data a few times to help get a better understanding of them. As such, to demonstrate these ideas further, and to start introducing commonly used tests and approaches to reproducible science, we will look at data related to sleep. The study we will look at, to explore NHST more, is by one of our team members and makes use of a well known task in Psychology, the Posner Paradigm: <a href = "https://www.sciencedirect.com/science/article/pii/S0005796708002738" target = "_blank">Woods et al. (2009). The clock as a focus of selective attention in those with primary insomnia: An experimental study using a modified Posner paradigm </a>. 
+
+In this chapter, through the activities, we will:
+
+1. Introduce testing a hypothesis through null hypothesis significance testing (NHST).
+2. Learn about Binomial tests.
+3. Learn about One-sample t-tests.
+
+
+## Brief Introduction to NHST
+
+This will be a very short introduction to the concept of NHST before we dive into the more practical aspects. The main idea of NHST is that you are testing that there is no significant difference between two values - let's say two means for the moment. The null hypothesis states that there is no difference between the two means (or groups) of interest. And as such, any test that you do on the difference between the means of those two groups is trying to determine the probability of finding a difference of the size you found, or larger, in the sample you are using in your experiment, if there is actually no real difference between the two groups in the population.
+
+Let's say we ran an experiment and collected a sample for it: In the experiment, we have two groups, A and B, and we calculated the difference between the means of those two groups to be `D_diff = 7.39`. Putting that in terms of the Null Hypothesis (`H_0`) we are now wanting to know: What is the probability of finding a difference between means of -7.39 (or larger) if there is no real difference between the two groups in the population? In order to test this question (our Null Hypothesis) we need to compare our observed difference against a distribution of possible differences to see how likely the observed difference is in that distribution - extreme values, i.e., large differences between groups, are located in the tails of a distribution.
+
+The **p-value** is the probability of finding a difference equal to or greater than the one we found in our sample if there is no difference in the population. Thus, let's say our p-value is `p = .017`. This indicates a very small probability of finding a difference equal or greater in the population if there was no difference. The obtained p-value is also smaller than the standard cut-off that we use in Psychology of $p <= .05$. As such we would reject our null hypothesis and suggest that there is a significant difference between the two groups.
+
+The following resource by Daniel Lakens is very helpful in deepening the understanding of the p-value and we recommend taking a look at it: [Understanding common misconceptions about p-values](data/06-s01/Understanding-common-misconceptions-about-p-values.pdf)
+
+
+<!-- `r hide("Portfolio Point - Additional background on The Posner Paradigm")` -->
+<!-- ```{block, type ="info"} -->
+<!-- You don't need to read this to complete the activities it might help it make more sense.  -->
+
+<!-- The Posner paradigm (Posner, 1980), or the Posner Cueing task, is an attentional shift task, often used in a variety of fields to test spatial attention and how this is impacted by disorders or injury. It works by having participants look at a fixation cross in the center of a screen. To either side is an empty box. After a short delay, a cue (e.g. an arrow, an asterisk, or some other attention grabbing image) appears in one of the boxes (e.g. the box to the left of the fixation). This stays on screen for a few hundred milliseconds and is then replaced by a second image called the target (e.g. a different shape or image). Participants then have to respond left or right depending on which side of the fixation the target appeared. The dependent variable (DV) is the time taken to respond to the target appearing.  -->
+
+<!-- Key to the task is that in most trials the target will appear on the same side as the cue - the cue facilitates the target - and so participants will be quicker to respond. These are called valid trials. However, on some occasions the target will appear on the other side from the cue - e.g. the cue is on the left but the target appears on the right - and these are called invalid trials; participants will be slower to respond here as the cue misleads the participant.  -->
+
+<!-- From that, you should be starting to get an idea of how a Posner paradigm can help to measure attention and how it can help determine if people have issues in shifting attention (particularly from the invalid trials). -->
+
+<!-- Reference: -->
+
+<!-- <a href="https://www.tandfonline.com/doi/abs/10.1080/00335558008248231" target = "_blank">Posner, M. (1980) Orienting of attention. Quarterly Journal of Experimental Psychology, 32(1), 3-25</a> -->
+<!-- ``` -->
+<!-- `r unhide()` -->
