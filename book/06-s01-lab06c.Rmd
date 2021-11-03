@@ -93,7 +93,7 @@ knitr::include_graphics("images/s01-lab06/homework/figure_2a.png")
 * Write code in the t4 code chunk to reproduce a version of Figure 2a - shown above.  Before you create the plot, replace the `NULL` to make a tibble called `crt_means` with the mean and standard deviation of the number of `CorrectAnswers` for each group. 
 * Use `crt_means` as the source data for the plot.  
 
-**Hint:** you will need to check out `recode()` to get the labels of treatments right. <a href="https://psyteachr.github.io/analysis-v2/data-wrangling-a-key-skill.html?q=recode#Ch2PreClassQueT4" target = "_blank">Look back at Chapter 2 for a hint on how to use `recode()`.</a>
+**Hint:** you will need to check out `recode()` to get the labels of treatments right. <a href="https://psyteachr.github.io/analysis-v2/data-wrangling-a-key-skill.html?q=recode#Ch2PreClassQueT4" target = "_blank">Look back at Chapter 2 for a hint on how to use `recode()`.</a> Or check this short resource for examples on how to use `recode()`: <a href="https://debruine.github.io/post/recode/" target = "_blank">Recode short tutorial.</a>
 
 Don't worry about including the error bars (unless you want to) or the line indicating significance in the plot. Do however make sure to pay attention to the labels of treatments and of the y-axis scale and label. Reposition the x-axis label to below the Figure. You can use colour, if you like. 
 
