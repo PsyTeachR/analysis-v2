@@ -7,9 +7,9 @@ ratings <- read_csv("data/07-s01/inclass/GuiltJudgements.csv")
 
 Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### InClass Activities
+### The Paired-Sample t-test
 
-#### InClass Task 1
+#### Task 1
 
 ```{r ch7-task1, eval = FALSE}
 library(broom)
@@ -20,7 +20,7 @@ ratings <- read_csv("GuiltJudgements.csv")
 
 [Return to Task](#Ch7InClassQueT1)
 
-#### InClass Task 2
+#### Task 2
 
 ```{r ch7-task2, results='asis'}
 lates <- ratings %>%
@@ -37,7 +37,7 @@ lates <- ratings %>%
 
 [Return to Task](#Ch7InClassQueT2)
 
-#### InClass Task 3
+#### Task 3
 
 ```{r ch7-task3, results='asis', fig.cap = "Potential Solution to Task 3"}
 lates %>% 
@@ -50,7 +50,7 @@ theme_bw()
 
 [Return to Task](#Ch7InClassQueT3)
 
-#### InClass Task 4
+#### Task 4
 
 The Task only asks for the boxplot. We have added some additional functions to tidy up the figure a bit that you might want to play with.
 
@@ -68,7 +68,7 @@ You can see that there is one outlier in the `Thirteen` condition. It is represe
 
 [Return to Task](#Ch7InClassQueT4)
 
-#### InClass Task 5
+#### Task 5
 
 We have added color but that was not necessary:
 
@@ -99,7 +99,7 @@ lates %>%
 
 [Return to Task](#Ch7InClassQueT5)
 
-#### InClass Task 6
+#### Task 6
 
 ```{r ch7-task6, results='asis'}
 descriptives <- lates %>% 
@@ -129,7 +129,7 @@ desc2 <- descriptives %>%
 
 [Return to Task](#Ch7InClassQueT6)
 
-#### InClass Task 7
+#### Task 7
 
 * A basic barplot with 95% Confidence Intervals. 
 * We have embellished the figure a little but you can mess around with the code to see what each bit does.
@@ -165,7 +165,7 @@ ggplot(descriptives, aes(x = Timepoint, y = mean, fill = Timepoint)) +
 
 [Return to Task](#Ch7InClassQueT7)
 
-#### InClass Task 8
+#### Task 8
 
 * Remember to set `paired = TRUE` to run the within-subjects t-test
 
@@ -196,13 +196,14 @@ knitr::kable(results)
 ```
 
 The reason that the two outputs are the same is because the formula (top) method (x ~ y) is actually doing the same process as the second approach, but you are just not sure which is the first condition. This second approach (bottom) just makes it clearer.
-`r unhide()`
+
+<!-- `r unhide()` -->
 
 **Note:** The `conf.low` and `conf.high` values are the 95% Confidence Intervals for the mean difference between the two conditions. This could be written as something like, "there was a difference between the two groups (M = -1.76, 95% CI = [-2.19, -1.33])".
 
 [Return to Task](#Ch7InClassQueT8)
 
-#### InClass Task 9
+#### Task 9
 
 A potential write-up for this study would be as follows:
 

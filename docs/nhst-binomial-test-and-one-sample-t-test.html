@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis">
 <meta name="twitter:description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.9/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.0/transition.js"></script><script src="libs/bs3compat-0.3.0/tabs.js"></script><script src="libs/bs3compat-0.3.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -58,6 +58,7 @@
 <li><a class="" href="revisiting-probability-distributions.html"><span class="header-section-number">4</span> Revisiting Probability Distributions</a></li>
 <li><a class="active" href="nhst-binomial-test-and-one-sample-t-test.html"><span class="header-section-number">5</span> NHST: Binomial test and One-Sample t-test</a></li>
 <li><a class="" href="nhst-two-sample-t-test.html"><span class="header-section-number">6</span> NHST: Two-Sample t-test</a></li>
+<li><a class="" href="nhst-paired-sample-t-test-and-nonparametric-tests.html"><span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -81,7 +82,7 @@
 <h2>
 <span class="header-section-number">5.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-5"><i class="fas fa-link"></i></a>
 </h2>
-<p>This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use probability to establish the likelihood of that statistic occurring given certain situations. The aim is to draw inferences from a <a class="glossary" target="_blank" title="" href="https://psyteachr.github.io/glossary/s#sample">sample</a> to a <a class="glossary" target="_blank" title="All members of a group that we wish to generalise our findings to. E.g. all students taking Psychology at the University of Glasgow. We draw our testing sample from the population." href="https://psyteachr.github.io/glossary/p#population">population</a>.</p>
+<p>This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use probability to establish the likelihood of that statistic occurring given certain situations. The aim is to draw inferences from a <a class="glossary" target="_blank" title="A subset of the population that you wish to make an inference about through your test." href="https://psyteachr.github.io/glossary/s#sample">sample</a> to a <a class="glossary" target="_blank" title="All members of a group that we wish to generalise our findings to. E.g. all students taking Psychology at the University of Glasgow. We draw our testing sample from the population." href="https://psyteachr.github.io/glossary/p#population">population</a>.</p>
 <p>However these concepts and ideas are hard to grasp at first and take playing around with data a few times to help get a better understanding of them. As such, to demonstrate these ideas further, and to start introducing commonly used tests and approaches to reproducible science, we will look at data related to sleep. The study we will look at, to explore NHST more, is by one of our team members and makes use of a well known task in Psychology, the Posner Paradigm: <a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods et al. (2009). The clock as a focus of selective attention in those with primary insomnia: An experimental study using a modified Posner paradigm </a>.</p>
 <p>In this chapter, through the activities, we will:</p>
 <ol style="list-style-type: decimal">
@@ -1260,7 +1261,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-11-03.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-11-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 NHST: Paired-Sample t-test and Nonparametric tests | Analysis</title>
+<meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
+<meta name="description" content="7.1 Overview In the previous chapters we have looked at one-sample t-tests and between-samples (two-sample) t-tests. In this chapter we will continue to look the paired-sample t-test (sometimes...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 7 NHST: Paired-Sample t-test and Nonparametric tests | Analysis">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/analysis-v2/nhst-paired-sample-t-test-and-nonparametric-tests.html">
+<meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
+<meta property="og:description" content="7.1 Overview In the previous chapters we have looked at one-sample t-tests and between-samples (two-sample) t-tests. In this chapter we will continue to look the paired-sample t-test (sometimes...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 NHST: Paired-Sample t-test and Nonparametric tests | Analysis">
+<meta name="twitter:description" content="7.1 Overview In the previous chapters we have looked at one-sample t-tests and between-samples (two-sample) t-tests. In this chapter we will continue to look the paired-sample t-test (sometimes...">
+<meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Analysis</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="starting-with-r-markdown.html"><span class="header-section-number">1</span> Starting with R Markdown</a></li>
+<li><a class="" href="data-wrangling-a-key-skill.html"><span class="header-section-number">2</span> Data-Wrangling: A Key Skill</a></li>
+<li><a class="" href="data-visualisation-through-ggplot2.html"><span class="header-section-number">3</span> Data Visualisation Through ggplot2</a></li>
+<li><a class="" href="revisiting-probability-distributions.html"><span class="header-section-number">4</span> Revisiting Probability Distributions</a></li>
+<li><a class="" href="nhst-binomial-test-and-one-sample-t-test.html"><span class="header-section-number">5</span> NHST: Binomial test and One-Sample t-test</a></li>
+<li><a class="" href="nhst-two-sample-t-test.html"><span class="header-section-number">6</span> NHST: Two-Sample t-test</a></li>
+<li><a class="active" href="nhst-paired-sample-t-test-and-nonparametric-tests.html"><span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/analysis-v2">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="nhst-paired-sample-t-test-and-nonparametric-tests" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests<a class="anchor" aria-label="anchor" href="#nhst-paired-sample-t-test-and-nonparametric-tests"><i class="fas fa-link"></i></a>
+</h1>
+<div id="overview-7" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-7"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the previous chapters we have looked at one-sample t-tests and between-samples (two-sample) t-tests. In this chapter we will continue to look the <strong>paired-sample t-test</strong> (sometimes called the <strong>dependent sample</strong> or <strong>within-subject t-test</strong>). The paired-sample t-test is a statistical procedure used to determine whether the mean difference between two sets of observations <strong>from the same or matched participants</strong> is zero.</p>
+<p>As in all tests, the paired-sample t-test has two competing hypotheses: the null hypothesis and the alternative hypothesis.</p>
+<ul>
+<li>The null hypothesis assumes that the true mean difference between the paired samples is zero: <span class="math display">\[H_0: \mu1 = \mu_2\]</span>.</li>
+<li>The alternative hypothesis assumes that the true mean difference between the paired samples is not equal to zero: <span class="math display">\[H_1: \mu1 \ne \mu_2\]</span>.</li>
+</ul>
+<p>In this chapter we are going to look at running the paired-sample t-test, but to begin with we will do a little work on the checks of your data that you need to perform prior to analysis.</p>
+<p><strong>Assumptions of tests</strong></p>
+<p>So far we have focused your skills on data-wrangling, visualisations, and probability, and now we are moving more towards the actual analysis stage of research. However, as you will know from your lectures, all tests, and particularly parametric tests, make a number of assumptions about the data that is being tested, and that you, as a responsible researcher, need to check these assumptions are "held" as any violation of the assumptions may make your results invalid.</p>
+<p>For t-tests the assumptions change for two-sample and paired-sample designs (the one-sample and matched-pairs designs can be thought of as within-subjects designs).</p>
+<p>The assumptions of the <strong>two-sample t-test</strong> are:</p>
+<ul>
+<li>All data points are independent.</li>
+<li>The variance across both groups/conditions should be equal.</li>
+<li>The dependent variable must be continuous (interval/ratio).<br>
+</li>
+<li>The dependent variable should be normally distributed.</li>
+</ul>
+<p>And the assumptions of the <strong>paired-sample t-test</strong> are:</p>
+<ul>
+<li>All participants appear in both conditions/groups.</li>
+<li>The dependent variable must be continuous (interval/ratio).<br>
+</li>
+<li>The dependent variable should be normally distributed.</li>
+</ul>
+<p>Before beginning any analysis, using your data-wrangling skills, you must check to see if the data deviates from these assumptions, and whether it contains any outliers, in order to assess the quality of the results. If assumption violation are present, you may want to use <strong>nonparametric tests</strong> instead.</p>
+<p>In this chapter we will:</p>
+<ul>
+<li>Run assumption checks</li>
+<li>Analyse an experiment with a paired-sample design.</li>
+<li>Understand when and how to run nonparametric tests.</li>
+</ul>
+</div>
+<div id="the-paired-sample-t-test" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> The Paired-Sample t-test<a class="anchor" aria-label="anchor" href="#the-paired-sample-t-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>Up to now we have covered the one-sample t-test and the between-subjects/two-sample t-test, and we have talked a little about the assumptions of the between-subjects t-test. We are now going to expand on that by looking at the final t-test we need to cover, the paired-sample/within-subject t-test; used when you have the same participants in both conditions, or you have two groups of people that are very closely matched on various demographics such as age, IQ, verbal acuity, etc.</p>
+<p>In exploring the paired-sample t-test we will also look more at checking the assumptions of t-tests. If you refer back to the earlier activities you will know that many of the assumptions of the different t-tests are largely similar (apart from equal variance, for example), so by looking at these assumption check here you can apply them to other tests.</p>
+<p>For this activity we will look at a replication of Furnham (1986) that the School of Psychology &amp; Neuroscience, University of Glasgow, carried out in 2016-2017. It would be worth familiarising yourself with the original study at some point for more information regarding the concepts of the study, but it is not essential in order to complete the exercises: <a href="http://www.tandfonline.com/doi/abs/10.1080/00221309.1986.9711045" target="_blank">Furnham, A. (1986), The Robustness of the Recency Effect: Studies Using Legal Evidence</a>. We will explain a little about the study before carrying out some tasks to check the assumptions and to analyse the data.</p>
+<div id="data-set-juror-decision-making" class="section level3" number="7.2.1">
+<h3>
+<span class="header-section-number">7.2.1</span> Data Set: Juror Decision Making<a class="anchor" aria-label="anchor" href="#data-set-juror-decision-making"><i class="fas fa-link"></i></a>
+</h3>
+<p>The research question in this experiment is: Does the order of information affect juror judgments of guilt or innocence? Thus, the overall aim of the original experiment was to investigate whether the decision a jury member makes about the innocence or guilt of a defendant could be influenced by something as simple as <em>when crucial evidence is presented during a trial</em>. During the experiment participants (Level 2 Psychology students) listened to a series of recordings that recreated the 1804 trial of a man known as Joseph Parker who was accused of assuming two identities and marrying two women; i.e. bigamy. Each participant listened to the same recordings of evidence, presented by both prosecution and defense witnesses, and were asked to judge how guilty they thought Mr. Parker was at 14 different time points during the experiment on a scale of 1 to 9: 1 being innocent and 9 being guilty. The 14 time points came immediately after certain pieces of evidence.</p>
+<p>The manipulation in the experiment was that the order of evidence was altered so that half the participants received one order of evidence and the other half received the second order of evidence. Key to the order change was the time at which a <em>critical</em> piece of evidence was presented. This critical evidence proved that the defendant was innocent. The <strong>Middle</strong> group heard this evidence at Timepoint 9 of the trial whereas the <strong>Late</strong> group heard this evidence at Timepoint 13. You will have an opportunity to look at all the data in due course but, for today's exercise, we will only focus on the <strong>Late</strong> group.</p>
+<p>In this exercise, your task is to analyse the data to examine whether the participants' ratings of guilt significantly changed <strong>before</strong> and <strong>after</strong> the presentation of the critical evidence in the <strong>Late</strong> condition. If the critical evidence, which proved the defendant's innocence, had the desired effect then you should see a significant drop in ratings of guilt after hearing this evidence (Timepoint 13) compared to before (Timepoint 12). Or in other words, <strong>we hypothesised that there would be a significant decrease in ratings of guilt, caused by presentation of the critical evidence, from Timepoint 12 to Timepoint 13.</strong></p>
+</div>
+<div id="Ch7InClassQueT1" class="section level3" number="7.2.2">
+<h3>
+<span class="header-section-number">7.2.2</span> Task 1: Load the data<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT1"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<a href="data/07-s01/inclass/ch7_inclass_data.zip">Download the data for this experiment from here</a>.</li>
+<li>Unzip the data and save it into a folder you have access to and set that folder as your working directory.</li>
+<li>Open a new R Markdown document.</li>
+<li>Today you will need the <code>broom</code> and <code>tidyverse</code> libraries. Load these in this order. Remember that the order you load in libraries matters.</li>
+<li>Using <code>read_csv()</code>, load in the data from the experiment contained in <code>GuiltJudgements.csv</code> and store it in a tibble called <code>ratings</code>.</li>
+</ul>
+</div>
+<div id="Ch7InClassQueT2" class="section level3" number="7.2.3">
+<h3>
+<span class="header-section-number">7.2.3</span> Task 2: Wrangle the data<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT2"><i class="fas fa-link"></i></a>
+</h3>
+<p>As above, you are only interested in the 75 participants of the <strong>Late</strong> group here and only for <strong>Timepoints 12 (rating before key evidence) and 13 (rating after key evidence)</strong>. But having had a look at <code>ratings</code> you will see that the Timepoints are in <code>wide</code> format (columns <code>1</code> to <code>14</code> - each a different timepoint) and the <code>Evidence</code> column contains the <code>Middle</code> group as well. Let's do some wrangling to make the data look like it is shown in Table 7.1 below. The steps to do this are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p><code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> only those participants from the <code>Late</code> condition.</p></li>
+<li><p><code>select()</code> only the Timepoints 12 and 13.</p></li>
+<li><p><code>rename()</code> these Timepoints as Twelve and Thirteen as numerical names are hard to deal with.</p></li>
+<li><p><code>pivot_longer()</code> to gather the data so that you have the below structure. (Note: here only the first four rows are shown as an example).</p></li>
+<li><p>Do this all as one pipe and store it in a tibble called <code>lates</code>. Your tibble, <code>lates</code> will have 150 rows and 4 columns.</p></li>
+</ol>
+<p>Check that your table looks like the table below.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:table">Table 7.1: </span>How your table should look from Task 2</caption>
+<thead><tr class="header">
+<th align="center">Participant</th>
+<th align="center">Evidence</th>
+<th align="center">Timepoint</th>
+<th align="center">GuiltRating</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">Late</td>
+<td align="center">Twelve</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">Late</td>
+<td align="center">Thirteen</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">Late</td>
+<td align="center">Twelve</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">Late</td>
+<td align="center">Thirteen</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table></div>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+You need to specify the column you want to filter from, stating which variable (i.e. <code>Late</code>) that this column is 'equal to' (i.e. '==')
+</p>
+</li>
+<li>
+<p>
+Other than the two columns representing Timepoints 12 and 13, there are two other columns you need to keep in order to identify the participant and group. Use the table as a guide.
+</p>
+</li>
+<li>
+<p>
+When renaming, first state the new variable name and then designate this to the old variable name. i.e. <code>rename(data, new_column_name = old_column_name)</code>. If the old column is a number, put it in backticks, e.g. Five = backtick 5 backtick (but be sure to use `s).
+</p>
+</li>
+<li>
+<p>
+The structure shown has two new columns: <code>Timepoint</code> and <code>GuiltRating</code>, which are both created from columns Twelve to Thirteen. You should state these new column names when using <code>pivot_longer()</code>, as well as the columns you used to create them. Think about completing this: <code>cols = X:Y, names_to = "Where", values_to = "Where"</code>
+</p>
+</li>
+</ol>
+</div>
+</div>
+<p><br></p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<ul>
+<li>To check you have completed this Task correctly, enter the appropriate values into the boxes.
+<ul>
+<li>This dataset has: <input class="webex-solveme nospaces" size="1" data-answer='["4"]'> columns by <input class="webex-solveme nospaces" size="3" data-answer='["150"]'> rows and <input class="webex-solveme nospaces" size="2" data-answer='["75"]'> participants.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="Ch7InClassQueT3" class="section level3" number="7.2.4">
+<h3>
+<span class="header-section-number">7.2.4</span> Task 3: Look at the histogram for normality<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT3"><i class="fas fa-link"></i></a>
+</h3>
+<p>We are now going to show you how to start checking data in terms of assumptions such as normality. We will do this through creating some visualisations of the data and thinking about what these visualisations tell us about the data.
+First we will create a <strong>histogram</strong> for each of the two timepoints to see if their individual distributions appear normally distributed.</p>
+<ul>
+<li>Use your data visualisation skills to plot a histogram for each TimePoint. Have the two histograms side-by-side in the one figure and set the histogram binwidth to something reasonable for this experiment.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+ggplot() + geom_?
+</p>
+</li>
+<li>
+<p>
+A histogram only requires you to state <code>aes(x)</code> and not <code>aes(x, y)</code>. We are examining the differences in guilt rating scores across participants. Which column from <code>lates</code> should be 'x'? It should be your categorical Independent Variable.
+</p>
+</li>
+<li>
+<p>
+<code>binwidth</code> is an argument you can specify within <code>geom_histogram()</code> such as <code>geom_historgram(binwidth = ...)</code>. Think about an appropriate binwidth. Your guilt rating scale runs from 1 to 9 in increments of 1.
+</p>
+</li>
+<li>
+<p>
+You have used something like <code>facet_?()</code> to display a categorical variables (i.e. <code>Timepoint</code>) according to the different levels it contains. You need to specify the variable you want to use, using <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> before the variable name.
+</p>
+</li>
+<li>
+<p>
+Beyond this point, you can think about adding appropriate labels and color if you like.
+</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="Ch7InClassQueT4" class="section level3" number="7.2.5">
+<h3>
+<span class="header-section-number">7.2.5</span> Task 4: A boxplot of outliers<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT4"><i class="fas fa-link"></i></a>
+</h3>
+<p>We can also check for outliers in the different conditions. Outliers can obviously create skewed data and make the mean value misleading.</p>
+<ul>
+<li>Create a boxplot for each <code>Timepoint</code> by <code>GuiltRating</code> and check for outliers.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ol style="list-style-type: decimal">
+<li>
+<p>
+This time when using <code>ggplot()</code> to create a boxplot, you need to specify both 'x', which is the discrete/categorical variable, and 'y', which is the continuous variable.
+</p>
+</li>
+<li>
+<ul>
+<li>
+geom_boxplot() - see Chapter 3 for an example.
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<p><br></p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<ul>
+<li>How many outliers do you see? <select class="webex-select"><option value="blank"></option>
+<option value="">0</option>
+<option value="answer">1</option>
+<option value="">2</option>
+<option value="">3</option>
+<option value="">too many to count</option></select>
+</li>
+</ul>
+<p>Remember that outliers are normally represented as dots or stars beyond the whiskers of the boxplot. As you will see in the solution the data contains an outlier. We won't deal with outliers today, but it is good to be able to spot them at the moment. It would be worth thinking about how you could deal with outliers. There are numerous methods such as replacing with a given value or removing the participants. Remember though that this decision, how to deal with outliers, and any deviation from normality, should be considered and written down in advance as part of your preregistration protocol.</p>
+</div>
+<div id="Ch7InClassQueT5" class="section level3" number="7.2.6">
+<h3>
+<span class="header-section-number">7.2.6</span> Task 5: The violin plot<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT5"><i class="fas fa-link"></i></a>
+</h3>
+<p>Boxplots and histograms tell you slightly different information about the same data, which we will discuss in a minute, and you are developing your skills of plotting and interpreting them. But we have already introduced you to a new type of figure that we can combine the information from a boxplot and a histogram into the one figure. We do this using a <strong>violin plot</strong> and can be created using the <code>geom_violin()</code> function.</p>
+<ul>
+<li>Take the code you've written above for the boxplot (Task 4) and add on <code>geom_violin</code> as another layer. You may need to rearrange your code (i.e., the boxplot and violin plot functions) so that the violin plots appear underneath the boxplot. Think layers of the visualisation!</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ul>
+<li>
+<p>
+<code>ggplot()</code> works on layers - the first layer (i.e., the first plot you call) is underneath the second layer. This means that to get a boxplot showing on top of a violin plot, the violin must come first (i.e., you need to call <code>geom_violin()</code> before you call <code>geom_boxplot()</code>)
+</p>
+</li>
+<li>
+<p>
+We have embellished the figure a little in the solution that you can have a look at once you have the basics sorted. Things like adding a <code>width</code> call to the boxplot, or an <code>alpha</code> call to the violin.
+</p>
+</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<p>Do you see how the violin plot relates to the histogram you created earlier? In your head, rotate your histograms so that the bars are pointing to the left and imagine there is a mirror-image of them (making a two-sided histogram). This should look similar to your violin plot. Be sure to be able to still locate the outlier in the <code>Thirteen</code> condition.</p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">HOLD ON!!!</span></p>
+<p>As you will know from your lectures on the assumptions of a paired-sample t-test, when dealing with a within-subjects design, and a paired t-test, normality is actually determined based on <em>the difference between the two conditions</em>. That is, we should in fact check that <em>the distribution of the scores of the difference between the two conditions is normally distributed</em>. We have been looking at it in terms of separate conditions, to some degree to show you the process of the visualisations, but to really follow the paired-sample t-test we need to look at the normality of the difference. The code below will create a violin and boxplot visualisation of the difference between the two conditions and you should now be able to understand this code.</p>
+<p>Have a look at the output, and at the code, and think about whether the scores of the difference between the two conditions is normally distributed.</p>
+<p>Note: In the code below, outliers will appear as red circles and individual data points will appear as blue Xs. Can you see what is controlling this? Why is this an important step? We will say why in a second, but it is worth thinking about yourself for a minute or two.</p>
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lates</span> <span class="op">%&gt;%</span> 
+  <span class="fu">spread</span><span class="op">(</span><span class="va">Timepoint</span>, <span class="va">GuiltRating</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>diff <span class="op">=</span> <span class="va">Thirteen</span> <span class="op">-</span> <span class="va">Twelve</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Evidence</span>, y <span class="op">=</span> <span class="va">diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_violin</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"red"</span>, 
+               width <span class="op">=</span> <span class="fl">.5</span>, 
+               alpha <span class="op">=</span> <span class="fl">.1</span>, 
+               outlier.colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_jitter</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, 
+              width <span class="op">=</span> <span class="fl">.1</span>, 
+              shape <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-plot-vilplot"></span>
+<img src="07-s01-lab07b_files/figure-html/ch7-plot-vilplot-1.png" alt="A violin and boxplot showing the distribution of the scores of the difference between the Thirteen and Twelve conditions. Individual participant data show as blue stars. Positive values would indicate that the rating in the Thirteen condition is higher than the rating in the Twelve condition. Oultiers will show as red circles." width="100%"><p class="caption">
+Figure 7.1: A violin and boxplot showing the distribution of the scores of the difference between the Thirteen and Twelve conditions. Individual participant data show as blue stars. Positive values would indicate that the rating in the Thirteen condition is higher than the rating in the Twelve condition. Oultiers will show as red circles.
+</p>
+</div>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">Thinking Cap Point</span></p>
+<p>We have now checked our assumptions, but we sort of still need to make a decision regarding normality. Having had a look at the figures we have created, spend a few minutes thinking about whether the data is normally distributed or not.</p>
+<p>Also, think about why this data shows no outliers, but the individual conditions did show an outlier. Lastly, why is it important to code different presentations of outliers from the individual data points.
+s</p>
+<div class="webex-solution">
+<button>
+Normal or not - Outliers vs Data Points - Answers
+</button>
+<div class="info">
+<p>
+<strong>Is the data normally distributed or not?</strong>
+</p>
+<p>
+What you are looking for is a nice symmetry around the top and bottom half of the violin and boxplot. You are looking for the median (thick black line to be roughly in the middle of the boxplot), and the whiskers of the boxplot to be roughly equal length. Also, you want the violin to have a the bulge in the middle of the figure and to taper off at the top and at the bottom. You also want to have just one bulge on the violin (symbolising where most of the scores are). Two bulges in the violin may be indicative of two different response patterns or samples within the one dataset.
+</p>
+<p>
+Now we need to make our judgement on normality. Remember that real data will never have the textbook curve that the normal distribution has. It will always be a bit messier than that and to some degree a judgement call is needed or you need to use a test to compare your sample distribution to the normal distribution. Tests such as the Kolmogorov-Smirnov and the Shapiro-Wilks tests are sometimes recommended to determine violation from a normal distribution. However, these last two tests are not that reliable depending on sample size and often we revert back to the judgement call. Again this is really important why steps are documented, so a future researcher can check and confirm the process.
+</p>
+<p>
+Overall, the data looks normally distributed - at least visually.
+</p>
+<p>
+<strong>Outliers vs Data Points?</strong>
+</p>
+<p>
+You have to be careful when using <code>geom_jitter()</code> to show individual data points. You can overcomplicate a figure and if you have a large number of participants then it might not make sense to include the individual data points as it can just create a noisy figure. A second point is that you want to make sure that your outliers are not confused with individual data points; all outliers are data points, but not all data points are outliers. So, in order not to confuse data and outliers, you need to make sure you are properly controlling the colors and shapes of different information in a figure. And be sure to explain in the figure legend what each element shows.
+</p>
+<p>
+Lastly, you will have noted that when we plotted the original boxplots for the individual conditions, the <code>Thirteen</code> group had an outlier. However, now when we plot the difference as a boxplot we see no outliers. This is important and reinforces why you have to plot the correct data in order to check the assumptions. The assumptions for a paired-sample t-test is based on the <em>difference</em> between the scores of individual participants. What we see here is that when we calculate the difference of scores there is no outlier, even though the original data point was an outlier. That is fine within consideration of the assumption - as the assumption only looks at the difference. That said, you might also want to check that the original outlier was an acceptable value on the rating scale (e.g., between 1 and 9) and not some wild value that has come about through bad data entry (e.g., a rating of 13; say if the rating and the condition got mixed up somehow).
+</p>
+</div>
+</div>
+<p><br></p>
+<p>Great. We have run some data checks on the assumptions of the paired-sample t-test. We checked the data for normal distribution, using a violin plot and a boxplot, looking for skewed data and outliers. And from our understanding of the data, and of arguments in the field, whilst the rating scale used could be called ordinal, many, including Furnham treat it as interval. Finally, we haven't spotted any issues in our code to suggest that any participant didn't give a response in both conditions, but we can check that again in the descriptives - both conditions should have an n = 75.</p>
+<p>We will do that check and also run some descriptives to start understanding the relationship between the two levels of interest: Timepoint 12 and Timepoint 13.</p>
+</div>
+<div id="Ch7InClassQueT6" class="section level3" number="7.2.7">
+<h3>
+<span class="header-section-number">7.2.7</span> Task 6: Calculating Descriptives<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT6"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Calculate the mean, standard deviation, and Lower and Upper values of the 95% Confidence Interval (CI) for both levels of the Independent Variable (the two time points). You will need to also calculate the <code>n()</code> - see Chapter 2 - and the Standard Error to complete this task. Store all this data in a tibble called <code>descriptives</code>.<br>
+</li>
+<li>The solution shows the values you should obtain, but be sure to have a go first. Be sure to confirm that both groups have 75 people in it!</li>
+<li>Answering these questions may help on calculating the CIs:</li>
+</ul>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
+<ul>
+<li>From the options, which equation would use to calculate the LowerCI? <select class="webex-select"><option value="blank"></option>
+<option value="">mean - 1.96 * sd</option>
+<option value="">mean * 1.96 - se</option>
+<option value="answer">mean - 1.96 * se</option>
+<option value="">mean * 1.96 - sd</option></select>
+</li>
+<li>From the options, which equation would use to calculate the UpperCI? <select class="webex-select"><option value="blank"></option>
+<option value="">mean + 1.96 * sd</option>
+<option value="">mean * 1.96 + se</option>
+<option value="answer">mean + 1.96 * se</option>
+<option value="">mean * 1.96 + sd</option></select>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ol style="list-style-type: decimal">
+<li>
+<code>group_by()</code> the categorical column <code>Timepoint</code>. This is the column you want to compare groups for.
+</li>
+<li>
+<code>summarise()</code>
+</li>
+<li>
+Different calculations can be used within the same <code>summarise()</code> function as long as they are calculated in the order which you require them. For example, you first need to calculate the participant number, <code>n = n()</code>, and the standard deviation, <code>sd = sd(variable)</code>, in order to calculate the standard error, <code>se = sd/sqrt(n)</code>, which is required to calculate your Confidence Intervals.
+</li>
+<li>
+For the 95% Confidence Interval, you need to calculate an LowerCI and a UpperCI using the appropriate formula. Remember it will be <code>mean + 1.96<em>se</em></code> and <code>mean - 1.96se</code>. If you don't include the mean then you are just calculating how much higher and lower than the mean the CI should be. We want the actual interval.
+</li>
+</ol>
+</div>
+</div>
+<p><br></p>
+<div class="webex-solution">
+<button>
+Explain this - What is 1.96?
+</button>
+<div class="info">
+<p>
+Let's think about your task. You're looking to calculate the 95% Confidence Interval for normally distributed data. To do this you require a z-score which tells you how many standard deviations you are from the mean. 95% of the area under a normal distribution curve lies within 1.96 standard deviations from the mean; i.e. 1.96 SD above and below the mean.
+</p>
+<p>
+If you were looking to calculate a 99% Confidence Interval you would instead use a z-score of 2.576. This takes into account a greater area under the normal distribution curve and so you are further away from the mean (i.e., closer to the tail ends of the curve), resulting in a higher z-score.
+</p>
+</div>
+</div>
+</div>
+<div id="Ch7InClassQueT7" class="section level3" number="7.2.8">
+<h3>
+<span class="header-section-number">7.2.8</span> Task 7: Visualising Means and Descriptives<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT7"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Using the data in <code>descriptives</code>, produce a plot that visualises the mean and 95% Confidence Intervals.
+<ul>
+<li>One way would be a basic barplot, shown in previous chapters, with error bars indicating the 95% CI.</li>
+<li>To add the error bars you could add a layer like below.</li>
+<li>Feel free to embellish the figure as you see fit.</li>
+<li>We have shown a couple of options in the solution that you should look at and try adjusting, after you have tried your own plot.</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">geom_errorbar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">LowerCI</span>, ymax <span class="op">=</span> <span class="va">UpperCI</span><span class="op">)</span>,
+              position <span class="op">=</span> <span class="st">"dodge"</span>, width <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span></code></pre></div>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ul>
+<li>
+We recommend using <code>geom_col()</code>
+</li>
+<li>
+Remember to add (+) the <code>geom_errorbar()</code> line above to your code! Don't pipe it.
+</li>
+<li>
+In the above code for error bars, the aesthetic, <code>aes()</code>, allows you to set the min and max values of the error bars - these will be the max and min of your CIs.
+</li>
+<li>
+<code>position = "dodge"</code> does the same as <code>position = position_dodge()</code> and <code>position = position_dodge(width = .9)</code>. There are a number of ways to use a position call and they all do the same thing.
+</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<p><strong>Important to remember</strong>: As we have mentioned in previous labs, barplots are not that informative in themselves. Going ahead in your research, keep in mind that you should look to use plots that incorporate a good indication of the distribution/spread of the individual data points as well, when needed. Barplots give a good representation on categorical counts like in a chi-square test, but not so much on ordinal or interval data where there is likely to be a spread.</p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">Thinking Cap Point</span></p>
+<p>Now that we have some descriptives to look at we need to think what they tell us - or really how we interpret them. First thing is to think back to the hypothesis as every interpretation is phrased around the hypothesis. <strong>We hypothesised that there would be a significant decrease in ratings of guilt, caused by presentation of the critical evidence, from Timepoint 12 to Timepoint 13.</strong> Do you think there will be a significant difference between the two time points? What evidence do you have? Think about the overlap of confidence intervals! Remember the key thing at this stage is that it is a subjective impression - "It appears that there might be...." or words to that effect.</p>
+</div>
+<div id="Ch7InClassQueT8" class="section level3" number="7.2.9">
+<h3>
+<span class="header-section-number">7.2.9</span> Task 8: The paired-sample t-test<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT8"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now we have checked our assumptions and ran our descriptives, the last thing we need to do is to perform the paired-sample t-test to test the differences between the two time points.</p>
+<p>To perform the paired-sample t-test you use the same <code>t.test</code> function as you did in Chapter 6. However, this time you add the argument, <code>paired = TRUE</code>, as this is what tells the code "yes, this is a paired-sample t-test".</p>
+<ul>
+<li>Perform a paired-sample t-test between guilt ratings at the crucial time points (Twelve and Thirteen) for the participants in the Late group. Store the data (e.g., <code>tidy</code>) in a tibble called <code>results</code>.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<p>
+From your work in earlier chapters you will know two ways to use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. The two options are:
+</p>
+<p>
+<strong>The formula approach</strong>
+</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/stats/t.test.html">t.test(x ~ y, data, paired = TRUE/FALSE, alternative ="two.sided"/"greater"/"less")</a></code>
+</li>
+<li>
+where <code>x</code> is the columns containing your DV and <code>y</code> is typically your grouping variable (i.e., your independent variable).
+</li>
+</ul>
+<p>
+<strong>The vector approach</strong>
+</p>
+<ul>
+<li>
+<p>
+<code><a href="https://rdrr.io/r/stats/t.test.html">t.test(data %&gt;% filter(condition1) %&gt;% pull(data),data %&gt;% filter(condition2) %&gt;% pull(data), paired = TRUE)</a></code>
+</p>
+</li>
+<li>
+<p>
+To pull out the <code>Twelve</code> and <code>Thirteen</code> columns to pass as <code>condition1</code> and <code>condition2</code>, you can use: <code>lates %&gt;% pull(Twelve)</code> and <code>lates %&gt;% pull(Thirteen)</code>.
+</p>
+</li>
+</ul>
+<p>
+<strong>Regardless of method</strong>
+</p>
+<ul>
+<li>
+<p>
+Do not forget to state <code>paired = TRUE</code> or you will run a between-subjects t-test
+</p>
+</li>
+<li>
+<p>
+Once you've calculated <code>results</code>, don't forget to <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> - you can add this using a pipe!
+</p>
+</li>
+<li>
+<p>
+If you don't quite understand the use of <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> yet, run your <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> without <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> and see what happens!
+</p>
+</li>
+<li>
+<p>
+<strong>Note:</strong> Both options of running the t-test will give the same result. The only difference will be whether the t-value is positive or negative. Remember that the vector approach allows you to state what is condition 1 and what is condition 2. The formula approach just runs conditions alphabetically.
+</p>
+</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">Thinking Cap Point</span></p>
+<p>Now look at the output of your test within the tibble <code>results</code>. In your group, spend some time breaking down the results you can see. Do you understand what all the values mean and where they come from? You may have to match up some of your knowledge from your lectures. Was there a significant difference or not? We are about to write it up so best we know for sure.</p>
+</div>
+<div id="Ch7InClassQueT9" class="section level3" number="7.2.10">
+<h3>
+<span class="header-section-number">7.2.10</span> Task 9: The Write-up<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT9"><i class="fas fa-link"></i></a>
+</h3>
+<p>Fill in the blanks below to complete this paragraph, summarising the results of the study. You will need to refer back to the information within <code>results</code> and <code>descriptives</code> to get the correct answers and to make sure you understand the output of the t-test.</p>
+<ul>
+<li>Enter all values to two decimal places and present the absolute t-value.</li>
+<li>The solutions contain a completed version of this paragraph for you to compare against.</li>
+</ul>
+<p>"A <select class="webex-select"><option value="blank"></option>
+<option value="answer">paired-sample t-test</option>
+<option value="">one-sample t-test</option>
+<option value="">between-samples t-test</option>
+<option value="">matched-pairs t-test</option></select> was ran to compare the change in guilt ratings before (M = <input class="webex-solveme nospaces" size="1" data-answer='["5.80","5.8"]'>, SD = <input class="webex-solveme nospaces" size="1" data-answer='["1.50","1.5"]'>) and after (M = <input class="webex-solveme nospaces" size="1" data-answer='["4.04"]'>, SD = <input class="webex-solveme nospaces" size="1" data-answer='["1.93"]'>) the crucial evidence was heard. A <select class="webex-select"><option value="blank"></option>
+<option value="answer">significant</option>
+<option value="">non-significant</option></select> difference was found (t(<input class="webex-solveme nospaces" size="1" data-answer='["74"]'>) = <input class="webex-solveme nospaces" size="1" data-answer='["8.23"]'>, p <select class="webex-select"><option value="blank"></option>
+<option value="">= .05</option>
+<option value="">&gt; .05</option>
+<option value="">= .001</option>
+<option value="answer">&lt; .001</option></select>) with Timepoint 13 having an average rating <input class="webex-solveme nospaces" size="1" data-answer='["1.76"]'> units lower than Timepoint 12. This tells us <select class="webex-select"><option value="blank"></option>
+<option value="answer">that the critical evidence did have an influence on the rating of guilt by jury members</option>
+<option value="">that the critical evidence did not have an influence on the rating of guilt by jury members</option>
+<option value="">that the critical evidence and the rating of guilt by jury members are unconnected</option>
+<option value="">something but I am not quite sure right now, I best check!</option></select>`</p>
+<div class="webex-solution">
+<button>
+Helpful Hint
+</button>
+<div class="info">
+<ul>
+<li>
+<p>
+t-tests take the following format: t(df) = t-value, p = p-value
+</p>
+</li>
+<li>
+<p>
+your <code>results</code> states degrees of freedom as <code>parameter</code>, and your t-value as <code>statistic</code>.
+</p>
+</li>
+<li>
+<p>
+<code>estimate</code> is your mean difference between ratings at Timepoints Twelve and Thirteen.
+</p>
+</li>
+<li>
+<p>
+The <code>conf.low</code> and <code>conf.high</code> values are the 95% Confidence Intervals for the mean difference between the two conditions. We haven't included them in the write-up here but you could do. This could be written as something like, "there was a difference between the two groups (M = -1.76, 95% CI = [-2.19, -1.33])".
+</p>
+</li>
+</ul>
+</div>
+</div>
+<p><br></p>
+<p><strong>Two tips:</strong></p>
+<ul>
+<li><p>If you were to write up the above for a future report, you can make your write-up reproducible as well by using the output of your tibbles and calling specific columns. For example, t(<code>`r results$parameter`</code>) = <code>`r results$statistic %&gt;% abs()`</code>, p &lt; .001, when knitted will become t(74) = 8.23, p &lt; .001. So, code can prevent mistakes in write-ups! However, working with rounding up p-values can be tricky and we have offered a code in the solutions to show you how.</p></li>
+<li><p>Another handy function when writing up is the <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> function for putting values to a given number of decimal places. For example in the above if we wanted to round the absolute t-value to two decimal places we might do <code>results %&gt;% pull(statistic) %&gt;% abs() %&gt;% round(2)</code> which would give t = 8.23. Or maybe we want three decimal places: <code>results$statistic %&gt;% abs() %&gt;% round(3)</code> which would give t = 8.232. So really handy function and follows the format of <code><a href="https://rdrr.io/r/base/Round.html">round(value_to_round, number_of_decimal_places)</a></code>.</p></li>
+</ul>
+<p>Excellent work! You can see how performing the t-test is only a small part of the entire process: wrangling the data, calculating descriptives, and plotting the data to check the distributions and assumptions is a major part of the analysis process. Over the past chapters, you have been building all of these skills and so you should be able to see them being put to good use now that we have moved onto more complex data analysis. Running the inferential part is usually just one line of code.</p>
+
+</div>
+</div>
+<div id="practice-your-skills-10" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills-10"><i class="fas fa-link"></i></a>
+</h2>
+<p>Using the data from above, perform a paired-sample t-test for the <strong>Middle</strong> group where the crucial evidence was presented on Timepoint 9. Save your current .Rmd file, then make a copy of it, rename it accordingly, and go through the steps for the <strong>Middle</strong> group. Since this exercise is very close to the example we worked through in this chapter, we have not added the solutions in the end. Feel free to check with your peers and discuss if there is <strong>a difference in ratings of guilt, caused by presentation of the critical evidence, from Timepoint 8 to Timepoint 9</strong>?</p>
+
+</div>
+<div id="non-parametric-tests" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Non-Parametric tests<a class="anchor" aria-label="anchor" href="#non-parametric-tests"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this and previous chapters we have really been focusing on between-subjects and within-subjects t-tests which fall under the category of <strong>parametric tests</strong>. One of the main things you will know about these tests is that they have a fair number of assumptions that you need to check first to make sure that your results are valid. We looked at how to do this in the main body of the chapter, and you will get more practice at this as we progress, but one question you might have is, what do you do if the assumptions aren't met (or are "violated"" as it is termed)?</p>
+<p>So what options are there? There are tests known as <strong>non-parametric tests</strong> that have fewer assumptions than the parametric tests and can be run quite quickly using the same approach as we have seen with the t-tests. The non-parametric "t-tests" generally don't require any assumption of normality and tend to work on either the medians of the data (as opposed to the mean values) or the rank order of the data - i.e., what was the highest value, the second highest, the lowest - as opposed to the actual value.</p>
+<p>And just like there is slightly different versions of t-tests there are different non-parametric tests for between-subjects designs and within-subjects designs:</p>
+<ul>
+<li>The Mann-Whitney U-test is the non-parametric equivalent of the between-subjects t-test</li>
+<li>The Wilcoxon Signed-Ranks Test is the non-parametric equivalent of the within-subjects t-test.</li>
+</ul>
+<p><strong>Note:</strong> The Mann-Whitney and the Wilcoxon Signed-Ranks tests are now a bit antiquated as they were designed to be done by hand when computer processing power was limited. However, they are still used in Psychology and you will still see them in older papers, so it is worth seeing one in action at least.</p>
+<p>So for example, if you were concerned that your data was far from being normally distributed, you might use the Mann-Whitney or the Wilcoxon Signed-Ranks Test depending on your design. Here we will run through a Mann-Whitney U-test and then you can try out a Wilcoxon Signed-Ranks Test in your own time as it uses the same function - it is again just a matter of saying <code>paired = TRUE</code>.</p>
+<div id="our-scenario" class="section level3" number="7.4.1">
+<h3>
+<span class="header-section-number">7.4.1</span> Our Scenario<a class="anchor" aria-label="anchor" href="#our-scenario"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Aim:</strong> To examine the influence of perceived reward on problem solving.</li>
+<li>
+<strong>Procedure:</strong> 14 Participants in 2 groups (7 per group) are asked to solve a difficult lateral thinking puzzle. One group is offered a monetary reward for completing it as quick as possible. One group is offered nothing; just the internal joy of getting the task completed and correct.</li>
+<li>
+<strong>Task:</strong> The participants are asked to solve the following puzzle. "Man walks into a bar and asks for a glass of water. The barman shoots at him with a gun. The man smiles, says thanks, and leaves. Why?"</li>
+<li>
+<strong>IV:</strong> Reward group vs. No Reward group</li>
+<li>
+<strong>DV:</strong> Time taken to solve puzzle measured in minutes.</li>
+<li>
+<strong>Hypothesis:</strong> We hypothesise that participants who are given a monetary incentive for solving a puzzle will solve the puzzle significantly faster, as measured in minutes to solve the puzzle, than those that are given no incentive.</li>
+</ul>
+</div>
+<div id="assumption-check" class="section level3" number="7.4.2">
+<h3>
+<span class="header-section-number">7.4.2</span> Assumption check<a class="anchor" aria-label="anchor" href="#assumption-check"><i class="fas fa-link"></i></a>
+</h3>
+<p>Here is our data and a boxplot of the data to try and visualise what is happening in the data.
+<br><br></p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:chpt7-additional-table">Table 7.2: </span>Table showing the time taken to complete the puzzle for the Reward and No Reward groups</caption>
+<thead><tr class="header">
+<th align="center">Participant</th>
+<th align="center">Group</th>
+<th align="center">Time</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">No Reward</td>
+<td align="center">1.32</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">No Reward</td>
+<td align="center">3.56</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">No Reward</td>
+<td align="center">7.55</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">No Reward</td>
+<td align="center">8.05</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">No Reward</td>
+<td align="center">8.54</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">No Reward</td>
+<td align="center">10.18</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">No Reward</td>
+<td align="center">15.55</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">Reward</td>
+<td align="center">3.25</td>
+</tr>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">Reward</td>
+<td align="center">5.54</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">Reward</td>
+<td align="center">7.66</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">Reward</td>
+<td align="center">9.02</td>
+</tr>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">Reward</td>
+<td align="center">10.45</td>
+</tr>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">Reward</td>
+<td align="center">13.21</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">Reward</td>
+<td align="center">21.37</td>
+</tr>
+</tbody>
+</table></div>
+<p><br></p>
+<pre><code>## Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; =
+## "none")` instead.</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:chpt7-additional-figure"></span>
+<img src="07-s01-lab07d_files/figure-html/chpt7-additional-figure-1.png" alt="Boxplots showing the time taken to solve the puzzle for the two conditions, Reward vs No Reward. Outliers are represented by solid blue dots." width="100%"><p class="caption">
+Figure 7.2: Boxplots showing the time taken to solve the puzzle for the two conditions, Reward vs No Reward. Outliers are represented by solid blue dots.
+</p>
+</div>
+<p>Looking at the boxplots there is potentially some issues with skew in the data (see the No Reward group in particular) and both conditions are showing as having at least one outlier. As such we are not convinced our assumption of normality is held so we will run the Mann-Whitney U-test - the non-parametric equivalent of the two-sample t-test (i.e., independent groups) - as it does not require the assumption of normal data.</p>
+</div>
+<div id="the-descriptives" class="section level3" number="7.4.3">
+<h3>
+<span class="header-section-number">7.4.3</span> The descriptives<a class="anchor" aria-label="anchor" href="#the-descriptives"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next, as always, we should look at the descriptives as well to make some subjective, descriptive inference about the pattern of the results. One thing to note is that the Mann-Whitney analysis is based on the "rank order" of the data regardless of group. In this code and table below we have put the data in order from lowest to highest and added on a rank order column. We have used the <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> function to create the ranks and setting the <code>ties.method = "average"</code>. We won't go into why that is the case here but you can read about it through ?rank.</p>
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">scores_rnk</span> <span class="op">&lt;-</span> <span class="va">scores</span> <span class="op">%&gt;%</span>
+  <span class="fu">arrange</span><span class="op">(</span><span class="va">Time</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>ranks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rank.html">rank</a></span><span class="op">(</span><span class="va">Time</span>, ties.method <span class="op">=</span> <span class="st">"average"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:chpt7-additional-table-rnks">Table 7.3: </span>Table showing the time taken to complete the puzzle for the Reward and No Reward groups and the rank order of these times.</caption>
+<thead><tr class="header">
+<th align="center">Participant</th>
+<th align="center">Group</th>
+<th align="center">Time</th>
+<th align="center">ranks</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">No Reward</td>
+<td align="center">1.32</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">Reward</td>
+<td align="center">3.25</td>
+<td align="center">2</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">No Reward</td>
+<td align="center">3.56</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">9</td>
+<td align="center">Reward</td>
+<td align="center">5.54</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">No Reward</td>
+<td align="center">7.55</td>
+<td align="center">5</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">Reward</td>
+<td align="center">7.66</td>
+<td align="center">6</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">No Reward</td>
+<td align="center">8.05</td>
+<td align="center">7</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">No Reward</td>
+<td align="center">8.54</td>
+<td align="center">8</td>
+</tr>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">Reward</td>
+<td align="center">9.02</td>
+<td align="center">9</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">No Reward</td>
+<td align="center">10.18</td>
+<td align="center">10</td>
+</tr>
+<tr class="odd">
+<td align="center">12</td>
+<td align="center">Reward</td>
+<td align="center">10.45</td>
+<td align="center">11</td>
+</tr>
+<tr class="even">
+<td align="center">13</td>
+<td align="center">Reward</td>
+<td align="center">13.21</td>
+<td align="center">12</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">No Reward</td>
+<td align="center">15.55</td>
+<td align="center">13</td>
+</tr>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">Reward</td>
+<td align="center">21.37</td>
+<td align="center">14</td>
+</tr>
+</tbody>
+</table></div>
+<p>Here is a table of descriptives for this dataset and the code we used to create it.</p>
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ByGrp</span> <span class="op">&lt;-</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">scores_rnk</span>, <span class="va">Group</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>n_Pp <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
+            MedianTime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,
+            MeanRank <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ranks</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:chpt7-additional-descriptives">Table 7.4: </span>Descriptive (N, Medians and Mean Ranks) for the two groups (Reward vs No Reward) in time taken to solve the puzzle.</caption>
+<thead><tr class="header">
+<th align="center">Group</th>
+<th align="center">n_Pp</th>
+<th align="center">MedianTime</th>
+<th align="center">MeanRank</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">No Reward</td>
+<td align="center">7</td>
+<td align="center">8.05</td>
+<td align="center">6.714286</td>
+</tr>
+<tr class="even">
+<td align="center">Reward</td>
+<td align="center">7</td>
+<td align="center">9.02</td>
+<td align="center">8.285714</td>
+</tr>
+</tbody>
+</table></div>
+<p>Based on figure and descriptive data, we can suggest that there appears to be no real difference between the two groups in terms of time taken to solve the puzzle. The group that was offered a reward have a slightly higher spread of data than the no reward group. However, the medians and mean ranks are very comparable.</p>
+</div>
+<div id="running-the-inferential-test" class="section level3" number="7.4.4">
+<h3>
+<span class="header-section-number">7.4.4</span> Running the inferential test<a class="anchor" aria-label="anchor" href="#running-the-inferential-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>We will now run the Mann-Whitney U-test to see if the difference between the two groups is significant or not. To do this, somewhat confusingly, we us the <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> function. The code to do the analysis on the current data (with the tibble <code>scores</code>, the DV in the column <code>Time</code>, and the IV in the column <code>Group</code>) is shown below. It works just like the <code>t-test()</code> function in that you can use either vectors or the formula approach.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>There are a couple of additional calls in this function that you can read about using the <code>?wilcox.test()</code> approach.</li>
+<li>We could just have easily used <code>scores_rnk</code> as our tibble in the <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> as opposed to <code>scores</code>. We are using <code>scores</code> to show you that you don't need to put the ranks into the <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> function, it will create them itself when it runs the analysis. We only created them to run some descriptives.</li>
+</ul>
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">Time</span> <span class="op">~</span> <span class="va">Group</span>, 
+                      data <span class="op">=</span> <span class="va">scores</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, 
+            exact <span class="op">=</span> <span class="cn">TRUE</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>And here is the output of the test after is has been tidied into a tibble using <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code></p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:chpt7-additional-code-output">Table 7.5: </span>Output of the Mann-Whitney U-test</caption>
+<thead><tr class="header">
+<th align="center">statistic</th>
+<th align="center">p.value</th>
+<th align="center">method</th>
+<th align="center">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="center">19</td>
+<td align="center">0.534965</td>
+<td align="center">Wilcoxon rank sum exact test</td>
+<td align="center">two.sided</td>
+</tr></tbody>
+</table></div>
+<p><br></p>
+<p>The main statistic (the test-value) of the Mann-Whitney U-test is called the U-value and is shown in the above table as <code>statistic</code>; i.e. U = 19 and you can see from the results that the difference was non-significant as p = 0.535.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The eagle-eyed of you will spot that the test actually says it is a Wilcoxon rank sum test. That is fine. The Mann-Whitney U-test is calculated from the sum of the ranks (shown in the table above). The Wilcoxon rank sum test is just that, a sum of the ranks. The U-value is then created from the summed ranks.<br>
+</li>
+<li>Don't mistake the Wilcoxon rank sum test mentioned here - for between-subjects - with the Wilcoxon Signed-Ranks test for within-subjects mentioned above. They are different tests.</li>
+</ul>
+<p>However, one thing to note about the U is that it is an unstandardised value - meaning that it is dependent on the values sampled and it can't be compared to other U values to look at the magnitude of one effect versus another. The second thing to note about the U-value is that <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> will return a different U-value depending on which condition is stated as Group 1 or Group 2.</p>
+<p>Compare the outputs of these two tests where we have switched the order of the conditions:</p>
+<p><strong>Version 1:</strong></p>
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result_v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">scores</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Reward"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,
+                         <span class="va">scores</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"No Reward"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,
+                         data <span class="op">=</span> <span class="va">scores</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
+                         exact <span class="op">=</span> <span class="cn">TRUE</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p><strong>Version 2:</strong></p>
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">result_v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">scores</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"No Reward"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,
+                         <span class="va">scores</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Reward"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,
+                         data <span class="op">=</span> <span class="va">scores</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
+                         exact <span class="op">=</span> <span class="cn">TRUE</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>The U-value for these two tests are, for Version 1, U = 30 and for Version 2, U = 19. This may seem odd, but actually both those test are correct. However, strictly speaking the U-value is the smaller of the two-values given by the different outputs. It is to do with how the U-value is calculated. Both groups have a U-value and the one that is checked for significance is the smaller of the two.</p>
+<p>Because U is an unstandardised value, when we present the Mann-Whitney U-test we usually also give a Z-statistic, which is the standardised version of the U-value. We also present an effect size, commonly r.</p>
+<p>Z and r can be calculated as follows:</p>
+<ul>
+<li><p>Z = <span class="math inline">\(\frac{U - \frac{N1 \times N2}{2}}{\sqrt\frac{N1 \times N2 \times (N1 + N2 + 1)}{12}}\)</span></p></li>
+<li><p>r = <span class="math inline">\(\frac{Z}{\sqrt(N1 + N2)}\)</span></p></li>
+</ul>
+<p>Putting these formulas into a coded format would look like this:</p>
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">U</span> <span class="op">&lt;-</span> <span class="va">result</span><span class="op">$</span><span class="va">statistic</span>
+<span class="va">N1</span> <span class="op">&lt;-</span> <span class="va">ByGrp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Reward"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">n_Pp</span><span class="op">)</span>
+<span class="va">N2</span> <span class="op">&lt;-</span> <span class="va">ByGrp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"No Reward"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">n_Pp</span><span class="op">)</span>
+<span class="va">Z</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">U</span> <span class="op">-</span> <span class="op">(</span><span class="op">(</span><span class="va">N1</span><span class="op">*</span><span class="va">N2</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">N1</span><span class="op">*</span><span class="va">N2</span><span class="op">*</span><span class="op">(</span><span class="va">N1</span><span class="op">+</span><span class="va">N2</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">12</span><span class="op">)</span>
+<span class="va">r</span> <span class="op">&lt;-</span> <span class="va">Z</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">N1</span><span class="op">+</span><span class="va">N2</span><span class="op">)</span></code></pre></div>
+<p>And as such the write-up could be written as:</p>
+<p>The time taken to solve the problem for the Reward group (n = 7, Mdn Time = 9.02, Mean Rank = 8.29) and the no reward group (n = 7, Mdn Time = 8.05, Mean Rank = 6.71) were compared using a Mann-Whitney U-test. No significance difference was found, U = 19, Z = -0.703, p = 0.535, r = -0.188</p>
+</div>
+<div id="last-point-on-calculating-u-and-reporting-the-test" class="section level3" number="7.4.5">
+<h3>
+<span class="header-section-number">7.4.5</span> Last point on calculating U and reporting the test<a class="anchor" aria-label="anchor" href="#last-point-on-calculating-u-and-reporting-the-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the final write-up there we know, because of our codes, that U = 19 is the smallest U-value of the test. However had you put the alternative U, U = 30, when you calculated Z you would have got Z = 0.703, as opposed to Z = -0.703. So your standardised statistic will have the same value but just the opposite polarity (either positive or negative). That is fine though as you can look at the medians and mean ranks to make sure you are interpreting the data correctly.</p>
+<p>However, what you do have to watch out for when writing up this test is that you are presenting the correct U-value - remembering that technically you should present the smallest of the two U-values (refer back to Version 1 and Version 2 of using the <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code>) above. Fortunately you don't have to run both analyses to figure out which is the smaller U (though you could if you wanted). There is a quicker way using the below formula:</p>
+<p><span class="math inline">\(U1 + U2 = N1 \times N2\)</span></p>
+<ul>
+<li>where U1 is the U-value from your <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> function</li>
+<li>N1 is the number of people in one group (technically doesn't matter which group) and N2 is the number of people in the other group.</li>
+</ul>
+<p>We actually know both our U-values as we ran both tests; they are U1 = 30 and U2 = 19, and we know our two groups are N1 = 7 and N2 = 7. And if we put those numbers in the formula we get</p>
+<p><span class="math inline">\(U1 + U2 = N1 \times N2\)</span></p>
+<p>=&gt; <span class="math inline">\(30 + 19 = 7 \times 7\)</span></p>
+<p>=&gt; <span class="math inline">\(49 = 49\)</span></p>
+<p>So both sides equal 49. But say you only know one of the U-values; you of course will know both Ns. Well you can quickly figure out the other U-value based on:</p>
+<p><span class="math inline">\(U2 = (N1 \times N2) - U1\)</span></p>
+<p>for example, if you know U1 = 19, N1 = 7 and N = 7 then:</p>
+<p><span class="math inline">\(U2 = (7 \times 7) - 19\)</span></p>
+<p>=&gt; <span class="math inline">\(U2 = (49) - 19\)</span></p>
+<p>=&gt; <span class="math inline">\(U2 = 30\)</span></p>
+<p>And then you just have to present the smallest of the two U-values, in this case U = 19.</p>
+<p>Hopefully you now have a decent understanding of the Mann-Whitney test. You could also try running a Wilcoxon Signed-Ranks Test as well though you might have to read a little on how to present those. It is similar to the Mann-Whitney though and you should be able to get there.</p>
+<p>Oh, and last last point, how to remember which test is which? Is the Mann-Whitney for between-subjects or within-subjects, and what is the Wilcoxon Signed-Ranks test for? You know they do different designs, but which is which? Well, as silly as this memory aid is: The other name of between-subjects designs, as you know, is independent designs. Add to that the fact that the late great singer Whitney Houston once starred in "The Bodyguard" which was about maintaining your right to freedom and independence. So whenever you get stuck on knowing which test is which, remember Whitney wanted independence in "The Bodyguard" and you should be ok. We did not say this was a very good memory aid!</p>
+
+</div>
+</div>
+<div id="solutions-to-questions-6" class="section level2" number="7.5">
+<h2>
+<span class="header-section-number">7.5</span> Solutions to Questions<a class="anchor" aria-label="anchor" href="#solutions-to-questions-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.</p>
+<div id="the-paired-sample-t-test-1" class="section level3" number="7.5.1">
+<h3>
+<span class="header-section-number">7.5.1</span> The Paired-Sample t-test<a class="anchor" aria-label="anchor" href="#the-paired-sample-t-test-1"><i class="fas fa-link"></i></a>
+</h3>
+<div id="task-1-6" class="section level4" number="7.5.1.1">
+<h4>
+<span class="header-section-number">7.5.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-6"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+
+<span class="va">ratings</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"GuiltJudgements.csv"</span><span class="op">)</span></code></pre></div>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT1">Return to Task</a></p>
+</div>
+<div id="task-2-7" class="section level4" number="7.5.1.2">
+<h4>
+<span class="header-section-number">7.5.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-7"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lates</span> <span class="op">&lt;-</span> <span class="va">ratings</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Evidence</span> <span class="op">==</span> <span class="st">"Late"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">select</span><span class="op">(</span><span class="va">Participant</span>, <span class="va">Evidence</span>, <span class="va">`12`</span>, <span class="va">`13`</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rename</span><span class="op">(</span>Twelve <span class="op">=</span> <span class="va">`12`</span>, Thirteen <span class="op">=</span> <span class="va">`13`</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Twelve</span><span class="op">:</span><span class="va">Thirteen</span>, 
+               names_to <span class="op">=</span> <span class="st">"Timepoint"</span>, 
+               values_to <span class="op">=</span> <span class="st">"GuiltRating"</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>If you have carried this out correctly, <code>lates</code> will have 150 rows and 4 columns. This comes from 75 participants giving two responses each - TimePoint 12 and TimePoint 13.</li>
+</ul>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT2">Return to Task</a></p>
+</div>
+<div id="task-3-6" class="section level4" number="7.5.1.3">
+<h4>
+<span class="header-section-number">7.5.1.3</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-6"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lates</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
+ <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">Timepoint</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"GuiltRating"</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-task3"></span>
+<img src="07-s01-lab07e_files/figure-html/ch7-task3-1.png" alt="Potential Solution to Task 3" width="100%"><p class="caption">
+Figure 7.3: Potential Solution to Task 3
+</p>
+</div>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT3">Return to Task</a></p>
+</div>
+<div id="task-4-6" class="section level4" number="7.5.1.4">
+<h4>
+<span class="header-section-number">7.5.1.4</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-6"><i class="fas fa-link"></i></a>
+</h4>
+<p>The Task only asks for the boxplot. We have added some additional functions to tidy up the figure a bit that you might want to play with.</p>
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lates</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Timepoint</span>,
+             y <span class="op">=</span> <span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">coord_cartesian</span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">2.5</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span><span class="op">)</span>, expand <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-task4"></span>
+<img src="07-s01-lab07e_files/figure-html/ch7-task4-1.png" alt="Potential Solution to Task 4" width="100%"><p class="caption">
+Figure 7.4: Potential Solution to Task 4
+</p>
+</div>
+<p>You can see that there is one outlier in the <code>Thirteen</code> condition. It is represented by the the single dot far above the whiskers of that boxplot.</p>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT4">Return to Task</a></p>
+</div>
+<div id="task-5-5" class="section level4" number="7.5.1.5">
+<h4>
+<span class="header-section-number">7.5.1.5</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-5"><i class="fas fa-link"></i></a>
+</h4>
+<p>We have added color but that was not necessary:</p>
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lates</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">Timepoint</span>,y<span class="op">=</span><span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span><span class="op">)</span>, expand <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-task5-1"></span>
+<img src="07-s01-lab07e_files/figure-html/ch7-task5-1-1.png" alt="Potential Solution to Task 5" width="100%"><p class="caption">
+Figure 7.5: Potential Solution to Task 5
+</p>
+</div>
+<ul>
+<li>You can still see the outlier at the top of the figure as a solid black dot.</li>
+</ul>
+<p>You could even add the <code>geom_jitter</code> to have all the data points:</p>
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lates</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">Timepoint</span>,y<span class="op">=</span><span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">.1</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span><span class="op">)</span>, expand <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-task5-2"></span>
+<img src="07-s01-lab07e_files/figure-html/ch7-task5-2-1.png" alt="Alternative Potential Solution to Task 5" width="100%"><p class="caption">
+Figure 7.6: Alternative Potential Solution to Task 5
+</p>
+</div>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT5">Return to Task</a></p>
+</div>
+<div id="task-6-4" class="section level4" number="7.5.1.6">
+<h4>
+<span class="header-section-number">7.5.1.6</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-4"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">lates</span> <span class="op">%&gt;%</span> 
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">Timepoint</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
+            mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span>,
+            sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span>,
+            se <span class="op">=</span> <span class="va">sd</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,
+            LowerCI <span class="op">=</span> <span class="va">mean</span> <span class="op">-</span> <span class="fl">1.96</span><span class="op">*</span><span class="va">se</span>,
+            UpperCI <span class="op">=</span> <span class="va">mean</span> <span class="op">+</span> <span class="fl">1.96</span><span class="op">*</span><span class="va">se</span><span class="op">)</span></code></pre></div>
+<p>This would show the following data:</p>
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">descriptives</span>, align <span class="op">=</span> <span class="st">"c"</span>, caption <span class="op">=</span> <span class="st">"Descriptive data for the current study"</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:ch7-task6-table1">Table 7.6: </span>Descriptive data for the current study</caption>
+<thead><tr class="header">
+<th align="center">Timepoint</th>
+<th align="center">n</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">se</th>
+<th align="center">LowerCI</th>
+<th align="center">UpperCI</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">Thirteen</td>
+<td align="center">75</td>
+<td align="center">4.04</td>
+<td align="center">1.934327</td>
+<td align="center">0.2233569</td>
+<td align="center">3.602221</td>
+<td align="center">4.477779</td>
+</tr>
+<tr class="even">
+<td align="center">Twelve</td>
+<td align="center">75</td>
+<td align="center">5.80</td>
+<td align="center">1.497746</td>
+<td align="center">0.1729448</td>
+<td align="center">5.461028</td>
+<td align="center">6.138972</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT6">Return to Task</a></p>
+</div>
+<div id="task-7-4" class="section level4" number="7.5.1.7">
+<h4>
+<span class="header-section-number">7.5.1.7</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-4"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>A basic barplot with 95% Confidence Intervals.</li>
+<li>We have embellished the figure a little but you can mess around with the code to see what each bit does.</li>
+</ul>
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">descriptives</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Timepoint</span>, y <span class="op">=</span> <span class="va">mean</span>, fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_col</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_manual</span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#999000"</span>, <span class="st">"#000999"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_discrete</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Twelve"</span>,<span class="st">"Thirteen"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Timepoint of Evidence"</span>, y <span class="op">=</span> <span class="st">"GuiltRating"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">guides</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_errorbar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">LowerCI</span>, ymax <span class="op">=</span> <span class="va">UpperCI</span><span class="op">)</span>,
+                position <span class="op">=</span> <span class="st">"dodge"</span>, width <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">9</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span><span class="op">)</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">2.5</span><span class="op">)</span>, expand <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-task7-1"></span>
+<img src="07-s01-lab07e_files/figure-html/ch7-task7-1-1.png" alt="Possible Solution to Task 7" width="100%"><p class="caption">
+Figure 7.7: Possible Solution to Task 7
+</p>
+</div>
+<ul>
+<li><p>One thing to watch out for with the above code is the <code>scale_y_continuous()</code> function which helps us set the length and tick marks (-) on the y-axis. Rather oddly, if you set the <code>limits = ...</code> to the same values as the <code>ylim = ...</code> in <code>coord_cartesian()</code> then your figure will behave oddly and may disappear. <code>coord_cartesian()</code> is a zoom function and must be set within the limits of the scale, set by <code>scale_y_continuous()</code>.</p></li>
+<li><p>An alternative way to display just the means and errorbars would be to use the pointrange approach. This image shows again the 95% CI</p></li>
+</ul>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">descriptives</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Timepoint</span>, y <span class="op">=</span> <span class="va">mean</span>, fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_pointrange</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">LowerCI</span>, ymax <span class="op">=</span> <span class="va">UpperCI</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">scale_x_discrete</span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Twelve"</span>,<span class="st">"Thirteen"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Timepoint of Evidence"</span>, y <span class="op">=</span> <span class="st">"GuiltRating"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">guides</span><span class="op">(</span>fill<span class="op">=</span><span class="st">"none"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">9</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span><span class="op">)</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">2.5</span><span class="op">)</span>, expand <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ch7-task7-2"></span>
+<img src="07-s01-lab07e_files/figure-html/ch7-task7-2-1.png" alt="Alternative Solution to Task 7" width="100%"><p class="caption">
+Figure 7.8: Alternative Solution to Task 7
+</p>
+</div>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT7">Return to Task</a></p>
+</div>
+<div id="task-8-4" class="section level4" number="7.5.1.8">
+<h4>
+<span class="header-section-number">7.5.1.8</span> Task 8<a class="anchor" aria-label="anchor" href="#task-8-4"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>Remember to set <code>paired = TRUE</code> to run the within-subjects t-test</li>
+</ul>
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">GuiltRating</span> <span class="op">~</span> <span class="va">Timepoint</span>, 
+                  data <span class="op">=</span> <span class="va">lates</span>, 
+                  paired <span class="op">=</span> <span class="cn">TRUE</span>, 
+                  alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-1.76</td>
+<td align="right">-8.232202</td>
+<td align="right">0</td>
+<td align="right">74</td>
+<td align="right">-2.185995</td>
+<td align="right">-1.334005</td>
+<td align="left">Paired t-test</td>
+<td align="left">two.sided</td>
+</tr></tbody>
+</table></div>
+<ul>
+<li>Alternatively, using the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> and <code>pull()</code> functions to make force in a given condition as the first condition. Here, below, we are forcing condition <code>Thirteen</code> as the first condition and so the values match the above approach. If you forced condition <code>Twelve</code> as the first condition then the only difference would be that the t-value would change polarity (positive to negative or vice versa).</li>
+</ul>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lates</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Timepoint</span> <span class="op">==</span> <span class="st">"Thirteen"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span>,
+                  <span class="va">lates</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Timepoint</span> <span class="op">==</span> <span class="st">"Twelve"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span>,
+                  paired <span class="op">=</span> <span class="cn">TRUE</span>, 
+                  alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-1.76</td>
+<td align="right">-8.232202</td>
+<td align="right">0</td>
+<td align="right">74</td>
+<td align="right">-2.185995</td>
+<td align="right">-1.334005</td>
+<td align="left">Paired t-test</td>
+<td align="left">two.sided</td>
+</tr></tbody>
+</table></div>
+<p>The reason that the two outputs are the same is because the formula (top) method (x ~ y) is actually doing the same process as the second approach, but you are just not sure which is the first condition. This second approach (bottom) just makes it clearer.</p>
+<!-- 
+</div>
+ -->
+<p><strong>Note:</strong> The <code>conf.low</code> and <code>conf.high</code> values are the 95% Confidence Intervals for the mean difference between the two conditions. This could be written as something like, "there was a difference between the two groups (M = -1.76, 95% CI = [-2.19, -1.33])".</p>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT8">Return to Task</a></p>
+</div>
+<div id="task-9-1" class="section level4" number="7.5.1.9">
+<h4>
+<span class="header-section-number">7.5.1.9</span> Task 9<a class="anchor" aria-label="anchor" href="#task-9-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>A potential write-up for this study would be as follows:</p>
+<p><strong>"A paired-samples t-test was ran to compare the change in guilt ratings before (M = 5.8, SD = 1.5) and after (M = 4.04, SD = 1.93) the crucial evidence was heard. A significant difference was found (t(74) = 8.23, p = 4.7113406^{-12}) with Timepoint 13 having an average rating 1.76 units lower than Timepoint 12. This tells us that the critical evidence did have an influence on the rating of guilt by jury members."</strong></p>
+<p><strong>Working with rounding p-values</strong></p>
+<p>When rounding off p-values that are less than .001, rounding will give you a value of 0 which is technically wrong - the probability will be very low but not 0. As such, and according to APA format, values less than .001 would normally be written as p &lt; .001. To create a reader-friendly p-value, then you could try something like the following in your code:</p>
+<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">p.value</span> <span class="op">&lt;</span> <span class="fl">.001</span>, 
+       <span class="st">"p &lt; .001"</span>, 
+       <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"p = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">p.value</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<p>So instead of writing <strong>t(74) = 8.23, p = 4.7113406^{-12}</strong>, you would write <strong>t(74) = 8.23, p &lt; .001</strong></p>
+<p>The in-line coding for these options would look like:</p>
+<p>p = <code>`r results %&gt;% pull(p.value)`</code> for p = 4.7113406^{-12}</p>
+<p>&amp;</p>
+<p><code>`r ifelse(results$p.value &lt; .001, "p &lt; .001", paste0("p = ", round(results$p.value,3)))`</code> for p &lt; .001</p>
+<p><a href="nhst-paired-sample-t-test-and-nonparametric-tests.html#Ch7InClassQueT9">Return to Task</a></p>
+<p><span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+  
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+  
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="nhst-two-sample-t-test.html"><span class="header-section-number">6</span> NHST: Two-Sample t-test</a></div>
+<div class="next"><a href="acknowledgements.html">Acknowledgements</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#nhst-paired-sample-t-test-and-nonparametric-tests"><span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests</a></li>
+<li><a class="nav-link" href="#overview-7"><span class="header-section-number">7.1</span> Overview</a></li>
+<li>
+<a class="nav-link" href="#the-paired-sample-t-test"><span class="header-section-number">7.2</span> The Paired-Sample t-test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-set-juror-decision-making"><span class="header-section-number">7.2.1</span> Data Set: Juror Decision Making</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT1"><span class="header-section-number">7.2.2</span> Task 1: Load the data</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT2"><span class="header-section-number">7.2.3</span> Task 2: Wrangle the data</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT3"><span class="header-section-number">7.2.4</span> Task 3: Look at the histogram for normality</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT4"><span class="header-section-number">7.2.5</span> Task 4: A boxplot of outliers</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT5"><span class="header-section-number">7.2.6</span> Task 5: The violin plot</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT6"><span class="header-section-number">7.2.7</span> Task 6: Calculating Descriptives</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT7"><span class="header-section-number">7.2.8</span> Task 7: Visualising Means and Descriptives</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT8"><span class="header-section-number">7.2.9</span> Task 8: The paired-sample t-test</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT9"><span class="header-section-number">7.2.10</span> Task 9: The Write-up</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#practice-your-skills-10"><span class="header-section-number">7.3</span> Practice Your Skills</a></li>
+<li>
+<a class="nav-link" href="#non-parametric-tests"><span class="header-section-number">7.4</span> Non-Parametric tests</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#our-scenario"><span class="header-section-number">7.4.1</span> Our Scenario</a></li>
+<li><a class="nav-link" href="#assumption-check"><span class="header-section-number">7.4.2</span> Assumption check</a></li>
+<li><a class="nav-link" href="#the-descriptives"><span class="header-section-number">7.4.3</span> The descriptives</a></li>
+<li><a class="nav-link" href="#running-the-inferential-test"><span class="header-section-number">7.4.4</span> Running the inferential test</a></li>
+<li><a class="nav-link" href="#last-point-on-calculating-u-and-reporting-the-test"><span class="header-section-number">7.4.5</span> Last point on calculating U and reporting the test</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#solutions-to-questions-6"><span class="header-section-number">7.5</span> Solutions to Questions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#the-paired-sample-t-test-1"><span class="header-section-number">7.5.1</span> The Paired-Sample t-test</a></li></ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/analysis-v2/blob/master/book/07-s01-lab07a.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/analysis-v2/edit/master/book/07-s01-lab07a.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-11-12.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+## Practice Your Skills
+
+Using the data from above, perform a paired-sample t-test for the **Middle** group where the crucial evidence was presented on Timepoint 9. Save your current .Rmd file, then make a copy of it, rename it accordingly, and go through the steps for the **Middle** group. Since this exercise is very close to the example we worked through in this chapter, we have not added the solutions in the end. Feel free to check with your peers and discuss if there is **a difference in ratings of guilt, caused by presentation of the critical evidence, from Timepoint 8 to Timepoint 9**?
