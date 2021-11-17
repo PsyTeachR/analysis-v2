@@ -1,24 +1,21 @@
-## Test Yourself
+## Practice Your Skills
 
-This is a **formative** assignment meaning that it is purely for you to test your own knowledge, skill development, and learning, and does not count towards an overall grade. However, you are strongly encouraged to do the assignment as it will continue to boost your skills which you will need in future assignments. You will be instructed by the Course Lead on Moodle as to when you should attempt this assignment. Please check the information and schedule on the Level 2 Moodle page.
 
 **Lab 8: APES Assignment**
 
-In order to complete this assignment you first have to download the assignment .Rmd file which you need to edit for this assignment: titled `GUID_Level2_Semester1_Lab8.Rmd`. This can be downloaded within a zip file from the below link. Once downloaded and unzipped you should create a new folder that you will use as your working directory; put the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top [Download the assignment zip file from here](data/08-s01/homework/ch8-assign-file.zip). 
+In order to complete this assignment you first have to download the assignment .Rmd file which you need to edit for this assignment: titled `GUID_PracticeSkills_Ch8.Rmd`. This can be downloaded within a zip file from the below link. Once downloaded and unzipped you should create a new folder that you will use as your working directory; put the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top [Download the assignment zip file from here](data/08-s01/GUID_PracticeSkills_Ch8.zip). 
 
-*NOTE*: in nearly all of the problems below, you will need to replace `NULL` with a value or a pipeline of code that computes a value. Please pay special attention as to what the question is asking for as the output, e.g. *value* or a *tibble*; when asked for a *value* as an output, make sure it is a single value and not a value stored in a tibble. Finally, when altering code inside the code blocks, please *do not* re-order or rename the code blocks (T1, T2, ... etc.).  If you do, this may impact your grade! 
+*NOTE*: In nearly all of the problems below, you will need to replace `NULL` with a value or a pipeline of code that computes a value. Please pay special attention as to what the question is asking for as the output, e.g. *value* or a *tibble*; when asked for a *value* as an output, make sure it is a single value and not a value stored in a tibble. Finally, when altering code inside the code blocks, please *do not* re-order or rename the code blocks (T1, T2, ... etc.).
 
-It's also recommended that you "Knit" a report to be able to see what you've accomplished and spot potential errors. A great thing to do is close the whole programme, restart it, and then knit your code. This will test whether you have remembered to include essential elements, such as libraries, in your code.
+It's also recommended that you "knit" a report to be able to see what you've accomplished and spot potential errors. A great thing to do is close the whole programme, restart it, and then knit your code. This will test whether you have remembered to include essential elements, such as libraries, in your code.
 
 **APES: Alpha, Power, Effect Size, and Sample Size**
 
-In the lab we have been looking at the interplay between the four components of Alpha, Power, Effect Size, and Sample Size.  This is a very important part of experimental design to understand as it will help you understand which studies are worth paying attention to and it will help you design your own studies in the coming years so that you know just how many people to run and what to make of the effect that you find. If you have not yet done so, we highly recommend reading the blog suggested as PreClass reading material and carrying out the activities in the inclass activity. These will help you will both the practicalities and the interpretation of the following assignment.
-
-Remember that this assignment is formative but the knowledge gained from the practical activities in this lab will be super important to your future-self!
+In the chapter we have been looking at the interplay between the four components of Alpha, Power, Effect Size, and Sample Size. This is a very important part of experimental design to understand as it will help you understand which studies are worth paying attention to and it will help you design your own studies in the coming years so that you know just how many people to run and what to make of the effect that you find.
 
 **Before starting let's check:**
 
-1. The `.Rmd` file is saved in your working directory. For assessments we ask that you save it with the format `GUID_Level2_Semester1_Lab8.Rmd` where `GUID` is replaced with your `GUID`. Though this is a formative assessment, it may be good practice to do the same here.
+1. The `.Rmd` file is saved in your working directory. For assessments we ask that you save it with the format `GUID_PracticeSkills_Ch8.Rmd` where `GUID` is replaced with your `GUID`. Though this is a formative assessment, it may be good practice to do the same here.
 
 **Libraries** 
 
@@ -33,7 +30,7 @@ Remember that this assignment is formative but the knowledge gained from the pra
 
 **Basic Calculations**
 
-### Assignment Task 1 {#Ch8AssignQueT1}
+### Task 1 {#Ch8AssignQueT1}
 
 * You set up a study so that it has a power value of $power = .87$. To two decimal places, what is the Type II error rate of your study? 
 
@@ -43,9 +40,9 @@ Replace the `NULL` in the `T1` code chunk below with either a single value, or w
 error_rate <- NULL
 ```
 
-### Assignment Task 2 {#Ch8AssignQueT2}
+### Task 2 {#Ch8AssignQueT2}
 
-* You run an independent t-test and discover a significant effect, t(32) = 3.26, p < .05. Using the appropriate formula, given in the inclass activity, calculate the effect size of this t-test. 
+* You run a two-sample t-test and discover a significant effect, t(32) = 3.26, p < .05. Using the appropriate formula, given in the chapter, calculate the effect size of this t-test. 
 
 Replace the `NULL` in the `T2` code chunk below with mathematical notation so that `effect1` returns the value of the effect size. Do not round the value.
 
@@ -53,9 +50,9 @@ Replace the `NULL` in the `T2` code chunk below with mathematical notation so th
 effect1 <- NULL
 ```
 
-### Assignment Task 3 {#Ch8AssignQueT3}
+### Task 3 {#Ch8AssignQueT3}
 
-* You run a dependent t-test and discover a significant effect, t(43) = 2.24, p < .05. Using the appropriate formula, given in the inclass activity, calculate the effect size of this t-test. 
+* You run a paired-sample t-test and discover a significant effect, t(43) = 2.24, p < .05. Using the appropriate formula, given in the chapter, calculate the effect size of this t-test. 
 
 Replace the `NULL` in the `T3` code chunk below with mathematical notation so that `effect2` returns the value of the effect size. Do not round the value.
 
@@ -65,7 +62,7 @@ effect2 <- NULL
 
 **Using the Power function**
 
-### Assignment Task 4 {#Ch8AssignQueT4}
+### Task 4 {#Ch8AssignQueT4}
 
 * Replace the NULL in the `T4` code chunk below with a pipeline combining `pwr.t.test()`, `pluck()` and `ceiling()`, to determine how many participants are needed to sufficiently power a paired-samples t-test at $power = .9$ with $d = .5$? Assume a two-sided hypothesis with $\alpha = .05$. Ceiling the answer to the nearest whole participant and store this value in `participants`.
 
@@ -75,9 +72,9 @@ effect2 <- NULL
 participants <- NULL 
 ```
 
-### Assignment Task 5 {#Ch8AssignQueT5}
+### Task 5 {#Ch8AssignQueT5}
 
-* Using a pipeline similar to Task 4, what is the minimum effect size that a one-sample t-test study (two-tailed hypothesis) could reliably detect given the following details : $\beta = .16, \alpha = 0.01, n = 30$. Round to two decimal places and replace the NULL in the `T5` code chunk below to store this value in `effect3`.
+* Using a pipeline similar to Task 4, what is the minimum effect size that a one-sample t-test study (two-tailed hypothesis) could reliably detect given the following details: $\beta = .16, \alpha = 0.01, n = 30$. Round to two decimal places and replace the NULL in the `T5` code chunk below to store this value in `effect3`.
 
 * **Hint:** Remember you are going to `round()` and not `ceiling()`
 
@@ -85,7 +82,7 @@ participants <- NULL
 effect3 <- NULL
 ```
 
-### Assignment Task 6 {#Ch8AssignQueT6}
+### Task 6 {#Ch8AssignQueT6}
 
 **Study 1**
 
@@ -97,7 +94,7 @@ $$ t = \frac {{\bar{x_{1}}} - \bar{x_{2}}}{ \sqrt {\frac {{s_{1}}^2}{n_{1}} + \f
 tval <- NULL
 ```
 
-### Assignment Task 7 {#Ch8AssignQueT7}
+### Task 7 {#Ch8AssignQueT7}
 
 * Using the `tval` calculated in Task 6, calculate the effect size of this study and store it as `d1` in the `T7` code chunk below, replacing the `NULL` with the appropriate formula and values. Do not round `d1`.
 
@@ -107,7 +104,7 @@ tval <- NULL
 d1 <- NULL
 ```
 
-### Assignment Task 8 {#Ch8AssignQueT8}
+### Task 8 {#Ch8AssignQueT8}
 
 Assuming $power = .8$, $\alpha =.05$ on a two-tailed hypothesis, based on the `d1` value in Task 7 and the smallest achievable effect size of this study, which of the below statements is correct.
 
@@ -126,11 +123,11 @@ poss_d <- NULL
 answer_T8 <- NULL
 ```
 
-### Assignment Task 9 {#Ch8AssignQueT9}
+### Task 9 {#Ch8AssignQueT9}
 
 **Study 2**
 
-Below is a paragraph from the results of Experiment 4 from *Schroeder, J., & Epley, N. (2015). The sound of intellect: Speech reveals a thoughtful mind, increasing a job candidate's appeal.* *Psychological Science*, *26*, *877-891*. We saw this paper in Lab 5 but you can find out more details at <a href="https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities", target = "_blank">Open Stats Lab</a>.
+Below is a paragraph from the results of Experiment 4 from *Schroeder, J., & Epley, N. (2015). The sound of intellect: Speech reveals a thoughtful mind, increasing a job candidate's appeal.* *Psychological Science*, *26*, *877-891*. We saw this paper previously but you can find out more details at <a href="https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities", target = "_blank">Open Stats Lab</a>.
 
 *Recruiters believed that the job candidates had greater intellect - were more competent, thoughtful, and intelligent - when they listened to pitches (M = 5.63, SD = 1.61, n = 21) than when they read pitches (M = 3.65, SD = 1.91, n = 18), t(37) = 3.53, p < .01, 95% CI of the difference = [0.85, 3.13], **d1 = 1.16**. The recruiters also formed more positive impressions of the candidates - rated them as more likeable and had a more positive and less negative impression of them - when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23), t(37) = 2.85, p < .01, 95% CI of the difference = [0.55, 3.24], **d2 = 0.94**. Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.06), t(37) = 2.62, p < .01, 95% CI of the difference = [0.41, 3.24], **d3 = 0.86**.*
 
@@ -140,7 +137,7 @@ Using the `pwr.t.test()` function, what is the minimum effect size that this pap
 effect4 <- NULL
 ```
 
-### Assignment Task 10 {#Ch8AssignQueT10}
+### Task 10 {#Ch8AssignQueT10}
 
 Given the value of `effect4` calculated in Task 9, and the stated alpha in the paragraph and the smallest n of the two groups, which of these statements is true.
 
@@ -155,9 +152,9 @@ Replace the NULL in the `T10` code chunk below with the number of the statement 
 answer_t10 <- NULL
 ```
 
-### Assignment Task 11 {#Ch8AssignQueT11}
+### Task 11 {#Ch8AssignQueT11}
 
-**Last but not least:**
+**Last, but not least:**
 
 Read the following statements. 
 
@@ -180,9 +177,8 @@ answer_t11 <- NULL
 
 ### The **`pwr`** package
 
-An alternative solution to Task 9 would be to use the `pwr.t2n.test()` function from the `pwr` package [@R-pwr].  This would allow you to enter the `n` of both groups as there is an `n1` and an `n2` argument. Were you to use this, entering n1 = 18, n2 = 21, alpha = .01, the d drops just a little, changing the interpretation of Task 10.  Feel free to try this analysis and see if you can figure out what would be the alternative answer to Task 10.
+An alternative solution to Task 9 would be to use the `pwr.t2n.test()` function from the `pwr` package [@R-pwr].  This would allow you to enter the `n` of both groups as there is an `n1` and an `n2` argument. Were you to use this, entering n1 = 18, n2 = 21, alpha = .01, the d drops just a little, changing the interpretation of Task 10. Feel free to try this analysis and see if you can figure out what would be the alternative answer to Task 10.
 
 <span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span>
 
-Well done, you are finshed! Now you should go check your answers against the solution file which can be found at the end of this chapter. You are looking to check that the resulting output from the answers that you have submitted are exactly the same as the output in the solution - for example, remember that a single value is not the same as a coded answer. Where there are alternative answers, it means that you could have submitted any one of the options as they should all return the same answer. If you have any questions please post them on the forums.
-
+Well done, you are finished! Now you should go check your answers against the solution which can be found at the end of this chapter. You are looking to check that the resulting output from the answers that you have submitted are exactly the same as the output in the solution - for example, remember that a single value is not the same as a coded answer. Where there are alternative answers, it means that you could have submitted any one of the options as they should all return the same answer.
