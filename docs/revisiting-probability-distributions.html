@@ -60,6 +60,7 @@
 <li><a class="" href="nhst-two-sample-t-test.html"><span class="header-section-number">6</span> NHST: Two-Sample t-test</a></li>
 <li><a class="" href="nhst-paired-sample-t-test-and-nonparametric-tests.html"><span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests</a></li>
 <li><a class="" href="apes---alpha-power-effect-sizes-sample-size.html"><span class="header-section-number">8</span> APES - Alpha, Power, Effect Sizes, Sample Size</a></li>
+<li><a class="" href="correlations.html"><span class="header-section-number">9</span> Correlations</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -332,67 +333,140 @@ Now in order to create a full and accurate sampling distribution for our scenari
 <p>We now have a discrete probability distribution of the number of heads in 10 coin flips. Use the <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> function to have look at your <code>data10k</code> variable. You should now see for each heads outcome, the total number of occurrences in 10000 replications (<code>n</code>) plus the probability of that outcome (<code>p</code>).</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:coin-distribution-show">Table 4.1: </span>A sampling distribution for the number of heads in 10 flips of a coin. p = probability of obtaining that number of heads in 10000 replications of 10 flips of a coin</caption>
-<thead><tr class="header">
-<th align="center">heads</th>
-<th align="center">n</th>
-<th align="center">p</th>
+<span id="tab:coin-distribution-show">Table 4.1: </span>A sampling distribution for the number of heads in 10 flips of a coin. p = probability of obtaining that number of heads in 10000 replications of 10 flips of a coin
+</caption>
+<thead><tr>
+<th style="text-align:center;">
+heads
+</th>
+<th style="text-align:center;">
+n
+</th>
+<th style="text-align:center;">
+p
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">7</td>
-<td align="center">0.0007</td>
+<tr>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+0.0007
+</td>
 </tr>
-<tr class="even">
-<td align="center">1</td>
-<td align="center">82</td>
-<td align="center">0.0082</td>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+82
+</td>
+<td style="text-align:center;">
+0.0082
+</td>
 </tr>
-<tr class="odd">
-<td align="center">2</td>
-<td align="center">465</td>
-<td align="center">0.0465</td>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+465
+</td>
+<td style="text-align:center;">
+0.0465
+</td>
 </tr>
-<tr class="even">
-<td align="center">3</td>
-<td align="center">1186</td>
-<td align="center">0.1186</td>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+1186
+</td>
+<td style="text-align:center;">
+0.1186
+</td>
 </tr>
-<tr class="odd">
-<td align="center">4</td>
-<td align="center">2070</td>
-<td align="center">0.2070</td>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+2070
+</td>
+<td style="text-align:center;">
+0.2070
+</td>
 </tr>
-<tr class="even">
-<td align="center">5</td>
-<td align="center">2401</td>
-<td align="center">0.2401</td>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+2401
+</td>
+<td style="text-align:center;">
+0.2401
+</td>
 </tr>
-<tr class="odd">
-<td align="center">6</td>
-<td align="center">2113</td>
-<td align="center">0.2113</td>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+2113
+</td>
+<td style="text-align:center;">
+0.2113
+</td>
 </tr>
-<tr class="even">
-<td align="center">7</td>
-<td align="center">1166</td>
-<td align="center">0.1166</td>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+1166
+</td>
+<td style="text-align:center;">
+0.1166
+</td>
 </tr>
-<tr class="odd">
-<td align="center">8</td>
-<td align="center">422</td>
-<td align="center">0.0422</td>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+422
+</td>
+<td style="text-align:center;">
+0.0422
+</td>
 </tr>
-<tr class="even">
-<td align="center">9</td>
-<td align="center">79</td>
-<td align="center">0.0079</td>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+79
+</td>
+<td style="text-align:center;">
+0.0079
+</td>
 </tr>
-<tr class="odd">
-<td align="center">10</td>
-<td align="center">9</td>
-<td align="center">0.0009</td>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+0.0009
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -1716,7 +1790,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-11-17.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -12,7 +12,7 @@ dat <- read_csv("data/10-s02/inclass/VapingData.csv")
 
 ### Checking for outliers with z-scores {-}
 
-We briefly mentioned in the inclass activities that you could use  z-scores to check for outliers, instead of visual inspection. We have covered this in lectures and it works for any interval or ratio dataset, and not just ones for correlations, but we will demonstrate it here using the IQ data from Miller and Haden. First, lets get just the IQ data.
+We briefly mentioned in the above activities that you could use z-scores to check for outliers, instead of visual inspection. We have covered this in lectures and it works for any interval or ratio dataset, and not just ones for correlations, but we will demonstrate it here using the IQ data from Miller and Haden. First, lets get just the IQ data.
 
 ```{r zscore-iq-extract, results = "hide"}
 mh_IQ <- mh %>% 
@@ -24,7 +24,7 @@ A z-score is just a standardised value based on the mean ($\mu$) and standard de
 
 $$z = \frac{x - \mu}{\sigma}$$
 
-Using z-scores is away of effectively converting your data onto the Normal Distribution. As such, because of known cut-offs from the Normal Distribution (e.g. 68% of data between $\pm1SD$, etc - See Chapter 4), we can use that information to determine a value as an outlier. To do it, you convert all the data within your variable into their respective z-score and if any of the values fall above or below your cut-off then they are considered an outlier.
+Using z-scores is away of effectively converting your data onto the Normal Distribution. As such, because of known cut-offs from the Normal Distribution (e.g., 68% of data between $\pm1SD$, etc - See Chapter 4), we can use that information to determine a value as an outlier. To do it, you convert all the data within your variable into their respective z-score and if any of the values fall above or below your cut-off then they are considered an outlier.
 
 ```{r zscore-iq-extract-convert, results = "hide"}
 mh_IQ_z <- mh_IQ %>%
@@ -53,7 +53,7 @@ So the two take-aways from this are:
 
 ### A different approach to making a correlation table {-}
 
-In the inclass activities, Task 8, we looked at making a table of correlation functions. It was a bit messy and there is actually an alternative approach that we can use, with some useful additional functions. This makes use of the **`corrr`** package which you may need to install onto your laptop if you want to follow along.
+In the above activities, Task 8, we looked at making a table of correlation functions. It was a bit messy and there is actually an alternative approach that we can use, with some useful additional functions. This makes use of the **`corrr`** package which you may need to install onto your laptop if you want to follow along.
 
 ```{r corrr-hidden, echo = FALSE, warning = FALSE, message=FALSE}
 library(corrr)
@@ -92,7 +92,7 @@ mh %>%
   fashion(decimals = 3, leading_zeros = FALSE)
 ```
 
-So that is a bit of a nicer approach than the one shown in the lab, and gives you more control over the output of your correlation matrix table. However, the downside of this approach, and the reason we didn't use it in the lab is because this approach does not show you the p-values that easily. In fact, it doesn't show you them at all and you need to do a bit more work. You can read more about using the **`corrr`** package in this webpage by the author of the package: <a href = "https://drsimonj.svbtle.com/exploring-correlations-in-r-with-corrr" target = "_blank">https://drsimonj.svbtle.com/exploring-correlations-in-r-with-corrr</a>
+So that is a bit of a nicer approach than the one shown in Task 8, and gives you more control over the output of your correlation matrix table. However, the downside of this approach, and the reason we didn't use it above is because this approach does not show you the p-values that easily. In fact, it doesn't show you them at all and you need to do a bit more work. You can read more about using the **`corrr`** package in this webpage by the author of the package: <a href = "https://drsimonj.svbtle.com/exploring-correlations-in-r-with-corrr" target = "_blank">https://drsimonj.svbtle.com/exploring-correlations-in-r-with-corrr</a>
 
 ### Comparing Correlations {-}
 
@@ -107,7 +107,7 @@ library(tidyverse)
 
 Now we are going to walk through three different examples just to show you how it would work in different experimental designs. You will need to match the values in the code with the values in the text to make full sense of these examples. We will use examples from work on faces, voices and personality traits that you will encounter later in this book.
 
-**Comparing correlation of between-subjects designs (i.e. independent-samples)**
+**Comparing correlation of between-subjects designs (i.e., independent-samples)**
 
 Given the scenario of males voice pitch and height (r(28) = .89) and female voice pitch and height (r(28) = .75) can you say that the difference between these correlations is significant?
 
@@ -132,11 +132,11 @@ You actually get two test outputs with this function: Fisher's Z and Zou's Confi
 
 You would report this outcome along the lines of, "despite the correlation between male voice pitch and height was found to be stronger than the same relationship in female voices, Fisher's Z suggested that this was not a significant difference (Z = 1.65, p = .1)"
 
-**Within-Subjects (i.e. Dependendent Samples) with common variable**
+**Within-Subjects (i.e., dependent samples) with common variable**
 
-What about the scenario where you have 30 participants rating faces on the scales of trust, warmth and likeability, and we want to know if the relationship between trust and warmth (r = .89) is significantly different than the relationship between trust and likeability (r = .8).
+What about the scenario where you have 30 participants rating faces on the scales of trust, warmth and likability, and we want to know if the relationship between trust and warmth (r = .89) is significantly different than the relationship between trust and likability (r = .8).
 
-As this data comes from the same participants, and there is crossover/overlap in traits - i.e. one trait appears in both correlations of interest - then we will use the `cocor.dep.groups.overlap()`. To do this comparison we also need to know the relationship between the remaining correlation of warmth and likeability (r = .91).
+As this data comes from the same participants, and there is crossover/overlap in traits - i.e. one trait appears in both correlations of interest - then we will use the `cocor.dep.groups.overlap()`. To do this comparison we also need to know the relationship between the remaining correlation of warmth and likability (r = .91).
 
 **Note:** The order of input of correlations matters. See `?cocor.dep.groups.overlap()` for help.
 
@@ -172,17 +172,17 @@ compare3
 ```
 As you can see from the output, this test is significant (p = .047) suggesting that there is a significant difference between the correlation of trust and warmth (r = .89) and the correlation of trust and likeability (r = .8).
 
-**Within-Subjects (i.e. Dependendent Samples) with no common variable**
+**Within-Subjects (i.e., dependent samples) with no common variable**
 
-Ok last scenario. You have 30 participants rating faces on the scales of trust, warmth, likeability, and attractiveness, and we want to know if the relationship between trust and warmth (r = .89) is significantly different than the relationship between likeability and attractiveness (r = .93).
+Ok last scenario. You have 30 participants rating faces on the scales of trust, warmth, likability, and attractiveness, and we want to know if the relationship between trust and warmth (r = .89) is significantly different than the relationship between likability and attractiveness (r = .93).
 
 As the correlations of interest have no crossover in variables but do come from the same participants, in this example we use the `cocor.dep.groups.nonoverlap()`.
 
 **Note:** In order to do this we need the correlations of all other comparisons:
 
-* trust and likeability (.88)
+* trust and likability (.88)
 * trust and attractiveness (.91)
-* warmth and likeability (.87)
+* warmth and likability (.87)
 * warmth and attractiveness (.92)
 
 **Note:** The order of input of correlations matters. See `?cocor.dep.groups.nonoverlap()` for help.
@@ -204,6 +204,6 @@ Gives the output of:
 compare5
 ```
 
-As you can see from the output, this test is non-significant (p = .253) suggesting that there is no significant difference between the correlation of trust and warmth (r = .89) and the correlation of likeability and attractiveness (r = .8).
+As you can see from the output, this test is non-significant (p = .253) suggesting that there is no significant difference between the correlation of trust and warmth (r = .89) and the correlation of likability and attractiveness (r = .8).
 
-<span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Additional Material!</span>
+<span style="font-size: 22px; font-weight: bold; color: var(--purple);">End of Chapter!</span>

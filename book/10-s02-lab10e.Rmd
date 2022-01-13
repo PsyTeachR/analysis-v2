@@ -5,11 +5,11 @@ mh <- read_csv("data/10-s02/inclass/MillerHadenData.csv")
 dat <- read_csv("data/10-s02/inclass/VapingData.csv")
 ```
 
-Below you will find the solutions to the questions for the Activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
+Below you will find the solutions to the questions for the activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### InClass Activities
+### Correlations Application
 
-#### InClass Task 1
+#### Task 1
 
 * Loading in the data and the two libraries needed
 * Good point to remind you that: 
@@ -24,13 +24,13 @@ mh <- read_csv("MillerHadenData.csv")
 
 [Return to Task](#Ch10InClassQueT1)
 
-#### InClass Task 2
+#### Task 2
 
-* Actually the information within the textbook is unclear as to whether the data is interval or ordinal so we have accepted both as you could make a case for both arguments. A quick google search will show just as many people who think that IQ is interval as think it is oridinal.  In terms of Reading Ability, again we probably don't know enough information about this scale to make a clear judgement but it is at least ordinal and could well be interval.
+* Actually the information within the textbook is unclear as to whether the data is interval or ordinal so we have accepted both as you could make a case for both arguments. A quick Google search will show just as many people who think that IQ is interval as think it is ordinal. In terms of Reading Ability, again we probably don't know enough information about this scale to make a clear judgement but it is at least ordinal and could well be interval.
 
 [Return to Task](#Ch10InClassQueT2)
 
-#### InClass Task 3
+#### Task 3
 
 * Missing data is represented by NA. It stands for Not Available but is a very good way of improving your Scottish accent. For example, "is that a number" can be replied with "NA!".
 
@@ -50,7 +50,7 @@ Remember that you would need to store the output of this step, so really it woul
 
 [Return to Task](#Ch10InClassQueT3)
 
-#### InClass Task 4
+#### Task 4
 
 * Reading ability data appears as normal as expected for 25 participants. Hard to say how close to normality something should look when there are so few participants.
 
@@ -79,30 +79,30 @@ ggplot(mh, aes(x = Abil, y = IQ)) +
 
 [Return to Task](#Ch10InClassQueT4)
 
-#### InClass Task 5
+#### Task 5
 
 Based on the scatterplot we might suggest that as reading ability scores increase, IQ scores also increase and as such it would appear that our data is inline with our hypothesis that the two variables are positively correlated. This appears to be a medium strength relationship.
 
 [Return to Task](#Ch10InClassQueT5)
 
-#### InClass Task 6
+#### Task 6
 
 * We are going to run a pearson correlation as we would argue the data is interval and the relationship is linear.
-* The correlation would be run as follows - tidying it into a nice and useable table.
+* The correlation would be run as follows - tidying it into a nice and usable table.
 
 ```{r ch10InClassSolT6}
 results <- cor.test(mh$Abil, 
                     mh$IQ, 
                     method = "pearson", 
                     alternative = "two.sided") %>% 
-  tidy()
+  broom::tidy()
 ```
 
 * The output of the table would look as follows:
 
 ```{r ch10InClassSolT6-tab, echo = FALSE}
 knitr::kable(results,
-             digits = 3, 
+             digits = 3,
              caption = "The correlation output of the Reading Ability and IQ relationship.") %>%
   kable_styling() %>%
   scroll_box(width = "100%", box_css = "border: 0px;")
@@ -110,7 +110,7 @@ knitr::kable(results,
 
 [Return to Task](#Ch10InClassQueT6)
 
-#### InClass Task 7
+#### Task 7
 
 In the Task 6 output:
 
@@ -143,15 +143,15 @@ Which when knitted would read as:
 
 [Return to Task](#Ch10InClassQueT7)
 
-#### InClass Task 8
+#### Task 8
 
-1. The table looks the same across the diaganol because the correlation of e.g. Abil vs Abil is not shown, and the correlation of Abil vs Home is the same as the correlation of Home vs Abil
-2. The strongest positive correlation is between the number of minutes spend reading at home (Home) and Reading Ability (abil), r(23) = .74, p < .001
-2. The strongest negative correlation is between the number of minutes spend reading at home (Home) and minutes spent watching TV per week (TV), r(23) = -.65, p < .001
+1. The table looks the same across the diagonal because the correlation of e.g. Abil vs Abil is not shown, and the correlation of Abil vs Home is the same as the correlation of Home vs Abil.
+2. The strongest positive correlation is between the number of minutes spend reading at home (Home) and Reading Ability (abil), r(23) = .74, p < .001.
+2. The strongest negative correlation is between the number of minutes spend reading at home (Home) and minutes spent watching TV per week (TV), r(23) = -.65, p < .001.
 
 [Return to Task](#Ch10InClassQueT8)
 
-#### InClass Task 9
+#### Task 9
 
 **Step 1**
 
@@ -204,7 +204,7 @@ ggplot(dat, aes(x = IAT_RT)) +
   theme_bw()
 ```
 
-* A check of the relationship between reaction times on the IAT and scores on the Vaping Questionnaire
+* A check of the relationship between reaction times on the IAT and scores on the Vaping Questionnaire.
 * Remember that, often, the scatterplot is considered the descriptive of the correlation, hence why you see them including in journal articles to support the stated relationship.
 * The scatterplot can be used to make descriptive claims about the direction of the relationship, the strength of the relationship, whether it is linear or not, and to check for outliers and homeoscedasticity.
 
@@ -230,7 +230,7 @@ dat <- dat %>%
 results <- cor.test(dat$VapingQuestionnaireScore, 
                     dat$IAT_RT, 
                     method = "pearson") %>% 
-  tidy()
+  broom::tidy()
 ```
 
 * And extracting the values:
@@ -248,14 +248,19 @@ pvalue <- results %>%
 
 * With inline coding:
 
-Testing the hypothesis that there would be a relaionship beween implicit and explicit attitudes towards vaping, a pearson correlation found no significant relationship between IAT reaction times (implicit attitude) and answers on a Vaping Questionnaire (explicit attitude), r(`r backtick("r df")`) = `r backtick("r correlation")`, p = `r backtick("r pvalue")`. Overall this suggests that there is no direct relationship between implicit and explicit attitudes when relating to Vaping and as such our hypothesis was not supported; we cannot rejet the null hypothesis.
+Testing the hypothesis that there would be a relationship beween implicit and explicit attitudes towards vaping, a pearson correlation found no significant relationship between IAT reaction times (implicit attitude) and answers on a Vaping Questionnaire (explicit attitude), r(`r backtick("r df")`) = `r backtick("r correlation")`, p = `r backtick("r pvalue")`. Overall this suggests that there is no direct relationship between implicit and explicit attitudes when relating to Vaping and as such our hypothesis was not supported; we cannot reject the null hypothesis.
 
 * and appears as when knitted:
 
-Testing the hypothesis that there would be a relaionship beween implicit and explicit attitudes towards vaping, a pearson correlation found no significant relationship between IAT reaction times (implicit attitude) and answers on a Vaping Questionnaire (explicit attitude), r(`r df`) = `r correlation`, p = `r pvalue`. Overall this suggests that there is no direct relationship between implicit and explicit attitudes when relating to Vaping and as such our hypothesis was not supported; we cannot rejet the null hypothesis.
+Testing the hypothesis that there would be a relationship beween implicit and explicit attitudes towards vaping, a pearson correlation found no significant relationship between IAT reaction times (implicit attitude) and answers on a Vaping Questionnaire (explicit attitude), r(`r df`) = `r correlation`, p = `r pvalue`. Overall this suggests that there is no direct relationship between implicit and explicit attitudes when relating to Vaping and as such our hypothesis was not supported; we cannot reject the null hypothesis.
 
 **Remember though that r-values and p-values are often rounded to three decimal places, so a more appropriate write up would be:**
 
-Testing the hypothesis that there would be a relaionship beween implicit and explicit attitudes towards vaping, a pearson correlation found no significant relationship between IAT reaction times (implicit attitude) and answers on a Vaping Questionnaire (explicit attitude), r(143) = -.104, p = .212. Overall this suggests that there is no direct relationship between implicit and explicit attitudes when relating to Vaping and as such our hypothesis was not supported; we cannot rejet the null hypothesis.
+Testing the hypothesis that there would be a relationship beween implicit and explicit attitudes towards vaping, a pearson correlation found no significant relationship between IAT reaction times (implicit attitude) and answers on a Vaping Questionnaire (explicit attitude), r(143) = -.104, p = .212. Overall this suggests that there is no direct relationship between implicit and explicit attitudes when relating to Vaping and as such our hypothesis was not supported; we cannot reject the null hypothesis.
 
-<span style="font-size: 22px; font-weight: bold; color: var(--purple);">Chapter Complete!</span>
+
+### Practice Your Skills
+
+Check your work against the solution to the tasks here:  [**Chapter 9 Practice Your Skills Solution**](data/10-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills_solution.html).
+
+[Return to Task](#Ch9PracticeSkills)

@@ -60,6 +60,7 @@
 <li><a class="" href="nhst-two-sample-t-test.html"><span class="header-section-number">6</span> NHST: Two-Sample t-test</a></li>
 <li><a class="" href="nhst-paired-sample-t-test-and-nonparametric-tests.html"><span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests</a></li>
 <li><a class="" href="apes---alpha-power-effect-sizes-sample-size.html"><span class="header-section-number">8</span> APES - Alpha, Power, Effect Sizes, Sample Size</a></li>
+<li><a class="" href="correlations.html"><span class="header-section-number">9</span> Correlations</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -183,99 +184,192 @@
 <p>Below is the data from the 22 participants you have collected in your pilot study. Their mean reaction time for valid trials (in milliseconds) is shown in the right hand column, <code>valid_rt</code>.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:ch6-preclass-nsdata">Table 5.1: </span>Pilot Data for 22 Participants on a Sleep-Related Posner Paradigm. ID is shown in participant column and mean reaction time (ms) on valid trails is shown in valid_rt column.</caption>
-<thead><tr class="header">
-<th align="center">participant</th>
-<th align="center">valid_rt</th>
+<span id="tab:ch6-preclass-nsdata">Table 5.1: </span>Pilot Data for 22 Participants on a Sleep-Related Posner Paradigm. ID is shown in participant column and mean reaction time (ms) on valid trails is shown in valid_rt column.
+</caption>
+<thead><tr>
+<th style="text-align:center;">
+participant
+</th>
+<th style="text-align:center;">
+valid_rt
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="center">1</td>
-<td align="center">631.2</td>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+631.2
+</td>
 </tr>
-<tr class="even">
-<td align="center">2</td>
-<td align="center">800.8</td>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+800.8
+</td>
 </tr>
-<tr class="odd">
-<td align="center">3</td>
-<td align="center">595.4</td>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+595.4
+</td>
 </tr>
-<tr class="even">
-<td align="center">4</td>
-<td align="center">502.6</td>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+502.6
+</td>
 </tr>
-<tr class="odd">
-<td align="center">5</td>
-<td align="center">604.5</td>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+604.5
+</td>
 </tr>
-<tr class="even">
-<td align="center">6</td>
-<td align="center">516.9</td>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+516.9
+</td>
 </tr>
-<tr class="odd">
-<td align="center">7</td>
-<td align="center">658.0</td>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+658.0
+</td>
 </tr>
-<tr class="even">
-<td align="center">8</td>
-<td align="center">502.0</td>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+502.0
+</td>
 </tr>
-<tr class="odd">
-<td align="center">9</td>
-<td align="center">496.7</td>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+496.7
+</td>
 </tr>
-<tr class="even">
-<td align="center">10</td>
-<td align="center">600.3</td>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+600.3
+</td>
 </tr>
-<tr class="odd">
-<td align="center">11</td>
-<td align="center">714.6</td>
+<tr>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+714.6
+</td>
 </tr>
-<tr class="even">
-<td align="center">12</td>
-<td align="center">623.7</td>
+<tr>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+623.7
+</td>
 </tr>
-<tr class="odd">
-<td align="center">13</td>
-<td align="center">634.5</td>
+<tr>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+634.5
+</td>
 </tr>
-<tr class="even">
-<td align="center">14</td>
-<td align="center">724.9</td>
+<tr>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+724.9
+</td>
 </tr>
-<tr class="odd">
-<td align="center">15</td>
-<td align="center">815.7</td>
+<tr>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+815.7
+</td>
 </tr>
-<tr class="even">
-<td align="center">16</td>
-<td align="center">456.9</td>
+<tr>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+456.9
+</td>
 </tr>
-<tr class="odd">
-<td align="center">17</td>
-<td align="center">703.4</td>
+<tr>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+703.4
+</td>
 </tr>
-<tr class="even">
-<td align="center">18</td>
-<td align="center">647.5</td>
+<tr>
+<td style="text-align:center;">
+18
+</td>
+<td style="text-align:center;">
+647.5
+</td>
 </tr>
-<tr class="odd">
-<td align="center">19</td>
-<td align="center">657.9</td>
+<tr>
+<td style="text-align:center;">
+19
+</td>
+<td style="text-align:center;">
+657.9
+</td>
 </tr>
-<tr class="even">
-<td align="center">20</td>
-<td align="center">613.2</td>
+<tr>
+<td style="text-align:center;">
+20
+</td>
+<td style="text-align:center;">
+613.2
+</td>
 </tr>
-<tr class="odd">
-<td align="center">21</td>
-<td align="center">585.4</td>
+<tr>
+<td style="text-align:center;">
+21
+</td>
+<td style="text-align:center;">
+585.4
+</td>
 </tr>
-<tr class="even">
-<td align="center">22</td>
-<td align="center">674.1</td>
+<tr>
+<td style="text-align:center;">
+22
+</td>
+<td style="text-align:center;">
+674.1
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -1262,7 +1356,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2021-11-17.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
