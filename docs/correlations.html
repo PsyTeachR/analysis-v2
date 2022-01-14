@@ -657,7 +657,7 @@ Hint1: There is no hint, this is just a cheeky test to make sure you have read t
 <p>For this exercise, you need to know that "Block 3" in the experiment tested reaction times and accuracy towards congruent associations, pairing positive words with Kitchen utensils and negative words with Vaping. "Block 5" in the experiment tested reaction times and accuracy towards incongruent associations, pairing positive words with Vaping and negative words with Kitchen Utensils. As such, if reaction times were longer in "Block 5" than in "Block 3" then people are considered to hold the view that Vaping is negative (i.e., congruent associations are quicker than incongruent associations). However, if reaction times were quicker in "Block 5" than in "Block 3" then people are considered to hold the view that Vaping is positive (i.e., incongruent associations were quicker than congruent associations). The difference between reaction times in "Block 5" and "Block 3" is called the participants IAT score.</p>
 <p>Load in the data in <code>VapingData.csv</code> and analyse it to test the hypothesis that Implicit and Explicit attitudes towards Vaping are positively related. Here are some pointers, hints and tips. Again, the solutions walk you through each step, but it will help you to try the steps yourself first. Think through each step. Sometimes you will need to think backwards, what do I want my tibble to look like. You can do all of these steps. This is nothing new.</p>
 <ol style="list-style-type: decimal">
-<li>After loading in the data, start by looking at the data. You have 8 columns. Reaction times and Accuracy scores for Blocks 3 and 5 as well as the Explicit Vaping Questionnaire scores, Sex and Age, for each participant.</li>
+<li>After loading in the data, start by looking at the data. You have 8 columns. Reaction times and Accuracy scores for Blocks 3 and 5 as well as the Explicit Vaping Questionnaire scores, Gender and Age, for each participant.</li>
 <li>Accuracy was calculated as proportion and as such can't go above 1. Participants entered their own data so some might have made a mistake. Remove participants who had an accuracy greater than 1 in either Block 3 or Block 5 as we are unclear on the accuracy of these values.</li>
 <li>We also only want participants that were paying attention so best remove anybody whose average accuracy score across Blocks 3 and 5 was less than 80%. Note - this value is arbitrary and if you wanted, in your own experiment, you could use a more relaxed or strict cut-off based on other studies or guidance. Note that these decisions should be set out at the start of your research as part of your pre-registration or as part of your Registered Report. Finally, in this instance, remember, the values are in proportions not percentages (so 80% will be .8).</li>
 <li>Now create an IAT score for participants by subtracting Block 3 reaction times (RT) away from Block 5 reaction times e.g <span class="math inline">\(Block5 - Block3\)</span>. Use the information above to understand how the scores relate to attitudes.</li>
@@ -1470,7 +1470,7 @@ two.sided
 <li>It is always worth thinking about which averages are informative and which are not.
 <ul>
 <li>Knowing the average explicit attitude towards vaping could well be informative.</li>
-<li>In contrast, if you are using an ordinal scale and people use the whole of the scale then the average may just tell you the middle of the scale you are using - which you already know and really isnt that informative. So it is always worth thinking about what your descriptives are calculating.</li>
+<li>In contrast, if you are using an ordinal scale and people use the whole of the scale then the average may just tell you the middle of the scale you are using - which you already know and really isn't that informative. So it is always worth thinking about what your descriptives are calculating.</li>
 </ul>
 </li>
 </ul>
@@ -1782,7 +1782,7 @@ TV
 <div id="comparing-correlations" class="section level3 unnumbered">
 <h3>Comparing Correlations<a class="anchor" aria-label="anchor" href="#comparing-correlations"><i class="fas fa-link"></i></a>
 </h3>
-<p>One step that is often overlooked when working with correlations and a data set with numerous variables, is to compare whether the correlations are significantly different from each other. For example, say you are looking at whether there is a relationship between height and attractiveness in males and in females. You run the two correlations and find one is a stronger relationship than the other. Many would try to conclude that that means there is a significantly stronger relationship in one sex than the other. However that has not been tested. It can be tested though. We will quickly show you how, but this paper will also help the discussion: Diedenhofen and Musch (2015) cocor: A Comprehensive Solution for the Statistical Comparison of Correlations. PLOS ONE 10(6): e0131499. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945</a></p>
+<p>One step that is often overlooked when working with correlations and a data set with numerous variables, is to compare whether the correlations are significantly different from each other. For example, say you are looking at whether there is a relationship between height and attractiveness in males and in females. You run the two correlations and find one is a stronger relationship than the other. Many would try to conclude that that means there is a significantly stronger relationship in one gender than the other. However that has not been tested. It can be tested though. We will quickly show you how, but this paper will also help the discussion: Diedenhofen and Musch (2015) cocor: A Comprehensive Solution for the Statistical Comparison of Correlations. PLOS ONE 10(6): e0131499. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945</a></p>
 <p>As always we need the libraries first. You will need to install the <strong><code>cocor</code></strong> package on to your laptop.</p>
 <div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://comparingcorrelations.org">cocor</a></span><span class="op">)</span>
@@ -2204,7 +2204,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-13.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

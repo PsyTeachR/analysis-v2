@@ -178,7 +178,7 @@ dat <- dat %>%
 
 * It is always worth thinking about which averages are informative and which are not.
     * Knowing the average explicit attitude towards vaping could well be informative.
-    * In contrast, if you are using an ordinal scale and people use the whole of the scale then the average may just tell you the middle of the scale you are using - which you already know and really isnt that informative. So it is always worth thinking about what your descriptives are calculating.
+    * In contrast, if you are using an ordinal scale and people use the whole of the scale then the average may just tell you the middle of the scale you are using - which you already know and really isn't that informative. So it is always worth thinking about what your descriptives are calculating.
     
 ```{r ch10InClassSolT9-5}
 descriptives <- dat %>% summarise(n = n(),

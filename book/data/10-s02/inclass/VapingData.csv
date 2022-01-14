@@ -1,4 +1,4 @@
-Participant,IAT_BLOCK3_RT,IAT_BLOCK3_Acc,IAT_BLOCK5_RT,IAT_BLOCK5_Acc,VapingQuestionnaireScore,Sex,Age
+Participant,IAT_BLOCK3_RT,IAT_BLOCK3_Acc,IAT_BLOCK5_RT,IAT_BLOCK5_Acc,VapingQuestionnaireScore,Gender,Age
 1,796.8,0.93,896.1,0.93,46,Female,18
 2,630.38,1,730.87,0.9,42,Female,19
 3,568.52,0.97,733.61,0.58,62,Male,27
