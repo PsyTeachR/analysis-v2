@@ -1,8 +1,8 @@
 ## Solutions to Questions
 
 ```{r lab10-solutions-setup, echo = FALSE, message=FALSE, warning=FALSE}
-mh <- read_csv("data/10-s02/inclass/MillerHadenData.csv")
-dat <- read_csv("data/10-s02/inclass/VapingData.csv")
+mh <- read_csv("data/09-s02/inclass/MillerHadenData.csv")
+dat <- read_csv("data/09-s02/inclass/VapingData.csv")
 ```
 
 Below you will find the solutions to the questions for the activities for this chapter. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
@@ -261,6 +261,6 @@ Testing the hypothesis that there would be a relationship beween implicit and ex
 
 ### Practice Your Skills
 
-Check your work against the solution to the tasks here:  [**Chapter 9 Practice Your Skills Solution**](data/10-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills_solution.html).
+Check your work against the solution to the tasks here:  [**Chapter 9 Practice Your Skills Solution**](data/09-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills_solution.html).
 
 [Return to Task](#Ch9PracticeSkills)

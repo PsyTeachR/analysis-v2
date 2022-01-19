@@ -61,6 +61,7 @@
 <li><a class="" href="nhst-paired-sample-t-test-and-nonparametric-tests.html"><span class="header-section-number">7</span> NHST: Paired-Sample t-test and Nonparametric tests</a></li>
 <li><a class="" href="apes---alpha-power-effect-sizes-sample-size.html"><span class="header-section-number">8</span> APES - Alpha, Power, Effect Sizes, Sample Size</a></li>
 <li><a class="active" href="correlations.html"><span class="header-section-number">9</span> Correlations</a></li>
+<li><a class="" href="simple-regression.html"><span class="header-section-number">10</span> Simple Regression</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -87,7 +88,7 @@
 <p>As you will read in <a href="https://drive.google.com/file/d/0B1fyuTuvj3YoaFdUR3FZaXNuNXc/view" target="_blank">Miller and Haden (2013)</a> as part of the Correlations Basics reading, correlations are <strong>used to detect and quantify relationships among numerical variables</strong>. In short, you measure two variables and the correlation analysis tells you whether or not they are related in some manner - positively (i.e., one increases as the other increases) or negatively (i.e., one decreases as the other increases). Schematic examples of three extreme bivariate relationships (i.e., the relationship between two (bi) variables) are shown below:</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10-show-figure"></span>
-<img src="10-s02-lab10a_files/figure-html/ch10-show-figure-1.png" alt="Schematic examples of extreme bivariate relationships" width="100%"><p class="caption">
+<img src="09-s02-lab09a_files/figure-html/ch10-show-figure-1.png" alt="Schematic examples of extreme bivariate relationships" width="100%"><p class="caption">
 Figure 9.1: Schematic examples of extreme bivariate relationships
 </p>
 </div>
@@ -268,7 +269,7 @@ IV
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:corr-anscombe-figure"></span>
-<img src="10-s02-lab10b_files/figure-html/corr-anscombe-figure-1.png" alt="Though all datasets have a correlation of r = .82, when plotted the four datasets look very different. Grp I is a standard linear relationship where a pearson correlation would be suitable. Grp II would appear to be a non-linear relationship and a non-parametric analysis would be appropriate. Grp III again shows a linear relationship (approaching r = 1) where an outlier has lowered the correlation coefficient. Grp IV shows no relationship between the two variables (X, Y) but an oultier has inflated the correlation higher." width="100%"><p class="caption">
+<img src="09-s02-lab09b_files/figure-html/corr-anscombe-figure-1.png" alt="Though all datasets have a correlation of r = .82, when plotted the four datasets look very different. Grp I is a standard linear relationship where a pearson correlation would be suitable. Grp II would appear to be a non-linear relationship and a non-parametric analysis would be appropriate. Grp III again shows a linear relationship (approaching r = 1) where an outlier has lowered the correlation coefficient. Grp IV shows no relationship between the two variables (X, Y) but an oultier has inflated the correlation higher." width="100%"><p class="caption">
 Figure 9.2: Though all datasets have a correlation of r = .82, when plotted the four datasets look very different. Grp I is a standard linear relationship where a pearson correlation would be suitable. Grp II would appear to be a non-linear relationship and a non-parametric analysis would be appropriate. Grp III again shows a linear relationship (approaching r = 1) where an outlier has lowered the correlation coefficient. Grp IV shows no relationship between the two variables (X, Y) but an oultier has inflated the correlation higher.
 </p>
 </div>
@@ -282,7 +283,7 @@ Figure 9.2: Though all datasets have a correlation of r = .82, when plotted the 
 <span class="header-section-number">9.3</span> Correlations Application<a class="anchor" aria-label="anchor" href="#correlations-application"><i class="fas fa-link"></i></a>
 </h2>
 <p>We are going to jump straight into this one! To get you used to running a correlation we will use the examples you read about in <strong>Miller and Haden (2013)</strong>, Chapter 11, looking at the <strong>relationship</strong> between four variables: reading ability, intelligence, the number of minutes per week spent reading at home, and the number of minutes per week spent watching TV at home. This is again a great example of where a correlation works best because it would be unethical to manipulate these variables so measuring them as they exist in the environment is most appropriate.</p>
-<p><a href="./data/10-s02/inclass/ch10-inclass-data.zip" target="_blank">Click here to download the data for today</a>.</p>
+<p><a href="./data/09-s02/inclass/ch09-inclass-data.zip" target="_blank">Click here to download the data for today</a>.</p>
 <div id="Ch10InClassQueT1" class="section level3" number="9.3.1">
 <h3>
 <span class="header-section-number">9.3.1</span> Task 1 - The Data<a class="anchor" aria-label="anchor" href="#Ch10InClassQueT1"><i class="fas fa-link"></i></a>
@@ -599,7 +600,7 @@ Hint4: Hypotheses can only be supported or not supported, never proven.
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10-advance-pairs"></span>
-<img src="10-s02-lab10c_files/figure-html/ch10-advance-pairs-1.png" alt="Matrix of Correlation plots of Miller and Haden (2013) data" width="100%"><p class="caption">
+<img src="09-s02-lab09c_files/figure-html/ch10-advance-pairs-1.png" alt="Matrix of Correlation plots of Miller and Haden (2013) data" width="100%"><p class="caption">
 Figure 9.3: Matrix of Correlation plots of Miller and Haden (2013) data
 </p>
 </div>
@@ -724,7 +725,7 @@ Hint Step 7: results &lt;- cor.test(method = "pearson")?
 <span class="header-section-number">9.4</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#Ch9PracticeSkills"><i class="fas fa-link"></i></a>
 </h2>
 <p>The purpose of this exercise is to test your ability to run and interpret a correlation for yourself, as shown in this chapter, but at the same time get you to think about all the skills you learnt previously. Most of the hard work is in the data wrangling; running the actual analysis, much like with t-tests, is very straightforward. Remember to refer back to previous chapters when stuck.</p>
-<p>In order to complete these tasks you will need to download the data .csv file and the .Rmd file, which you need to edit, titled <code>GUID_L2_Ch9_PracticeSkills.Rmd</code>. These can be downloaded within a zip file from the below link. <a href="data/10-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills.zip"><strong>Download the Exercises .zip file from here</strong></a>.</p>
+<p>In order to complete these tasks you will need to download the data .csv file and the .Rmd file, which you need to edit, titled <code>GUID_L2_Ch9_PracticeSkills.Rmd</code>. These can be downloaded within a zip file from the below link. <a href="data/09-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills.zip"><strong>Download the Exercises .zip file from here</strong></a>.</p>
 <p>Once downloaded and unzipped you should create a new folder that you will use as your working directory; put the data file and the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top. The .Rmd file itself will currently knit as there are no errors in the code and this is a good test that you can perform from time to time to make sure that there are still no errors in your code. Obviously this doesn't mean that all your answers are correct; it just means that the code is error free.</p>
 <p>As in the previous exercises there are a number of code chunks already set up. The code chunks will require entering a number or entering and adjusting code that you have practiced in the chapters. Follow the instructions on what to edit in each code chunk. This will often be entering code based on what we have covered up until this point.</p>
 <p><strong>Background</strong>
@@ -1276,7 +1277,7 @@ TV
   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT4-1"></span>
-<img src="10-s02-lab10e_files/figure-html/ch10InClassSolT4-1-1.png" alt="Histogram showing the distribution of Reading Ability Scores from Miller and Haden (2013)" width="100%"><p class="caption">
+<img src="09-s02-lab09e_files/figure-html/ch10InClassSolT4-1-1.png" alt="Histogram showing the distribution of Reading Ability Scores from Miller and Haden (2013)" width="100%"><p class="caption">
 Figure 9.4: Histogram showing the distribution of Reading Ability Scores from Miller and Haden (2013)
 </p>
 </div>
@@ -1289,7 +1290,7 @@ Figure 9.4: Histogram showing the distribution of Reading Ability Scores from Mi
   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT4-2"></span>
-<img src="10-s02-lab10e_files/figure-html/ch10InClassSolT4-2-1.png" alt="Histogram showing the distribution of IQ Scores from Miller and Haden (2013)" width="100%"><p class="caption">
+<img src="09-s02-lab09e_files/figure-html/ch10InClassSolT4-2-1.png" alt="Histogram showing the distribution of IQ Scores from Miller and Haden (2013)" width="100%"><p class="caption">
 Figure 9.5: Histogram showing the distribution of IQ Scores from Miller and Haden (2013)
 </p>
 </div>
@@ -1305,7 +1306,7 @@ Figure 9.5: Histogram showing the distribution of IQ Scores from Miller and Hade
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT4-3"></span>
-<img src="10-s02-lab10e_files/figure-html/ch10InClassSolT4-3-1.png" alt="Scatterplot of IQ scores as a function of Reading Ability from Miller and Haden (2013) data" width="100%"><p class="caption">
+<img src="09-s02-lab09e_files/figure-html/ch10InClassSolT4-3-1.png" alt="Scatterplot of IQ scores as a function of Reading Ability from Miller and Haden (2013) data" width="100%"><p class="caption">
 Figure 9.6: Scatterplot of IQ scores as a function of Reading Ability from Miller and Haden (2013) data
 </p>
 </div>
@@ -1491,7 +1492,7 @@ two.sided
 <pre><code>## Warning: Removed 11 rows containing non-finite values (stat_bin).</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT9-6-1"></span>
-<img src="10-s02-lab10e_files/figure-html/ch10InClassSolT9-6-1-1.png" alt="Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)" width="100%"><p class="caption">
+<img src="09-s02-lab09e_files/figure-html/ch10InClassSolT9-6-1-1.png" alt="Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)" width="100%"><p class="caption">
 Figure 9.7: Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)
 </p>
 </div>
@@ -1501,7 +1502,7 @@ Figure 9.7: Histogram showing the distribution of Scores on the Vaping Questionn
   <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT9-6-2"></span>
-<img src="10-s02-lab10e_files/figure-html/ch10InClassSolT9-6-2-1.png" alt="Histogram showing the distribution of IAT Reaction Times (Implicit)" width="100%"><p class="caption">
+<img src="09-s02-lab09e_files/figure-html/ch10InClassSolT9-6-2-1.png" alt="Histogram showing the distribution of IAT Reaction Times (Implicit)" width="100%"><p class="caption">
 Figure 9.8: Histogram showing the distribution of IAT Reaction Times (Implicit)
 </p>
 </div>
@@ -1517,7 +1518,7 @@ Figure 9.8: Histogram showing the distribution of IAT Reaction Times (Implicit)
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT9-6-3"></span>
-<img src="10-s02-lab10e_files/figure-html/ch10InClassSolT9-6-3-1.png" alt="A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)" width="100%"><p class="caption">
+<img src="09-s02-lab09e_files/figure-html/ch10InClassSolT9-6-3-1.png" alt="A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)" width="100%"><p class="caption">
 Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)
 </p>
 </div>
@@ -1565,7 +1566,7 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <h3>
 <span class="header-section-number">9.5.2</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills-13"><i class="fas fa-link"></i></a>
 </h3>
-<p>Check your work against the solution to the tasks here: <a href="data/10-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills_solution.html"><strong>Chapter 9 Practice Your Skills Solution</strong></a>.</p>
+<p>Check your work against the solution to the tasks here: <a href="data/09-s02/GUID_L2_Ch9_PracticeSkills/L2_Ch9_PracticeSkills_solution.html"><strong>Chapter 9 Practice Your Skills Solution</strong></a>.</p>
 <p><a href="correlations.html#Ch9PracticeSkills">Return to Task</a></p>
 
 </div>
@@ -1944,9 +1945,6 @@ TV
 </div>
 </div>
 </div>
-
-
-
 <script>
 
 /* update total correct if #webex-total_correct exists */
@@ -2147,7 +2145,7 @@ $( document ).ready(function() {
 });
 </script><div class="chapter-nav">
 <div class="prev"><a href="apes---alpha-power-effect-sizes-sample-size.html"><span class="header-section-number">8</span> APES - Alpha, Power, Effect Sizes, Sample Size</a></div>
-<div class="next"><a href="acknowledgements.html">Acknowledgements</a></div>
+<div class="next"><a href="simple-regression.html"><span class="header-section-number">10</span> Simple Regression</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -2191,8 +2189,8 @@ $( document ).ready(function() {
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/analysis-v2/blob/master/book/10-s02-lab10a.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/analysis-v2/edit/master/book/10-s02-lab10a.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/analysis-v2/blob/master/book/09-s02-lab09a.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/analysis-v2/edit/master/book/09-s02-lab09a.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -2204,7 +2202,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-14.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
