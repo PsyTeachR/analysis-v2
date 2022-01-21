@@ -455,7 +455,7 @@ Remember that convention is that people report the <code>t</code> as a positive.
 </ul>
 <p>And it works on a leave one out principle. You give it all the info you have and it returns the element you are missing. So, for example, say you needed to know how many people per group you would need to detect an effect size as low as <code>d = .4</code> with <code>power = .8</code>, <code>alpha = .05</code> in a <code>two.sample (between-subjects) t-test</code> on a <code>two.sided</code> hypothesis test. You would do:</p>
 <div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>,
+<code class="sourceCode R"><span class="fu">pwr.t.test</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>,
            power <span class="op">=</span> <span class="fl">.8</span>,
            sig.level <span class="op">=</span> <span class="fl">.05</span>,
            alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
@@ -474,7 +474,7 @@ Remember that convention is that people report the <code>t</code> as a positive.
 <p>But you only get whole people and we like to be conservative on our estimates so we would actually run 100 <strong>per condition</strong>. That is a lot of people!!!</p>
 <p>One problem though is that the output of the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code> is an object and not that easy to work with in terms of getting values out from it to be reproducible. However, the function <code>purr::pluck()</code> allows us to pluck values from objects. And the code would look like this</p>
 <div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">n_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>, 
+<code class="sourceCode R"><span class="va">n_test</span> <span class="op">&lt;-</span> <span class="fu">pwr.t.test</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>, 
                      power <span class="op">=</span> <span class="fl">.8</span>,
                      sig.level <span class="op">=</span> <span class="fl">.05</span>,
                      alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
@@ -1368,7 +1368,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-19.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

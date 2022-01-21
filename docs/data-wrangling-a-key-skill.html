@@ -841,7 +841,7 @@ red
 <code class="sourceCode R"><span class="va">pong_data2_group</span> <span class="op">&lt;-</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">pong_data</span>, <span class="va">BackgroundColor</span>, <span class="va">PaddleLength</span><span class="op">)</span>
 <span class="va">pong_data2_hits</span> <span class="op">&lt;-</span> <span class="fu">summarise</span><span class="op">(</span><span class="va">pong_data2_group</span>, total_hits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">HitOrMiss</span><span class="op">)</span><span class="op">)</span>
 <span class="va">pong_data2_hits_red_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">pong_data2_hits</span>, <span class="va">BackgroundColor</span> <span class="op">==</span> <span class="st">"red"</span>, <span class="va">PaddleLength</span> <span class="op">==</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
-<p>Pipelines allow us to quickly and reproducibly perform an action that would take much longer manually. However, we can make our code even more efficient, using less code, by stringing our sequence of functions together using '<strong>pipes</strong>', written as <code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code>. Changing the above code into one using pipes would give us:</p>
+<p>Pipelines allow us to quickly and reproducibly perform an action that would take much longer manually. However, we can make our code even more efficient, using less code, by stringing our sequence of functions together using '<strong>pipes</strong>', written as <code>%&gt;%</code>. Changing the above code into one using pipes would give us:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pong_data_hits_red_small</span> <span class="op">&lt;-</span> <span class="va">pong_data2</span> <span class="op">%&gt;%</span> 
   <span class="fu">group_by</span><span class="op">(</span><span class="va">BackgroundColor</span>, <span class="va">PaddleLength</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -856,17 +856,17 @@ red
 <ul>
 <li><code>dataset %&gt;% function_name(arg1, arg2,...,argN)</code></li>
 </ul>
-<p>The premise is that you can pipe (<code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code>) between functions when the <strong>input</strong> of a function is the <strong>output of the previous function</strong>. Alternatively, you can use a pipe to put the data into the first function, as shown directly above.</p>
-<p>You can think of the pipe (<code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code>) as saying '<strong>and then</strong>' or '<strong>goes into</strong>', e.g., the data goes into this function and then into this function and then into this function.</p>
-<p>One last point on pipes is that they can be written in a single line of code but it's much easier to see what the pipe is doing if each function takes its own line. Every time you add a function to the pipeline, remember to add a <code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code> first and <strong>note that when using separate lines for each function, the <code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code> must appear at the end of the line and not the start of the next line</strong>. Compare the two examples below. The first won't work, but the second will because the second puts the pipes at the end of the line where they need to be!</p>
+<p>The premise is that you can pipe (<code>%&gt;%</code>) between functions when the <strong>input</strong> of a function is the <strong>output of the previous function</strong>. Alternatively, you can use a pipe to put the data into the first function, as shown directly above.</p>
+<p>You can think of the pipe (<code>%&gt;%</code>) as saying '<strong>and then</strong>' or '<strong>goes into</strong>', e.g., the data goes into this function and then into this function and then into this function.</p>
+<p>One last point on pipes is that they can be written in a single line of code but it's much easier to see what the pipe is doing if each function takes its own line. Every time you add a function to the pipeline, remember to add a <code>%&gt;%</code> first and <strong>note that when using separate lines for each function, the <code>%&gt;%</code> must appear at the end of the line and not the start of the next line</strong>. Compare the two examples below. The first won't work, but the second will because the second puts the pipes at the end of the line where they need to be!</p>
 <ul>
-<li>Example 1: won't work because the pipes (<code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code>) are in the wrong place.</li>
+<li>Example 1: won't work because the pipes (<code>%&gt;%</code>) are in the wrong place.</li>
 </ul>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-wrangling-a-key-skill.html#cb41-1" aria-hidden="true" tabindex="-1"></a>data_arrange <span class="ot">&lt;-</span> pong_data2 </span>
 <span id="cb41-2"><a href="data-wrangling-a-key-skill.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                <span class="sc">%&gt;%</span> <span class="fu">filter</span>(PaddleLength <span class="sc">==</span> <span class="st">"50"</span>)</span>
 <span id="cb41-3"><a href="data-wrangling-a-key-skill.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(BallSpeed) </span></code></pre></div>
 <ul>
-<li>Example 2: will work because the pipes (<code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code>) are in the correct place.</li>
+<li>Example 2: will work because the pipes (<code>%&gt;%</code>) are in the correct place.</li>
 </ul>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data_arrange</span> <span class="op">&lt;-</span> <span class="va">pong_data2</span> <span class="op">%&gt;%</span>
@@ -1299,7 +1299,7 @@ Same as above but changing the argument of the filter. <code>filter(aq_scores, A
 <span class="header-section-number">2.3.8</span> Task 8: Practice using pipes<a class="anchor" aria-label="anchor" href="#Ch2InClassQueT8"><i class="fas fa-link"></i></a>
 </h3>
 <p>You now have a complete code to load in your data, convert it to Tidy, combine the tables and calculate an AQ score for each participant. But, if you look at it, some of your code could be more efficient by using pipes.</p>
-<p>Go back through your code and rewrite it using pipes <code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code> so that it is as efficient as possible.</p>
+<p>Go back through your code and rewrite it using pipes <code>%&gt;%</code> so that it is as efficient as possible.</p>
 <div class="webex-solution">
 <button>
 Helpful Hint
@@ -1332,7 +1332,7 @@ At any point where the first argument of your function is the name of a variable
 </h2>
 <p>In order to complete these tasks you will need to download the data .csv files and the .Rmd file, which you need to edit, titled <code>Ch2_PracticeSkills_Template.Rmd</code>. These can be downloaded within a zip file from the below link. Once downloaded and unzipped, you should create a new folder that you will use as your working directory; put the data files and the .Rmd file in that folder and set your working directory to that folder through the drop-down menus at the top. <a href="data/02-s01/homework/Ch2_PracticeSkills.zip"><strong>Download the Exercises .zip file from here</strong></a>.</p>
 <p>Now open the .Rmd file within RStudio. You will see there is a code chunk for each task. Follow the instructions on what to edit in each code chunk. This will often be entering code based on what we have covered up until this point.</p>
-<p>In this chapter we recapped on data-wrangling using the Wickham 6 verbs, looked at additional functions such as <code>pivot_longer()</code> and <code>inner_join()</code>, and at piping chains of code for efficiency using <code><a href="https://rdrr.io/pkg/faux/man/pipe.html">%&gt;%</a></code>. You will need these skills to complete the following exercises, so make sure you have worked through this chapter before attempting this exercise. Two other useful online resources are:</p>
+<p>In this chapter we recapped on data-wrangling using the Wickham 6 verbs, looked at additional functions such as <code>pivot_longer()</code> and <code>inner_join()</code>, and at piping chains of code for efficiency using <code>%&gt;%</code>. You will need these skills to complete the following exercises, so make sure you have worked through this chapter before attempting this exercise. Two other useful online resources are:</p>
 <ul>
 <li><a href="http://r4ds.had.co.nz" target="_blank">Hadley Wickham's R for Data Science book @ http://r4ds.had.co.nz</a></li>
 <li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf" target="_blank"> RStudio's dplyr cheatsheet @ Rstudio.com</a></li>
@@ -2157,7 +2157,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-19.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
