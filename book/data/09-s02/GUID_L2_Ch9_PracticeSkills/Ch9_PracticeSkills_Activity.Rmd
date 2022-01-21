@@ -1,0 +1,222 @@
+---
+title: "Chapter 9 Correlations - Practice Your Skills: Keeping the Wealthy Wealthy with Correlations"
+author: "School of Psychology & Neuroscience, University of Glasgow"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+## DO NOT DELETE THIS CHUNK OR ALTER ANY OF THE LINES WITHIN THIS CHUNK!
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Correlation Practice Your Skills
+
+The purpose of this exercise is to test your ability to run and interpret a correlation for yourself, as shown in the chapter, but at the same time get you to think about all the skills you learnt previously. Most of the hard work is in the data wrangling; running the actual analysis, much like with t-tests, is very straightforward. Remember to refer back to previous chapters when stuck.
+
+As in the previous exercises there are a number of code chunks already set up. Some of the code chunks may require entering just a number whilst other tasks may require editing or entering code.  Follow the instructions of each task and pay close attention to what is asked. Do not change the names of any variables or data frames given to you, and do not change the rules or names of any of the code chunks as this may impact your grade. If you are unsure which are the names, refer back to the activities. In this exercise the names are T2101A to T2111. Do not change these names. Nearly all the tasks will involve entering either a number or code relating to what we have previously covered in all the chapters to this point. Look back to see what you previously did.
+
+There are 11 tasks in total to attempt and answer. Should you require any assistance or help, keep in mind the lab sessions, student/office hours, and the TEAMS channel called **Data Skills and R**
+
+## Before starting let's check:
+
+1. The `Dawtry Sutton and Sibley 2015 Study 1a.csv` file is saved into a folder on your computer and you have manually set this folder as your working directory. **Remember: do not set your working directory using code in the script**. Instead, manually set it using the `Session >> Set Working Directory` options. Also, **do not** at any time rename the .csv data file. They should be named exactly as above for the duration of this activity. This is to ensure that your code will be reproducible.
+
+2. The `.Rmd` file is saved in the same folder as the data file. We ask that you save the .Rmd file with the format `GUID_L2_Ch9_PracticeSkills.Rmd` where `GUID` is replaced with your `GUID`.
+
+3. Remember that if at any point you want to explore your data to become familiar with the variable names, noting any capital letters and full-stops, you can use `View()` or `glimpse()`. Type these functions only in the console window and not in the .Rmd file.
+
+
+# Let's begin!
+
+## Task 1A: Load add-on packages
+
+* Today you will need the `broom` and `tidyverse` packages. Load in these packages by putting the appropriate code into the `T2101A` code chunk below.
+
+* **Hint:** libary()
+```{r T2101A, message = FALSE}
+## To do: Bring in add on packages here
+
+
+```
+
+## Task 1B: Load the data
+
+* Using `read_csv()` replace the `NULL` in the `T2101B` code chunk to read in the data file with the **exact** filename you have been given. 
+    - Store `Dawtry Sutton and Sibley 2015 Study 1a.csv` as a tibble in `dat1`. 
+
+* **Hint:** read_csv() and not read.csv()
+    
+```{r T2101B, message = FALSE}
+dat1 <- NULL
+```
+
+## Task 2: Selecting the necessary columns
+
+Have a look at the dataset in the viewer. There are a lot of columns which you can explore later at your own leisure. For now, today, we are only interested in the ones relevant to our analysis looking at age, fairness and satisfaction of the system, and redistribution of wealth. 
+
+* Replace the `NULL` in the `T2102` code chunk below with code to select only the following columns, in the exact order shown, and store them as a tibble in `dat2`
+    - `age`, `redist1`, `redist2`, `redist3`, `redist4`, `fairness`, `satisfaction`.
+
+* **Check your work:** If you have completed this task successfully then `dat2` should have 7 columns with 305 rows. Columns will be in the order stated.
+
+```{r T2102}
+dat2 <- NULL
+```
+
+## Task 3: Satisfaction and Fairness measure (Sat_and_Far)
+
+We have two scales relating to fairness and satisfaction but when we run the correlation later we will need one column that captures both measures. We want to create a new variable in our data that is a composite measure of fairness and satisfaction - this we will call `Sat_and_Far`. 
+
+* Replace the `NULL` in the `T2103` code chunk with code that will mutate a new column called `Sat_and_Far` onto the data in `dat2` (watching exact spelling and capitalisation) where values in that column represent the average of the values in the satisfaction and fairness columns for each participant. For example, if a person scores 3 on satisfaction and 1 on fairness, they would have an Sat_and_Far score of 2. Store the output as a tibble in `dat3`.
+
+* **Note:** Be exact on the spelling of the new column name and in order of columns! Check and double check!!
+* **Check your work:** If you have completed this task successfully then `dat3` should have 8 columns with 305 rows, with the same order of columns as stated in Task 2 but with the new column added on the far right of the tibble. Check that your averages make sense!
+
+```{r T2103}
+dat3 <- NULL
+```
+
+## Task 4: Recoding redist3
+
+Similarly, we now want to create one measure related to support for redistribution that is made up of the average of the relevant scales: redist1, redist2, redist3 and redist4.  However, the redist3 scale is negatively scored - meaning that a 1 on that scale would score as a 6 on other scales. We need to recode this variable! 
+
+* Replace the `NULL` in the `T2104` code chunk with code that will mutate a column called `redist3_rcd` onto the data in `dat3`  where the values of `redist3` have been recoded in the following manner: 
+    - 1 is 6, 
+    - 2 is 5, 
+    - 3 is 4, 
+    - 4 is 3, 
+    - 5 is 2, 
+    - 6 is 1 
+* Store the output as a tibble in `dat4`.
+
+* **Hint 1:** <a href="https://debruine.github.io/post/recode/" target = "_blank">A little help on recoding from Prof. DeBruine</a>
+* **Hint 2:** When recoding numerical values, the LHS always needs quotes, e.g. "1" = 6, but the RHS doesn't have quotes to keep it as a value!
+* **Check your work:** If you have completed this task successfully then `dat4` should have 9 columns with 305 rows, with the same order of columns as stated in Task 3 but with the new column added on the far right of the tibble. Check that `redist3_rcd` now has the recoded values based on what was in `redist3` and that these are values not characters.
+
+```{r T2104}
+dat4 <- NULL
+```
+
+## Task 5: Recoding redist4
+
+Likewise the column `redist4` is also negatively scored. We will have to repeat the steps of Task 4 but this time we will do so for the redist4 variable. 
+
+* Replace the `NULL` in the `T2105` code chunk with code that will mutate a column called `redist4_rcd` onto the data in `dat4` where the values of `redist4` have been recoded in the same manner as in Task 4.
+* Store the output as tibble in `dat5`.
+* **Check your work:** If you have completed this task successfully then `dat5` should have 10 columns with 305 rows, with the same order of columns as stated in Task 4 but with the new column added on the far right of the tibble. Check the `redist4_rcd` now has the recoded values based on what was in `redist4`
+
+```{r T2105}
+dat5 <- NULL
+```
+
+## Task 6: Support for Redistribution (Sup4R)
+
+Now we want to create a single variable within our data that is a composite measure of the four correctly coded redistribution variables (redist1, redist2, redist3_rcd, and redist4_rcd) - we will call this measure `Sup4R` which is short for Support for Redistribution. 
+
+* Replace the `NULL` in the `T2106` code chunk with code that will mutate a new column called `Sup4R` onto the data in `dat5` (watching exact spelling and capitalisation) where the values within that column represent the average of the values in the four redistribution columns named above in this Task. 
+* Store the output in `dat6`.
+
+* **Note:** Double check the spelling and capitalisation of the new columns.
+* **Check your work:** If you have completed this task successfully then `dat6` should have 11 columns with 305 rows, with the same order of columns as stated in Task 5 but with the new column added on the far right of the tibble. The new column, `Sup4R` will be the column on the far right of the tibble and contain the average of the four redistribution columns. Check that your averages make sense!
+
+```{r T2106}
+dat6 <- NULL
+```
+
+## Task 7: Keeping only the necessary columns
+
+Great! We have the columns we now need but the data is starting to get untidy again with lots of columns we no longer want. Let's get rid of some of the columns in `dat6` and keep only the necessary columns. 
+
+* Replace the `NULL` in the `T2107` code chunk with code to select and keep only the following columns. Do so in the exact order they are named here:
+    - `Sup4R`, `Sat_and_Far`, `age` 
+* Store the output as a tibble in `dat7`.
+
+```{r T2107}
+dat7 <- NULL
+```
+
+## Task 8: The descriptive measures
+
+Almost there but first, for our write-up, we will need a note of some descriptive statistics such as the number of participants, as well as their mean age and the standard deviation of their ages.  
+
+* Replace the `NULL` in the `T2108` code chunk with code to reproduce the table shown to you, paying particular attention to column names, capitilisation or not, and column order. Do not worry about the spacing between columns, just names and column order.
+* We have hidden the values but your table when knitted will produce the values. Do not round the values!
+* Store the output as a tibble in `desc`
+
+* **Hint 1:** Some participants have not stated their age so their age is stored as NA and this will need to be considered when working out the mean and sd. However, the number of participants should include everyone regardless of whether they stated their age.
+* **Hint 2:** Check and double check the spelling of the columns.
+* **Hint 3:** When naming columns, do not put the name in quotes.
+
+```{r T2108}
+desc <- NULL
+```
+
+```{r T2108_table, echo = FALSE, warning = FALSE, message = FALSE}
+library(tidyverse)
+
+tibble(Npps = "XX",
+       Mage = "XX",
+       SDage = "XX") %>% knitr::kable(align= "c")
+```
+
+## Task 9: The Scatterplot
+
+And just before we run the correlation, you will know that one of the key checks of a correlation, in regards to both the assumptions (checking it is linear or not) and descriptives, is the scatterplot. 
+
+* Insert code into the `T2109` code chunk below to exactly replicate the figure shown to you 
+* Pay particular attention to labels, axes dimensions, shape, color and background. 
+* **Note:** all the dots are exactly the same color.
+* **Note:** the line of best fit is added with the following line of code: `geom_smooth(method = "lm", se = FALSE)`
+* **Note:** the figure must appear when your code is knitted and not be stored in a tibble.
+* Finally the figure should be created using the data and variable names stipulated above.
+
+* **Hint 1:** scale_y_continuous(breaks = c(minvalue, maxvalue), limits = c(minvalue, maxvalue))
+* **Hint 2:** scale_x_continuous as above
+* **Hint 3:** Shape is less than 10. We have not edited the size of the data points at all.
+
+![](Task9.PNG)
+
+```{r T2109}
+# to do: exactly replicate the figure shown
+
+
+```
+
+## Task 10: The correlation
+
+As we said above, wrangling is usually the hardest part of data analysis and the correlation itself is pretty straightforward. Time to run the correlation. For this analysis we will work under the premise that all assumptions were met for a Pearson's correlation.
+
+* Replace the `NULL` in the `T2110` code chunk to perform a two-sided Pearson's correlation between the variables Sat_and_Far and Sup4R in `dat7`. Store the output as a tibble in `mods`, i.e. a table, as in previous assignments, not an object. 
+
+**Hint:** Remember `tidy()`.
+
+```{r T2110}
+mods <- NULL
+```
+
+## Task 11: The interpretation
+
+Read through the below four statements. One of the below statements is a coherent and accurate summary of the above analysis of the relationship between people's support for restribution of wealth and their level of perceived satisfaction with and fairness of the current system.
+
+1. 305 participants (mean age = 37.4 years, sd = 12.04 years) were measured on their views regarding distribution of wealth. A Pearson's product-moment correlation was run comparing the composite measures of Fairness and Satisfaction (Sat_and_Far) against Satisfaction for Redistribution (Sup4R) and found a strong significant positive correlation between the two variables, r(303) = .7, p < .001. As such, the analysis would suggest that as people's perceived fairness of the system increases their support for the redistribution of wealth decreases.
+
+2. 305 participants (mean age = 37.4 years, sd = 12.04 years) were measured on their views regarding distribution of wealth. A Pearson's product-moment correlation was run comparing the composite measures of Fairness and Satisfaction (Sat_and_Far) against Satisfaction for Redistribution (Sup4R) and found a strong significant negative correlation between the two variables, r(303) = -.7, p < .001. As such, the analysis would suggest that as people's perceived fairness of the system increases their support for the redistribution of wealth decreases.
+
+3. 303 participants (mean age = 37.4 years, sd = 12.04 years) were measured on their views regarding distribution of wealth. A Pearson's product-moment correlation was run comparing the composite measures of Fairness and Satisfaction (Sat_and_Far) against Satisfaction for Redistribution (Sup4R) and found a strong significant negative correlation between the two variables, r(303) = -.7, p > .001. As such, the analysis would suggest that as people's perceived fairness of the system increases their support for the redistribution of wealth decreases.
+
+4. 303 participants (mean age = 37.4 years, sd = 12.04 years) were measured on their views regarding distribution of wealth. A Pearson's product-moment correlation was run comparing the composite measures of Fairness and Satisfaction (Sat_and_Far) against Satisfaction for Redistribution (Sup4R) and found a strong significant positive correlation between the two variables, r(303) = .7, p < .001. As such, the analysis would suggest that as people's perceived fairness of the system increases their support for the redistribution of wealth increases.
+
+* In the `T2111` code chunk below there are four lines of code that have all been commented out using the `#` at the start of the line. Only one of the lines states the correct answer. Remove the `#` from the start of the line that states the correct answer so when knitted `answer_t11` stores only that single value. For instance, if you think the answer is option 1 then you would remove the `#` from the start of `# answer_t11 <- 1` to make the line read as `answer_t11 <- 1`. Change only one line of code to store a single value in `answer_t11`.
+* Remove the `#` from only the line of code that you think is the correct answer, in order to make that line of code run. 
+* When you remove the `#` the line will change from being "commented out" (shown as green code in default settings) to looking like normal code again.
+* Remove the `#` from only one line of code.
+
+```{r T2111}
+# answer_t11 <- 1
+# answer_t11 <- 2
+# answer_t11 <- 3
+# answer_t11 <- 4
+```
+
+Well done, you are finished.
