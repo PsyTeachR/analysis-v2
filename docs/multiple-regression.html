@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 11 Multiple regression | Analysis</title>
+<title>Chapter 11 Multiple Regression | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="In the previous chapter, we have looked at simple regressions - predicting an outcome variable using one predictor variable. In this chapter, we will expand on that and look at scenarios where we...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 11 Multiple regression | Analysis">
+<meta property="og:title" content="Chapter 11 Multiple Regression | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/multiple-regression.html">
 <meta property="og:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
 <meta property="og:description" content="In the previous chapter, we have looked at simple regressions - predicting an outcome variable using one predictor variable. In this chapter, we will expand on that and look at scenarios where we...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 11 Multiple regression | Analysis">
+<meta name="twitter:title" content="Chapter 11 Multiple Regression | Analysis">
 <meta name="twitter:description" content="In the previous chapter, we have looked at simple regressions - predicting an outcome variable using one predictor variable. In this chapter, we will expand on that and look at scenarios where we...">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,7 +62,7 @@
 <li><a class="" href="apes---alpha-power-effect-sizes-sample-size.html"><span class="header-section-number">8</span> APES - Alpha, Power, Effect Sizes, Sample Size</a></li>
 <li><a class="" href="correlations.html"><span class="header-section-number">9</span> Correlations</a></li>
 <li><a class="" href="simple-regression.html"><span class="header-section-number">10</span> Simple Regression</a></li>
-<li><a class="active" href="multiple-regression.html"><span class="header-section-number">11</span> Multiple regression</a></li>
+<li><a class="active" href="multiple-regression.html"><span class="header-section-number">11</span> Multiple Regression</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -80,7 +80,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="multiple-regression" class="section level1" number="11">
 <h1>
-<span class="header-section-number">11</span> Multiple regression<a class="anchor" aria-label="anchor" href="#multiple-regression"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11</span> Multiple Regression<a class="anchor" aria-label="anchor" href="#multiple-regression"><i class="fas fa-link"></i></a>
 </h1>
 <p>In the previous chapter, we have looked at simple regressions - predicting an outcome variable using one predictor variable. In this chapter, we will expand on that and look at scenarios where we predict an outcome using more than one predictor in the model - hence, multiple regression.</p>
 <p><strong>The Data</strong></p>
@@ -285,7 +285,7 @@ Hint
 </ul>
 <p>For categorical predictors with two levels, these become coded as -.5 and .5 (because the mean of these two values is 0).</p>
 <ul>
-<li>Use <code>mutate</code> to add two new variables to <code>smart_wb</code>: <code>tothours_c</code>, calculated as a mean-centered version of the <code>tothours</code> predictor; and <code>male_c</code>, recoded as -.5 for female and .5 for male.</li>
+<li>Use <code>mutate</code> to add two new variables to <code>smart_wb</code>: <code>thours_c</code>, calculated as a mean-centered version of the <code>tothours</code> predictor; and <code>male_c</code>, recoded as -.5 for female and .5 for male.</li>
 <li>To create <code>male_c</code> you will need to use <code>if_else(male == 1, .5, -.5)</code> You can read this code as "if the variable <code>male</code> equals 1, recode it as .5, if not, recode it as -.5".</li>
 <li>Finally, recode <code>male</code> and <code>male_c</code> as factors, so that R knows not to treat them as a real numbers.</li>
 </ul>
@@ -901,7 +901,7 @@ $( document ).ready(function() {
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#multiple-regression"><span class="header-section-number">11</span> Multiple regression</a></li>
+<li><a class="nav-link" href="#multiple-regression"><span class="header-section-number">11</span> Multiple Regression</a></li>
 <li><a class="nav-link" href="#mulregression-a1"><span class="header-section-number">11.1</span> Activity 1: Set-up</a></li>
 <li><a class="nav-link" href="#mulregression-a2"><span class="header-section-number">11.2</span> Activity 2: Look at the data</a></li>
 <li><a class="nav-link" href="#mulregression-a3"><span class="header-section-number">11.3</span> Activity 3: Compute the well-being score for each respondent</a></li>
@@ -943,7 +943,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-01-29.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

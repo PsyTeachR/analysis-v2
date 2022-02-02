@@ -1,4 +1,4 @@
-# Multiple regression
+# Multiple Regression
 
 In the previous chapter, we have looked at simple regressions - predicting an outcome variable using one predictor variable. In this chapter, we will expand on that and look at scenarios where we predict an outcome using more than one predictor in the model - hence, multiple regression.
 
@@ -193,7 +193,7 @@ When you have continuous variables in a regression, it is often sensible to tran
 
 For categorical predictors with two levels, these become coded as -.5 and .5 (because the mean of these two values is 0).
 
-* Use `mutate` to add two new variables to `smart_wb`: `tothours_c`, calculated as a mean-centered version of the `tothours` predictor; and `male_c`, recoded as -.5 for female and .5 for male.
+* Use `mutate` to add two new variables to `smart_wb`: `thours_c`, calculated as a mean-centered version of the `tothours` predictor; and `male_c`, recoded as -.5 for female and .5 for male.
 * To create `male_c` you will need to use `if_else(male == 1, .5, -.5)` You can read this code as "if the variable `male` equals 1, recode it as .5, if not, recode it as -.5".
 * Finally, recode `male` and `male_c` as factors, so that R knows not to treat them as a real numbers.
 
