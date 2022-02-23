@@ -64,6 +64,7 @@
 <li><a class="" href="simple-regression.html"><span class="header-section-number">10</span> Simple Regression</a></li>
 <li><a class="" href="multiple-regression.html"><span class="header-section-number">11</span> Multiple Regression</a></li>
 <li><a class="" href="one-way-anova.html"><span class="header-section-number">12</span> One-way ANOVA</a></li>
+<li><a class="" href="factorial-anova.html"><span class="header-section-number">13</span> Factorial ANOVA</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -160,7 +161,7 @@ You can use <code>summarise()</code> and <code>count()</code> or a pipeline with
 When analysing the number of male and female evaluators, it isn't initially clear that '1' represents males and '2' represents females.
 </li>
 <li>
-We can use <code>recode()</code> to convert the numeric names to indicate something more meaningful. Have a look at<code>?recode</code> to see if you can work out how to use it. It'll help to use <code>mutate()</code> to create a new variable to <code>recode()</code> the numeric names for evaluators.
+We can use <code><a href="https://rdrr.io/pkg/car/man/recode.html">recode()</a></code> to convert the numeric names to indicate something more meaningful. Have a look at<code><a href="https://rdrr.io/pkg/car/man/recode.html">?recode</a></code> to see if you can work out how to use it. It'll help to use <code>mutate()</code> to create a new variable to <code><a href="https://rdrr.io/pkg/car/man/recode.html">recode()</a></code> the numeric names for evaluators.
 </li>
 <li>
 This website is also incredibly useful and one to save for anytime you need to use recode(): <a href="https://debruine.github.io/posts/recode/" target="_blank">https://debruine.github.io/posts/recode/</a>
@@ -664,7 +665,7 @@ intellect
                         <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">condition</span> <span class="op">==</span> <span class="st">"read"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
                         <span class="fu">pull</span><span class="op">(</span><span class="va">Rating</span><span class="op">)</span>,
                       var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Now lets look at the <code>intellect_t</code>tibble we have created (assuming you piped into <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code>):</p>
 <div style="border: 0px;overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1073,7 +1074,7 @@ Figure 6.4: Figure 2A from Nave, Nadler, Zava, and Camerer (2017) which you shou
 <li>Write code in the t4 code chunk to reproduce a version of Figure 2a - shown above. Before you create the plot, replace the <code>NULL</code> to make a tibble called <code>crt_means</code> with the mean and standard deviation of the number of <code>CorrectAnswers</code> for each group.</li>
 <li>Use <code>crt_means</code> as the source data for the plot.</li>
 </ul>
-<p><strong>Hint:</strong> you will need to check out <code>recode()</code> to get the labels of treatments right. <a href="https://psyteachr.github.io/analysis-v2/data-wrangling-a-key-skill.html?q=recode#Ch2PreClassQueT4" target="_blank">Look back at Chapter 2 for a hint on how to use <code>recode()</code>.</a> Or check this short resource for examples on how to use <code>recode()</code>: <a href="https://debruine.github.io/post/recode/" target="_blank">Recode short tutorial.</a></p>
+<p><strong>Hint:</strong> you will need to check out <code><a href="https://rdrr.io/pkg/car/man/recode.html">recode()</a></code> to get the labels of treatments right. <a href="https://psyteachr.github.io/analysis-v2/data-wrangling-a-key-skill.html?q=recode#Ch2PreClassQueT4" target="_blank">Look back at Chapter 2 for a hint on how to use <code>recode()</code>.</a> Or check this short resource for examples on how to use <code><a href="https://rdrr.io/pkg/car/man/recode.html">recode()</a></code>: <a href="https://debruine.github.io/post/recode/" target="_blank">Recode short tutorial.</a></p>
 <p>Don't worry about including the error bars (unless you want to) or the line indicating significance in the plot. Do however make sure to pay attention to the labels of treatments and of the y-axis scale and label. Reposition the x-axis label to below the Figure. You can use colour, if you like.</p>
 <div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">crt_means</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
@@ -1158,7 +1159,7 @@ Figure 6.4: Figure 2A from Nave, Nadler, Zava, and Camerer (2017) which you shou
 <span class="co"># If using `recode()`:</span>
 <span class="va">evaluators</span> <span class="op">%&gt;%</span>
   <span class="fu">count</span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>sex_names <span class="op">=</span> <span class="fu">recode</span><span class="op">(</span><span class="va">sex</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"male"</span>, <span class="st">"2"</span> <span class="op">=</span> <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu">mutate</span><span class="op">(</span>sex_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/recode.html">recode</a></span><span class="op">(</span><span class="va">sex</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"male"</span>, <span class="st">"2"</span> <span class="op">=</span> <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>The mean age of the evaluators was 30.9</li>
 <li>The standard deviatoin of the age of the evaluators was 6.24</li>
@@ -1354,7 +1355,7 @@ Figure 6.4: Figure 2A from Nave, Nadler, Zava, and Camerer (2017) which you shou
 <code class="sourceCode R"><span class="va">crt_means</span> <span class="op">&lt;-</span> <span class="va">crt2</span> <span class="op">%&gt;%</span> 
   <span class="fu">group_by</span><span class="op">(</span><span class="va">Treatment</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">summarise</span><span class="op">(</span>m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">CorrectAnswers</span><span class="op">)</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">CorrectAnswers</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>Treatment <span class="op">=</span> <span class="fu">recode</span><span class="op">(</span><span class="va">Treatment</span>, <span class="st">"0"</span> <span class="op">=</span> <span class="st">"Placebo"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Testosterone Group"</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">mutate</span><span class="op">(</span>Treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/recode.html">recode</a></span><span class="op">(</span><span class="va">Treatment</span>, <span class="st">"0"</span> <span class="op">=</span> <span class="st">"Placebo"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"Testosterone Group"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">crt_means</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">Treatment</span>, <span class="va">m</span>, fill <span class="op">=</span> <span class="va">Treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_col</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
@@ -1694,7 +1695,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-15.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-23.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

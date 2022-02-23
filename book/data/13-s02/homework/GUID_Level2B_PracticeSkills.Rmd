@@ -1,0 +1,179 @@
+---
+title: "Practice Your Skills - Factorial ANOVA: Perspective-Taking in Language Comprehension"
+author: "School of Psychology & Neuroscience, University of Glasgow"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Task 1A: Libraries
+
+* In today's exercise you will need both the `tidyverse` and `afex` packages. Enter code into the t1A code chunk below to load in both of these libraries.
+
+```{r t1A, message = FALSE, warning=FALSE}
+# load in the packages
+```
+
+## Task 1B: Loading in the data
+
+* Use `read_csv()` to replace the `NULL` in the t1B code chunk below to load in the data stored in the datafile `keysar_lin_barr_2003.csv`. Store the data in the variable `dat`. Do not change the filename of the datafile. 
+
+```{r t1B, warning=FALSE, message = FALSE}
+dat <- NULL
+```
+
+Take a look at your data (`dat`) in the console using `glimpse()` or `View()`, or just display it by typing in the name. You will see the following columns:
+
+|variable   |description|
+|-----------|-----------|
+|`subject`  |unique identifier for each subject|
+|`sex`      |whether the subject was male or female|
+|`condition`|what condition the subject was in|
+|`looktime` |egocentric interference|
+
+We have simplified things from the original experiment by collapsing the baseline vs. experimental conditions into a single DV.  Our DV, egocentric interference, is the average difference in looking time for each subject (in milliseconds per trial) for hidden competitors (e.g., small candle) versus hidden noncompetitors (e.g., apple). The larger this number, the more egocentric interference the subject experienced.
+
+## Task 2: Calculate cell means
+
+Today we are going to focus on just the main analysis and write-up, and not the assumptions, but as always before running any analysis you should check that your assumptions hold.
+
+One of the elements we will need for our write-up is some descriptives. We want to start by creating some summary statistics for the four conditions. Remember, two factors (sex, condition) with 2 levels each (sex: female vs male; condition: false belief vs ignorance) will give four conditions, and as such in our summary table, four cells created by factorially combining sex and condition. 
+
+* Replace the NULL in the `t2` code chunk below to create the four cells created by factorially combining sex and condition, summarising the mean and standard deviation for each cell.
+    - Store the descriptives in the tibble `cell_means`
+    - Call the column for the mean `m` and the column for the standard deviation `sd`.
+    - Your table should have four rows and four columns as shown in the Analysis book but with your values replacing the XXs
+    - Follow the case and spelling *exactly*.
+
+```{r t2}
+cell_means <- NULL
+```
+
+## Task 3: Marginal means for sex
+
+We will also need to have some descriptives where we just look at the means of a given factor; the marginal means - the means of the levels of one factor regardless of the other factor.
+
+* Replace the NULL in the `t3` code chunk below to calculate the marginal means and standard deviations for the factor sex. 
+    - Store these descriptives in the tibble `marg_sex`
+    - Call the column for the mean `m` and the column for the standard deviation `sd`. 
+    - Your table should have two rows and three columns as shown in the Analysis book but with your values replacing the XXs
+    - Follow the case and spelling *exactly*.
+
+```{r t3}
+marg_sex <- NULL
+```
+
+## Task 4: Marginal means for condition
+
+And now do the same for condition. 
+
+* Replace the NULL in the `t4` code chunk below to calculate the marginal means and standard deviations for the factor, condition 
+    - Store these descriptives in the tibble `marg_cond`
+    - Call the column for the mean `m` and the column for the standard deviation `sd`. 
+    - Your table should have two rows and three columns as shown in the Analysis book but with your values replacing the XXs
+    - Follow the case and spelling *exactly*
+
+```{r t4}
+marg_cond <- NULL
+```
+
+## Task 5: Interaction plot
+
+And finally we are going to need a plot.  When you have two factors, you want to show both factors on the plot to give the reader as much information as possible and save on figure space.  The best way to do this is through some sort of interaction plot. It is really a lot easier than it looks and just requires you to think about setting the aes by the different conditions.
+
+* Insert code into the `t5` code chunk below to replicate the figure shown to you in the Analysis book
+    - Pay particular attention to labels, axes dimensions, color and background. 
+    - Note that the figure must appear when your code is knitted.
+    
+* **Note:** The figure in the activity is a nice figure but should really have error bars on it if I was including it in an actual paper. Including the error bars may help in clarifying the descriptive statistics as you would see as although the means are different, there is huge overlap in terms of error bars.
+
+```{r t5}
+# to do: something with ggplot to replicate the figure
+
+
+```
+
+## Task 6: Recap Question 1
+
+Thinking about the above information, one of the below statements would be an acceptable hypothesis for the interaction effect of sex and condition, but which one:
+
+* In the `t6` code chunk below, replace the `NULL` with the number of the statement below that best summarises this analysis. Store this single value in `answer_t6`
+
+1. We hypothesised that there will be a significant difference between males and females in egocentric interference (mean looking time (msecs)) regardless of condition.
+2. We hypothesised that there will be a significant difference between participants in the false belief condition and those in the ignorance condition in terms of egocentric interference (mean looking time (msecs)) regardless of sex of participant.
+3. We hypothesised that there would be a significant interaction between condition and sex of participant on egocentric interference (mean looking time (msecs))
+4. We hypothesised that there will be no significant difference between males and females in egocentric interference (mean looking time (msecs)) regardless of condition but that there would be a significant difference between participants in the false belief condition and those in the ignorance condition in terms of egocentric interference (mean looking time (msecs)) regardless of sex of participant.
+
+```{r t6}
+answer_t6 <- NULL
+```
+
+## Task 7: Recap Question 2
+
+Thinking about the above information, one of the below statements is a good description of the marginal means for sex, but which one:
+
+* In the `t7` code chunk below, replace the `NULL` with the number of the statement below that best summarises this analysis. Store this single value in `answer_t7`
+
+1. The female participants have an average longer looking time (M = 777.98, SD = 911.53) than the male participants (M = 555.04, SD = 707.81) which may suggest a significant main effect of sex
+2. The female participants have an average shorter looking time (M = 777.98, SD = 911.53) than the male participants (M = 555.04, SD = 707.81) which may suggest a significant main effect of condition
+3. The female participants have an average shorter looking time (M = 777.98, SD = 911.53) than the male participants (M = 555.04, SD = 707.81) which may suggest a significant main effect of sex
+4. The female participants have an average longer looking time (M = 777.98, SD = 911.53) than the male participants (M = 555.04, SD = 707.81) which may suggest a significant main effect of condition
+
+```{r t7}
+answer_t7 <- NULL
+```
+
+## Task 8: Recap Question 3
+
+Thinking about the above information, one of the below statements is a good description of the marginal means for condition, but which one:
+
+* In the `t8` code chunk below, replace the `NULL` with the number of the statement below that best summarises this analysis. Store this single value in `answer_t8`
+
+1. The participants in the false belief group had an average longer looking time (M = 549.58, SD = 775.91) than the participants in the ignorance group (M = 749.58, SD = 861.23) which may suggest a significant main effect of condition.
+2. The participants in the false belief group had an average shorter looking time (M = 549.58, SD = 775.91) than the participants in the ignorance group (M = 749.58, SD = 861.23) which may suggest a significant main effect of condition.
+1. The participants in the false belief group had an average longer looking time (M = 549.58, SD = 775.91) than the participants in the ignorance group (M = 749.58, SD = 861.23) which may suggest a significant main effect of sex.
+2. The participants in the false belief group had an average shorter looking time (M = 549.58, SD = 775.91) than the participants in the ignorance group (M = 749.58, SD = 861.23) which may suggest a significant main effect of sex.
+
+```{r t8}
+answer_t8 <- NULL
+```
+
+## Task 9: Running the Factorial ANOVA
+
+Great, so we have looked at our descriptives and thought about what effects there might be.  What we need to do now is run the ANOVA using the `aov_ez()` function. The ANOVA we are going to run is a two-way between-subjects ANOVA because both conditions are between-subjects variables. You may need to refer back to the chapter or to have a look at the help on `aov_ez()` to see how to add a second variable/factor. 
+
+* Replace the NULL in the `t9` code chunk below to run this two-way between-subjects ANOVA. 
+    - Look at the chapter or help for guidance. You need the data, the DV, the two between-subjects conditions, and the participant id.
+    - Set the type to `type = 3`
+    - Do not `tidy()` the output. Do nothing to the output other than store it in the variable named `mod` (note: technically it will store as a list).
+    - You will see in red in the output that the code will convert the conditions to factors automatically, and set the contrasts. This is fine.
+    - You can look at the results by calling `mod` after your ran the factorial ANOVA in the console.
+
+```{r t9}
+mod <- NULL
+```
+
+# Task 10: Interpreting the ANOVA output Question
+
+Thinking about the above information, one of the below statements is a good summary of the outcome ANOVA, but which one:
+
+* In the `t10` code chunk below, replace the `NULL` with the number of the statement below that best summarises this analysis. Store this single value in `answer_t10`
+
+1. There is a significant main effect of sex, but no main effect of condition and no interaction betwen condition and sex.
+2. There is a significant main effect of condition, but no main effect of sex and no interaction betwen condition and sex.
+3. There is no significant main effect of sex or condition and there is no significant interaction between condition and sex.
+4. There is a significant main effect of sex, a significant main effect of condition, and a significant interaction between condition and sex
+
+```{r t10}
+answer_t10 <- NULL
+```
+
+## Task 11: Report your results
+
+Write a paragraph reporting your findings.
+
+
+**Well done! Check your answers against the solutions in the Analysis book.**

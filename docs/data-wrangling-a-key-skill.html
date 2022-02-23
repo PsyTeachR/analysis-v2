@@ -64,6 +64,7 @@
 <li><a class="" href="simple-regression.html"><span class="header-section-number">10</span> Simple Regression</a></li>
 <li><a class="" href="multiple-regression.html"><span class="header-section-number">11</span> Multiple Regression</a></li>
 <li><a class="" href="one-way-anova.html"><span class="header-section-number">12</span> One-way ANOVA</a></li>
+<li><a class="" href="factorial-anova.html"><span class="header-section-number">13</span> Factorial ANOVA</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="acknowledgements.html">Acknowledgements</a></li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
@@ -575,7 +576,7 @@ You could do this in three filters where each one uses the output of the preceed
 <p>The <code>mutate()</code> function lets us create a new variable in our dataset. For example, let's add a new column to <code>pong_data</code> in which the background color is represented by numbers, where <code>red</code> will be represented as 1, and <code>blue</code> will be represented as 2.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pong_data</span> <span class="op">&lt;-</span> <span class="fu">mutate</span><span class="op">(</span><span class="va">pong_data</span>, 
-                    BackgroundColorNumeric <span class="op">=</span> <span class="fu">recode</span><span class="op">(</span><span class="va">BackgroundColor</span>, 
+                    BackgroundColorNumeric <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/car/man/recode.html">recode</a></span><span class="op">(</span><span class="va">BackgroundColor</span>, 
                                                     <span class="st">"red"</span> <span class="op">=</span> <span class="fl">1</span>, 
                                                     <span class="st">"blue"</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Let's look at the code in detail:</p>
@@ -2159,7 +2160,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-15.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-23.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
