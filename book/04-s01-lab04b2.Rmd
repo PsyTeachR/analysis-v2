@@ -15,7 +15,7 @@ y = dnorm(x, mean, sd)
 ymin<- min(y)
 ymax<- max(y)
 
-plot(x,y, type = "l", col = "black", xlab = "Height (cm)", ylab = "Density (probability)", yaxt='n' )
+plot(x,y, type = "l", col = "black", xlab = "Height (cm)", ylab = "Likelihood", yaxt='n' )
 polygon(c(mean,mean), c( ymin, ymax), border ="green")
 polygon(c(mean-sd, mean-sd), c(y[x==mean-sd], ymin), border ="blue")
 polygon(c(mean-(2*sd),mean-(2*sd)), c( y[x==mean-(2*sd)], ymin), border ="orange")
@@ -33,7 +33,7 @@ text(mean+(3*sd)+2, 0.01, expression(+3*sigma), col = "red")
 
 ```
 
-The figure shows the hypothetical probability density of heights ranging from 146cm to 194cm in the population of Psychology students (black curve). This data is **normally distributed** and has the following properties:
+The figure shows the probability density function of heights ranging from 146cm to 194cm in the population of Psychology students (black curve). This data is **normally distributed** and has the following properties:
 
 <span style="font-size: 22px; font-weight: bold; color: var(--black);">Properties of the Normal distribution</span>
 
@@ -41,7 +41,7 @@ The figure shows the hypothetical probability density of heights ranging from 14
 
 **2. Distribution is symmetrical around the mean:** The mean lies in the middle of the distribution and divides the area under the curve into two equal sections - so we get the typical bell-shaped curve.  
 
-**3. Total area under the curve is equal to 1:** If we were to add up the probabilities (densities) for every possible height, we would end up with a value of 1.  
+**3. Total area under the curve is equal to 1:** The probability of a value falling between two limits is equal to the area under the curve between those two limits. Since probability is bound between 0 and 1, and a value must fall between -$\infty$ and +$\infty$, the total area under the curve between the limits of -$\infty$ and +$\infty$ is 1. 
 
 **4. The mean, median and mode are all equal:** A good way to check if a given dataset is normally distributed is to calculate each measure of central tendency and see if they are approximately the same (normal distribution) or not (skewed distribution).  
 
@@ -115,7 +115,7 @@ IQ_data <- tibble(IQ_range = c(40, 160))
 
 ggplot(IQ_data, aes(IQ_range)) + 
   stat_function(fun = dnorm, args = list(mean = 100, sd = 15)) +
-  labs(x = "IQ Score", y = "probability") +
+  labs(x = "IQ Score", y = "Likelihood") +
   theme_classic()
 ```
 
@@ -163,7 +163,7 @@ Here we plot the standard Normal Distribution from -4 to 4 in steps of 0.01. We 
 ND_data <- tibble(ND_range = seq(-4, 4, 0.01))
 ggplot(ND_data, aes(ND_range)) + 
   stat_function(fun = dnorm, args = list(mean = 0, sd = 1)) +
-  labs(x = "SD units", y = "probability", title = "The Normal Distribution") +
+  labs(x = "SD units", y = "Likelihood", title = "The Normal Distribution") +
   theme_classic()
 ```
 <br>
@@ -189,17 +189,17 @@ However, when comparing the plots, whilst the plot itself may look thinner, the 
 ```
 `r unhide()`
 
-Remember, every value has a probability on a distribution and we have been able to use the `dnorm()` function to get a visual representation of how the probability of values change in the normal distribution. Some values are very probable. Some values are less probable. This is a key concept when it comes to thinking about significant differences later. 
+Remember, every value has a likelihood on a distribution and we have been able to use the `dnorm()` function to get a visual representation of how the likelihood of values change in the normal distribution. Some values are very likely. Some values are less likely. This is a key concept when it comes to thinking about significant differences later. 
 
 However, as you know, there is one important difference between continuous and discrete probability distributions - the number of possible outcomes. With discrete probability distributions there are usually a finite number of outcomes over which you take a probability. For instance, with 5 coin flips, there are 5 possible outcomes for the number of heads: 0, 1, 2, 3, 4, 5. And because the binomial distribution has exact and finite outcomes, we can use `dbinom()` to get the exact probability for each outcome. 
 
-In contrast, with a truly continuous variable, the number of possible outcomes are infinite, because you not only have 0.01 but also .0000001 and .00000000001 to arbitrary levels of precision. So rather than asking for the probability of a single value, we ask the probability for a **range of values**, which is equal to the area under the curve (the black line in the plots above) for that range of values.
+In contrast, with a truly continuous variable, the number of possible outcomes are infinite, because you not only have 0.01 but also .0000001 and .00000000001 to arbitrary levels of precision. So rather than asking for the probability of a variable taking a single value, we ask the probability for a variable to fall within a **range of values**, which is equal to the area under the curve (the black line in the plots above) for that range of values.
 
 As such, we will leave `dnorm()` for now and move onto looking at establishing the probability of a range of values using the Cumulative Probability function
 
-### **`pnorm()`** - The Cumulative Probability Function
+### **`pnorm()`** - The Cumulative Distribution Function
 
-Just as `dnorm()` works like `dbinom()`, `pnorm()` works just like `pbinom()`. So, `pnorm()`, given the `mean` and `sd` of our data, returns the **cumulative density function (cumulative probability)** that a given probability (`p`) lies at a specified **cut-off point and below**, unless of course `lower.tail = FALSE` is specified in which case it is from the **cut-off point and above**.
+Just as `dnorm()` works like `dbinom()`, `pnorm()` works just like `pbinom()`. So, `pnorm()`, given the `mean` and `sd` of our data, returns the **cumulative distribution function**, which shows the probability that a variable lies **on or below a specified cut-off value**. If `lower.tail = FALSE` is specified, it shows the probability that a variable lies **on or above that cut-off value **. 
 
 OK, in English that people can understand, that means the `pnorm()` function tells you the probability of obtaining a given value or lower if you set `lower.tail = TRUE`.  Contrastingly, `pnorm()` function tells you the probability of obtaining a given value or higher if you set `lower.tail = FALSE`.
 
@@ -246,7 +246,7 @@ This is a tricky difference between `pbinom()` and `pnorm()` to recall easily, s
 
 #### Task 4: Using Figures to Calculate Cumulative Probability {#Ch4InClassQueT4}
 
-Have a look at the distribution below:
+Have a look at the probability density function below:
 
 ``` {r pnormplot1, echo = FALSE, fig.cap='The Normal Distribution of Height with the probability of people of 185cm highlighted in purple, with a mean = 170cm and SD = 7'}
 # students dont see this code, just the shaded output.
@@ -259,7 +259,7 @@ ymax<- max(y)
 xmin<- min(x)
 xmax<- max(x)
 
-{plot(x,y, type = "l", col = "black", xlab = "Height (cm)", ylab ="Probability")
+{plot(x,y, type = "l", col = "black", xlab = "Height (cm)", ylab ="Likelihood")
 polygon(c( x[x>=185], xmax),  c(ymin, y[x>=185]), col="purple")
 text(185+1, 0.01, "185cm", col = "purple")}
 ```
@@ -274,7 +274,7 @@ You already have your mean and standard deviations to input in `pnorm()`, look a
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Question</span>
 
-To three decimal places, what is the cumulative probability of the shaded area in Task 4?  `r fitb(c("0.016",".016"), ignore_ws = TRUE)`
+To three decimal places, what is the cumulative probability indicated by the shaded area in Task 4?  `r fitb(c("0.016",".016"), ignore_ws = TRUE)`
 
 `r hide("Explain This - I don't get this answer")`
 ```{block, type ="info"}
@@ -313,18 +313,18 @@ ymax<- max(y)
 xmin<- min(x)
 xmax<- max(x)
 
-{plot(x,y, type = "l", col = "black", xlab = "IQ", ylab = "Probability" )
+{plot(x,y, type = "l", col = "black", xlab = "IQ", ylab = "Likelihood" )
 polygon(c( x[x<=80.77673], 80.77673),  c(y[x<=80.77673],ymin ), col="purple")
 text(75, 0.0025, "10%", col = "White")}
 ```
 
-Again, in English that people can understand, that means the `qnorm()` function tells you the maximum value a person can have to maintain a given probability if you set `lower.tail = TRUE`.  Contrastingly, `pnorm()` function tells you the the minimum value a person can have to maintain a given probability if you set `lower.tail = FALSE`.
+Again, in English that people can understand, that means the `qnorm()` function tells you the maximum value a person can have to maintain a given probability if you set `lower.tail = TRUE`.  Alternatively, the `pnorm()` function tells you the the minimum value a person can have to maintain a given probability if you set `lower.tail = FALSE`.
 
 #### Task 5: Using **`pnorm()`** and **`qnorm()`** to find probability and cut-off values {#Ch4InClassQueT5}
 
 1. Calculate the lowest IQ score a student must have to be in the top 5% of the above distribution.  
 
-2. More challenging: Using the appropriate normal distribution function, calculate the probability that a given student will have an IQ between 105 and 110, on a normal distribution of mean = 100, sd = 15.  
+2. More challenging: Using the appropriate normal distribution function, calculate the probability that a given student will have an IQ between 105 and 110 given a normal distribution of mean = 100, sd = 15.  
 
 `r hide("Helpful Hint")`
 ```{block, type ="info"}
