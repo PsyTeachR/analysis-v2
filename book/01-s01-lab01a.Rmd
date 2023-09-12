@@ -59,6 +59,6 @@ So there's more than one answer to this question! R Markdown can combine report 
 ```
 `r unhide()`  
 
-### One last thing before beginning!
+### One last thing before beginning! :)
 
 Remember: You can always go back to the <a href = "https://psyteachr.github.io/data-skills-v1/" target = "_blank">Data Skills Book</a> from Level 1 to remind you about the skills we want you have already learned through using R and RStudio. The first few chapters in this book will partly overlap with what you have learned previously, but will further extend on your skills and knowledge.
