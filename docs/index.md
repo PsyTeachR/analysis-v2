@@ -1,7 +1,7 @@
 --- 
 title: "Analysis"
 author: "Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson"
-date: "2022-02-23"
+date: "2023-09-13"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -32,7 +32,7 @@ favicon: images/logos/favicon.ico
 
 **Contact:** This book is a living document and will be regularly checked and updated for improvements. Should you have any issues using the book or queries, please contact [Carolina E. Kuepper-Tetzel](mailto:carolina.kuepper-tetzel@glasgow.ac.uk).
 
-**R Version:** This book has been written with R version 4.1.0 (2021-05-18)
+**R Version:** This book has been written with R version 4.1.3 (2022-03-10)
 
 **Randomising Seed:** In chapters that use some level of randomisation, where we have remembered, the seed is set as 1409.
 

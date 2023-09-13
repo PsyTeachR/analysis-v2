@@ -7,7 +7,7 @@
 <title>Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/nhst-binomial-test-and-one-sample-t-test.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis">
 <meta name="twitter:description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -27,7 +27,33 @@
       gtag('js', new Date());
 
       gtag('config', 'G-6NP3MF25W3');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
@@ -88,7 +114,7 @@
 <h2>
 <span class="header-section-number">5.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-5"><i class="fas fa-link"></i></a>
 </h2>
-<p>This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use probability to establish the likelihood of that statistic occurring given certain situations. The aim is to draw inferences from a <a class="glossary" target="_blank" title="A subset of the population that you wish to make an inference about through your test." href="https://psyteachr.github.io/glossary/s#sample">sample</a> to a <a class="glossary" target="_blank" title="All members of a group that we wish to generalise our findings to. E.g. all students taking Psychology at the University of Glasgow. We draw our testing sample from the population." href="https://psyteachr.github.io/glossary/p#population">population</a>.</p>
+<p>This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use probability to establish the likelihood of that statistic occurring given certain situations. The aim is to draw inferences from a <a class="glossary">sample<span class="def"></span></a> to a <a class="glossary">population<span class="def"></span></a>.</p>
 <p>However these concepts and ideas are hard to grasp at first and take playing around with data a few times to help get a better understanding of them. As such, to demonstrate these ideas further, and to start introducing commonly used tests and approaches to reproducible science, we will look at data related to sleep. The study we will look at, to explore NHST more, is by one of our team members and makes use of a well known task in Psychology, the Posner Paradigm: <a href="https://www.sciencedirect.com/science/article/pii/S0005796708002738" target="_blank">Woods et al. (2009). The clock as a focus of selective attention in those with primary insomnia: An experimental study using a modified Posner paradigm </a>.</p>
 <p>In this chapter, through the activities, we will:</p>
 <ol style="list-style-type: decimal">
@@ -130,7 +156,7 @@
 <p>Now, imagine you are looking to replicate this finding from Woods et al. (2009). As a pilot study, to test recruitment procedures, you gather data from 22 Normal Sleepers. It is common to use only the control participants in a pilot (in this case the NS participants) as they are more plentiful in the population than the experimental group (in this case PI participants) and saves using participants from the PI group which may be harder to obtain in the long run.</p>
 <p>After gathering your data, you want to check the recruitment process: Whether or not you were able to draw a sample of normal sleepers similar to the sample drawn by Woods et al. To keep things straightforward, allowing us to understand the analyses better, we will only look at valid trials today, in NS participants, but in effect you could perform this test on all groups and conditions.</p>
 <!-- **ManyLabs - an approach to reproducible science** -->
-<!-- As you will learn from reading papers around the reproduciblity crisis, findings from experiments tend to be more reproducible when we increase participant numbers as this increases the <a class='glossary' target='_blank' title='The probability of rejecting the null hypothesis when it is false.' href='https://psyteachr.github.io/glossary/p#power'>power</a> of the study's design; the likelihood of an experimental design detecting an effect, of a given size, when there is an effect to detect.  -->
+<!-- As you will learn from reading papers around the reproduciblity crisis, findings from experiments tend to be more reproducible when we increase participant numbers as this increases the <a class='glossary'>power<span class='def'></span></a> of the study's design; the likelihood of an experimental design detecting an effect, of a given size, when there is an effect to detect.  -->
 <!-- 
 <div class='webex-solution'><button>Portfolio Point - The power of what?</button>
  -->
@@ -182,7 +208,7 @@
 <!-- #Task 7 -->
 <!-- ttest <- t.test(pull(ns_data, valid_rt), mu = woods_mean) -->
 <!-- ``` -->
-<!-- As we said above, your lab is now part of a ManyLabs project that is looking to replicate this finding from Woods et al., (2009). As a <a class='glossary' target='_blank' title='' href='https://psyteachr.github.io/glossary/p#pilot'>pilot study</a>, to test recruitment procedures, as well as the experimental paradigm and analyses pipeline, each lab gathers data from 22 Normal Sleepers. It is common to use only the control participants in a pilot (in this cas the NS participants) as they are more plentiful in the population than the experimental group (in this case PI participants) and saves using participants from the PI group which may be harder to obtain in the long run. -->
+<!-- As we said above, your lab is now part of a ManyLabs project that is looking to replicate this finding from Woods et al., (2009). As a <a class='glossary'>pilot study<span class='def'></span></a>, to test recruitment procedures, as well as the experimental paradigm and analyses pipeline, each lab gathers data from 22 Normal Sleepers. It is common to use only the control participants in a pilot (in this cas the NS participants) as they are more plentiful in the population than the experimental group (in this case PI participants) and saves using participants from the PI group which may be harder to obtain in the long run. -->
 <!-- After gathering your data, we want to check the recruitment process and whether or not you have been able to draw a sample of normal sleepers similar to the sample drawn by Woods et al. To keep things straightforward, allowing us to understand the analyses better, we will only look at valid trials today, in NS participants, but in effect you could perform this test on all groups and conditions. -->
 <p><strong>Are These Participants Normal Sleepers (NS)?</strong></p>
 <p>Below is the data from the 22 participants you have collected in your pilot study. Their mean reaction time for valid trials (in milliseconds) is shown in the right hand column, <code>valid_rt</code>.</p>
@@ -386,10 +412,18 @@ Thinking Cap Point - Binomial test and the one-sample t-test
 </button>
 <div class="info">
 <p>
-The <strong>Binomial test</strong> is a very simple test that converts all participants to either being above or below a cut-off point, e.g. a mean value, and looking at the probability of finding that number of participants above that cut-off.
+The <strong>Binomial test</strong> is a very simple test that
+converts all participants to either being above or below a cut-off
+point, e.g. a mean value, and looking at the probability of finding that
+number of participants above that cut-off.
 </p>
 <p>
-The <strong>One-sample t-test</strong> is similar in that it compares participants to a cut-off, but it compares the mean and standard deviation of the collected sample to an ideal mean and standard deviation. By comparing the difference in means, divided by the standard deviation of the difference (a measure of the variance), we can determine if the sample is similar or not to the ideal mean.
+The <strong>One-sample t-test</strong> is similar in that it compares
+participants to a cut-off, but it compares the mean and standard
+deviation of the collected sample to an ideal mean and standard
+deviation. By comparing the difference in means, divided by the standard
+deviation of the difference (a measure of the variance), we can
+determine if the sample is similar or not to the ideal mean.
 </p>
 </div>
 </div>
@@ -425,7 +459,9 @@ You can use this code structure and replace the NULL values:
 <code>ns_data &lt;- tibble(participant = c(NULL,NULL,...), valid_rt = c(NULL,NULL,...))</code>
 </p>
 <p>
-The values are: 631.2, 800.8, 595.4, 502.6, 604.5, 516.9, 658.0, 502.0, 496.7, 600.3, 714.6, 623.7, 634.5, 724.9, 815.7, 456.9, 703.4, 647.5, 657.9, 613.2, 585.4, 674.1
+The values are: 631.2, 800.8, 595.4, 502.6, 604.5, 516.9, 658.0,
+502.0, 496.7, 600.3, 714.6, 623.7, 634.5, 724.9, 815.7, 456.9, 703.4,
+647.5, 657.9, 613.2, 585.4, 674.1
 </p>
 </div>
 </div>
@@ -442,8 +478,8 @@ The values are: 631.2, 800.8, 595.4, 502.6, 604.5, 516.9, 658.0, 502.0, 496.7, 6
 <li>Now write code to calculate the number of participants in the new sample (<code>ns_data</code> created in Task 1) that had a mean reaction time greater than the original paper's mean. Store this <strong>single value</strong> in <code>n_participants</code>.</li>
 <li>The function <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> may help here.</li>
 <li>
-<code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> is similar to <code>count()</code> or <code>n()</code>, but <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> returns the number as a single value and not in a tibble.</li>
-<li>Be sure whatever method you use you end up with a single value, not a tibble. You may need to use <code>pull()</code> or <code>pluck()</code>.</li>
+<code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> is similar to <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code>, but <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> returns the number as a single value and not in a tibble.</li>
+<li>Be sure whatever method you use you end up with a single value, not a tibble. You may need to use <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> or <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code>.</li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -512,7 +548,9 @@ Helpful Hint
 </button>
 <div class="info">
 <p>
-Think back to Chapter 4 where we used the binomial distribution. This question can be phrased as, what is the probability of obtaining X or more successes out of Y trials, given the expected probability of Z.
+Think back to Chapter 4 where we used the binomial distribution. This
+question can be phrased as, what is the probability of obtaining X or
+more successes out of Y trials, given the expected probability of Z.
 </p>
 <ul>
 <li>
@@ -522,10 +560,12 @@ How many Xs? (see question)
 How many Ys? (see question)
 </li>
 <li>
-What is the probability of being either above or below the mean/cut-off? (see question)
+What is the probability of being either above or below the
+mean/cut-off? (see question)
 </li>
 <li>
-You can use a dbinom() %&gt;% sum() for this or maybe a <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>
+You can use a dbinom() %&gt;% sum() for this or maybe a
+<code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>
 </li>
 </ul>
 </div>
@@ -547,7 +587,14 @@ Explain This - I don't get this answer
 </button>
 <div class="info">
 <p>
-The probability of obtaining 16 participants with a mean reaction time greater than the cut-off of 590 ms is p = .026. This is smaller than the field norm of p = .05. As such we can say that, using the binomial test, the new sample appears to be significantly different from the old sample as there is a significantly larger number of participants above the cut-off (M = 590ms) than would be expected if the new sample and the old sample were responding in a similar fashion. We would therefore reject our null hypothesis!
+The probability of obtaining 16 participants with a mean reaction
+time greater than the cut-off of 590 ms is p = .026. This is smaller
+than the field norm of p = .05. As such we can say that, using the
+binomial test, the new sample appears to be significantly different from
+the old sample as there is a significantly larger number of participants
+above the cut-off (M = 590ms) than would be expected if the new sample
+and the old sample were responding in a similar fashion. We would
+therefore reject our null hypothesis!
 </p>
 </div>
 </div>
@@ -592,13 +639,15 @@ Helpful Hint
 </button>
 <div class="info">
 <p>
-In the below code, replace NULL with the code that would find the mean, <code>m</code>, of <code>ns_data</code>.
+In the below code, replace NULL with the code that would find the
+mean, <code>m</code>, of <code>ns_data</code>.
 </p>
 <p>
 <code>ns_data_mean &lt;- summarise(NULL) %&gt;% pull(NULL)</code>
 </p>
 <p>
-Replace NULL with the code that would find the standard deviation, <code>sd</code>, of <code>ns_data</code>.
+Replace NULL with the code that would find the standard deviation,
+<code>sd</code>, of <code>ns_data</code>.
 </p>
 <p>
 <code>ns_data_sd &lt;- summarise(NULL) %&gt;% pull(NULL)</code>
@@ -636,7 +685,9 @@ Helpful Hint
 </button>
 <div class="info">
 <p>
-Remember BODMAS and/or PEDMAS when given more than one operation to calculate. (i.e. Brackets/Parenthesis, Orders/Exponents, Division, Multiplication, Addition, Subtraction)
+Remember BODMAS and/or PEDMAS when given more than one operation to
+calculate. (i.e. Brackets/Parenthesis, Orders/Exponents, Division,
+Multiplication, Addition, Subtraction)
 </p>
 <p>
 <code>t_obs &lt;- (sample mean - woods mean) / (sample standard deviation / square root of n)</code>
@@ -650,7 +701,7 @@ Remember BODMAS and/or PEDMAS when given more than one operation to calculate. (
 </h3>
 <p>Now you need to compare <code>t_obs</code> to the t-distribution to determine how likely the observation (i.e. your test statistic) is under the null hypothesis of no difference. To do this you need to use the <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function.</p>
 <ul>
-<li>Use the <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function to get the <span class="math inline">\(p\)</span>-value for a <a class="glossary" target="_blank" title="A statistical test for which the critical region consists of all values of the test statistic greater than a given value plus all values less than another given value." href="https://psyteachr.github.io/glossary/t#two-tailed">two-tailed</a> test with <span class="math inline">\(\alpha\)</span> level set to .05. The test has <span class="math inline">\(n - 1\)</span> degrees of freedom, where <span class="math inline">\(n\)</span> is the number of observations contributing to the sample mean <span class="math inline">\(\bar{X}\)</span>. Store the <span class="math inline">\(p\)</span> value in the variable <code>pval</code>.<br>
+<li>Use the <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function to get the <span class="math inline">\(p\)</span>-value for a <a class="glossary">two-tailed<span class="def"></span></a> test with <span class="math inline">\(\alpha\)</span> level set to .05. The test has <span class="math inline">\(n - 1\)</span> degrees of freedom, where <span class="math inline">\(n\)</span> is the number of observations contributing to the sample mean <span class="math inline">\(\bar{X}\)</span>. Store the <span class="math inline">\(p\)</span> value in the variable <code>pval</code>.<br>
 </li>
 <li>Do you reject the null?</li>
 <li>
@@ -664,23 +715,27 @@ Helpful Hint
 </button>
 <div class="info">
 <p>
-Remember to get help you can enter <code><a href="https://rdrr.io/r/stats/TDist.html">?pt</a></code> in the console.
+Remember to get help you can enter <code><a href="https://rdrr.io/r/stats/TDist.html">?pt</a></code> in the
+console.
 </p>
 <p>
-The <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function works similar to <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>:
+The <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> function works similar to <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code>
+and <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>:
 </p>
 <ul>
 <li>
 <code>pval &lt;- pt(test statistic, df, lower.tail = FALSE) * 2</code>
 </li>
 <li>
-Use the <strong>absolute value</strong> of the test statistic; i.e. ignore minus signs.
+Use the <strong>absolute value</strong> of the test statistic;
+i.e. ignore minus signs.
 </li>
 <li>
 Remember, <code>df</code> is equal to <code>n-1</code>.
 </li>
 <li>
-Use <code>lower.tail = FALSE</code> because we are wanting to know the probability of obtaining a value higher than the one we got.
+Use <code>lower.tail = FALSE</code> because we are wanting to know
+the probability of obtaining a value higher than the one we got.
 </li>
 <li>
 Reject the null at the field standard of p &lt; .05
@@ -696,7 +751,7 @@ Reject the null at the field standard of p &lt; .05
 </h3>
 <p>Now that you have done this by hand, try using the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function to get the same result. Take a moment to read the documentation for this function by typing <code><a href="https://rdrr.io/r/stats/t.test.html">?t.test</a></code> in the console window. No need to store the t-test output in a dataframe, but do check that the p-value matches the <code>pval</code> in Task 6.</p>
 <ul>
-<li>The structure of the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function is <code><a href="https://rdrr.io/r/stats/t.test.html">t.test(column_of_data, mu = mean_to_compare_against)</a></code>
+<li>The structure of the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function is <code>t.test(column_of_data, mu = mean_to_compare_against)</code>
 </li>
 </ul>
 <div class="webex-solution">
@@ -705,10 +760,15 @@ Helpful Hint
 </button>
 <div class="info">
 <p>
-The function requires a vector, not a table, as the first argument. You can use the <code>pull()</code> function to pull out the <code>valid_rt</code> column from the tibble <code>ns_data</code> with <code>pull(ns_data, valid_rt)</code>.
+The function requires a vector, not a table, as the first argument.
+You can use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function to pull out the
+<code>valid_rt</code> column from the tibble <code>ns_data</code> with
+<code>pull(ns_data, valid_rt)</code>.
 </p>
 <p>
-You also need to include <code>mu</code> in the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, where <code>mu</code> is equal to the mean you are comparing to.
+You also need to include <code>mu</code> in the
+<code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, where <code>mu</code> is equal to the mean you
+are comparing to.
 </p>
 </div>
 </div>
@@ -770,13 +830,13 @@ recorded the looking behavior (or gaze) of the infants during this ‘baseline�
 <span class="header-section-number">5.6.2</span> Load in the data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT0"><i class="fas fa-link"></i></a>
 </h3>
 <p>Call <code>tidyverse</code> to the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> and load in the data (<code>socialmelodies_exp1.csv</code>) and store them in object <code>melodydata</code>.</p>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
-
-<span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p><strong>View the data</strong></p>
 <ol style="list-style-type: decimal">
-<li>It is always a good idea to familiarise yourself with the layout of the data that you have just loaded in. You can do this through using <code>glimpse()</code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> in the Console window. Note, you will not analyse all of these variables. Try to find the variables that are relevant to the study description above.</li>
+<li>It is always a good idea to familiarise yourself with the layout of the data that you have just loaded in. You can do this through using <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> in the Console window. Note, you will not analyse all of these variables. Try to find the variables that are relevant to the study description above.</li>
 </ol>
 <p><strong>The Tasks:</strong></p>
 <p>Now that we have the data loaded, tidyverse attached, and have viewed our data, you should now try to complete the following tasks. Go through the tasks and change only the <code>NULL</code> with what the question asks for and then make sure that the file <code>knits</code> at the end so that you have a fully reproducible code.</p>
@@ -786,9 +846,9 @@ recorded the looking behavior (or gaze) of the infants during this ‘baseline�
 <span class="header-section-number">5.6.3</span> Task 1 - Filter data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT1"><i class="fas fa-link"></i></a>
 </h3>
 <p>This data file includes the variables for all 5 experiments reported in the paper. We only want
-to analyze the data for Experiment 1. Using the <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> function, create a new data frame <code>melodydata_exp1</code> that only contains data of Experiment 1 (variable <code>exp1</code> with value 1 indicates all data fro Experiment 1). Hint: The new data frame should have 32 observations.</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+to analyze the data for Experiment 1. Using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function, create a new data frame <code>melodydata_exp1</code> that only contains data of Experiment 1 (variable <code>exp1</code> with value 1 indicates all data fro Experiment 1). Hint: The new data frame should have 32 observations.</p>
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT2" class="section level3" number="5.6.4">
 <h3>
@@ -802,16 +862,16 @@ baseline trial (<code>Baseline_Proportion_Gaze_to_Singer</code>). In other words
 behaviour toward the singer of the familiar melody (<code>Test_Proportion_Gaze_to_Singer</code>) was higher than chance at the test phase.</p>
 <p>Thus, create a new data frame called <code>melodydata_exp1_reduced</code> that only contains the variables <code>id</code>, <code>Baseline_Proportion_Gaze_to_Singer</code>, and <code>Test_Proportion_Gaze_to_Singer</code>.</p>
 <p>Hint: The new data frame contains 32 observations and 3 variables.</p>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT3" class="section level3" number="5.6.5">
 <h3>
 <span class="header-section-number">5.6.5</span> Task 3 - Testing baseline gazing proportion<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT3"><i class="fas fa-link"></i></a>
 </h3>
 <p>Perform a One-sample t-test to examine whether the proportion of time spent looking at the person singing the familiar song at baseline did not differ from chance (0.5).</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT4" class="section level3" number="5.6.6">
 <h3>
@@ -820,8 +880,8 @@ behaviour toward the singer of the familiar melody (<code>Test_Proportion_Gaze_t
 <p>Now, perform a One-sample t-test to examine whether the proportion of infants' looking
 behaviour toward the singer of the familiar melody was higher than chance at the test phase
 (0.5).</p>
-<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT5" class="section level3" number="5.6.7">
 <h3>
@@ -831,11 +891,11 @@ behaviour toward the singer of the familiar melody was higher than chance at the
 <p>Store the new data frame in object <code>melodydata_exp1_wide</code>.</p>
 <p>Hint: You will need <code>pivot_longer</code> function for this step.
 Hint: The new data frame has 64 observations and 3 variables (<code>id</code>, <code>TrialType</code>, <code>Proportion</code>).</p>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="cn">NULL</span>,
-               names_to <span class="op">=</span> <span class="cn">NULL</span>,
-               values_to <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT6" class="section level3" number="5.6.8">
 <h3>
@@ -844,10 +904,10 @@ Hint: The new data frame has 64 observations and 3 variables (<code>id</code>, <
 <p>Generate a boxplot to depict the proportion of time infants spent looking at the singer of the
 familiar song at the baseline and test trials.</p>
 <ul>
-<li>Turn off the legend using the <code>guides()</code> as it isn't needed because the x-axis tells you which trial is which.</li>
+<li>Turn off the legend using the <code><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides()</a></code> as it isn't needed because the x-axis tells you which trial is which.</li>
 </ul>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT7" class="section level3" number="5.6.9">
 <h3>
@@ -871,25 +931,25 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ns_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>participant <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">22</span>,
-                  valid_rt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">631.2</span>,<span class="fl">800.8</span>,<span class="fl">595.4</span>,<span class="fl">502.6</span>,<span class="fl">604.5</span>,
-                               <span class="fl">516.9</span>,<span class="fl">658.0</span>,<span class="fl">502.0</span>,<span class="fl">496.7</span>,<span class="fl">600.3</span>,
-                               <span class="fl">714.6</span>,<span class="fl">623.7</span>,<span class="fl">634.5</span>,<span class="fl">724.9</span>,<span class="fl">815.7</span>,
-                               <span class="fl">456.9</span>,<span class="fl">703.4</span>,<span class="fl">647.5</span>,<span class="fl">657.9</span>,<span class="fl">613.2</span>,
-                               <span class="fl">585.4</span>,<span class="fl">674.1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ns_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">22</span>,</span>
+<span>                  valid_rt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">631.2</span>,<span class="fl">800.8</span>,<span class="fl">595.4</span>,<span class="fl">502.6</span>,<span class="fl">604.5</span>,</span>
+<span>                               <span class="fl">516.9</span>,<span class="fl">658.0</span>,<span class="fl">502.0</span>,<span class="fl">496.7</span>,<span class="fl">600.3</span>,</span>
+<span>                               <span class="fl">714.6</span>,<span class="fl">623.7</span>,<span class="fl">634.5</span>,<span class="fl">724.9</span>,<span class="fl">815.7</span>,</span>
+<span>                               <span class="fl">456.9</span>,<span class="fl">703.4</span>,<span class="fl">647.5</span>,<span class="fl">657.9</span>,<span class="fl">613.2</span>,</span>
+<span>                               <span class="fl">585.4</span>,<span class="fl">674.1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT1">Return to Task</a></p>
 </div>
 <div id="task-2-5" class="section level4" number="5.7.1.2">
 <h4>
 <span class="header-section-number">5.7.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-5"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">woods_mean</span> <span class="op">&lt;-</span> <span class="fl">590</span>
-
-<span class="va">n_participants</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">valid_rt</span> <span class="op">&gt;</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">woods_mean</span> <span class="op">&lt;-</span> <span class="fl">590</span></span>
+<span></span>
+<span><span class="va">n_participants</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">valid_rt</span> <span class="op">&gt;</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving an n_participants value of 16</li>
 </ul>
@@ -902,26 +962,26 @@ familiar song at the baseline and test trials.</p>
 <ul>
 <li>You can use the density function:</li>
 </ul>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">n_participants</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">n_participants</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <ul>
 <li>Or, the cumulative probability function:</li>
 </ul>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">n_participants</span> <span class="op">-</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">n_participants</span> <span class="op">-</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <ul>
 <li>Or, If you were to plug in the numbers directly into the code:</li>
 </ul>
-<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">16</span><span class="op">:</span><span class="fl">22</span>,<span class="fl">22</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">16</span><span class="op">:</span><span class="fl">22</span>,<span class="fl">22</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <ul>
 <li>Or, finally, remembering we need to specify a value lower than our minimum participant number as <code>lower.tail = FALSE</code>.</li>
 </ul>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">22</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">22</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <p>It is better practice to use the first two solutions, which pull the values straight from ns_data, as you run the risk of entering an error into your code if you plug in the values manually.</p>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT3">Return to Task</a></p>
@@ -936,23 +996,23 @@ familiar song at the baseline and test trials.</p>
 <span class="header-section-number">5.7.2.1</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-4"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
-<li>For <code>ns_data_mean</code> use <code>summarise()</code> to calculate the mean and then <code>pull()</code> the value.</li>
-<li>For <code>ns_data_sd</code> use <code>summarise()</code> to calculate the sd and then <code>pull()</code> the value.</li>
+<li>For <code>ns_data_mean</code> use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to calculate the mean and then <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> the value.</li>
+<li>For <code>ns_data_sd</code> use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to calculate the sd and then <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> the value.</li>
 </ul>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># the mean</span>
-<span class="va">ns_data_mean</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pull</span><span class="op">(</span><span class="va">m</span><span class="op">)</span>  
-
-<span class="co"># the sd</span>
-<span class="va">ns_data_sd</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pull</span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># the mean</span></span>
+<span><span class="va">ns_data_mean</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># the sd</span></span>
+<span><span class="va">ns_data_sd</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></span></code></pre></div>
 <p><strong>NOTE:</strong> You could print them out on the screen if you wanted to "\n" is the end of line symbol so that they print on different lines</p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The mean number of hours was"</span>, <span class="va">ns_data_mean</span>, <span class="st">"\n"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The standard deviation was"</span>, <span class="va">ns_data_sd</span>, <span class="st">"\n"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The mean number of hours was"</span>, <span class="va">ns_data_mean</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The standard deviation was"</span>, <span class="va">ns_data_sd</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## The mean number of hours was 625.4636 
 ## The standard deviation was 94.30693</code></pre>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch6PreClassQueT4">Return to Task</a></p>
@@ -961,8 +1021,8 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.2.2</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">t_obs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">ns_data_mean</span> <span class="op">-</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">ns_data_sd</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">t_obs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">ns_data_mean</span> <span class="op">-</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">ns_data_sd</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving a t_obs value of 1.7638067</li>
 </ul>
@@ -973,14 +1033,14 @@ familiar song at the baseline and test trials.</p>
 <span class="header-section-number">5.7.2.3</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>If using values straight from ns_data, and multiplying by 2 for a two-tailed test, you would do the following:</p>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pval</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_obs</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2L</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pval</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_obs</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2L</span></span></code></pre></div>
 <ul>
 <li>Giving a pval of 0.0923092</li>
 </ul>
 <p>But you can also get the same answer by plugging the values in yourself - though this method runs the risk of error and you are better off using the first calculation as those values come straight from ns_data. :</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pval2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="fl">21</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pval2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="fl">21</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span></span></code></pre></div>
 <ul>
 <li>Giving a pval of 0.0923092</li>
 </ul>
@@ -991,8 +1051,8 @@ familiar song at the baseline and test trials.</p>
 <span class="header-section-number">5.7.2.4</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>The t-test would be run as follows, with the output shown below:</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="va">ns_data</span>, <span class="va">valid_rt</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">woods_mean</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">ns_data</span>, <span class="va">valid_rt</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">woods_mean</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -1024,68 +1084,68 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.1</span> Load in the data<a class="anchor" aria-label="anchor" href="#load-in-the-data-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
-
-<span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"socialmelodies_exp1.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"socialmelodies_exp1.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT0">Return to Task</a></p>
 </div>
 <div id="task-1---filter-data" class="section level4" number="5.7.3.2">
 <h4>
 <span class="header-section-number">5.7.3.2</span> Task 1 - Filter data<a class="anchor" aria-label="anchor" href="#task-1---filter-data"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="va">melodydata</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">exp1</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="va">melodydata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">exp1</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT1">Return to Task</a></p>
 </div>
 <div id="task-2---select-data" class="section level4" number="5.7.3.3">
 <h4>
 <span class="header-section-number">5.7.3.3</span> Task 2 - Select data<a class="anchor" aria-label="anchor" href="#task-2---select-data"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">id</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT2">Return to Task</a></p>
 </div>
 <div id="task-3---testing-baseline-gazing-proportion" class="section level4" number="5.7.3.4">
 <h4>
 <span class="header-section-number">5.7.3.4</span> Task 3 - Testing baseline gazing proportion<a class="anchor" aria-label="anchor" href="#task-3---testing-baseline-gazing-proportion"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT3">Return to Task</a></p>
 </div>
 <div id="task-4---testing-test-trial-gazing-proportion" class="section level4" number="5.7.3.5">
 <h4>
 <span class="header-section-number">5.7.3.5</span> Task 4 - Testing test trial gazing proportion<a class="anchor" aria-label="anchor" href="#task-4---testing-test-trial-gazing-proportion"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu">pull</span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT4">Return to Task</a></p>
 </div>
 <div id="task-5---gathering-data-into-a-different-format" class="section level4" number="5.7.3.6">
 <h4>
 <span class="header-section-number">5.7.3.6</span> Task 5 - Gathering data into a different format<a class="anchor" aria-label="anchor" href="#task-5---gathering-data-into-a-different-format"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">:</span><span class="va">Test_Proportion_Gaze_to_Singer</span>,
-               names_to <span class="op">=</span> <span class="st">"TrialType"</span>,
-               values_to <span class="op">=</span> <span class="st">"Proportion"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">:</span><span class="va">Test_Proportion_Gaze_to_Singer</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"TrialType"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"Proportion"</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT5">Return to Task</a></p>
 </div>
 <div id="task-6---visualise-baseline-and-test-trial-data" class="section level4" number="5.7.3.7">
 <h4>
 <span class="header-section-number">5.7.3.7</span> Task 6 - Visualise baseline and test trial data<a class="anchor" aria-label="anchor" href="#task-6---visualise-baseline-and-test-trial-data"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">melodydata_exp1_wide</span>, 
-       <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">TrialType</span>, 
-           y <span class="op">=</span> <span class="va">Proportion</span>, 
-           fill <span class="op">=</span> <span class="va">TrialType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">melodydata_exp1_wide</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">TrialType</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Proportion</span>, </span>
+<span>           fill <span class="op">=</span> <span class="va">TrialType</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT6">Return to Task</a></p>
 </div>
 <div id="task-7---compare-your-analyses-with-the-analyses-reported-in-the-published-paper" class="section level4" number="5.7.3.8">
@@ -1360,7 +1420,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-23.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-09-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1373,7 +1433,7 @@ $( document ).ready(function() {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -7,7 +7,7 @@
 <title>Chapter 8 APES - Alpha, Power, Effect Sizes, Sample Size | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="8.1 Overview Up until now we have mainly spent time on data-wrangling, understanding probability, visualising our data, and more recently, running inferential tests, i.e. t-tests. In the lectures,...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 8 APES - Alpha, Power, Effect Sizes, Sample Size | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/apes---alpha-power-effect-sizes-sample-size.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 8 APES - Alpha, Power, Effect Sizes, Sample Size | Analysis">
 <meta name="twitter:description" content="8.1 Overview Up until now we have mainly spent time on data-wrangling, understanding probability, visualising our data, and more recently, running inferential tests, i.e. t-tests. In the lectures,...">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -27,7 +27,33 @@
       gtag('js', new Date());
 
       gtag('config', 'G-6NP3MF25W3');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
@@ -243,13 +269,17 @@ Helpful Hint
 <div class="info">
 <ul>
 <li>
-Use the appropriate formula from above for the one-sample t-tests.
+Use the appropriate formula from above for the one-sample
+t-tests.
 </li>
 <li>
-You have been given a t-value and df (degrees of freedom), you still need to determine <code>n</code> before you calculate <code>d</code>.
+You have been given a t-value and df (degrees of freedom), you still
+need to determine <code>n</code> before you calculate
+<code>d</code>.
 </li>
 <li>
-According to Cohen (1988), the effect size is small (.2 to .5), medium (.5 to .8) or large (&gt; .8).
+According to Cohen (1988), the effect size is small (.2 to .5),
+medium (.5 to .8) or large (&gt; .8).
 </li>
 </ul>
 </div>
@@ -293,7 +323,8 @@ Use the appropriate formula above for two-sample t-tests.
 remember that df = (N-1) + (N-1) for a two-sample t-test.
 </li>
 <li>
-According to Cohen (1988), the effect size is small (.2 to .5), medium (.5 to .8) or large (&gt; .8).
+According to Cohen (1988), the effect size is small (.2 to .5),
+medium (.5 to .8) or large (&gt; .8).
 </li>
 </ul>
 </div>
@@ -334,7 +365,8 @@ Helpful Hint
 You need the df value to determine <code>N</code>.
 </li>
 <li>
-A matched pairs is treated like a paired-sample t-test but with two separate groups.
+A matched pairs is treated like a paired-sample t-test but with two
+separate groups.
 </li>
 </ul>
 </div>
@@ -364,13 +396,17 @@ Explain This - I don't understand the number of people in each group answer!
 <div class="info">
 <ul>
 <li>
-df in a paired-samples and in a matched-pairs t-test is calculated as <code>df = N - 1</code>.<br>
+df in a paired-samples and in a matched-pairs t-test is calculated
+as <code>df = N - 1</code>.<br>
 </li>
 <li>
-Conversely, to find the total number of participants: <code>N = df + 1</code> so N = 39 + 1 = 40.
+Conversely, to find the total number of participants:
+<code>N = df + 1</code> so N = 39 + 1 = 40.
 </li>
 <li>
-Given that this is a matched-pairs t-test, by design there has to be an equal number of participants in each group. Therefore 40 participants in each group.
+Given that this is a matched-pairs t-test, by design there has to be
+an equal number of participants in each group. Therefore 40 participants
+in each group.
 </li>
 </ul>
 </div>
@@ -390,7 +426,9 @@ Helpful Hint
 <div class="info">
 <ul>
 <li>
-Before you can calculate <code>d</code> (using the appropriate formula for a between-subjects experiment), you need to first calculate <code>t</code> using the formula:
+Before you can calculate <code>d</code> (using the appropriate
+formula for a between-subjects experiment), you need to first calculate
+<code>t</code> using the formula:
 </li>
 </ul>
 <p>
@@ -398,13 +436,23 @@ Before you can calculate <code>d</code> (using the appropriate formula for a bet
 </p>
 <ul>
 <li>
-<code>var</code> stands for variance in the above formula. Variance is not the same as the standard deviation, right? Variance is measured in squared units. So for this equation, if you require variance to calculate <code>t</code> and you have the standard deviation, then you need to remember that <span class="math inline"><span class="math inline">\(var = SD^2\)</span></span> (otherwise written as <span class="math inline"><span class="math inline">\(var = SD \times SD\)</span></span>.
+<code>var</code> stands for variance in the above formula. Variance
+is not the same as the standard deviation, right? Variance is measured
+in squared units. So for this equation, if you require variance to
+calculate <code>t</code> and you have the standard deviation, then you
+need to remember that <span class="math inline"><span class="math inline">\(var = SD^2\)</span></span>
+(otherwise written as <span class="math inline"><span class="math inline">\(var = SD \times SD\)</span></span>.
 </li>
 <li>
-Now you have your t-value, but for calculating <code>d</code> you also need degrees of freedom. Think about how you would calculate <code>df</code> for a between-subjects experiment, taking <code>n</code> for both Group 1 and Group 2 into account.
+Now you have your t-value, but for calculating <code>d</code> you
+also need degrees of freedom. Think about how you would calculate
+<code>df</code> for a between-subjects experiment, taking <code>n</code>
+for both Group 1 and Group 2 into account.
 </li>
 <li>
-Remember that convention is that people report the <code>t</code> as a positive. As such, convention also dictates that <code>d</code> is reported as a positive value.
+Remember that convention is that people report the <code>t</code> as
+a positive. As such, convention also dictates that <code>d</code> is
+reported as a positive value.
 </li>
 </ul>
 </div>
@@ -457,12 +505,12 @@ Remember that convention is that people report the <code>t</code> as a positive.
 </li>
 </ul>
 <p>And it works on a leave one out principle. You give it all the info you have and it returns the element you are missing. So, for example, say you needed to know how many people per group you would need to detect an effect size as low as <code>d = .4</code> with <code>power = .8</code>, <code>alpha = .05</code> in a <code>two.sample (between-subjects) t-test</code> on a <code>two.sided</code> hypothesis test. You would do:</p>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>,
-           power <span class="op">=</span> <span class="fl">.8</span>,
-           sig.level <span class="op">=</span> <span class="fl">.05</span>,
-           alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
-           type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">pwr.t.test</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>           power <span class="op">=</span> <span class="fl">.8</span>,</span>
+<span>           sig.level <span class="op">=</span> <span class="fl">.05</span>,</span>
+<span>           alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>           type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span></span></code></pre></div>
 <p>Which will show you the following output, which, if you look at it, tells you that you need 99.0803248 people per condition.</p>
 <pre><code>## 
 ##      Two-sample t test power calculation 
@@ -476,22 +524,22 @@ Remember that convention is that people report the <code>t</code> as a positive.
 ## NOTE: n is number in *each* group</code></pre>
 <p>But you only get whole people and we like to be conservative on our estimates so we would actually run 100 <strong>per condition</strong>. That is a lot of people!!!</p>
 <p>One problem though is that the output of the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code> is an object and not that easy to work with in terms of getting values out from it to be reproducible. However, the function <code>purr::pluck()</code> allows us to pluck values from objects. And the code would look like this</p>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">n_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>, 
-                     power <span class="op">=</span> <span class="fl">.8</span>,
-                     sig.level <span class="op">=</span> <span class="fl">.05</span>,
-                     alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
-                     type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_test</span> <span class="op">&lt;-</span> <span class="fu">pwr.t.test</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.4</span>, </span>
+<span>                     power <span class="op">=</span> <span class="fl">.8</span>,</span>
+<span>                     sig.level <span class="op">=</span> <span class="fl">.05</span>,</span>
+<span>                     alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>                     type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <p>So when we call <code>n_test</code> we get the same answer as above, but it is saved as a single value and easier to work with:</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">n_test</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_test</span></span></code></pre></div>
 <pre><code>## [1] 99.08032</code></pre>
 <p>And we could use the <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code> funtion to round up to whole people:</p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">n_test</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n_test</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
-<p><em>Note:</em> <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code> is better to use than <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> when dealing with people as it always rounds up. For example, <code><a href="https://rdrr.io/r/base/Round.html">ceiling(1.1)</a></code> gives you 2. <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> on the other hand is useful for rounding an effect size, for example, to two decimal places - e.g. d = <code><a href="https://rdrr.io/r/base/Round.html">round(.4356, 2)</a></code> would give you d = 0.44</p>
+<p><em>Note:</em> <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code> is better to use than <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> when dealing with people as it always rounds up. For example, <code>ceiling(1.1)</code> gives you 2. <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> on the other hand is useful for rounding an effect size, for example, to two decimal places - e.g. d = <code>round(.4356, 2)</code> would give you d = 0.44</p>
 <p>We will use this approach <code>pwr.t.test() %&gt;% pluck()</code> and <code>pwr.t.test() %&gt;% pluck() %&gt;% ceiling()</code> throughout the rest of this chapter to get used to it.
 <strong>Before you start with this next task</strong>, you will need to make sure you have loaded in the <code>tidyverse</code>.</p>
 </div>
@@ -502,7 +550,7 @@ Remember that convention is that people report the <code>t</code> as a positive.
 <ul>
 <li>Assuming the smallest effect size of interest is a Cohen's d of <strong>d = .23</strong>, what would be the minimum number of participants you would need in a one-sample t-test, assuming <strong><span class="math inline">\(power = .8\)</span></strong>, <strong><span class="math inline">\(\alpha = .05\)</span></strong>, on a two-sided hypothesis?</li>
 </ul>
-<p>Using a pipeline, store the answer as a single value called <code>sample_size</code> (e.g., think <code>pluck()</code>) and round up to the nearest whole participant.</p>
+<p>Using a pipeline, store the answer as a single value called <code>sample_size</code> (e.g., think <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code>) and round up to the nearest whole participant.</p>
 <div class="webex-solution">
 <button>
 Helpful Hint
@@ -510,13 +558,18 @@ Helpful Hint
 <div class="info">
 <ul>
 <li>
-Use the list of inputs above as a kind of checklist to clearly determine which inputs are known or unknown. This can help you enter the appropriate values to your code.
+Use the list of inputs above as a kind of checklist to clearly
+determine which inputs are known or unknown. This can help you enter the
+appropriate values to your code.
 </li>
 <li>
-The structure of the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code> would be very similar to the one shown above except two.sample would become one.sample
+The structure of the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code> would be very similar
+to the one shown above except two.sample would become one.sample
 </li>
 <li>
-You will also need to use <code>pluck("n")</code> to help you obtain the sample size and <code>%&gt;% ceiling()</code> to round up to the nearest whole participant.
+You will also need to use <code>pluck("n")</code> to help you obtain
+the sample size and <code>%&gt;% ceiling()</code> to round up to the
+nearest whole participant.
 </li>
 </ul>
 </div>
@@ -543,13 +596,18 @@ Helpful Hint
 <div class="info">
 <ul>
 <li>
-Again, use the list of inputs above as a kind of checklist to clearly determine which inputs are known or unknown. This can help you enter the values to your code.
+Again, use the list of inputs above as a kind of checklist to
+clearly determine which inputs are known or unknown. This can help you
+enter the values to your code.
 </li>
 <li>
-You will also need to use <code>pluck()</code> to obtain Cohen's <code>d</code>, and <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> so the value is rounded to two decimal places.
+You will also need to use <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> to obtain Cohen’s
+<code>d</code>, and <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> so the value is rounded to two
+decimal places.
 </li>
 <li>
-Don't forget the quotes when using <code>pluck()</code>. i.e. <code>pluck("value")</code> and not <code>pluck(value)</code>
+Don’t forget the quotes when using <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code>.
+i.e. <code>pluck("value")</code> and not <code>pluck(value)</code>
 </li>
 </ul>
 </div>
@@ -591,13 +649,15 @@ Helpful Hint
 <div class="info">
 <ul>
 <li>
-A one-sample t-test and a paired t-test use the same formula for Cohen's d.
+A one-sample t-test and a paired t-test use the same formula for
+Cohen’s d.
 </li>
 <li>
 To calculate n: <code>n = df + 1</code>.
 </li>
 <li>
-Calculate the achievable Cohens d for the studies and then calculate the established Cohen's d for the studies.
+Calculate the achievable Cohens d for the studies and then calculate
+the established Cohen’s d for the studies.
 </li>
 </ul>
 </div>
@@ -650,8 +710,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>You set up a study so that it has a power value of <span class="math inline">\(power = .87\)</span>. To two decimal places, what is the Type II error rate of your study?</li>
 </ul>
 <p>Replace the <code>NULL</code> in the <code>T1</code> code chunk below with either a single value, or with mathematical notation, so that <code>error_rate</code> returns the actual value of the Type II error rate for this study. By mathematical notation we mean you to use the appropriate formula but insert the actual values.</p>
-<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">error_rate</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">error_rate</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT2" class="section level3" number="8.4.2">
 <h3>
@@ -661,8 +721,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>You run a two-sample t-test and discover a significant effect, t(32) = 3.26, p &lt; .05. Using the appropriate formula, given in the chapter, calculate the effect size of this t-test.</li>
 </ul>
 <p>Replace the <code>NULL</code> in the <code>T2</code> code chunk below with mathematical notation so that <code>effect1</code> returns the value of the effect size. Do not round the value.</p>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT3" class="section level3" number="8.4.3">
 <h3>
@@ -672,8 +732,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>You run a paired-sample t-test and discover a significant effect, t(43) = 2.24, p &lt; .05. Using the appropriate formula, given in the chapter, calculate the effect size of this t-test.</li>
 </ul>
 <p>Replace the <code>NULL</code> in the <code>T3</code> code chunk below with mathematical notation so that <code>effect2</code> returns the value of the effect size. Do not round the value.</p>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p><strong>Using the Power function</strong></p>
 </div>
 <div id="Ch8AssignQueT4" class="section level3" number="8.4.4">
@@ -681,11 +741,11 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <span class="header-section-number">8.4.4</span> Task 4<a class="anchor" aria-label="anchor" href="#Ch8AssignQueT4"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li><p>Replace the NULL in the <code>T4</code> code chunk below with a pipeline combining <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code>, <code>pluck()</code> and <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code>, to determine how many participants are needed to sufficiently power a paired-samples t-test at <span class="math inline">\(power = .9\)</span> with <span class="math inline">\(d = .5\)</span>? Assume a two-sided hypothesis with <span class="math inline">\(\alpha = .05\)</span>. Ceiling the answer to the nearest whole participant and store this value in <code>participants</code>.</p></li>
+<li><p>Replace the NULL in the <code>T4</code> code chunk below with a pipeline combining <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck()</a></code> and <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code>, to determine how many participants are needed to sufficiently power a paired-samples t-test at <span class="math inline">\(power = .9\)</span> with <span class="math inline">\(d = .5\)</span>? Assume a two-sided hypothesis with <span class="math inline">\(\alpha = .05\)</span>. Ceiling the answer to the nearest whole participant and store this value in <code>participants</code>.</p></li>
 <li><p><strong>Hint:</strong> Remember the quotes on the pluck</p></li>
 </ul>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">participants</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> </code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">participants</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> </span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT5" class="section level3" number="8.4.5">
 <h3>
@@ -695,8 +755,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li><p>Using a pipeline similar to Task 4, what is the minimum effect size that a one-sample t-test study (two-tailed hypothesis) could reliably detect given the following details: <span class="math inline">\(\beta = .16, \alpha = 0.01, n = 30\)</span>. Round to two decimal places and replace the NULL in the <code>T5</code> code chunk below to store this value in <code>effect3</code>.</p></li>
 <li><p><strong>Hint:</strong> Remember you are going to <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> and not <code><a href="https://rdrr.io/r/base/Round.html">ceiling()</a></code></p></li>
 </ul>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect3</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect3</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT6" class="section level3" number="8.4.6">
 <h3>
@@ -707,8 +767,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>You run a between-subjects study and establish the following descriptives: Group 1 (M = 5.1, SD = 1.34, N = 32); Group 2 (M = 4.4, SD = 1.27, N = 32). Replace the <code>NULL</code> in the <code>T6</code> code chunk below with the following formula, substituting in the appropriate values, to calculate the t-value of this test. Calculate as Group1 minus Group2. Store the t-value in <code>tval</code>. Do not round <code>tval</code> and do not include the <code>t =</code> part of the formula.</li>
 </ul>
 <p><span class="math display">\[ t = \frac {{\bar{x_{1}}} - \bar{x_{2}}}{ \sqrt {\frac {{s_{1}}^2}{n_{1}} + \frac {{s_{2}}^2}{n_{2}}}}\]</span></p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tval</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tval</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT7" class="section level3" number="8.4.7">
 <h3>
@@ -718,8 +778,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li><p>Using the <code>tval</code> calculated in Task 6, calculate the effect size of this study and store it as <code>d1</code> in the <code>T7</code> code chunk below, replacing the <code>NULL</code> with the appropriate formula and values. Do not round <code>d1</code>.</p></li>
 <li><p><strong>Hint:</strong> Think between-subjects</p></li>
 </ul>
-<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT8" class="section level3" number="8.4.8">
 <h3>
@@ -737,10 +797,10 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>
 <strong>Hint:</strong> use poss_d to calculate the smallest possible effect size of this study to help you answer this question.</li>
 </ul>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">poss_d</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-
-<span class="va">answer_T8</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">poss_d</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span></span>
+<span><span class="va">answer_T8</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT9" class="section level3" number="8.4.9">
 <h3>
@@ -750,8 +810,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <p>Below is a paragraph from the results of Experiment 4 from <em>Schroeder, J., &amp; Epley, N. (2015). The sound of intellect: Speech reveals a thoughtful mind, increasing a job candidate's appeal.</em> <em>Psychological Science</em>, <em>26</em>, <em>877-891</em>. We saw this paper previously but you can find out more details at &lt;a href="<a href="https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities" class="uri">https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities</a>", target = "_blank"&gt;Open Stats Lab.</p>
 <p><em>Recruiters believed that the job candidates had greater intellect - were more competent, thoughtful, and intelligent - when they listened to pitches (M = 5.63, SD = 1.61, n = 21) than when they read pitches (M = 3.65, SD = 1.91, n = 18), t(37) = 3.53, p &lt; .01, 95% CI of the difference = [0.85, 3.13], <strong>d1 = 1.16</strong>. The recruiters also formed more positive impressions of the candidates - rated them as more likeable and had a more positive and less negative impression of them - when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23), t(37) = 2.85, p &lt; .01, 95% CI of the difference = [0.55, 3.24], <strong>d2 = 0.94</strong>. Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.06), t(37) = 2.62, p &lt; .01, 95% CI of the difference = [0.41, 3.24], <strong>d3 = 0.86</strong>.</em></p>
 <p>Using the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test()</a></code> function, what is the minimum effect size that this paper could have reliably detected? Test at <span class="math inline">\(power = .8\)</span> for a two-sided hypothesis. Use the <span class="math inline">\(\alpha\)</span> stated in the paragraph and the smallest <em>n</em> stated; store the value as <code>effect4</code> in the <code>T9</code> code chunk below. Replace the <code>NULL</code> with your pipeline and round the effect size to two decimal places.</p>
-<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect4</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect4</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT10" class="section level3" number="8.4.10">
 <h3>
@@ -765,8 +825,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>This study does not have enough power to reliably detect effect sizes at d1 or lower.</li>
 </ol>
 <p>Replace the NULL in the <code>T10</code> code chunk below with the number of the statement that is TRUE, storing the single value in <code>answer_t10</code>.</p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">answer_t10</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">answer_t10</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch8AssignQueT11" class="section level3" number="8.4.11">
 <h3>
@@ -787,14 +847,14 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <li>None of the statements are TRUE.</li>
 </ol>
 <p>Replace the NULL in the <code>T11</code> code chunk below with the number of the statement that is correct, storing the single value in <code>answer_t11</code>.</p>
-<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">answer_t11</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">answer_t11</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="the-pwr-package" class="section level3" number="8.4.12">
 <h3>
 <span class="header-section-number">8.4.12</span> The <strong><code>pwr</code></strong> package<a class="anchor" aria-label="anchor" href="#the-pwr-package"><i class="fas fa-link"></i></a>
 </h3>
-<p>An alternative solution to Task 9 would be to use the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t2n.test.html">pwr.t2n.test()</a></code> function from the <code>pwr</code> package <span class="citation">(<a href="references.html#ref-R-pwr" role="doc-biblioref">Champely, 2020</a>)</span>. This would allow you to enter the <code>n</code> of both groups as there is an <code>n1</code> and an <code>n2</code> argument. Were you to use this, entering n1 = 18, n2 = 21, alpha = .01, the d drops just a little, changing the interpretation of Task 10. Feel free to try this analysis and see if you can figure out what would be the alternative answer to Task 10.</p>
+<p>An alternative solution to Task 9 would be to use the <code><a href="https://rdrr.io/pkg/pwr/man/pwr.t2n.test.html">pwr.t2n.test()</a></code> function from the <code>pwr</code> package <span class="citation">(<a href="references.html#ref-R-pwr">Champely, 2020</a>)</span>. This would allow you to enter the <code>n</code> of both groups as there is an <code>n1</code> and an <code>n2</code> argument. Were you to use this, entering n1 = 18, n2 = 21, alpha = .01, the d drops just a little, changing the interpretation of Task 10. Feel free to try this analysis and see if you can figure out what would be the alternative answer to Task 10.</p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span></p>
 <p>Well done, you are finished! Now you should go check your answers against the solution which can be found at the end of this chapter. You are looking to check that the resulting output from the answers that you have submitted are exactly the same as the output in the solution - for example, remember that a single value is not the same as a coded answer. Where there are alternative answers, it means that you could have submitted any one of the options as they should all return the same answer.</p>
 
@@ -813,8 +873,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-7"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">3.24</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">25</span> <span class="op">+</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">3.24</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">25</span> <span class="op">+</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving an effect size of d = 0.64 and as such a medium to large effect size according to Cohen (1988)</li>
 </ul>
@@ -824,8 +884,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-8"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">2.9</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">2.9</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving a effect size of d = 1.06 and as such a large effect size according to Cohen (1988)</li>
 </ul>
@@ -835,10 +895,10 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.1.3</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-7"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">N</span> <span class="op">=</span> <span class="fl">39</span> <span class="op">+</span> <span class="fl">1</span>
-
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">2.1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">N</span> <span class="op">=</span> <span class="fl">39</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">2.1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving an N = 40 and an effect size of d = 0.33. This would be considered a small effect size according to Cohen (1988)</li>
 </ul>
@@ -848,10 +908,10 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.1.4</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-7"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">t</span> <span class="op">=</span> <span class="op">(</span><span class="fl">10</span> <span class="op">-</span> <span class="fl">11</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1.3</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1.7</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">d</span> <span class="op">=</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">t</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">30</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">30</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">t</span> <span class="op">=</span> <span class="op">(</span><span class="fl">10</span> <span class="op">-</span> <span class="fl">11</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1.3</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1.7</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d</span> <span class="op">=</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">t</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">30</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">30</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving a t-value of t = 2.56 and an effect size of d = 0.67.</li>
 <li>Remember that convention is that people tend to report the t and d as positive values.</li>
@@ -862,16 +922,16 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.1.5</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-6"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span>
-
-<span class="va">sample_size</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.23</span>,
-                          power <span class="op">=</span> <span class="fl">.8</span>, 
-                          sig.level <span class="op">=</span> <span class="fl">.05</span>, 
-                          alternative <span class="op">=</span> <span class="st">"two.sided"</span>, 
-                          type <span class="op">=</span> <span class="st">"one.sample"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sample_size</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>d <span class="op">=</span> <span class="fl">.23</span>,</span>
+<span>                          power <span class="op">=</span> <span class="fl">.8</span>, </span>
+<span>                          sig.level <span class="op">=</span> <span class="fl">.05</span>, </span>
+<span>                          alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
+<span>                          type <span class="op">=</span> <span class="st">"one.sample"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving a sample size of n = 151</li>
 </ul>
@@ -881,14 +941,14 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.1.6</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-5"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cohens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span>,
-                    power <span class="op">=</span> <span class="fl">.9</span>, 
-                    sig.level <span class="op">=</span> <span class="fl">.05</span>, 
-                    alternative <span class="op">=</span> <span class="st">"two.sided"</span>, 
-                    type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cohens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>                    power <span class="op">=</span> <span class="fl">.9</span>, </span>
+<span>                    sig.level <span class="op">=</span> <span class="fl">.05</span>, </span>
+<span>                    alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
+<span>                    type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving a Cohen's d effect size of d = 0.65</li>
 </ul>
@@ -899,45 +959,45 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <span class="header-section-number">8.5.1.7</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-5"><i class="fas fa-link"></i></a>
 </h4>
 <p><strong>Example 1</strong></p>
-<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ach_d_exp1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>, 
-                         n <span class="op">=</span> <span class="fl">32</span>, 
-                         type <span class="op">=</span> <span class="st">"one.sample"</span>, 
-                         alternative <span class="op">=</span> <span class="st">"two.sided"</span>, 
-                         sig.level <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> 
-
-<span class="va">exp1_d</span> <span class="op">&lt;-</span> <span class="fl">2.96</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">31</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span> </code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ach_d_exp1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>, </span>
+<span>                         n <span class="op">=</span> <span class="fl">32</span>, </span>
+<span>                         type <span class="op">=</span> <span class="st">"one.sample"</span>, </span>
+<span>                         alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
+<span>                         sig.level <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">exp1_d</span> <span class="op">&lt;-</span> <span class="fl">2.96</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">31</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span> </span></code></pre></div>
 <ul>
 <li>Giving an achievable effect size of 0.51 and they found an effect size of 0.52.</li>
 </ul>
 <p>This study seems ok as the authors could achieve an effect size as low as .51 and found an effect size at .52</p>
 <p><strong>Example 2</strong></p>
-<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ach_d_exp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>, 
-                         n <span class="op">=</span> <span class="fl">32</span>, 
-                         type <span class="op">=</span> <span class="st">"paired"</span>, 
-                         alternative <span class="op">=</span> <span class="st">"two.sided"</span>, 
-                         sig.level <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> 
-
-<span class="va">exp2_d</span> <span class="op">&lt;-</span> <span class="fl">2.42</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">31</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span> </code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ach_d_exp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>, </span>
+<span>                         n <span class="op">=</span> <span class="fl">32</span>, </span>
+<span>                         type <span class="op">=</span> <span class="st">"paired"</span>, </span>
+<span>                         alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
+<span>                         sig.level <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">exp2_d</span> <span class="op">&lt;-</span> <span class="fl">2.42</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">31</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span> </span></code></pre></div>
 <ul>
 <li>Giving an achievable effect size of 0.51 and they found an effect size of 0.43.</li>
 </ul>
 <p>This effect might not be reliable given that the effect size found was much lower than the achievable effect size. The issue here is that the researchers established their sample size based on a previous effect size and not on the minimum effect size that they would find important. If an effect size as small as .4 was important then they should have powered all studies to that level and ran the appropriate n ~52 babies (see below). Flipside of course is that obtaining 52 babies isn't easy; hence why some people consider the Many Labs approach a good way ahead.</p>
 <p><strong>ONE CAVEAT</strong> to the above is that before making the assumption that this study is therefore flawed, we have to keep in mind that this is one study using one sample from a potentially huge number of samples within a population. As such there will be a degree of variance in the true effect size within the population regardless of the effect size of one given sample. What that means is we have to be a little bit cautious when making claims about a study. Ultimately the higher the power the better.</p>
 <p>Below you could calculate the actual sample size required to achieve a power of .8:</p>
-<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample_size</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>,
-                          d <span class="op">=</span> <span class="fl">.4</span>,
-                          type <span class="op">=</span> <span class="st">"paired"</span>, 
-                          alternative <span class="op">=</span> <span class="st">"two.sided"</span>, 
-                          sig.level <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_size</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>,</span>
+<span>                          d <span class="op">=</span> <span class="fl">.4</span>,</span>
+<span>                          type <span class="op">=</span> <span class="st">"paired"</span>, </span>
+<span>                          alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
+<span>                          sig.level <span class="op">=</span> <span class="fl">.05</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Suggesting a sample size of n = 52 would be appropriate.</li>
 </ul>
@@ -949,15 +1009,15 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <span class="header-section-number">8.5.2</span> Practice Your Skills<a class="anchor" aria-label="anchor" href="#practice-your-skills-12"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Libraries</strong></p>
-<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <div id="task-1-8" class="section level4" number="8.5.2.1">
 <h4>
 <span class="header-section-number">8.5.2.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-8"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">error_rate</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">.87</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">error_rate</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">.87</span></span></code></pre></div>
 <ul>
 <li>The Type II error rate of your study would be <span class="math inline">\(\beta\)</span> = 0.13.</li>
 </ul>
@@ -967,8 +1027,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-9"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect1</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">3.26</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">32</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect1</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="fl">3.26</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">32</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The effect size would be d = 1.1525841</li>
 </ul>
@@ -978,8 +1038,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.3</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-8"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect2</span> <span class="op">&lt;-</span> <span class="fl">2.24</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">43</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect2</span> <span class="op">&lt;-</span> <span class="fl">2.24</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">43</span><span class="op">+</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The effect size would be d = 0.3376927</li>
 </ul>
@@ -989,14 +1049,14 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.4</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-8"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">participants</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.9</span>,
-                           d <span class="op">=</span> <span class="fl">.5</span>,
-                           sig.level <span class="op">=</span> <span class="fl">0.05</span>,
-                           type <span class="op">=</span> <span class="st">"paired"</span>,
-                           alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">participants</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.9</span>,</span>
+<span>                           d <span class="op">=</span> <span class="fl">.5</span>,</span>
+<span>                           sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>                           type <span class="op">=</span> <span class="st">"paired"</span>,</span>
+<span>                           alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Given the detailed scenario, the appropriate number of participants would be n = 44</li>
 </ul>
@@ -1006,15 +1066,15 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.5</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-7"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">1</span><span class="op">-</span><span class="fl">.16</span>,
-                      n <span class="op">=</span> <span class="fl">30</span>,
-                      sig.level <span class="op">=</span> <span class="fl">0.01</span>,
-                      type <span class="op">=</span> <span class="st">"one.sample"</span>,
-                      alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">delta</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">1</span><span class="op">-</span><span class="fl">.16</span>,</span>
+<span>                      n <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>                      sig.level <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span>                      type <span class="op">=</span> <span class="st">"one.sample"</span>,</span>
+<span>                      alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Given the detailed scenario, we would be able to detect an effect size of d = 0.69</li>
 </ul>
@@ -1024,8 +1084,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.6</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-6"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tval</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">5.1</span> <span class="op">-</span> <span class="fl">4.4</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1.34</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">32</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1.27</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">32</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tval</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">5.1</span> <span class="op">-</span> <span class="fl">4.4</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1.34</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">32</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1.27</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="fl">32</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Given the stated means and standard deviations, the t-value for this study would be t = 2.1448226</li>
 </ul>
@@ -1035,8 +1095,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.7</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-6"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d1</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">tval</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">32</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="op">(</span><span class="fl">32</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">tval</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="fl">32</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="op">(</span><span class="fl">32</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Given the t-value in Task 6, the effect size of this study would be d = 0.5447855.</li>
 </ul>
@@ -1046,16 +1106,16 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.8</span> Task 8<a class="anchor" aria-label="anchor" href="#task-8-5"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">poss_d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>,
-                     n <span class="op">=</span> <span class="fl">32</span>,
-                     sig.level <span class="op">=</span> <span class="fl">0.05</span>,
-                     type <span class="op">=</span> <span class="st">"two.sample"</span>,
-                     alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-
-<span class="va">answer_T8</span> <span class="op">&lt;-</span> <span class="fl">4</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">poss_d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>,</span>
+<span>                     n <span class="op">=</span> <span class="fl">32</span>,</span>
+<span>                     sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>                     type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
+<span>                     alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">answer_T8</span> <span class="op">&lt;-</span> <span class="fl">4</span></span></code></pre></div>
 <ul>
 <li>The smallest effect size that this study can determine is d = 0.71. The detected effect size, <code>d1</code>, is smaller than this (d1 = 0.5447855) and as such this study is not suitably powered.</li>
 <li>Given that outcome, the 4th statement is the most suitable answer - answer_T8 = 4.</li>
@@ -1066,14 +1126,14 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.9</span> Task 9<a class="anchor" aria-label="anchor" href="#task-9-2"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">effect4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>,
-                      n <span class="op">=</span> <span class="fl">18</span>,
-                      sig.level <span class="op">=</span> <span class="fl">.01</span>,
-                      alternative <span class="op">=</span> <span class="st">"two.sided"</span>,
-                      type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pluck</span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">effect4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>power <span class="op">=</span> <span class="fl">.8</span>,</span>
+<span>                      n <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>                      sig.level <span class="op">=</span> <span class="fl">.01</span>,</span>
+<span>                      alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>                      type <span class="op">=</span> <span class="st">"two.sample"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"d"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The smallest stated n is n = 18 and the stated <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(\alpha\)</span> = .01</li>
 <li>Given these details, the minimum effect size that this paper could have reliably detected was d = 1.198</li>
@@ -1084,8 +1144,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.10</span> Task 10<a class="anchor" aria-label="anchor" href="#task-10-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">answer_t10</span> <span class="op">&lt;-</span> <span class="fl">4</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">answer_t10</span> <span class="op">&lt;-</span> <span class="fl">4</span></span></code></pre></div>
 <ul>
 <li>This study does not have enough power to detect effect sizes at d1 or lower and as such answer_t10 = 4</li>
 <li>However, it is worth keeping in mind that we are only looking at one study here which drew one sample from a population of samples. This means that there is always uncertainty about the true effect size of a difference or association - taking a different sample may have given a different effect size. As such, the comparison we are making here is not entirely valid and we should see it more as a reminder that we should always think of power as more in the planning of studies rather than in the search for criticism.</li>
@@ -1096,8 +1156,8 @@ Calculate the achievable Cohens d for the studies and then calculate the establi
 <h4>
 <span class="header-section-number">8.5.2.11</span> Task 11<a class="anchor" aria-label="anchor" href="#task-11"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">answer_t11</span> <span class="op">&lt;-</span> <span class="fl">2</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">answer_t11</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></code></pre></div>
 <ul>
 <li>In general, increasing sample size will increase the power of a study whereas lowering alpha (from .05 to .01) will decrease the power of a study. As such, statements a and c, answer_t11 = 2.</li>
 </ul>
@@ -1371,7 +1431,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-23.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-09-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1384,7 +1444,7 @@ $( document ).ready(function() {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -7,7 +7,7 @@
 <title>Chapter 9 Correlations | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="9.1 Overview As you will read in Miller and Haden (2013) as part of the Correlations Basics reading, correlations are used to detect and quantify relationships among numerical variables. In short,...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Chapter 9 Correlations | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/correlations.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 9 Correlations | Analysis">
 <meta name="twitter:description" content="9.1 Overview As you will read in Miller and Haden (2013) as part of the Correlations Basics reading, correlations are used to detect and quantify relationships among numerical variables. In short,...">
 <meta name="twitter:image" content="https://psyteachr.github.io/analysis-v2/images/logos/logo.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -27,7 +27,33 @@
       gtag('js', new Date());
 
       gtag('config', 'G-6NP3MF25W3');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
@@ -269,7 +295,7 @@ IV
 </table></div>
 <p><br></p>
 <p>Can look very different when plotted:</p>
-<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:corr-anscombe-figure"></span>
 <img src="09-s02-lab09b_files/figure-html/corr-anscombe-figure-1.png" alt="Though all datasets have a correlation of r = .82, when plotted the four datasets look very different. Grp I is a standard linear relationship where a pearson correlation would be suitable. Grp II would appear to be a non-linear relationship and a non-parametric analysis would be appropriate. Grp III again shows a linear relationship (approaching r = 1) where an outlier has lowered the correlation coefficient. Grp IV shows no relationship between the two variables (X, Y) but an oultier has inflated the correlation higher." width="100%"><p class="caption">
@@ -307,13 +333,17 @@ Task 1: Hints for loading in Data
 <div class="info">
 <ul>
 <li>
-Hint 1: We are going to need the following libraries: tidyverse, broom
+Hint 1: We are going to need the following libraries: tidyverse,
+broom
 </li>
 <li>
 Hint 2: mh &lt;- read_csv()
 </li>
 <li>
-Remember that, in this book, we will ALWAYS ask you to use <code>read_csv()</code> to load in data. Avoid using other functions such as <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>. Whilst these functions are similar, they are not the same.
+Remember that, in this book, we will ALWAYS ask you to use
+<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> to load in data. Avoid using other functions
+such as <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>. Whilst these functions are similar,
+they are not the same.
 </li>
 </ul>
 </div>
@@ -366,7 +396,8 @@ Hints on data type
 are the variables continuous?
 </li>
 <li>
-is the difference between 1 and 2 on the scale equal to the difference between 2 and 3?
+is the difference between 1 and 2 on the scale equal to the
+difference between 2 and 3?
 </li>
 </ul>
 </div>
@@ -380,9 +411,9 @@ is the difference between 1 and 2 on the scale equal to the difference between 2
 <p><strong>Assumption 2: Pairs of Data</strong></p>
 <p>All correlations must have a data point for each participant on the two variables being correlated. This should make sense as to why - you can't correlate against an empty cell! Check that you have a data point in both columns for each participant. After that, try answering the question in Task 3. A discussion is in the solutions at the end of the chapter.</p>
 <p><strong>Note:</strong> You can check for missing data by visual inspection - literally using your eyes. A missing data point will show as a <strong>NA</strong>, which is short for not applicable, not available, or no answer. An alternative would be to use the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> function. This can be really handy when you have lots of data and visual inspection would just take too long. If for example you ran the following code:</p>
-<div class="sourceCode" id="cb361"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></code></pre></div>
-<p>If you look at the output from that function, each <code>FALSE</code> tells you that there is a data-point in that cell. That is because <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> asks is that cell a NA; is it empty. If the cell was empty then it would come back as <code>TRUE</code>. As all cells have data in them, they are all showing as <code>FALSE</code>. If you wanted to ask the opposite question, is their data in this cell, then you would write <code>!is.na()</code> which is read as "is not NA". The exclamation mark <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code> turns the question into the opposite.</p>
+<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></span></code></pre></div>
+<p>If you look at the output from that function, each <code>FALSE</code> tells you that there is a data-point in that cell. That is because <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> asks is that cell a NA; is it empty. If the cell was empty then it would come back as <code>TRUE</code>. As all cells have data in them, they are all showing as <code>FALSE</code>. If you wanted to ask the opposite question, is their data in this cell, then you would write <code>!is.na()</code> which is read as "is not NA". The exclamation mark <code>!</code> turns the question into the opposite.</p>
 <p>It looks like everyone has data in all the columns but let's test our skills a little whilst we are here. Answer the following questions:</p>
 <ol style="list-style-type: decimal">
 <li>How is missing data represented in a cell of a tibble? <select class="webex-select"><option value="blank"></option>
@@ -412,7 +443,8 @@ Hints on removing missing data points
 <div class="info">
 <ul>
 <li>
-filter(dat, is.na(variable)) versus filter(dat, !is.na(variable))
+filter(dat, is.na(variable)) versus filter(dat,
+!is.na(variable))
 </li>
 </ul>
 </div>
@@ -454,10 +486,13 @@ ggplot(mh, aes(x = )) + geom_histogram()
 ggplot(mh, aes(x = , y = )) + geom_point()
 </li>
 <li>
-Normality: something to keep in mind is that there are only 25 participants, so how 'normal' do we expect relationships to be
+Normality: something to keep in mind is that there are only 25
+participants, so how ‘normal’ do we expect relationships to be
 </li>
 <li>
-homoscedasticity is that the spread of data points around the (imaginary) line of best fit is equal on both sides along the line; as opposed to very narrow at one point and very wide at others.
+homoscedasticity is that the spread of data points around the
+(imaginary) line of best fit is equal on both sides along the line; as
+opposed to very narrow at one point and very wide at others.
 </li>
 <li>
 Remember these are all judgement calls!
@@ -482,16 +517,19 @@ Hints on discussing descriptives
 <div class="info">
 <ul>
 <li>
-Hint 1: We hypothesised that reading ability and intelligence were positively correlated. Is that what you see in the scatterplot?
+Hint 1: We hypothesised that reading ability and intelligence were
+positively correlated. Is that what you see in the scatterplot?
 </li>
 <li>
 Hint 2: Keep in mind it is subjective at this stage.
 </li>
 <li>
-Hint 3: Remember to only talk about a relationship and not a prediction. This is correlational work, not regression.
+Hint 3: Remember to only talk about a relationship and not a
+prediction. This is correlational work, not regression.
 </li>
 <li>
-Hint 4: Can you say something about both the strength (weak, medium, strong) and the direction (positive, negative)?
+Hint 4: Can you say something about both the strength (weak, medium,
+strong) and the direction (positive, negative)?
 </li>
 </ul>
 </div>
@@ -511,9 +549,9 @@ Hint 4: Can you say something about both the strength (weak, medium, strong) and
 <li>the type of NHST tail you want to run: e.g. "one.sided", "two.sided"</li>
 </ul>
 <p>For example, if your data is stored in <code>dat</code> and you are wanting a two-sided pearson correlation of the variables (columns) <code>X</code> and <code>Y</code>, then you would do:</p>
-<pre><code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test(dat$X, dat$Y, method = "pearson", alternative = "two.sided")</a></code></pre>
+<pre><code>cor.test(dat$X, dat$Y, method = "pearson", alternative = "two.sided")</code></pre>
 <ul>
-<li>where <code>dat$X</code> means the column <code>X</code> in the tibble <code>dat</code>. The dollar sign (<code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>) is a way of indexing, or calling out, a specific column.</li>
+<li>where <code>dat$X</code> means the column <code>X</code> in the tibble <code>dat</code>. The dollar sign (<code>$</code>) is a way of indexing, or calling out, a specific column.</li>
 </ul>
 <p>Based on your answers to Task 5, spend a couple of minutes deciding which correlation method to use (e.g., Pearson or Spearman) and the type of NHST tail to set (e.g., two.sided or one.sided). Now, run the correlation between IQ and Ability and save it in a tibble called <code>results</code> (hint: <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code>). The solution is at the end of the chapter.</p>
 <div class="webex-solution">
@@ -523,10 +561,12 @@ Hints to correlation
 <div class="info">
 <ul>
 <li>
-Hint 1: the data looked reasonably normal and linear so the method would be?
+Hint 1: the data looked reasonably normal and linear so the method
+would be?
 </li>
 <li>
-Hint 2: results &lt;- cor.test(mh$Abil......, method = ....., alternative....) %&gt;% tidy()
+Hint 2: results &lt;- cor.test(mh$Abil……, method = …..,
+alternative….) %&gt;% tidy()
 </li>
 </ul>
 </div>
@@ -569,16 +609,21 @@ Hints to interpretation
 <div class="info">
 <ul>
 <li>
-Hint1: If Y increases as X increases then the relationship is positive. If Y increases as X decreases then the relationship is negative. If there is no change in Y as X changes then there is no relationship
+Hint1: If Y increases as X increases then the relationship is
+positive. If Y increases as X decreases then the relationship is
+negative. If there is no change in Y as X changes then there is no
+relationship
 </li>
 <li>
-Hint2: Depending on the field most correlation values greater than .5 would be strong; .3 to .5 as medium, and .1 to .3 as small.
+Hint2: Depending on the field most correlation values greater than
+.5 would be strong; .3 to .5 as medium, and .1 to .3 as small.
 </li>
 <li>
 Hint3: The field standard says less than .05 is significant.
 </li>
 <li>
-Hint4: Hypotheses can only be supported or not supported, never proven.
+Hint4: Hypotheses can only be supported or not supported, never
+proven.
 </li>
 </ul>
 </div>
@@ -594,13 +639,13 @@ Hint4: Hypotheses can only be supported or not supported, never proven.
 <p><strong>Advanced 1: Matrix of Scatterplots</strong></p>
 <p>Above we ran one correlation and if we wanted to do a different correlation then we would have to edit the <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code> line and run it again. However, when you have lots of variables in a dataset, to get a quick overview of patterns, one thing you might want to do is run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the <code>Hmisc</code> library - already installed in the Boyd Orr Labs. We will use the Miller and Haden data here again which you should still have in a tibble called <code>mh</code>.</p>
 <p>First, we need to get rid of the Participant column as we don't want to correlate that with anything. It won't tell us anything. Copy and run the below line of code</p>
-<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://hbiostat.org/R/Hmisc/">"Hmisc"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
-<span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">Participant</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://hbiostat.org/R/Hmisc/">"Hmisc"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
+<span><span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Participant</span><span class="op">)</span></span></code></pre></div>
 <p>Now run the following line. The <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> function from the <code>Hmisc</code> library creates a matrix of scatterplots which you can then use to view all the relationships at the one time.</p>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10-advance-pairs"></span>
 <img src="09-s02-lab09c_files/figure-html/ch10-advance-pairs-1.png" alt="Matrix of Correlation plots of Miller and Haden (2013) data" width="100%"><p class="caption">
@@ -608,9 +653,9 @@ Figure 9.3: Matrix of Correlation plots of Miller and Haden (2013) data
 </p>
 </div>
 <p>And the <code><a href="https://rdrr.io/pkg/Hmisc/man/rcorr.html">rcorr()</a></code> function creates a matrix of correlations and p-values. But watch out, it only accepts the data in matrix format. Run the following two lines of code.</p>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mh_mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/rcorr.html">rcorr</a></span><span class="op">(</span><span class="va">mh_mx</span>, type <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mh_mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/rcorr.html">rcorr</a></span><span class="op">(</span><span class="va">mh_mx</span>, type <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##       Abil   IQ  Home    TV
 ## Abil  1.00 0.45  0.74 -0.29
 ## IQ    0.45 1.00  0.20  0.25
@@ -639,7 +684,10 @@ Hints to Matrix of correlations
 <div class="info">
 <ul>
 <li>
-Hint1: There is no hint, this is just a cheeky test to make sure you have read the correlation chapter in Miller and Haden, like we asked you to! :-) If you are unsure of these answers, the solutions are at the end of the chapter.
+Hint1: There is no hint, this is just a cheeky test to make sure you
+have read the correlation chapter in Miller and Haden, like we asked you
+to! :-) If you are unsure of these answers, the solutions are at the end
+of the chapter.
 </li>
 </ul>
 </div>
@@ -687,12 +735,14 @@ Hint Step 1: read_csv()
 </li>
 <li>
 <p>
-Hint Step 2: filter(Accuracy &lt; 1 OR Accuracy &lt;= 1 OR Accuracy &gt; 1 OR Accuracy &gt;= 1)
+Hint Step 2: filter(Accuracy &lt; 1 OR Accuracy &lt;= 1 OR
+Accuracy &gt; 1 OR Accuracy &gt;= 1)
 </p>
 </li>
 <li>
 <p>
-Hint Step 3: average accuracy: mutate(data, name = (1 + 2)/2) %&gt;% filter(name &gt; ...)
+Hint Step 3: average accuracy: mutate(data, name = (1 + 2)/2)
+%&gt;% filter(name &gt; …)
 </p>
 </li>
 <li>
@@ -707,12 +757,13 @@ Hint Step 5: descriptives &lt;- summarise()
 </li>
 <li>
 <p>
-Hint Step 6: assumptions would be type of data, normality, linear relationship, homoscedasicity, data points for everyone!
+Hint Step 6: assumptions would be type of data, normality, linear
+relationship, homoscedasicity, data points for everyone!
 </p>
 </li>
 <li>
 <p>
-Hint Step 7: results &lt;- cor.test(method = "pearson")?
+Hint Step 7: results &lt;- cor.test(method = “pearson”)?
 </p>
 </li>
 </ul>
@@ -760,15 +811,15 @@ The backdrop for the exercise is the following study:</p>
 <li>Loading in the data and the two libraries needed</li>
 <li>Good point to remind you that:
 <ul>
-<li>we use <code>read_csv()</code> to load in data</li>
+<li>we use <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> to load in data</li>
 <li>the order that libraries are read in is important. If there are any conflicts in terms of libraries then the last library that is loaded will be the functions you are using.</li>
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://broom.tidymodels.org/">"broom"</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span>
-<span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://broom.tidymodels.org/">"broom"</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
+<span><span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><a href="correlations.html#Ch10InClassQueT1">Return to Task</a></p>
 </div>
 <div id="task-2-10" class="section level4" number="9.5.1.2">
@@ -788,8 +839,8 @@ The backdrop for the exercise is the following study:</p>
 <li><p>Missing data is represented by NA. It stands for Not Available but is a very good way of improving your Scottish accent. For example, "is that a number" can be replied with "NA!".</p></li>
 <li><p>If you want to keep everybody from the whole dataset that has a score for Ability you would use:</p></li>
 </ul>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">mh</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Abil</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mh</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Abil</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -1241,8 +1292,8 @@ TV
 <ul>
 <li>Alternatively, if you want to keep everybody from the whole dataset that does not have a score for Ability you would use:</li>
 </ul>
-<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Abil</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Abil</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -1275,10 +1326,10 @@ TV
 <ul>
 <li>Reading ability data appears as normal as expected for 25 participants. Hard to say how close to normality something should look when there are so few participants.</li>
 </ul>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mh</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Abil</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Abil</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT4-1"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT4-1-1.png" alt="Histogram showing the distribution of Reading Ability Scores from Miller and Haden (2013)" width="100%"><p class="caption">
@@ -1288,10 +1339,10 @@ Figure 9.4: Histogram showing the distribution of Reading Ability Scores from Mi
 <ul>
 <li>IQ data appears as normal as expected for 25 participants</li>
 </ul>
-<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mh</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">IQ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">IQ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT4-2"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT4-2-1.png" alt="Histogram showing the distribution of IQ Scores from Miller and Haden (2013)" width="100%"><p class="caption">
@@ -1300,14 +1351,14 @@ Figure 9.5: Histogram showing the distribution of IQ Scores from Miller and Hade
 </div>
 <ul>
 <li>The relationship between reading ability and IQ scores appears appears linear and with no clear outliers. Data also appears homeoscedastic.</li>
-<li>We have added the <code>geom_smooth()</code> function to help clarify the line of best fit (also know as the regression line or the slope).</li>
+<li>We have added the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function to help clarify the line of best fit (also know as the regression line or the slope).</li>
 </ul>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">mh</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Abil</span>, y <span class="op">=</span> <span class="va">IQ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Abil</span>, y <span class="op">=</span> <span class="va">IQ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT4-3"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT4-3-1.png" alt="Scatterplot of IQ scores as a function of Reading Ability from Miller and Haden (2013) data" width="100%"><p class="caption">
@@ -1331,12 +1382,12 @@ Figure 9.6: Scatterplot of IQ scores as a function of Reading Ability from Mille
 <li>We are going to run a pearson correlation as we would argue the data is interval and the relationship is linear.</li>
 <li>The correlation would be run as follows - tidying it into a nice and usable table.</li>
 </ul>
-<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">mh</span><span class="op">$</span><span class="va">Abil</span>, 
-                    <span class="va">mh</span><span class="op">$</span><span class="va">IQ</span>, 
-                    method <span class="op">=</span> <span class="st">"pearson"</span>, 
-                    alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">mh</span><span class="op">$</span><span class="va">Abil</span>, </span>
+<span>                    <span class="va">mh</span><span class="op">$</span><span class="va">IQ</span>, </span>
+<span>                    method <span class="op">=</span> <span class="st">"pearson"</span>, </span>
+<span>                    alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The output of the table would look as follows:</li>
 </ul>
@@ -1414,19 +1465,19 @@ two.sided
 <li>The p-value is stored in <code>p.value</code>
 </li>
 <li>And <code>statistic</code> is the t-value associated with this analysis as correlations use the t-distribution (same as in Chapters 6, 7 and 8) to determine probability of an outcome.</li>
-<li>Remember that we can use the <code>pull()</code> function to get individual values as shown here.</li>
+<li>Remember that we can use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function to get individual values as shown here.</li>
 </ul>
-<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pvalue</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">parameter</span><span class="op">)</span>
-
-<span class="va">correlation</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pvalue</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">parameter</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">correlation</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p>And we can use that information to write-up the following using inline coding for accuracy:</p>
 <ul>
 <li>A pearson correlation found reading ability and intelligence to be positively correlated with a medium to strong relationship, (r(<code>`r df`</code>) = <code>`r correlation`</code>, p = <code>`r pvalue`</code>). As such we can say that our hypothesis is supported and that there appears to be a relationship between reading ability and IQ in that as reading ability increases so does intelligence.</li>
@@ -1454,22 +1505,22 @@ two.sided
 </h4>
 <p><strong>Step 1</strong></p>
 <ul>
-<li>Reading in the Vaping Data using <code>read_csv()</code>
+<li>Reading in the Vaping Data using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>
 </li>
 </ul>
-<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"VapingData.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"VapingData.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Steps 2 to 4</strong></p>
 <ul>
 <li>The main wrangle of parts 2 to 4</li>
 </ul>
-<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_BLOCK3_Acc</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_BLOCK5_Acc</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>IAT_ACC <span class="op">=</span> <span class="op">(</span><span class="va">IAT_BLOCK3_Acc</span> <span class="op">+</span> <span class="va">IAT_BLOCK5_Acc</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_ACC</span> <span class="op">&gt;</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>IAT_RT <span class="op">=</span> <span class="va">IAT_BLOCK5_RT</span> <span class="op">-</span> <span class="va">IAT_BLOCK3_RT</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_BLOCK3_Acc</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_BLOCK5_Acc</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>IAT_ACC <span class="op">=</span> <span class="op">(</span><span class="va">IAT_BLOCK3_Acc</span> <span class="op">+</span> <span class="va">IAT_BLOCK5_Acc</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_ACC</span> <span class="op">&gt;</span> <span class="fl">.8</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>IAT_RT <span class="op">=</span> <span class="va">IAT_BLOCK5_RT</span> <span class="op">-</span> <span class="va">IAT_BLOCK3_RT</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Step 5</strong></p>
 <ul>
 <li>It is always worth thinking about which averages are informative and which are not.
@@ -1479,31 +1530,31 @@ two.sided
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">%&gt;%</span> <span class="fu">summarise</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
-                          mean_IAT_ACC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IAT_ACC</span><span class="op">)</span>,
-                          mean_IAT_RT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IAT_RT</span><span class="op">)</span>,
-                          mean_VPQ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">VapingQuestionnaireScore</span>, 
-                                          na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                          mean_IAT_ACC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IAT_ACC</span><span class="op">)</span>,</span>
+<span>                          mean_IAT_RT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IAT_RT</span><span class="op">)</span>,</span>
+<span>                          mean_VPQ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">VapingQuestionnaireScore</span>, </span>
+<span>                                          na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Step 6</strong></p>
 <ul>
 <li>A couple of visual checks of normality through histograms</li>
 </ul>
-<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: Removed 11 rows containing non-finite values (stat_bin).</code></pre>
+<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: Removed 11 rows containing non-finite values (`stat_bin()`).</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT9-6-1"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT9-6-1-1.png" alt="Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)" width="100%"><p class="caption">
 Figure 9.7: Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)
 </p>
 </div>
-<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">IAT_RT</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">IAT_RT</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT9-6-2"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT9-6-2-1.png" alt="Histogram showing the distribution of IAT Reaction Times (Implicit)" width="100%"><p class="caption">
@@ -1515,11 +1566,11 @@ Figure 9.8: Histogram showing the distribution of IAT Reaction Times (Implicit)
 <li>Remember that, often, the scatterplot is considered the descriptive of the correlation, hence why you see them including in journal articles to support the stated relationship.</li>
 <li>The scatterplot can be used to make descriptive claims about the direction of the relationship, the strength of the relationship, whether it is linear or not, and to check for outliers and homeoscedasticity.</li>
 </ul>
-<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">IAT_RT</span>, y <span class="op">=</span> <span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">IAT_RT</span>, y <span class="op">=</span> <span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT9-6-3"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT9-6-3-1.png" alt="A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)" width="100%"><p class="caption">
@@ -1529,31 +1580,31 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <ul>
 <li>A quick look at the data reveals some people do not have a Vaping Questionnaire score and some don't have an IAT score. The correlation only works when people have a score on both factors so we remove all those that only have a score on one of the factors.</li>
 </ul>
-<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">IAT_RT</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">IAT_RT</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Step 7</strong></p>
 <ul>
 <li>The analysis:</li>
 </ul>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">VapingQuestionnaireScore</span>, 
-                    <span class="va">dat</span><span class="op">$</span><span class="va">IAT_RT</span>, 
-                    method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">VapingQuestionnaireScore</span>, </span>
+<span>                    <span class="va">dat</span><span class="op">$</span><span class="va">IAT_RT</span>, </span>
+<span>                    method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>And extracting the values:</li>
 </ul>
-<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">correlation</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">parameter</span><span class="op">)</span>
-
-<span class="va">pvalue</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pull</span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">correlation</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">parameter</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pvalue</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>With inline coding:</li>
 </ul>
@@ -1584,16 +1635,16 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <h3>Checking for outliers with z-scores<a class="anchor" aria-label="anchor" href="#checking-for-outliers-with-z-scores"><i class="fas fa-link"></i></a>
 </h3>
 <p>We briefly mentioned in the above activities that you could use z-scores to check for outliers, instead of visual inspection. We have covered this in lectures and it works for any interval or ratio dataset, and not just ones for correlations, but we will demonstrate it here using the IQ data from Miller and Haden. First, lets get just the IQ data.</p>
-<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mh_IQ</span> <span class="op">&lt;-</span> <span class="va">mh</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mh_IQ</span> <span class="op">&lt;-</span> <span class="va">mh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span></span></code></pre></div>
 <p>A z-score is just a standardised value based on the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (SD or <span class="math inline">\(\sigma\)</span>, proonounced "sigma") of the sample it comes from. The formula for a z-score is:
 <br></p>
 <p><span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span></p>
 <p>Using z-scores is away of effectively converting your data onto the Normal Distribution. As such, because of known cut-offs from the Normal Distribution (e.g., 68% of data between <span class="math inline">\(\pm1SD\)</span>, etc - See Chapter 4), we can use that information to determine a value as an outlier. To do it, you convert all the data within your variable into their respective z-score and if any of the values fall above or below your cut-off then they are considered an outlier.</p>
-<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mh_IQ_z</span> <span class="op">&lt;-</span> <span class="va">mh_IQ</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>z_scores <span class="op">=</span> <span class="op">(</span><span class="va">IQ</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mh_IQ_z</span> <span class="op">&lt;-</span> <span class="va">mh_IQ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>z_scores <span class="op">=</span> <span class="op">(</span><span class="va">IQ</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Which will give us the following data (showing only the first 6 rows):</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -1667,8 +1718,8 @@ z_scores
 </tbody>
 </table></div>
 <p>And if you run through the data you will see a whole range of z-scores ranging from -2.1053138 to 1.9858948. During the class we said that we would use a cut-off of <span class="math inline">\(\pm2.5SD\)</span> and you can see from the range of the IQ z-scores that there is no value above that, so we have no outliers. Which you could confirm with the following code:</p>
-<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mh_IQ_z</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">z_scores</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mh_IQ_z</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">z_scores</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
 <p>Which if you run that code, you can see we have 0 outliers. This also demonstrates however why you must stipulate your cut-offs in advance - otherwise you might fall foul of adjusting your data to fit your own predictions and hiding your decision making in the numerous researcher degrees of freedom that exist. For example, say you run the above analysis and see no outliers but don't find the result you want/expect/believe should be there. A questionable research practice would be now to start adjusting your z-score cut-off to different values to see what difference that makes. For instance, had we said the cut-off was more stringent at <span class="math inline">\(\pm2SD\)</span> we would have found 1 outlier.</p>
 <p>So the two take-aways from this are:</p>
 <ol style="list-style-type: decimal">
@@ -1690,16 +1741,16 @@ z_scores
 <code><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion()</a></code> can be used to tidy up the table in terms of removing NAs, leading zeros, and for setting the number of decimal places.</li>
 </ul>
 <p>The code would look like this:</p>
-<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr">corrr</a></span><span class="op">)</span>
-
-<span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span>
-
-<span class="va">mh</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">Participant</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pearson"</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://corrr.tidymodels.org/reference/shave.html">shave</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion</a></span><span class="op">(</span>decimals <span class="op">=</span> <span class="fl">3</span>, leading_zeros <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr">corrr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Participant</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"pearson"</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/shave.html">shave</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion</a></span><span class="op">(</span>decimals <span class="op">=</span> <span class="fl">3</span>, leading_zeros <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Which if you then look at the ouput you get this nice clean correlation matrix table shown below.</p>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -1789,19 +1840,19 @@ TV
 </h3>
 <p>One step that is often overlooked when working with correlations and a data set with numerous variables, is to compare whether the correlations are significantly different from each other. For example, say you are looking at whether there is a relationship between height and attractiveness in males and in females. You run the two correlations and find one is a stronger relationship than the other. Many would try to conclude that that means there is a significantly stronger relationship in one gender than the other. However that has not been tested. It can be tested though. We will quickly show you how, but this paper will also help the discussion: Diedenhofen and Musch (2015) cocor: A Comprehensive Solution for the Statistical Comparison of Correlations. PLOS ONE 10(6): e0131499. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945</a></p>
 <p>As always we need the libraries first. You will need to install the <strong><code>cocor</code></strong> package on to your laptop.</p>
-<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://comparingcorrelations.org">cocor</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://comparingcorrelations.org">cocor</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <p>Now we are going to walk through three different examples just to show you how it would work in different experimental designs. You will need to match the values in the code with the values in the text to make full sense of these examples. We will use examples from work on faces, voices and personality traits that you will encounter later in this book.</p>
 <p><strong>Comparing correlation of between-subjects designs (i.e., independent-samples)</strong></p>
 <p>Given the scenario of males voice pitch and height (r(28) = .89) and female voice pitch and height (r(28) = .75) can you say that the difference between these correlations is significant?</p>
 <p>As these correlations come from two different groups - male voices and female voices - we used the <code><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html">cocor.indep.groups()</a></code> function.</p>
 <p><strong>Note:</strong> As the df of both groups is 28, this means that the N is 30 of both groups (based on N = df-2)</p>
-<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">compare1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html">cocor.indep.groups</a></span><span class="op">(</span>r1.jk <span class="op">=</span> <span class="fl">.89</span>, 
-                               r2.hm <span class="op">=</span> <span class="fl">.75</span>, 
-                               n1 <span class="op">=</span> <span class="fl">30</span>, 
-                               n2 <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">compare1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html">cocor.indep.groups</a></span><span class="op">(</span>r1.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
+<span>                               r2.hm <span class="op">=</span> <span class="fl">.75</span>, </span>
+<span>                               n1 <span class="op">=</span> <span class="fl">30</span>, </span>
+<span>                               n2 <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></code></pre></div>
 <p>Gives the output of:</p>
 <pre><code>## 
 ##   Results of a comparison of two correlations based on independent groups
@@ -1826,11 +1877,11 @@ TV
 <p>What about the scenario where you have 30 participants rating faces on the scales of trust, warmth and likability, and we want to know if the relationship between trust and warmth (r = .89) is significantly different than the relationship between trust and likability (r = .8).</p>
 <p>As this data comes from the same participants, and there is crossover/overlap in traits - i.e. one trait appears in both correlations of interest - then we will use the <code><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap()</a></code>. To do this comparison we also need to know the relationship between the remaining correlation of warmth and likability (r = .91).</p>
 <p><strong>Note:</strong> The order of input of correlations matters. See <code>?cocor.dep.groups.overlap()</code> for help.</p>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">compare2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, 
-                                     r.jh <span class="op">=</span> <span class="fl">.8</span>, 
-                                     r.kh <span class="op">=</span> <span class="fl">.91</span>, 
-                                     n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">compare2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
+<span>                                     r.jh <span class="op">=</span> <span class="fl">.8</span>, </span>
+<span>                                     r.kh <span class="op">=</span> <span class="fl">.91</span>, </span>
+<span>                                     n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></code></pre></div>
 <p>Gives the output of:</p>
 <pre><code>## 
 ##   Results of a comparison of two overlapping correlations based on dependent groups
@@ -1886,12 +1937,12 @@ TV
 ##   Null hypothesis rejected (Interval does not include 0)</code></pre>
 <p>So this test actually produces the output of a lot of tests; many of which we probably don't know whether to use or not. However, what you can do is run the analysis and choose just a specific test by adding the argument to the function: <code>test = steiger1980</code> or <code>test = pearson1898</code> for example. These are probably the two most common.</p>
 <p>Let's run the analysis again using just Pearson's Z (1898)</p>
-<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">compare3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, 
-                                     r.jh <span class="op">=</span> <span class="fl">.8</span>, 
-                                     r.kh <span class="op">=</span> <span class="fl">.91</span>, 
-                                     n <span class="op">=</span> <span class="fl">30</span>,
-                                     test <span class="op">=</span> <span class="st">"pearson1898"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">compare3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
+<span>                                     r.jh <span class="op">=</span> <span class="fl">.8</span>, </span>
+<span>                                     r.kh <span class="op">=</span> <span class="fl">.91</span>, </span>
+<span>                                     n <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>                                     test <span class="op">=</span> <span class="st">"pearson1898"</span><span class="op">)</span></span></code></pre></div>
 <p>Gives the output of:</p>
 <pre><code>## 
 ##   Results of a comparison of two overlapping correlations based on dependent groups
@@ -1919,15 +1970,15 @@ TV
 <li>warmth and attractiveness (.92)</li>
 </ul>
 <p><strong>Note:</strong> The order of input of correlations matters. See <code>?cocor.dep.groups.nonoverlap()</code> for help.</p>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">compare5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.nonoverlap.html">cocor.dep.groups.nonoverlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, 
-                                        r.hm <span class="op">=</span> <span class="fl">.93</span>, 
-                                        r.jh <span class="op">=</span> <span class="fl">.88</span>, 
-                                        r.jm <span class="op">=</span> <span class="fl">.91</span>, 
-                                        r.kh <span class="op">=</span> <span class="fl">.87</span>, 
-                                        r.km <span class="op">=</span> <span class="fl">.92</span>, 
-                                        n <span class="op">=</span> <span class="fl">30</span>,
-                                        test <span class="op">=</span> <span class="st">"pearson1898"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">compare5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.nonoverlap.html">cocor.dep.groups.nonoverlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
+<span>                                        r.hm <span class="op">=</span> <span class="fl">.93</span>, </span>
+<span>                                        r.jh <span class="op">=</span> <span class="fl">.88</span>, </span>
+<span>                                        r.jm <span class="op">=</span> <span class="fl">.91</span>, </span>
+<span>                                        r.kh <span class="op">=</span> <span class="fl">.87</span>, </span>
+<span>                                        r.km <span class="op">=</span> <span class="fl">.92</span>, </span>
+<span>                                        n <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>                                        test <span class="op">=</span> <span class="st">"pearson1898"</span><span class="op">)</span></span></code></pre></div>
 <p>Gives the output of:</p>
 <pre><code>## 
 ##   Results of a comparison of two nonoverlapping correlations based on dependent groups
@@ -2206,7 +2257,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2022-02-23.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-09-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -2219,7 +2270,7 @@ $( document ).ready(function() {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
