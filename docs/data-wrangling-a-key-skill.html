@@ -581,6 +581,50 @@ Does <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a><
 </ul>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">pong_data</span>, <span class="va">Participant</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"3"</span>, <span class="st">"10"</span>, <span class="st">"14"</span>, <span class="st">"16"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<div class="webex-solution">
+<button>
+Explain this - == vs %in%
+</button>
+<div class="info">
+<p>
+The == operator compares the first value of one vector with the first
+value of another vector, whereas the %in% operator compares the first
+value of the first vector with all values of the second vector.
+</p>
+<p>
+For example, let’s create the following vectors:
+</p>
+<p>
+x &lt;- c(4, 5, 6) y &lt;- c(6, 5, 4)
+</p>
+<p>
+Here is what happens if we use the %in% operator to compare the
+values in vector x and y:
+</p>
+<p>
+x %in% y [1] TRUE TRUE TRUE
+</p>
+<p>
+Hooray! All the values in vector x were found to exist in vector y -
+as shown by the word ‘TRUE’ for each correspondng number in vector x.
+But what happens if we use the == operator instead?
+</p>
+<p>
+x == y [1] FALSE TRUE FALSE
+</p>
+<p>
+Oh no! The first and last values in vector x were not found to exist
+in vector y because the == operator directly compared the first number
+in vector x (4) to the first number in vector y (6) and so on. Only the
+middle number (5) was found to exist in both vectors because this number
+is positioned in the same location in vector x and y.
+</p>
+<p>
+So, if you want to keep rows where the value equals any of the ones
+you specify, use the %in% operator!
+</p>
+</div>
+</div>
 <p>And finally, say you wanted to keep all Participants except Participant 7:</p>
 <ul>
 <li>you can read <code>!=</code> (exclamation mark followed by equals) as 'does not equal'. So <code>Participant != "7"</code> means keep all Participants where the values in <code>Participant</code> column are not 7.</li>
@@ -2390,7 +2434,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-09-13.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-09-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
