@@ -595,14 +595,20 @@ value of the first vector with all values of the second vector.
 For example, let’s create the following vectors:
 </p>
 <p>
-x &lt;- c(4, 5, 6) y &lt;- c(6, 5, 4)
+x &lt;- c(4, 5, 6)
+</p>
+<p>
+y &lt;- c(6, 5, 4)
 </p>
 <p>
 Here is what happens if we use the %in% operator to compare the
 values in vector x and y:
 </p>
 <p>
-x %in% y [1] TRUE TRUE TRUE
+x %in% y
+</p>
+<p>
+[1] TRUE TRUE TRUE
 </p>
 <p>
 Hooray! All the values in vector x were found to exist in vector y -
@@ -610,7 +616,10 @@ as shown by the word ‘TRUE’ for each correspondng number in vector x.
 But what happens if we use the == operator instead?
 </p>
 <p>
-x == y [1] FALSE TRUE FALSE
+x == y
+</p>
+<p>
+[1] FALSE TRUE FALSE
 </p>
 <p>
 Oh no! The first and last values in vector x were not found to exist
