@@ -223,7 +223,7 @@ For now we will just add an image of the illusion taken from the internet to ill
 2. Below the **Stimuli** heading, insert the image at the following web address:
 
 ```
-https://upload.wikimedia.org/wikipedia/en/8/89/Ponzo_Illusion.jpg
+https://en.wikipedia.org/wiki/Ponzo_illusion#/media/File:Ponzo_illusion.gif
 ```
 
 `r hide("Portfolio Point - A good methods section")`

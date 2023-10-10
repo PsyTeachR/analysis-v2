@@ -72,7 +72,7 @@ Below you will find the solutions to the questions for the Activities for this c
 and therefore
 
 ```
-![The Ponzo Illusion](https://upload.wikimedia.org/wikipedia/en/8/89/Ponzo_Illusion.jpg)
+![The Ponzo Illusion](https://en.wikipedia.org/wiki/Ponzo_illusion#/media/File:Ponzo_illusion.gif)
 ```
 
 [Return to Task](#Ch1InClassQueT7)
