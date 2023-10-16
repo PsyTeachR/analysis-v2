@@ -492,13 +492,18 @@ Normal or not - Outliers vs Data Points - Answers
 <p>
 What you are looking for is a nice symmetry around the top and bottom
 half of the violin and boxplot. You are looking for the median (thick
-black line to be roughly in the middle of the boxplot), and the whiskers
-of the boxplot to be roughly equal length. Also, you want the violin to
-have a the bulge in the middle of the figure and to taper off at the top
-and at the bottom. You also want to have just one bulge on the violin
-(symbolising where most of the scores are). Two bulges in the violin may
-be indicative of two different response patterns or samples within the
-one dataset.
+black line) to be roughly in the middle of the boxplot, and the whiskers
+of the boxplot to be roughly equal length. If the median is closer to
+the box’s lower values and the upper whisker is longer, then the data is
+positively skewed. If the median is closer to the box’s higher values
+and the lower whisker is longer, then the data is negatively skewed.
+</p>
+<p>
+Also, you want the violin to have a bulge in the middle of the figure
+and to taper off at the top and at the bottom. You also want to have
+just one bulge on the violin (symbolising where most of the scores are).
+Two bulges in the violin may be indicative of two different response
+patterns or samples within the one dataset.
 </p>
 <p>
 Now we need to make our judgement on normality. Remember that real
@@ -509,12 +514,13 @@ sample distribution to the normal distribution. Tests such as the
 Kolmogorov-Smirnov and the Shapiro-Wilks tests are sometimes recommended
 to determine violation from a normal distribution. However, these last
 two tests are not that reliable depending on sample size and often we
-revert back to the judgement call. Again this is really important why
+revert back to the judgement call. Again, it is really important that
 steps are documented, so a future researcher can check and confirm the
 process.
 </p>
 <p>
-Overall, the data looks normally distributed - at least visually.
+Overall, the data look normally distributed - at least visually
+(albeit with a slight positive skew).
 </p>
 <p>
 <strong>Outliers vs Data Points?</strong>
@@ -2143,7 +2149,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-10-10.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-10-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
