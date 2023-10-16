@@ -176,11 +176,13 @@ s
 
 **Is the data normally distributed or not?**
 
-What you are looking for is a nice symmetry around the top and bottom half of the violin and boxplot. You are looking for the median (thick black line to be roughly in the middle of the boxplot), and the whiskers of the boxplot to be roughly equal length. Also, you want the violin to have a the bulge in the middle of the figure and to taper off at the top and at the bottom. You also want to have just one bulge on the violin (symbolising where most of the scores are). Two bulges in the violin may be indicative of two different response patterns or samples within the one dataset. 
+What you are looking for is a nice symmetry around the top and bottom half of the violin and boxplot. You are looking for the median (thick black line) to be roughly in the middle of the boxplot, and the whiskers of the boxplot to be roughly equal length. If the median is closer to the box’s lower values and the upper whisker is longer, then the data is positively skewed. If the median is closer to the box’s higher values and the lower whisker is longer, then the data is negatively skewed.
 
-Now we need to make our judgement on normality. Remember that real data will never have the textbook curve that the normal distribution has. It will always be a bit messier than that and to some degree a judgement call is needed or you need to use a test to compare your sample distribution to the normal distribution. Tests such as the Kolmogorov-Smirnov and the Shapiro-Wilks tests are sometimes recommended to determine violation from a normal distribution. However, these last two tests are not that reliable depending on sample size and often we revert back to the judgement call. Again this is really important why steps are documented, so a future researcher can check and confirm the process.
-
-Overall, the data looks normally distributed - at least visually.
+Also, you want the violin to have a bulge in the middle of the figure and to taper off at the top and at the bottom. You also want to have just one bulge on the violin (symbolising where most of the scores are). Two bulges in the violin may be indicative of two different response patterns or samples within the one dataset.
+ 
+Now we need to make our judgement on normality. Remember that real data will never have the textbook curve that the normal distribution has. It will always be a bit messier than that and to some degree a judgement call is needed or you need to use a test to compare your sample distribution to the normal distribution. Tests such as the Kolmogorov-Smirnov and the Shapiro-Wilks tests are sometimes recommended to determine violation from a normal distribution. However, these last two tests are not that reliable depending on sample size and often we revert back to the judgement call. Again, it is really important that steps are documented, so a future researcher can check and confirm the process.
+ 
+Overall, the data look normally distributed - at least visually (albeit with a slight positive skew).
 
 **Outliers vs Data Points?**
 
