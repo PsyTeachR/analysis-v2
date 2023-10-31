@@ -720,7 +720,7 @@ intellect
 <span>                        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">condition</span> <span class="op">==</span> <span class="st">"read"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>                        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Rating</span><span class="op">)</span>,</span>
 <span>                      var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">tidy</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Now lets look at the <code>intellect_t</code>tibble we have created (assuming you piped into <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code>):</p>
 <div style="border: 0px;overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1454,6 +1454,7 @@ Figure 6.5: A representation of Figure 2A
 </ul>
 <div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">CorrectAnswers</span> <span class="op">~</span> <span class="va">Treatment</span>, data <span class="op">=</span> <span class="va">crt2</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Note that this approach will compare based on the alphabetical or numerical order of the values in the independent variable. Therefore, the <strong>0</strong> group would still be the first group in the comparison, matching the previous approach.</p>
 <p><a href="nhst-two-sample-t-test.html#Ch6AssignQueT6">Return to Task</a></p>
 </div>
 <div id="task-7-reporting-results" class="section level4" number="6.6.2.8">
@@ -1752,7 +1753,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-10-16.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-10-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
