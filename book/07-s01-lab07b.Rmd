@@ -286,7 +286,7 @@ From your work in earlier chapters you will know two ways to use the `t.test()` 
 * Once you've calculated `results`, don't forget to `tidy()` - you can add this using a pipe! 
 * If you don't quite understand the use of `tidy()` yet, run your `t.test()` without `tidy()` and see what happens!
 
-* **Note:** Both options of running the t-test will give the same result. The only difference will be whether the t-value is positive or negative. Remember that the vector approach allows you to state what is condition 1 and what is condition 2. The formula approach just runs conditions alphabetically.
+* **Note:** Both options of running the t-test will give the same result. The only difference will be whether the t-value is positive or negative. Remember that the vector approach allows you to state what is condition 1 and what is condition 2. The formula approach just runs conditions in alphabetical or numerical order.
 ```
 `r unhide()`
 <br>
