@@ -337,7 +337,7 @@ Imagine that you have a questionnaire with 4 items measuring test anxiety. The f
 
 The following code could be used to calculate a mean test anxiety score for each participant in the dataset:
 
-data_new <- mutate(data, mean = (test_anxiety1 + test_anxiety2 + test_anxiety3 + test_anxiety4)/4)
+`data_new <- mutate(data, mean = (test_anxiety1 + test_anxiety2 + test_anxiety3 + test_anxiety4)/4)`
 
 This line of code would add a new column - `mean` to the end of the original dataset. The `mean` column would contain the mean test anxiety score per participant as that was the calculation you provided. 
 
@@ -349,7 +349,7 @@ This line of code would add a new column - `mean` to the end of the original dat
 
 Likewise, if you wanted to calculate the **total** test anxiety score for each participant in the dataset, you would just need to amend the calculation accordingly (i.e., remove the division). 
 
-data_new <- mutate(data, total = test_anxiety1 + test_anxiety2 + test_anxiety3 + test_anxiety4)
+`data_new <- mutate(data, total = test_anxiety1 + test_anxiety2 + test_anxiety3 + test_anxiety4)`
 
 |Participant_ID|test_anxiety1|test_anxiety2|test_anxiety|test_anxiety4|total |
 |:------------:|:-----------:|:-----------:|:----------:|:-----------:|:----:|
