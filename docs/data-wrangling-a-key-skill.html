@@ -759,6 +759,302 @@ need <code>==</code> instead of just <code>=</code>.
 <p>In general, it is good practice not to overwrite <code>pong_data</code> with a new version of <code>pong_data</code>, but to store the altered table in a new tibble, e.g., <code>pong_data_mutated</code>, like this:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pong_data_mutated</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">pong_data</span>, Participant <span class="op">=</span> <span class="va">Participant</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<div class="webex-solution">
+<button>
+Good to Know - Taking the mean of multiple columns
+</button>
+<div class="info">
+<p>
+For some research questions, you may need to create a new variable
+that is the mean of other variables in the dataset. For example, if you
+have several items in a questionnaire that all measure a specific
+construct, you may want to create the mean of all these items as a way
+to represent that construct. Using example data, we will show you one
+way to accomplish this in R with the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function.
+</p>
+<p>
+Imagine that you have a questionnaire with 4 items measuring test
+anxiety. The first 3 rows in the dataset might look like this:
+</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="center">
+Participant_ID
+</th>
+<th align="center">
+test_anxiety1
+</th>
+<th align="center">
+test_anxiety2
+</th>
+<th align="center">
+test_anxiety3
+</th>
+<th align="center">
+test_anxiety4
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">
+1
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+6
+</td>
+<td align="center">
+7
+</td>
+</tr>
+<tr class="even">
+<td align="center">
+2
+</td>
+<td align="center">
+4
+</td>
+<td align="center">
+6
+</td>
+<td align="center">
+4
+</td>
+<td align="center">
+1
+</td>
+</tr>
+<tr class="odd">
+<td align="center">
+3
+</td>
+<td align="center">
+5
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+2
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+The following code could be used to calculate a mean test anxiety
+score for each participant in the dataset:
+</p>
+<p>
+<code>data_new &lt;- mutate(data, mean = (test_anxiety1 + test_anxiety2 + test_anxiety3 + test_anxiety4)/4)</code>
+</p>
+<p>
+This line of code would add a new column - <code>mean</code> to the
+end of the original dataset. The <code>mean</code> column would contain
+the mean test anxiety score per participant as that was the calculation
+you provided.
+</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="19%">
+<col width="17%">
+<col width="17%">
+<col width="17%">
+<col width="17%">
+<col width="9%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">
+Participant_ID
+</th>
+<th align="center">
+test_anxiety1
+</th>
+<th align="center">
+test_anxiety2
+</th>
+<th align="center">
+test_anxiety3
+</th>
+<th align="center">
+test_anxiety4
+</th>
+<th align="center">
+mean
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">
+1
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+6
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+6.75
+</td>
+</tr>
+<tr class="even">
+<td align="center">
+2
+</td>
+<td align="center">
+4
+</td>
+<td align="center">
+6
+</td>
+<td align="center">
+4
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+3.75
+</td>
+</tr>
+<tr class="odd">
+<td align="center">
+3
+</td>
+<td align="center">
+5
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+2
+</td>
+<td align="center">
+2.25
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>
+Likewise, if you wanted to calculate the <strong>total</strong> test
+anxiety score for each participant in the dataset, you would just need
+to amend the calculation accordingly (i.e., remove the division).
+</p>
+<p>
+<code>data_new &lt;- mutate(data, total = test_anxiety1 + test_anxiety2 + test_anxiety3 + test_anxiety4)</code>
+</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="19%">
+<col width="18%">
+<col width="18%">
+<col width="18%">
+<col width="18%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th align="center">
+Participant_ID
+</th>
+<th align="center">
+test_anxiety1
+</th>
+<th align="center">
+test_anxiety2
+</th>
+<th align="center">
+test_anxiety3
+</th>
+<th align="center">
+test_anxiety4
+</th>
+<th align="center">
+total
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center">
+1
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+6
+</td>
+<td align="center">
+7
+</td>
+<td align="center">
+27
+</td>
+</tr>
+<tr class="even">
+<td align="center">
+2
+</td>
+<td align="center">
+4
+</td>
+<td align="center">
+6
+</td>
+<td align="center">
+4
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+15
+</td>
+</tr>
+<tr class="odd">
+<td align="center">
+3
+</td>
+<td align="center">
+5
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+1
+</td>
+<td align="center">
+2
+</td>
+<td align="center">
+9
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 <p><strong>Task 4: Mutating variables with mutate()</strong></p>
 <ul>
 <li>You realise another mistake in that all your trial numbers are wrong. The first trial (trial number 1) was a practice so should be excluded and your experiment actually started on trial 2. Tidy this up by:</li>
@@ -2443,7 +2739,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-10-31.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-11-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
