@@ -419,11 +419,11 @@ geom_boxplot() - see Chapter 3 for an example.
 </div>
 <div id="Ch7InClassQueT5" class="section level3" number="7.2.6">
 <h3>
-<span class="header-section-number">7.2.6</span> Task 5: The violin plot<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2.6</span> Task 5: The violin-boxplot<a class="anchor" aria-label="anchor" href="#Ch7InClassQueT5"><i class="fas fa-link"></i></a>
 </h3>
-<p>Boxplots and histograms tell you slightly different information about the same data, which we will discuss in a minute, and you are developing your skills of plotting and interpreting them. But we have already introduced you to a new type of figure that we can combine the information from a boxplot and a histogram into the one figure. We do this using a <strong>violin plot</strong> and can be created using the <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code> function.</p>
+<p>Boxplots and histograms tell you slightly different information about the same data, which we will discuss in a minute, and you are developing your skills of plotting and interpreting them. But we have already introduced you to a new type of figure that can combine the information from a boxplot and a histogram into the one figure. We do this using a <strong>violin-boxplot</strong>.</p>
 <ul>
-<li>Take the code you've written above for the boxplot (Task 4) and add on <code>geom_violin</code> as another layer. You may need to rearrange your code (i.e., the boxplot and violin plot functions) so that the violin plots appear underneath the boxplot. Think layers of the visualisation!</li>
+<li>Take the code you've written above for the boxplot (Task 4) and add on <code>geom_violin</code> as another layer. You may need to rearrange your code (i.e., the boxplot and violin plot functions) so that the violin plots appear underneath the boxplots. Think layers of the visualisation!</li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -452,9 +452,9 @@ the violin.
 </div>
 </div>
 <p><br></p>
-<p>Do you see how the violin plot relates to the histogram you created earlier? In your head, rotate your histograms so that the bars are pointing to the left and imagine there is a mirror-image of them (making a two-sided histogram). This should look similar to your violin plot. Be sure to be able to still locate the outlier in the <code>Thirteen</code> condition.</p>
+<p>Do you see how the violin-boxplot relates to the histogram you created earlier? In your head, rotate your histograms so that the bars are pointing to the left and imagine there is a mirror-image of them (making a two-sided histogram). This should look similar to your violin-boxplot. Be sure to be able to still locate the outlier in the <code>Thirteen</code> condition.</p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">HOLD ON!!!</span></p>
-<p>As you will know from your lectures on the assumptions of a paired-sample t-test, when dealing with a within-subjects design, and a paired t-test, normality is actually determined based on <em>the difference between the two conditions</em>. That is, we should in fact check that <em>the distribution of the scores of the difference between the two conditions is normally distributed</em>. We have been looking at it in terms of separate conditions, to some degree to show you the process of the visualisations, but to really follow the paired-sample t-test we need to look at the normality of the difference. The code below will create a violin and boxplot visualisation of the difference between the two conditions and you should now be able to understand this code.</p>
+<p>As you will know from your lectures on the assumptions of a paired-sample t-test, when dealing with a within-subjects design, and a paired t-test, normality is actually determined based on <em>the difference between the two conditions</em>. That is, we should in fact check that <em>the distribution of the scores of the difference between the two conditions is normally distributed</em>. We have been looking at it in terms of separate conditions, to some degree to show you the process of the visualisations, but to really follow the paired-sample t-test we need to look at the normality of the difference. The code below will create a violin-boxplot visualisation of the difference between the two conditions and you should now be able to understand this code.</p>
 <p>Have a look at the output, and at the code, and think about whether the scores of the difference between the two conditions is normally distributed.</p>
 <p>Note: In the code below, outliers will appear as red circles and individual data points will appear as blue Xs. Can you see what is controlling this? Why is this an important step? We will say why in a second, but it is worth thinking about yourself for a minute or two.</p>
 <div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
@@ -473,8 +473,8 @@ the violin.
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch7-plot-vilplot"></span>
-<img src="07-s01-lab07b_files/figure-html/ch7-plot-vilplot-1.png" alt="A violin and boxplot showing the distribution of the scores of the difference between the Thirteen and Twelve conditions. Individual participant data show as blue stars. Positive values would indicate that the rating in the Thirteen condition is higher than the rating in the Twelve condition. Oultiers will show as red circles." width="100%"><p class="caption">
-Figure 7.1: A violin and boxplot showing the distribution of the scores of the difference between the Thirteen and Twelve conditions. Individual participant data show as blue stars. Positive values would indicate that the rating in the Thirteen condition is higher than the rating in the Twelve condition. Oultiers will show as red circles.
+<img src="07-s01-lab07b_files/figure-html/ch7-plot-vilplot-1.png" alt="A violin-boxplot showing the distribution of the scores of the difference between the Thirteen and Twelve conditions. Individual participant data show as blue stars. Positive values would indicate that the rating in the Thirteen condition is higher than the rating in the Twelve condition. Outliers will show as red circles." width="100%"><p class="caption">
+Figure 7.1: A violin-boxplot showing the distribution of the scores of the difference between the Thirteen and Twelve conditions. Individual participant data show as blue stars. Positive values would indicate that the rating in the Thirteen condition is higher than the rating in the Twelve condition. Outliers will show as red circles.
 </p>
 </div>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">Thinking Cap Point</span></p>
@@ -490,10 +490,10 @@ Normal or not - Outliers vs Data Points - Answers
 </p>
 <p>
 What you are looking for is a nice symmetry around the top and bottom
-half of the violin and boxplot. You are looking for the median (thick
-black line) to be roughly in the middle of the boxplot, and the whiskers
-of the boxplot to be roughly equal length. If the median is closer to
-the box’s lower values and the upper whisker is longer, then the data is
+half of the violin-boxplot. You are looking for the median (thick black
+line) to be roughly in the middle of the boxplot, and the whiskers of
+the boxplot to be roughly equal length. If the median is closer to the
+box’s lower values and the upper whisker is longer, then the data is
 positively skewed. If the median is closer to the box’s higher values
 and the lower whisker is longer, then the data is negatively skewed.
 </p>
@@ -538,25 +538,25 @@ in the figure legend what each element shows.
 </p>
 <p>
 Lastly, you will have noted that when we plotted the original
-boxplots for the individual conditions, the <code>Thirteen</code> group
-had an outlier. However, now when we plot the difference as a boxplot we
-see no outliers. This is important and reinforces why you have to plot
-the correct data in order to check the assumptions. The assumptions for
-a paired-sample t-test is based on the <em>difference</em> between the
-scores of individual participants. What we see here is that when we
-calculate the difference of scores there is no outlier, even though the
-original data point was an outlier. That is fine within consideration of
-the assumption - as the assumption only looks at the difference. That
-said, you might also want to check that the original outlier was an
-acceptable value on the rating scale (e.g., between 1 and 9) and not
-some wild value that has come about through bad data entry (e.g., a
-rating of 13; say if the rating and the condition got mixed up
-somehow).
+violin-boxplot for the individual conditions, the <code>Thirteen</code>
+group had an outlier. However, now when we plot the <em>difference</em>
+as a violin-boxplot we see no outliers. This is important and reinforces
+why you have to plot the correct data in order to check the assumptions.
+The assumptions for a paired-sample t-test is based on the
+<em>difference</em> between the scores of individual participants. What
+we see here is that when we calculate the difference of scores there is
+no outlier, even though the original data point was an outlier. That is
+fine within consideration of the assumption - as the assumption only
+looks at the difference. That said, you might also want to check that
+the original outlier was an acceptable value on the rating scale (e.g.,
+between 1 and 9) and not some wild value that has come about through bad
+data entry (e.g., a rating of 13; say if the rating and the condition
+got mixed up somehow).
 </p>
 </div>
 </div>
 <p><br></p>
-<p>Great. We have run some data checks on the assumptions of the paired-sample t-test. We checked the data for normal distribution, using a violin plot and a boxplot, looking for skewed data and outliers. And from our understanding of the data, and of arguments in the field, whilst the rating scale used could be called ordinal, many, including Furnham treat it as interval. Finally, we haven't spotted any issues in our code to suggest that any participant didn't give a response in both conditions, but we can check that again in the descriptives - both conditions should have an n = 75.</p>
+<p>Great. We have run some data checks on the assumptions of the paired-sample t-test. We checked the data for normal distribution, using a violin-boxplot, looking for skewed data and outliers. And from our understanding of the data, and of arguments in the field, whilst the rating scale used could be called ordinal, many, including Furnham treat it as interval. Finally, we haven't spotted any issues in our code to suggest that any participant didn't give a response in both conditions, but we can check that again in the descriptives - both conditions should have an n = 75.</p>
 <p>We will do that check and also run some descriptives to start understanding the relationship between the two levels of interest: Timepoint 12 and Timepoint 13.</p>
 </div>
 <div id="Ch7InClassQueT6" class="section level3" number="7.2.7">
@@ -2111,7 +2111,7 @@ $( document ).ready(function() {
 <li><a class="nav-link" href="#Ch7InClassQueT2"><span class="header-section-number">7.2.3</span> Task 2: Wrangle the data</a></li>
 <li><a class="nav-link" href="#Ch7InClassQueT3"><span class="header-section-number">7.2.4</span> Task 3: Look at the histogram for normality</a></li>
 <li><a class="nav-link" href="#Ch7InClassQueT4"><span class="header-section-number">7.2.5</span> Task 4: A boxplot of outliers</a></li>
-<li><a class="nav-link" href="#Ch7InClassQueT5"><span class="header-section-number">7.2.6</span> Task 5: The violin plot</a></li>
+<li><a class="nav-link" href="#Ch7InClassQueT5"><span class="header-section-number">7.2.6</span> Task 5: The violin-boxplot</a></li>
 <li><a class="nav-link" href="#Ch7InClassQueT6"><span class="header-section-number">7.2.7</span> Task 6: Calculating Descriptives</a></li>
 <li><a class="nav-link" href="#Ch7InClassQueT7"><span class="header-section-number">7.2.8</span> Task 7: Visualising Means and Descriptives</a></li>
 <li><a class="nav-link" href="#Ch7InClassQueT8"><span class="header-section-number">7.2.9</span> Task 8: The paired-sample t-test</a></li>
@@ -2148,7 +2148,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-11-07.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2023-11-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
