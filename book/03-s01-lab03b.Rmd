@@ -260,13 +260,14 @@ The median is one of the five values required to make a boxplot and is shown as 
 
 Violin-boxplots allow us to combine the information from a boxplot and a histogram into the one figure. As such, we can see the entire distribution of the data whilst retaining the useful information that boxplots convey.  
 
-When looking at violin boxplots, you should consider the points outlined in the previous section in addition to:
+When looking at violin-boxplots, you should consider the points outlined in the previous section in addition to:
 
 * whether the violin has a bulge in the middle 
 * whether the violin tapers off at the top and at the bottom
 * whether there is just one bulge in the violin (symbolising where most of the scores are) or more than one bulge (potentially indicating more than 1 response pattern or sample within the dataset)
 
-As in the previous task, let's look at and compare the distributions of mean reaction times for correct and incorrect responses. To create an effective violin-boxplot, we can add two key pieces of information to the code in the previous task.
+As in the previous task, let's look at and compare the distributions of mean reaction times for correct and incorrect responses. To create an effective violin-boxplot, we can add two key pieces of information to the code in the previous task:
+
 1.	Add on `geom_violin()` as another layer. You must ensure that your code is arranged correctly, such that the violin plots appear underneath the boxplots. That is,  you need to call `geom_violin()` before you call `geom_boxplot()`.
 2.	Add a width call to the `geom_boxplot()` function. Through trial-and-error, you can choose a value that ensures the boxplots fit within the confines of the violin plots. 
 
@@ -281,7 +282,7 @@ ggplot(data = menrot_box_correct,
            y = Mean_Time, 
            fill = CorrectResponse)) + 
   geom_violin() +
-  geom_boxplot() +
+  geom_boxplot(width = 0.2) +
   guides(fill = FALSE)
 ```
 
@@ -296,7 +297,7 @@ ggplot(data = menrot_box_correct,
            y = Mean_Time, 
            fill = CorrectResponse)) + 
   geom_violin() +
-  geom_boxplot() +
+  geom_boxplot(width = 0.2) +
   guides(fill = FALSE) +
   theme_gray()
 ```
@@ -305,7 +306,7 @@ ggplot(data = menrot_box_correct,
 
 * Looking at the code, what happens if you insert `trim = FALSE` into the `geom_violin()` call? `r mcq(c(answer = "the tails of the violin are not trimmed", "the tails of the violins are trimmed", "nothing changes in the figure"))`
 
-* Looking at the code, what happens if you change the value of width from 0.2 to 0.6? `r mcq(c("the boxplots become narrower", answer = "-	the boxplots become wider", "-	nothing changes in the figure"))`
+* Looking at the code, what happens if you change the value of width from 0.2 to 0.6? `r mcq(c("the boxplots become narrower", answer = "the boxplots become wider", "nothing changes in the figure"))`
 
 ### Barplots - geom_bar() or geom_col()
 
