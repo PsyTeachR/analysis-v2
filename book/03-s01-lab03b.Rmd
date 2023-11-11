@@ -256,6 +256,57 @@ The median is one of the five values required to make a boxplot and is shown as 
 ```
 `r unhide()`  
 
+### Violin-boxplots – geom_violin() and geom_boxplot()
+
+Violin-boxplots allow us to combine the information from a boxplot and a histogram into the one figure. As such, we can see the entire distribution of the data whilst retaining the useful information that boxplots convey.  
+
+When looking at violin boxplots, you should consider the points outlined in the previous section in addition to:
+
+* whether the violin has a bulge in the middle 
+* whether the violin tapers off at the top and at the bottom
+* whether there is just one bulge in the violin (symbolising where most of the scores are) or more than one bulge (potentially indicating more than 1 response pattern or sample within the dataset)
+
+As in the previous task, let's look at and compare the distributions of mean reaction times for correct and incorrect responses. To create an effective violin-boxplot, we can add two key pieces of information to the code in the previous task.
+1.	Add on `geom_violin()` as another layer. You must ensure that your code is arranged correctly, such that the violin plots appear underneath the boxplots. That is,  you need to call `geom_violin()` before you call `geom_boxplot()`.
+2.	Add a width call to the `geom_boxplot()` function. Through trial-and-error, you can choose a value that ensures the boxplots fit within the confines of the violin plots. 
+
+```{r dim5, include=TRUE, eval=FALSE}
+
+menrot_box_correct <- group_by(menrot, Participant, CorrectResponse) %>% 
+  summarise(Mean_Time = mean(Time, na.rm = TRUE)) %>%
+  inner_join(demog, "Participant")
+
+ggplot(data = menrot_box_correct, 
+       aes(x = CorrectResponse, 
+           y = Mean_Time, 
+           fill = CorrectResponse)) + 
+  geom_violin() +
+  geom_boxplot() +
+  guides(fill = FALSE)
+```
+
+```{r dim5-1, echo=FALSE, fig.cap='A violin-boxplot of the spreads of Mean Time for Correct and Incorrect Responses'}
+
+menrot_box_correct <- group_by(menrot, Participant, CorrectResponse) %>% 
+  summarise(Mean_Time = mean(Time, na.rm = TRUE)) %>%
+  inner_join(demog, "Participant")
+
+ggplot(data = menrot_box_correct, 
+       aes(x = CorrectResponse, 
+           y = Mean_Time, 
+           fill = CorrectResponse)) + 
+  geom_violin() +
+  geom_boxplot() +
+  guides(fill = FALSE) +
+  theme_gray()
+```
+
+<span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>
+
+* Looking at the code, what happens if you insert `trim = FALSE` into the `geom_violin()` call? `r mcq(c(answer = "the tails of the violin are not trimmed", "the tails of the violins are trimmed", "nothing changes in the figure"))`
+
+* Looking at the code, what happens if you change the value of width from 0.2 to 0.6? `r mcq(c("the boxplots become narrower", answer = "-	the boxplots become wider", "-	nothing changes in the figure"))`
+
 ### Barplots - geom_bar() or geom_col()
 
 Barplots typically show **specific values of a condition**. Sometimes this will be really simple like the **count** of a variable the mean, e.g. how many people replied yes. Others will show something a bit more complex such as the **average spread of values** via **error bars**, e.g. standard error. When looking at barplots, the main considerations are whether or not there appears to be a difference between the conditions you are interested in or whether all conditions are about the same.
@@ -272,7 +323,7 @@ Using our data, let's say we are interested in whether there is a difference in 
 3. Finally, within the `geom_bar` it says to treat the data as final values and not to average them, `stat = "identity"`, and makes both columns visible by moving them apart `position = position_dodge(.9))` - without this last step the bars would overlap and you wouldn't see everything. Try changing the `.9`.
 4. Note: Each participant did 96 trials in this study.
 
-```{r dim5, include=TRUE, eval=FALSE}
+```{r dim6, include=TRUE, eval=FALSE}
 
 total_n_trials <- 96
 
@@ -290,7 +341,7 @@ ggplot(data = menrot_resp_sex,
            position = position_dodge(.9))
 ```
 
-```{r dim5-1, echo=FALSE, fig.cap='A barplot of the average percent Correct and Incorrect responses for Female and Male participants - using geom_bar()'}
+```{r dim6-1, echo=FALSE, fig.cap='A barplot of the average percent Correct and Incorrect responses for Female and Male participants - using geom_bar()'}
 
 total_n_trials <- 96
 
@@ -314,7 +365,7 @@ ggplot(data = menrot_resp_sex,
 
 `geom_col()` - short for column - is an alternative to `geom_bar()` that does not require the part of the code where you say to not do anything to the data, i.e. `stat="identity"`. This is shown below. Notice the difference in codes, but that they produce the same figure.
 
-```{r dim6, include=TRUE, eval=FALSE}
+```{r dim7, include=TRUE, eval=FALSE}
 
 ggplot(data = menrot_resp_sex, 
        aes(x = Sex, 
@@ -323,7 +374,7 @@ ggplot(data = menrot_resp_sex,
   geom_col(position = position_dodge(.9))
 ```
 
-```{r dim6-1, echo=FALSE, fig.cap='A barplot of the average percent Correct and Incorrect responses for Female and Male participants - using geom_col()'}
+```{r dim7-1, echo=FALSE, fig.cap='A barplot of the average percent Correct and Incorrect responses for Female and Male participants - using geom_col()'}
 
 ggplot(data = menrot_resp_sex, 
        aes(x = Sex, 
@@ -394,4 +445,4 @@ ggplot(data = menrot_better_plot,
 
 ### Choosing Appropriate Figures
 
-As you progress through Psychology, you will come across a variety of different figures and plots, each looking slightly different and giving different information. When looking at these figures, and indeed when choosing one for your own analyses, you have to think about which figure is the most appropriate for your data. For example, scatterplots are great when both variables are continuous; boxplots and histograms are great for viewing spreads of data; barplots are commonly used where one variable is categorical - but as above note that barplots can be misleading and lots of new approaches to display categorical information are being created. Violin-boxplots that were taught in Chapter 7 of the <a href="https://psyteachr.github.io/" target = "_blank">Data Skills book</a> provide a more complete way of data visualisation. Always keep asking yourself, does my plot display my data correctly. Also, do I have the right number of dots/conditions/groups in my figure? Too many or too few would suggest something is not quite right. Look at your data!
+As you progress through Psychology, you will come across a variety of different figures and plots, each looking slightly different and giving different information. When looking at these figures, and indeed when choosing one for your own analyses, you have to think about which figure is the most appropriate for your data. For example, scatterplots are great when both variables are continuous; boxplots and histograms are great for viewing spreads of data; and violin boxplots are particularly effective in conveying a more complete picture of the data distribution. In addition, barplots are commonly used where one variable is categorical - but as above note that barplots can be misleading and lots of new approaches to display categorical information are being created. Always keep asking yourself, does my plot display my data correctly. Also, do I have the right number of dots/conditions/groups in my figure? Too many or too few would suggest something is not quite right. Look at your data!
