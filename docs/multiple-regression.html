@@ -465,7 +465,7 @@ Figure 11.3: Adjusted homogeneity plot that will produce reference line
 <p>For assumption 8, linearity, again the plot looks fine, and we could also have used the grouped scatterplots above to look at this.</p>
 <p>Finally, for assumption 9, multicollinearity, the plot also indicates no issues but we can also test this statistically using <code><a href="https://easystats.github.io/performance/reference/check_collinearity.html">check_collinearity()</a></code>.</p>
 <p>Essentially, this function estimates how much the variance of a coefficient is “inflated” because of linear dependence with other predictors, i.e., that a predictor isn't actually adding any unique variance to the model, it's just really strongly related to other predictors. <a href="https://statisticalhorizons.com/multicollinearity">You can read more about this here</a>. Thankfully, VIF is not affected by large samples like the other tests.</p>
-<p>There are various rules of thumb, but most converge on a VIF of above 2 - 2.5 for any one predictor being problematic.</p>
+<p>There are various rules that can be used to detect multicollinearity in multiple linear regression. Generally, a VIF value of 5 or larger is a good rule of thumb to indicate a large multicollinearity problem.</p>
 <div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://easystats.github.io/performance/reference/check_collinearity.html">check_collinearity</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
@@ -1034,7 +1034,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-01-30.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-02-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
