@@ -48,6 +48,8 @@ Finally, there are a number of great webpages and blogs that will help you under
 
 * A YouTube video by Dan Quintana (University of Oslo) showing how to use the **`pwr`** package to calculate power in t-tests, correlations, and one-way ANOVAs <a href="https://www.youtube.com/watch?v=ZIjOG8LTTh8" target = "_blank">https://www.youtube.com/watch?v=ZIjOG8LTTh8</a>
 
+* A useful and straightforward power analysis resource that walks you through different power analysis examples <a href="https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html</a>
+
 * A shiny app created by Lisa Debruine (University of Glasgow) on guessing the effect size between two conditions <a href="http://shiny.psy.gla.ac.uk/guess/" target = "_blank">http://shiny.psy.gla.ac.uk/guess/</a>
 
 * A blog by Daniel Lakens (Eindhoven University of Technology) on determining the smallest effect size you are interested in. This is often referred to as the Smallest Effect Size of Interest (SESOI) <a href="http://daniellakens.blogspot.com/2017/05/how-power-analysis-implicitly-reveals.html" target = "_blank">http://daniellakens.blogspot.com/2017/05/how-power-analysis-implicitly-reveals.html</a>
