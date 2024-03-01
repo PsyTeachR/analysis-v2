@@ -247,12 +247,41 @@ After running the above lines, spend a few minutes answering the following quest
 ```
 `r unhide()`  
 
+### Task 9 - Power Calculations {#Ch10InClassQueT9}
 
-### Task 9 - Attitudes to Vaping {#Ch10InClassQueT9}
+In the previous chapter (Chapter 8), we looked at power calculations in relation to t-tests. Now, let’s look at power calculations in the context of correlations. 
+
+For correlations, we are going to take a similar approach. However, instead of using the `pwr.t.test()` function, we will use the `pwr.r.test()` function. The structure of this function is very similar to `pwr.t.test()` and works on the same leave-one-out principle:
+
+* **n** - Number of observations/participants
+* **r** - Correlation coefficient (the effect size of interest)
+* **sig.level**	or $\alpha$
+* **power** or $1-\beta$
+* **alternative** - a character string specifying the alternative hypothesis, must be one of `two.sided` (default), `greater` (a positive correlation) or `less` (a negative correlation).
+
+**1. Sample size for a correlation**
+
+* Assuming you are interested in detecting a minimum correlation of **r = .4** (in either direction), what would be the minimum number of participants you would need for a correlation analysis, assuming **power = .8**, $\alpha$ **= .05**? 
+
+Using a pipeline, store the answer as a single, rounded value called `sample_size_r` (i.e. use `pluck() %>% ceiling()`).
+
+* Enter the minimum number of participants you would need in this correlation: `r fitb("46")`
+
+**2. Effect size for a correlation analysis**
+
+* You run a correlation analysis with 50 participants and the standard power and alpha levels and you have hypothesised a positive correlation, what would be the minimum effect size you can reliably detect? 
+Answer the following questions to check your answers. The solutions are at the bottom if you need them:
+
+* Based on the information given, what will you set `alternative` as in the function? `r mcq(c("two.sided", answer = "greater", "less"))`
+* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: `r fitb(c(".34", "0.34"),ignore_ws = TRUE)`
+* According to Cohen (1988), the effect size for this correlation is `r mcq(c("small to medium", answer = "medium to large", "large"))`
+* Say you run the study and find that the effect size determined is r = 0.24. Given what you know about power, select the statement that is true: `r longmcq(c("the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than r = 0.24",answer = "the study is underpowered as the analysis indicates you can detect only effect sizes larger than r = 0.34"))`
+
+### Task 10 - Attitudes to Vaping {#Ch10InClassQueT10}
 
 **Advanced 2: Attitudes towards Vaping**
 
-Great work so far! Now we really want to see what you can do yourself. As we mentioned earlier, in the data folder there is another file called `VapingData.csv`. This data comes a data set looking at implicit and explicit attitudes towards vaping.
+Great work so far! Now we really want to see what you can do yourself. As we mentioned earlier, in the data folder there is another file called `VapingData.csv`. This data comes from a data set looking at implicit and explicit attitudes towards vaping.
 
 * **Explicit attitudes** were measured via a questionnaire where higher scores indicated a positive attitude towards vaping. 
 * **Implicit attitudes** were measured through an Implicit Association Test (IAT) using images of Vaping and Kitchen utensils and associating them with positive and negative words. 

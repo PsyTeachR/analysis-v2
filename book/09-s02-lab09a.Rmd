@@ -56,7 +56,7 @@ Whilst these are true and we must be aware of them, correlations are an incredib
 * exploring personality traits in voices (see <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185651" target = "_blank">Phil McAleer's work on Voices</a>);
 * or traits in faces (see <a href="http://facelab.org/" target = "_blank">Lisa DeBruine's work</a>);
 * brain-imaging analysis looking at activation in say the amygdala in relation to emotion of faces (see <a href="https://psych.princeton.edu/person/alexander-todorov" target = "_blank">Alex Todorov's work at Princeton</a>);
-* social attidues, both implicit and explicit, as Helena Paterson will discuss in her Social lectures this semester;
+* social attitudes, both implicit and explicit, as Helena Paterson will discuss in her Social lectures this semester;
 * or a whole variety of fields where you simply measure the variables of interest.
 
 To actually carry out a correlation is very simple and we will show you that in a little while: you can use the `cor.test()` function.  The harder part of correlations is really wrangling the data (which you've learned to do in the first part of this book) and interpreting the data (which we will focus more on this chapter). So, we are going to run a few correlations, showing you how to do one, and asking you to perform others to give you some good practice at running and interpreting the relationships between two variables. 

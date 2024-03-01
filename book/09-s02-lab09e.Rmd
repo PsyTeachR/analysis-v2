@@ -151,7 +151,33 @@ Which when knitted would read as:
 
 [Return to Task](#Ch10InClassQueT8)
 
-#### Task 9
+#### Task 9.1
+
+*1. Sample size for a correlation**
+
+```{r ch10InClassSolT9-1}
+sample_size_r <- pwr.r.test(r = .4, 
+                            sig.level = .05, 
+                            power = .8, 
+                            alternative = "two.sided") %>%
+  pluck("n") %>% 
+  ceiling()
+```
+
+**2. Effect size for a correlation analysis**
+
+```{r ch10InClassSolT9-2}
+pwr.r.test(n = 50,
+           sig.level = .05, 
+           power = .8, 
+           alternative = "greater") %>%
+  pluck("r") %>%
+  round(3)
+```
+
+[Return to Task](#Ch10InClassQueT9)
+
+#### Task 10
 
 **Step 1**
 
@@ -165,7 +191,7 @@ dat <- read_csv("VapingData.csv")
 
 * The main wrangle of parts 2 to 4
 
-```{r ch10InClassSolT9-2}
+```{r ch10InClassSolT10-2}
 dat <- dat %>% 
   filter(IAT_BLOCK3_Acc <= 1) %>%
   filter(IAT_BLOCK5_Acc <= 1) %>%
@@ -180,7 +206,7 @@ dat <- dat %>%
     * Knowing the average explicit attitude towards vaping could well be informative.
     * In contrast, if you are using an ordinal scale and people use the whole of the scale then the average may just tell you the middle of the scale you are using - which you already know and really isn't that informative. So it is always worth thinking about what your descriptives are calculating.
     
-```{r ch10InClassSolT9-5}
+```{r ch10InClassSolT10-5}
 descriptives <- dat %>% summarise(n = n(),
                           mean_IAT_ACC = mean(IAT_ACC),
                           mean_IAT_RT = mean(IAT_RT),
@@ -192,13 +218,13 @@ descriptives <- dat %>% summarise(n = n(),
 
 * A couple of visual checks of normality through histograms
 
-```{r ch10InClassSolT9-6-1, fig.cap= 'Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)'}
+```{r ch10InClassSolT10-6-1, fig.cap= 'Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)'}
 ggplot(dat, aes(x = VapingQuestionnaireScore)) + 
   geom_histogram(binwidth = 10) +
   theme_bw()
 ```
 
-```{r ch10InClassSolT9-6-2, fig.cap= 'Histogram showing the distribution of IAT Reaction Times (Implicit)'}
+```{r ch10InClassSolT10-6-2, fig.cap= 'Histogram showing the distribution of IAT Reaction Times (Implicit)'}
 ggplot(dat, aes(x = IAT_RT)) + 
   geom_histogram(binwidth = 10) +
   theme_bw()
@@ -208,7 +234,7 @@ ggplot(dat, aes(x = IAT_RT)) +
 * Remember that, often, the scatterplot is considered the descriptive of the correlation, hence why you see them including in journal articles to support the stated relationship.
 * The scatterplot can be used to make descriptive claims about the direction of the relationship, the strength of the relationship, whether it is linear or not, and to check for outliers and homeoscedasticity.
 
-```{r ch10InClassSolT9-6-3, fig.cap= 'A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)'}
+```{r ch10InClassSolT10-6-3, fig.cap= 'A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)'}
 ggplot(dat, aes(x = IAT_RT, y = VapingQuestionnaireScore)) + 
   geom_point() + 
   theme_bw()
@@ -216,7 +242,7 @@ ggplot(dat, aes(x = IAT_RT, y = VapingQuestionnaireScore)) +
 
 * A quick look at the data reveals some people do not have a Vaping Questionnaire score and some don't have an IAT score.  The correlation only works when people have a score on both factors so we remove all those that only have a score on one of the factors.
 
-```{r ch10InClassSolT9-6-4}
+```{r ch10InClassSolT10-6-4}
 dat <- dat %>% 
   filter(!is.na(VapingQuestionnaireScore)) %>% 
   filter(!is.na(IAT_RT))
@@ -226,7 +252,7 @@ dat <- dat %>%
 
 * The analysis:
 
-```{r ch10InClassSolT9-7-1}
+```{r ch10InClassSolT10-7-1}
 results <- cor.test(dat$VapingQuestionnaireScore, 
                     dat$IAT_RT, 
                     method = "pearson") %>% 
@@ -235,7 +261,7 @@ results <- cor.test(dat$VapingQuestionnaireScore,
 
 * And extracting the values:
 
-```{r ch10InClassSolT9-7-2}
+```{r ch10InClassSolT10-7-2}
 correlation <- results %>% 
   pull(estimate)
 
