@@ -153,7 +153,7 @@ Which when knitted would read as:
 
 #### Task 9
 
-*1. Sample size for a correlation**
+**1. Sample size for a correlation**
 
 ```{r ch10InClassSolT9-1}
 library(pwr)
