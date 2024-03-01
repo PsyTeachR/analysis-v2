@@ -79,9 +79,9 @@ fig:ch10InClassSolT4-1
 fig:ch10InClassSolT4-2
 fig:ch10InClassSolT4-3
 tab:ch10InClassSolT6-tab
-fig:ch10InClassSolT9-6-1
-fig:ch10InClassSolT9-6-2
-fig:ch10InClassSolT9-6-3
+fig:ch10InClassSolT10-6-1
+fig:ch10InClassSolT10-6-2
+fig:ch10InClassSolT10-6-3
 tab:zscore-iq-table
 fig:scatter
 fig:combined
@@ -454,6 +454,7 @@ Ch10InClassQueT6
 Ch10InClassQueT7
 Ch10InClassQueT8
 Ch10InClassQueT9
+Ch10InClassQueT10
 Ch9PracticeSkills
 solutions-to-questions-8
 correlations-application-1
@@ -466,6 +467,7 @@ task-6-7
 task-7-7
 task-8-6
 task-9-3
+task-10-2
 practice-your-skills-13
 additional-material-1
 simple-regression
