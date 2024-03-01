@@ -261,6 +261,8 @@ For correlations, we are going to take a similar approach. However, instead of u
 
 **1. Sample size for a correlation**
 
+Before running the next line of code, use the library() function to load the `pwr` package.
+
 * Assuming you are interested in detecting a minimum correlation of **r = .4** (in either direction), what would be the minimum number of participants you would need for a correlation analysis, assuming **power = .8**, $\alpha$ **= .05**? 
 
 Using a pipeline, store the answer as a single, rounded value called `sample_size_r` (i.e. use `pluck() %>% ceiling()`).

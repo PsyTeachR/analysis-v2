@@ -151,11 +151,13 @@ Which when knitted would read as:
 
 [Return to Task](#Ch10InClassQueT8)
 
-#### Task 9.1
+#### Task 9
 
 *1. Sample size for a correlation**
 
 ```{r ch10InClassSolT9-1}
+library(pwr)
+
 sample_size_r <- pwr.r.test(r = .4, 
                             sig.level = .05, 
                             power = .8, 
