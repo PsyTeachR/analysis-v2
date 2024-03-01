@@ -174,7 +174,7 @@ pwr.r.test(n = 50,
            power = .8, 
            alternative = "greater") %>%
   pluck("r") %>%
-  round(3)
+  round(2)
 ```
 
 [Return to Task](#Ch10InClassQueT9)
