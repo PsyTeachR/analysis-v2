@@ -7,7 +7,7 @@
 <title>Chapter 4 Revisiting Probability Distributions | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="4.1 Overview Probability is to some degree the cornerstone of any Psychological theory that is based on quantitative analysis. We establish an outcome (e.g., a difference between two events), then...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Revisiting Probability Distributions | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/revisiting-probability-distributions.html">
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -290,7 +291,8 @@ rounded to three decimal places
 <p>
 p = .006. In the first trial you have 10 out of 120, but as you
 remove one inverted face the second trial is 9 out of 119. So the
-formula is <span class="math inline"><span class="math inline">\(p = \frac{10}{120} * \frac{9}{119}\)</span></span>
+formula is <span class="math inline"><span class="math inline">\(p = \frac{10}{120} *
+\frac{9}{119}\)</span></span>
 </p>
 </li>
 </ol>
@@ -317,7 +319,7 @@ formula is <span class="math inline"><span class="math inline">\(p = \frac{10}{1
 <li>
 <strong>Note:</strong> Below the lines of code, you will see the output that we got when we ran our code. Don't worry if your sequence of heads and tails is different from this output; this is to be expected as we are generating a random sample.</li>
 </ul>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"HEADS"</span>, <span class="st">"TAILS"</span><span class="op">)</span>, <span class="fl">10</span>, <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>##  [1] "TAILS" "HEADS" "TAILS" "HEADS" "TAILS" "TAILS" "TAILS" "HEADS" "HEADS"
@@ -326,7 +328,7 @@ formula is <span class="math inline"><span class="math inline">\(p = \frac{10}{1
 <li>
 <strong>Note:</strong> If you want to get the same output as we did, add this line of code to your script prior to loading in the library. This is the <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> function which you can put a number in so that each time you run a randomisation you get the same number.</li>
 </ul>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1409</span><span class="op">)</span></span></code></pre></div>
 <div class="webex-solution">
 <button>
@@ -368,7 +370,7 @@ Why would you or why wouldn't you want to use sampling with replacement in our c
 <li>
 <strong>Note:</strong> <code>0:1</code> means all numbers from 0 to 1 in increments of 1. So basically, 0 and 1.</li>
 </ul>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>The ouptut of this line changes every time we run the code as we are randomly sampling 10 coin flips each time. And to be clear, if you get an answer of 6 for example, this means 6 heads, and in turn, 4 tails. By running this code over and over again we are basically demonstrating how a <strong>sampling distribution</strong> is created.</p>
@@ -391,7 +393,7 @@ Now in order to create a full and accurate sampling distribution for our scenari
 <li>Copy the line of code below into your script and run it.</li>
 <li>Here we are doing exactly as we said and saving the 10000 outputs (counts of heads) in the dataframe called <code>heads10k</code> (k is shorthand for thousand).</li>
 </ul>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">heads10k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>   </span></code></pre></div>
 <p>To reiterate, the sum of heads (i.e., the number of times we got heads) from each of these 10000 replications are now stored as a <a class="glossary">vector<span class="def"></span></a> in <code>heads10k</code>. If you have a look at <code>heads10k</code>, as shown in the box below, it is a series of 10000 numbers between 0 and 10 each indicating the number of heads, or more specifically 1s, that you got in a set of 10 flips.</p>
 <pre><code>##  int [1:10000] 7 4 5 6 2 6 2 6 8 5 ...</code></pre>
@@ -409,7 +411,7 @@ Now in order to create a full and accurate sampling distribution for our scenari
 <ul>
 <li>Copy the below code into your script and run it.</li>
 </ul>
-<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data10k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>heads <span class="op">=</span> <span class="va">heads10k</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>       <span class="co"># creating a tibble/data frame</span></span>
 <span>                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">heads</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>           <span class="co"># group by number of possibilities</span></span>
 <span>                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, p<span class="op">=</span><span class="va">n</span><span class="op">/</span><span class="fl">10000</span><span class="op">)</span> <span class="co"># count occurences of possibility,</span></span>
@@ -418,151 +420,78 @@ Now in order to create a full and accurate sampling distribution for our scenari
 <p>We now have a discrete probability distribution of the number of heads in 10 coin flips. Use the <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> function to have look at your <code>data10k</code> variable. You should now see for each heads outcome, the total number of occurrences in 10000 replications (<code>n</code>) plus the probability of that outcome (<code>p</code>).</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:coin-distribution-show">Table 4.1: </span>A sampling distribution for the number of heads in 10 flips of a coin. p = probability of obtaining that number of heads in 10000 replications of 10 flips of a coin
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-heads
-</th>
-<th style="text-align:center;">
-n
-</th>
-<th style="text-align:center;">
-p
-</th>
+<span id="tab:coin-distribution-show">Table 4.1: </span>A sampling distribution for the number of heads in 10 flips of a coin. p = probability of obtaining that number of heads in 10000 replications of 10 flips of a coin</caption>
+<thead><tr class="header">
+<th align="center">heads</th>
+<th align="center">n</th>
+<th align="center">p</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-0.0007
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">7</td>
+<td align="center">0.0007</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-82
-</td>
-<td style="text-align:center;">
-0.0082
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">82</td>
+<td align="center">0.0082</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-465
-</td>
-<td style="text-align:center;">
-0.0465
-</td>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">465</td>
+<td align="center">0.0465</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-1186
-</td>
-<td style="text-align:center;">
-0.1186
-</td>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">1186</td>
+<td align="center">0.1186</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-2070
-</td>
-<td style="text-align:center;">
-0.2070
-</td>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">2070</td>
+<td align="center">0.2070</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-2401
-</td>
-<td style="text-align:center;">
-0.2401
-</td>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">2401</td>
+<td align="center">0.2401</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-2113
-</td>
-<td style="text-align:center;">
-0.2113
-</td>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">2113</td>
+<td align="center">0.2113</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-1166
-</td>
-<td style="text-align:center;">
-0.1166
-</td>
+<tr class="even">
+<td align="center">7</td>
+<td align="center">1166</td>
+<td align="center">0.1166</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-8
-</td>
-<td style="text-align:center;">
-422
-</td>
-<td style="text-align:center;">
-0.0422
-</td>
+<tr class="odd">
+<td align="center">8</td>
+<td align="center">422</td>
+<td align="center">0.0422</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-79
-</td>
-<td style="text-align:center;">
-0.0079
-</td>
+<tr class="even">
+<td align="center">9</td>
+<td align="center">79</td>
+<td align="center">0.0079</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-0.0009
-</td>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">9</td>
+<td align="center">0.0009</td>
 </tr>
 </tbody>
 </table></div>
 <p>It will be useful to visualize the above distribution:</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data10k</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">heads</span>,<span class="va">p</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"skyblue"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Number of Heads"</span>, y <span class="op">=</span> <span class="st">"Probability of Heads in 10 flips (p)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>limits<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: Continuous limits supplied to discrete scale.
+<pre><code>## Warning in scale_x_discrete(limits = 0:10): Continuous limits supplied to discrete scale.
 ## ℹ Did you mean `limits = factor(...)` or `scale_*_continuous()`?</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:10khist"></span>
@@ -644,10 +573,10 @@ the required probabilities together!
 <span class="header-section-number">4.2.4</span> <strong><code>dbinom()</code></strong> - The Density Function<a class="anchor" aria-label="anchor" href="#dbinom---the-density-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using the <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> function we can create probabilities for any possible outcomes where there are two possibilities of outcome on each trial - e.g., heads or tails, cats or dogs, black or red. We are going to stick with the coin flip idea. Here we are showing the code for obtaining 3 heads in 10 flips:</p>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">10</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <p>or all possible outcomes of heads (0:10) in 10 flips:</p>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <p>And if we plot the probability of all possible outcomes in 10 flips it would look like this:</p>
 <div class="figure" style="text-align: center">
@@ -666,7 +595,7 @@ Figure 4.2: Probability Distribution of Number of Heads in 10 Flips
 <code>prob</code> the probability of 'heads' on one trial. Here chance is 50-50 which as a probability we state as 0.5 or .5</li>
 </ul>
 <p>Now say if we wanted to know the probability of 6 heads out of 10 flips. We would only have to change the first argument to the code we used above for 3 heads, as such:</p>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">10</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.2050781</code></pre>
 <p>So the probability of 6 heads, using <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> is p = 0.2050781. If you compare this value to the <code>data10k</code> value for 6 you will see they are similar but not quite the same. This is because <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> uses a lot more replications than the 10000 we used in our simulation.</p>
@@ -714,14 +643,14 @@ rounded = .044
 <span class="header-section-number">4.2.5</span> <strong><code>pbinom()</code></strong> - The Cumulative Probability Function<a class="anchor" aria-label="anchor" href="#pbinom---the-cumulative-probability-function"><i class="fas fa-link"></i></a>
 </h3>
 <p>What if we wanted to know the probability of <strong>up to and including</strong> 3 heads out of 10 flips? We have asked similar questions above. We can either use <code>dbinom</code> for each outcome up to 3 heads and sum the results:</p>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">10</span>, <span class="fl">0.5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.171875</code></pre>
 <p>Or we can use the <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> function; known as the <strong>cumulative probability distribution function</strong> or the <strong>cumulative density function</strong>. The first argument we give is the <strong>cut-off value up to and including</strong> the value which we want to know the probability of (here it's up to 3 <code>heads</code>). Then, as before, we tell it how many flips we want to do and the probability of <code>heads</code> on a single trial.</p>
 <ul>
 <li>Copy this line into your script and run it:</li>
 </ul>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">10</span>, <span class="fl">0.5</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  </span></code></pre></div>
 <pre><code>## [1] 0.171875</code></pre>
 <p>So the probability of <strong>up to and including 3 heads</strong> out of 10 flips is <strong>0.172</strong>. For visualization, what we have done is calculated the cumulative probability of the lower tail of the distribution (<code>lower.tail = TRUE</code>; shown in green below) up to our cut-off of 3:</p>
@@ -732,7 +661,7 @@ Figure 4.4: Probability Distribution of Number of Heads in 10 Flips with the pro
 </p>
 </div>
 <p>The <code>pbinom</code> function gives us the <strong>cumulative probability</strong> of outcomes <strong>up to and including the cut-off</strong>. But what if we wanted to know the probability of outcomes <strong>including and above</strong> a certain value? Say we want to know the probability of 7 heads or more out of 10 coin flips. The code would be this:</p>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">10</span>, <span class="fl">0.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## [1] 0.171875</code></pre>
 <p>Let's explain this code a little.</p>
@@ -870,21 +799,21 @@ of .46. Remember you can confirm this with:
 </h3>
 <p>The <code><a href="https://rdrr.io/r/stats/Binomial.html">qbinom()</a></code> function is the <strong>inverse</strong> of the <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> function. Whereas with <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> you supply an outcome value <code>x</code> and get a tail probability, with <code><a href="https://rdrr.io/r/stats/Binomial.html">qbinom()</a></code> you supply a tail probability and get the outcome value that (approximately) cuts off that tail probability. Think how you would rephrase the questions above in the <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> to ask a <code><a href="https://rdrr.io/r/stats/Binomial.html">qbinom()</a></code> question. Worth noting though that <code><a href="https://rdrr.io/r/stats/Binomial.html">qbinom()</a></code> is approximate with a discrete distribution because of the "jumps" in probability between the discrete outcomes (i.e. you can have probability of 2 heads or 3 heads but not 2.5 heads).</p>
 <p>Let's see how these two functions are inverses of one another. Below is code for the probability of 49 heads or less in 100 coin flips</p>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">49</span>, <span class="fl">100</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">p1</span></span></code></pre></div>
 <pre><code>## [1] 0.4602054</code></pre>
 <p>This tells us that the probability is p = 0.4602054. If we now put that probability (stored in p1) into qbinom we get back to where we started. E.g.</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">qbinom</a></span><span class="op">(</span><span class="va">p1</span>, <span class="fl">100</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 49</code></pre>
 <p>This can be stated as the number of heads required to obtain a probability of 0.4602054 is 49. So the <code><a href="https://rdrr.io/r/stats/Binomial.html">qbinom()</a></code> function is useful if you want to know the minimum number of successes (‘heads’) that would be needed to achieve a particular probability. This time the cut-off we specify is not the number of ‘heads’ we want but the <strong>probability</strong> we want.</p>
 <p>For example say we want to know the minimum number of ‘heads’ out of 10 flips that would result in a 5% heads success rate (a probability of .05), we would use the following code.</p>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">qbinom</a></span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">10</span>, <span class="fl">0.5</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Because we are dealing with the lower tail, this is telling us for a lower tail probability of .05, we would expect at most 2 heads in 10 flips. However, it is important to note that for a discrete distribution, this value is not exact. We can see this by:</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## [1] 0.0546875</code></pre>
 <p>This is not exactly p = .05 but very close. This is because the data we are working with is a discrete distribution and so <code><a href="https://rdrr.io/r/stats/Binomial.html">qbinom()</a></code> gives us the closest category to the boundary.</p>
@@ -1074,7 +1003,7 @@ will look at them another time.
 <li>First we set up our range of IQ values from 40 to 160</li>
 <li>Then we plot the distribution of IQ_data, where we have M = 100 and SD = 15</li>
 </ul>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">IQ_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>IQ_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">160</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">IQ_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">IQ_range</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1174,7 +1103,7 @@ So far so good! But in the above example we told <code><a href="https://rdrr.io/
 <li>Copy the code below in to your script and run it.
 Here we plot the standard Normal Distribution from -4 to 4 in steps of 0.01. We have also stated a mean of 0 and an sd of 1.</li>
 </ol>
-<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ND_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ND_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">ND_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">ND_range</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1238,11 +1167,11 @@ that values beyond -3 and 3 are very unlikely.
 <li>
 <code>TRUE</code> is the default so we don't actually need to declare it</li>
 </ul>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">150</span>, <span class="fl">170</span>, <span class="fl">7</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>This tells us that finding the probability of someone 150cm or shorter in our class is about <strong>p = 0.0021374</strong>. Stated differently, we would expect the proportion of students to be 150cm or shorter to be <strong>0.21%</strong> (You can convert probability to proportion by multiplying the probability by 100). This is a very small probability and suggests that it is pretty unlikely to find someone shorter than 150cm in our class. This is mainly because of how small the standard deviation of our distribution is. Think back to what we said earlier about narrow standard deviations round the mean!</p>
 <p>Another example might be, what would be the probability of a given student being 195 cm or taller? To do that, you would set the following code:</p>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">195</span>, <span class="fl">170</span>, <span class="fl">7</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>This tells us that finding the probability of someone 195cm or taller in our class is <strong>0.02%</strong>. So again, really unlikely.</p>
 <p>Did you notice something different about the cut-off for this example and from when using the <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> function and looking above a cut-off? Why might that be? We will discuss in a second but first a quick task.</p>
@@ -1357,7 +1286,7 @@ area to the right.
 <strong>Note:</strong> We first need to convert 10% to a probability by dividing by 100</li>
 <li>10% = 10 / 100 = 0.1.</li>
 </ul>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span> </span></code></pre></div>
 <p>So anyone with an IQ of <strong>80.8</strong> or lower would be in the bottom 10% of the distribution. Or to rephrase that, a person in the bottom 10% of the distribution would have a max IQ value of <strong>80.8</strong>.</p>
 <p>To recap, we have calculated the <strong>inverse cumulative density function (or inverse of the cumulative probability)</strong> of the <strong>lower tail</strong> of the distribution, with a cut-off of a probability of 0.1 (10%), illustrated in purple below:</p>
@@ -1455,7 +1384,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.2</span> Load in the Library<a class="anchor" aria-label="anchor" href="#Ch4AssignQueLib"><i class="fas fa-link"></i></a>
 </h3>
 <p>There is a good chance that you will need the tidyverse library at some point in this exercise so load it in the code chunk below:</p>
-<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># hint: something to do with library() and tidyverse</span></span></code></pre></div>
 <p><strong>Basic probability and the binomial distribution questions</strong></p>
 <p><strong>Background Information:</strong> You are conducting an auditory discrimination experiment in which participants have to listen to a series of sounds and determine whether the sound was human or not. On each trial participants hear one brief sound (100 ms) and must report whether the sound was from a human (coded as 1) or not (coded as 0). The sounds were either: a person, an animal, a vehicle, or a tone, with each type of sound equally likely to appear.</p>
@@ -1465,7 +1394,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.3</span> Task 1<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT1"><i class="fas fa-link"></i></a>
 </h3>
 <p>On a single trial, what is the probability that the sound will not be a person? Replace the <code>NULL</code> in the t1 code chunk with either mathematical notation or a single value. If entering a single value, give your answer to two decimal places.</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT2" class="section level3" number="4.4.4">
@@ -1473,7 +1402,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.4</span> Task 2<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT2"><i class="fas fa-link"></i></a>
 </h3>
 <p>Over a sequence of 4 trials, with one trial for each sound, and sampled with replacement, what is the probability of the following sequence of sounds: animal, animal, vehicle, tone? Replace the <code>NULL</code> in the t2 code chunk with either mathematical notation or a single value. If entering a single value, give your answer to three decimal places.</p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT3" class="section level3" number="4.4.5">
@@ -1481,7 +1410,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.5</span> Task 3<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT3"><i class="fas fa-link"></i></a>
 </h3>
 <p>Over a sequence of four trials, with one trial for each sound, without replacement, what is the probability of the following sequence of sounds: person, tone, animal, person? Replace the NULL in the t3 code chunk with either mathematical notation or a single value.</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t3</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT4" class="section level3" number="4.4.6">
@@ -1489,7 +1418,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.6</span> Task 4<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT4"><i class="fas fa-link"></i></a>
 </h3>
 <p>Replace the <code>NULL</code> below with code, using the appropriate binomial distribution function, to determine the probability of hearing exactly 17 'tone' trials in a sequence of 100 trials. Assume the probability of a tone on any single trial is 1 in 4. Store the output in <code>t4</code>.</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t4</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT5" class="section level3" number="4.4.7">
@@ -1498,7 +1427,7 @@ code for Task 5 Question 2 at the end of the chapter.
 </h3>
 <p>Replace the <code>NULL</code> below with code using the appropriate binomial distribution function to determine what is the probability of hearing 30 'vehicle' trials or more in a sequence of 100 trials. Assume the probability of a vehicle trial on any one trial is 1 in 4. Store the output in <code>t5</code>.
 <strong>Hint: do we want the upper or lower tails of the distribution?</strong></p>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t5</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT6" class="section level3" number="4.4.8">
@@ -1506,7 +1435,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.8</span> Task 6<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT6"><i class="fas fa-link"></i></a>
 </h3>
 <p>If a block of our experiment contained 100 trials, enter a line of code to run 10000 replications of one block, summing how many living sounds were heard in each replication. Code 1 for living sounds (person/animal) and 0 for non living sounds (vehicle/tone) and assume the probability of a living sound on any given trial is <span class="math inline">\(p = .5\)</span>.</p>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t6</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p><strong>Normal Distribution Questions</strong></p>
 <p>Previously, in Chapter 2, we looked at an ageing research project investigating differences in visual processing speed between younger (M = 22 years) and older adults (M = 71 years). One check in this experiment, prior to further analysis, is to make sure that older participants do not show signs of mild cognitive impairment (early symptoms of Alzheimer's disease). To do this, we carry out a battery of cognitive tests to screen for such symptoms. One of the tests is the D2 test of attention which is a target cancellation task (i.e., participants cross out all letter d's with two dashes from a line of letters). It is designed to test peoples' selective and sustained attention and visual scanning speed. The results of the test give a single score of Concentration Performance for each participant. The key piece of information for this analysis is that the distributions of D2 test scores are typically normally distributed (<code>M = 100</code>, <code>SD = 10</code>).</p>
@@ -1516,7 +1445,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.9</span> Task 7<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT7"><i class="fas fa-link"></i></a>
 </h3>
 <p>Replace the <code>NULL</code> below with code using the appropriate function to determine the probability that a given participant will have a D2 score of 90 or lower? Store the output in <code>t7</code></p>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t7</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT8" class="section level3" number="4.4.10">
@@ -1524,7 +1453,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.10</span> Task 8<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT8"><i class="fas fa-link"></i></a>
 </h3>
 <p>Replace the <code>NULL</code> below with code using the appropriate function to determine the probability that a given participant will have a D2 score of 120 or more? Store the output in <code>t8</code></p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t8</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT9" class="section level3" number="4.4.11">
@@ -1532,7 +1461,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.11</span> Task 9<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT9"><i class="fas fa-link"></i></a>
 </h3>
 <p>Replace the <code>NULL</code> below with code using the appropriate function(s) to determine what is the difference in scores that cut off the top 5% and bottom 5% of the distribution? Store the output in <code>t9</code>.</p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t9</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch4AssignQueT10" class="section level3" number="4.4.12">
@@ -1540,7 +1469,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <span class="header-section-number">4.4.12</span> Task 10<a class="anchor" aria-label="anchor" href="#Ch4AssignQueT10"><i class="fas fa-link"></i></a>
 </h3>
 <p>Finally, if a participant says to you that they are worried because they have heard that their Concentration Performance was in the bottom 2% of scores on the distribution, what is the maximum D2 score that they can have? Replace the <code>NULL</code> below with a single value to two decimal places. Do not enter code. Store this in <code>t10</code></p>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t10</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p><br><span style="font-size: 22px; font-weight: bold; color: var(--blue);">Job Done - Activity Complete!</span></p>
 <p>Well done, you are finished! Now you should go check your answers against the solutions at the end of the chapter. You are looking to check that questions looking for a single value have the same answer as you, and that questions asking for code have the same code as you or give the same answer where alternative variations in the code are allowed (e.g., including <code>lower.tail = TRUE</code> or not including it as it is default). Remember that a single value is not the same as a coded answer and that spelling matters, <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> is not the same as <code>replicat()</code>. Where there are alternative answers, it means that you could have submitted any one of the options as they should all return the same answer.</p>
@@ -1565,7 +1494,7 @@ code for Task 5 Question 2 at the end of the chapter.
 <li>First we set up our range of IQ values from 40 to 160</li>
 <li>Then we plot the distribution of IQ_data, where we have M = 100 and SD = 10</li>
 </ul>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">IQ_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>IQ_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">160</span><span class="op">)</span><span class="op">)</span></span>
@@ -1586,7 +1515,7 @@ Figure 4.11: Distribution of IQ scores with mean = 100, sd = 10
 <h4>
 <span class="header-section-number">4.5.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-3"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ND_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ND_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span>,<span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">ND_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">ND_range</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1609,7 +1538,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <li>Key thing is to set lower.tail to FALSE to calculate the above area. When using <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> you state the actual cut-off even if using <code>lower.tail = FALSE</code>. If using <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> you state the cut-off minus one if using <code>lower.tail = FALSE</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">190</span>, <span class="fl">170</span>, <span class="fl">7</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.002137367</code></pre>
 <p><a href="revisiting-probability-distributions.html#Ch4InClassQueT3">Return to Task</a></p>
@@ -1622,7 +1551,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <li>The highlighted area is 185cm and above.</li>
 <li>Key thing is to set lower.tail to FALSE to calculate the area from the cut-off and above.</li>
 </ul>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">185</span>, <span class="fl">170</span>, <span class="fl">7</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.01606229</code></pre>
 <p><a href="revisiting-probability-distributions.html#Ch4InClassQueT4">Return to Task</a></p>
@@ -1634,13 +1563,13 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <ul>
 <li>Question 1 - the lowest IQ score a student must have to be in the top 5% of the above distribution.</li>
 </ul>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.95</span>, <span class="fl">100</span>, <span class="fl">15</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 124.6728</code></pre>
 <ul>
 <li>Question 2 - calculate the probability that a given student will have an IQ between 105 and 110, on a normal distribution of mean = 100, sd = 15.</li>
 </ul>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">105</span>, <span class="fl">100</span>, <span class="fl">15</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">-</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">110</span>, <span class="fl">100</span>, <span class="fl">15</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.1169488</code></pre>
@@ -1665,7 +1594,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.1</span> Load in the Library<a class="anchor" aria-label="anchor" href="#load-in-the-library"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <p><a href="revisiting-probability-distributions.html#Ch4AssignQueLib">Return to Task</a></p>
 </div>
@@ -1673,7 +1602,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.2</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-3"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fl">3</span><span class="op">/</span><span class="fl">4</span></span>
 <span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fl">.75</span></span></code></pre></div>
 <ul>
@@ -1685,7 +1614,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.3</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">t2</span> <span class="op">&lt;-</span> <span class="fl">.004</span></span></code></pre></div>
 <ul>
@@ -1697,7 +1626,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.4</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t3</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">0</span><span class="op">/</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">t3</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></code></pre></div>
 <ul>
@@ -1710,7 +1639,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.5</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-3"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">100</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Assuming a probability of a tone on a given trial is 1 in 4, the probability of hearing 17 'tone' trials in a sequence of 100 trials is 0.0165156</li>
@@ -1724,7 +1653,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <ul>
 <li>This could have been answered using either <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> or <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code>. The trick is to remember where to set the cut-off depending on the function used.</li>
 </ul>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">29</span>, <span class="fl">100</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">4</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">t5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">30</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -1739,7 +1668,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <ul>
 <li>The appropriate code would be:</li>
 </ul>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">100</span>, <span class="cn">TRUE</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span>,<span class="fl">.5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>If you were to look at your output you would see something like the following. Remember your numbers will vary from ours due to random sampling. Here we are only showing the first 10 values of 10000</p>
 <pre><code>##  int [1:10000] 44 54 47 52 54 45 54 48 48 55 ...</code></pre>
@@ -1749,7 +1678,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.8</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-2"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">100</span>, <span class="fl">10</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The probability of a given participant having a D2 score of 90 or lower is 0.1586553</li>
@@ -1760,7 +1689,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.9</span> Task 8<a class="anchor" aria-label="anchor" href="#task-8-2"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t8</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">120</span>, <span class="fl">100</span>, <span class="fl">10</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The probability that a given participant will have a D2 score of 120 or more is 0.0227501</li>
@@ -1771,7 +1700,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.10</span> Task 9<a class="anchor" aria-label="anchor" href="#task-9"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t9</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.95</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>The difference in scores that cut off the top and bottom 5% of the distribution is 32.8970725</li>
@@ -1782,7 +1711,7 @@ Figure 4.12: Normal Distribution shown on a scale of -10 to 10, with a mean = 0,
 <h4>
 <span class="header-section-number">4.5.2.11</span> Task 10<a class="anchor" aria-label="anchor" href="#task-10"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t10</span> <span class="op">&lt;-</span> <span class="fl">79.46</span></span></code></pre></div>
 <ul>
 <li>The maximum D2 score that they can have in this situation is 79.46</li>
@@ -2058,7 +1987,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-03-01.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-06-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

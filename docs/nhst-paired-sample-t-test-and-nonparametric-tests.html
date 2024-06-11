@@ -7,7 +7,7 @@
 <title>Chapter 7 NHST: Paired-Sample t-test and Nonparametric tests | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="7.1 Overview In the previous chapters we have looked at one-sample t-tests and between-samples (two-sample) t-tests. In this chapter we will continue to look the paired-sample t-test (sometimes...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 7 NHST: Paired-Sample t-test and Nonparametric tests | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/nhst-paired-sample-t-test-and-nonparametric-tests.html">
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -190,78 +191,37 @@
 <p>Check that your table looks like the table below.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:table">Table 7.1: </span>How your table should look from Task 2
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Participant
-</th>
-<th style="text-align:center;">
-Evidence
-</th>
-<th style="text-align:center;">
-Timepoint
-</th>
-<th style="text-align:center;">
-GuiltRating
-</th>
+<span id="tab:table">Table 7.1: </span>How your table should look from Task 2</caption>
+<thead><tr class="header">
+<th align="center">Participant</th>
+<th align="center">Evidence</th>
+<th align="center">Timepoint</th>
+<th align="center">GuiltRating</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-Late
-</td>
-<td style="text-align:center;">
-Twelve
-</td>
-<td style="text-align:center;">
-7
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">Late</td>
+<td align="center">Twelve</td>
+<td align="center">7</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-Late
-</td>
-<td style="text-align:center;">
-Thirteen
-</td>
-<td style="text-align:center;">
-5
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">Late</td>
+<td align="center">Thirteen</td>
+<td align="center">5</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-Late
-</td>
-<td style="text-align:center;">
-Twelve
-</td>
-<td style="text-align:center;">
-5
-</td>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">Late</td>
+<td align="center">Twelve</td>
+<td align="center">5</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-Late
-</td>
-<td style="text-align:center;">
-Thirteen
-</td>
-<td style="text-align:center;">
-3
-</td>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">Late</td>
+<td align="center">Thirteen</td>
+<td align="center">3</td>
 </tr>
 </tbody>
 </table></div>
@@ -457,7 +417,7 @@ the violin.
 <p>As you will know from your lectures on the assumptions of a paired-sample t-test, when dealing with a within-subjects design, and a paired t-test, normality is actually determined based on <em>the difference between the two conditions</em>. That is, we should in fact check that <em>the distribution of the scores of the difference between the two conditions is normally distributed</em>. We have been looking at it in terms of separate conditions, to some degree to show you the process of the visualisations, but to really follow the paired-sample t-test we need to look at the normality of the difference. The code below will create a violin-boxplot visualisation of the difference between the two conditions and you should now be able to understand this code.</p>
 <p>Have a look at the output, and at the code, and think about whether the scores of the difference between the two conditions is normally distributed.</p>
 <p>Note: In the code below, outliers will appear as red circles and individual data points will appear as blue Xs. Can you see what is controlling this? Why is this an important step? We will say why in a second, but it is worth thinking about yourself for a minute or two.</p>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span><span class="op">(</span><span class="va">Timepoint</span>, <span class="va">GuiltRating</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>diff <span class="op">=</span> <span class="va">Thirteen</span> <span class="op">-</span> <span class="va">Twelve</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -655,7 +615,7 @@ z-score.
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">LowerCI</span>, ymax <span class="op">=</span> <span class="va">UpperCI</span><span class="op">)</span>,</span>
 <span>              position <span class="op">=</span> <span class="st">"dodge"</span>, width <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span></span></code></pre></div>
 <div class="webex-solution">
@@ -896,173 +856,82 @@ between the two groups (M = -1.76, 95% CI = [-2.19, -1.33])”.
 <br><br></p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:chpt7-additional-table">Table 7.2: </span>Table showing the time taken to complete the puzzle for the Reward and No Reward groups
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Participant
-</th>
-<th style="text-align:center;">
-Group
-</th>
-<th style="text-align:center;">
-Time
-</th>
+<span id="tab:chpt7-additional-table">Table 7.2: </span>Table showing the time taken to complete the puzzle for the Reward and No Reward groups</caption>
+<thead><tr class="header">
+<th align="center">Participant</th>
+<th align="center">Group</th>
+<th align="center">Time</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-1.32
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">No Reward</td>
+<td align="center">1.32</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-3.56
-</td>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">No Reward</td>
+<td align="center">3.56</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-7.55
-</td>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">No Reward</td>
+<td align="center">7.55</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-8.05
-</td>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">No Reward</td>
+<td align="center">8.05</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-8.54
-</td>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">No Reward</td>
+<td align="center">8.54</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-10.18
-</td>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">No Reward</td>
+<td align="center">10.18</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-15.55
-</td>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">No Reward</td>
+<td align="center">15.55</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-8
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-3.25
-</td>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">Reward</td>
+<td align="center">3.25</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-5.54
-</td>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">Reward</td>
+<td align="center">5.54</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-7.66
-</td>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">Reward</td>
+<td align="center">7.66</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-9.02
-</td>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">Reward</td>
+<td align="center">9.02</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-12
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-10.45
-</td>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">Reward</td>
+<td align="center">10.45</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-13
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-13.21
-</td>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">Reward</td>
+<td align="center">13.21</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-14
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-21.37
-</td>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">Reward</td>
+<td align="center">21.37</td>
 </tr>
 </tbody>
 </table></div>
@@ -1085,279 +954,133 @@ Figure 7.2: Boxplots showing the time taken to solve the puzzle for the two cond
 <span class="header-section-number">7.4.3</span> The descriptives<a class="anchor" aria-label="anchor" href="#the-descriptives"><i class="fas fa-link"></i></a>
 </h3>
 <p>Next, as always, we should look at the descriptives as well to make some subjective, descriptive inference about the pattern of the results. One thing to note is that the Mann-Whitney analysis is based on the "rank order" of the data regardless of group. In this code and table below we have put the data in order from lowest to highest and added on a rank order column. We have used the <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> function to create the ranks and setting the <code>ties.method = "average"</code>. We won't go into why that is the case here but you can read about it through ?rank.</p>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scores_rnk</span> <span class="op">&lt;-</span> <span class="va">scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ranks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rank.html">rank</a></span><span class="op">(</span><span class="va">Time</span>, ties.method <span class="op">=</span> <span class="st">"average"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:chpt7-additional-table-rnks">Table 7.3: </span>Table showing the time taken to complete the puzzle for the Reward and No Reward groups and the rank order of these times.
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Participant
-</th>
-<th style="text-align:center;">
-Group
-</th>
-<th style="text-align:center;">
-Time
-</th>
-<th style="text-align:center;">
-ranks
-</th>
+<span id="tab:chpt7-additional-table-rnks">Table 7.3: </span>Table showing the time taken to complete the puzzle for the Reward and No Reward groups and the rank order of these times.</caption>
+<thead><tr class="header">
+<th align="center">Participant</th>
+<th align="center">Group</th>
+<th align="center">Time</th>
+<th align="center">ranks</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-1.32
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">No Reward</td>
+<td align="center">1.32</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-8
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-3.25
-</td>
-<td style="text-align:center;">
-2
-</td>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">Reward</td>
+<td align="center">3.25</td>
+<td align="center">2</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-3.56
-</td>
-<td style="text-align:center;">
-3
-</td>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">No Reward</td>
+<td align="center">3.56</td>
+<td align="center">3</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-5.54
-</td>
-<td style="text-align:center;">
-4
-</td>
+<tr class="even">
+<td align="center">9</td>
+<td align="center">Reward</td>
+<td align="center">5.54</td>
+<td align="center">4</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-7.55
-</td>
-<td style="text-align:center;">
-5
-</td>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">No Reward</td>
+<td align="center">7.55</td>
+<td align="center">5</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-7.66
-</td>
-<td style="text-align:center;">
-6
-</td>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">Reward</td>
+<td align="center">7.66</td>
+<td align="center">6</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-8.05
-</td>
-<td style="text-align:center;">
-7
-</td>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">No Reward</td>
+<td align="center">8.05</td>
+<td align="center">7</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-8.54
-</td>
-<td style="text-align:center;">
-8
-</td>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">No Reward</td>
+<td align="center">8.54</td>
+<td align="center">8</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-9.02
-</td>
-<td style="text-align:center;">
-9
-</td>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">Reward</td>
+<td align="center">9.02</td>
+<td align="center">9</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-10.18
-</td>
-<td style="text-align:center;">
-10
-</td>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">No Reward</td>
+<td align="center">10.18</td>
+<td align="center">10</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-12
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-10.45
-</td>
-<td style="text-align:center;">
-11
-</td>
+<tr class="odd">
+<td align="center">12</td>
+<td align="center">Reward</td>
+<td align="center">10.45</td>
+<td align="center">11</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-13
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-13.21
-</td>
-<td style="text-align:center;">
-12
-</td>
+<tr class="even">
+<td align="center">13</td>
+<td align="center">Reward</td>
+<td align="center">13.21</td>
+<td align="center">12</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-15.55
-</td>
-<td style="text-align:center;">
-13
-</td>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">No Reward</td>
+<td align="center">15.55</td>
+<td align="center">13</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-14
-</td>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-21.37
-</td>
-<td style="text-align:center;">
-14
-</td>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">Reward</td>
+<td align="center">21.37</td>
+<td align="center">14</td>
 </tr>
 </tbody>
 </table></div>
 <p>Here is a table of descriptives for this dataset and the code we used to create it.</p>
-<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ByGrp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores_rnk</span>, <span class="va">Group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n_Pp <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>            MedianTime <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,</span>
 <span>            MeanRank <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ranks</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:chpt7-additional-descriptives">Table 7.4: </span>Descriptive (N, Medians and Mean Ranks) for the two groups (Reward vs No Reward) in time taken to solve the puzzle.
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Group
-</th>
-<th style="text-align:center;">
-n_Pp
-</th>
-<th style="text-align:center;">
-MedianTime
-</th>
-<th style="text-align:center;">
-MeanRank
-</th>
+<span id="tab:chpt7-additional-descriptives">Table 7.4: </span>Descriptive (N, Medians and Mean Ranks) for the two groups (Reward vs No Reward) in time taken to solve the puzzle.</caption>
+<thead><tr class="header">
+<th align="center">Group</th>
+<th align="center">n_Pp</th>
+<th align="center">MedianTime</th>
+<th align="center">MeanRank</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-No Reward
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-8.05
-</td>
-<td style="text-align:center;">
-6.714286
-</td>
+<tr class="odd">
+<td align="center">No Reward</td>
+<td align="center">7</td>
+<td align="center">8.05</td>
+<td align="center">6.714286</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-Reward
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-9.02
-</td>
-<td style="text-align:center;">
-8.285714
-</td>
+<tr class="even">
+<td align="center">Reward</td>
+<td align="center">7</td>
+<td align="center">9.02</td>
+<td align="center">8.285714</td>
 </tr>
 </tbody>
 </table></div>
@@ -1373,7 +1096,7 @@ Reward
 <li>There are a couple of additional calls in this function that you can read about using the <code>?wilcox.test()</code> approach.</li>
 <li>We could just have easily used <code>scores_rnk</code> as our tibble in the <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> as opposed to <code>scores</code>. We are using <code>scores</code> to show you that you don't need to put the ranks into the <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> function, it will create them itself when it runs the analysis. We only created them to run some descriptives.</li>
 </ul>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">Time</span> <span class="op">~</span> <span class="va">Group</span>, </span>
 <span>                      data <span class="op">=</span> <span class="va">scores</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
 <span>            exact <span class="op">=</span> <span class="cn">TRUE</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1381,35 +1104,18 @@ Reward
 <p>And here is the output of the test after is has been tidied into a tibble using <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code></p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:chpt7-additional-code-output">Table 7.5: </span>Output of the Mann-Whitney U-test
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-statistic
-</th>
-<th style="text-align:center;">
-p.value
-</th>
-<th style="text-align:center;">
-method
-</th>
-<th style="text-align:center;">
-alternative
-</th>
+<span id="tab:chpt7-additional-code-output">Table 7.5: </span>Output of the Mann-Whitney U-test</caption>
+<thead><tr class="header">
+<th align="center">statistic</th>
+<th align="center">p.value</th>
+<th align="center">method</th>
+<th align="center">alternative</th>
 </tr></thead>
-<tbody><tr>
-<td style="text-align:center;">
-19
-</td>
-<td style="text-align:center;">
-0.534965
-</td>
-<td style="text-align:center;">
-Wilcoxon rank sum exact test
-</td>
-<td style="text-align:center;">
-two.sided
-</td>
+<tbody><tr class="odd">
+<td align="center">19</td>
+<td align="center">0.534965</td>
+<td align="center">Wilcoxon rank sum exact test</td>
+<td align="center">two.sided</td>
 </tr></tbody>
 </table></div>
 <p><br></p>
@@ -1423,14 +1129,14 @@ two.sided
 <p>However, one thing to note about the U is that it is an unstandardised value - meaning that it is dependent on the values sampled and it can't be compared to other U values to look at the magnitude of one effect versus another. The second thing to note about the U-value is that <code><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test()</a></code> will return a different U-value depending on which condition is stated as Group 1 or Group 2.</p>
 <p>Compare the outputs of these two tests where we have switched the order of the conditions:</p>
 <p><strong>Version 1:</strong></p>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Reward"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,</span>
 <span>                         <span class="va">scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"No Reward"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,</span>
 <span>                         data <span class="op">=</span> <span class="va">scores</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
 <span>                         exact <span class="op">=</span> <span class="cn">TRUE</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Version 2:</strong></p>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"No Reward"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,</span>
 <span>                         <span class="va">scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Reward"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span>,</span>
 <span>                         data <span class="op">=</span> <span class="va">scores</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
@@ -1444,7 +1150,7 @@ two.sided
 <li><p>r = <span class="math inline">\(\frac{Z}{\sqrt(N1 + N2)}\)</span></p></li>
 </ul>
 <p>Putting these formulas into a coded format would look like this:</p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">U</span> <span class="op">&lt;-</span> <span class="va">result</span><span class="op">$</span><span class="va">statistic</span></span>
 <span><span class="va">N1</span> <span class="op">&lt;-</span> <span class="va">ByGrp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Reward"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">n_Pp</span><span class="op">)</span></span>
 <span><span class="va">N2</span> <span class="op">&lt;-</span> <span class="va">ByGrp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"No Reward"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">n_Pp</span><span class="op">)</span></span>
@@ -1493,7 +1199,7 @@ two.sided
 <h4>
 <span class="header-section-number">7.5.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-6"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
@@ -1504,7 +1210,7 @@ two.sided
 <h4>
 <span class="header-section-number">7.5.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-7"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lates</span> <span class="op">&lt;-</span> <span class="va">ratings</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Evidence</span> <span class="op">==</span> <span class="st">"Late"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Participant</span>, <span class="va">Evidence</span>, <span class="va">`12`</span>, <span class="va">`13`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1521,7 +1227,7 @@ two.sided
 <h4>
 <span class="header-section-number">7.5.1.3</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-6"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1541,7 +1247,7 @@ Figure 7.3: Potential Solution to Task 3
 <span class="header-section-number">7.5.1.4</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-6"><i class="fas fa-link"></i></a>
 </h4>
 <p>The Task only asks for the boxplot. We have added some additional functions to tidy up the figure a bit that you might want to play with.</p>
-<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Timepoint</span>,</span>
 <span>             y <span class="op">=</span> <span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1563,7 +1269,7 @@ Figure 7.4: Potential Solution to Task 4
 <span class="header-section-number">7.5.1.5</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-5"><i class="fas fa-link"></i></a>
 </h4>
 <p>We have added color but that was not necessary:</p>
-<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Timepoint</span>,y<span class="op">=</span><span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1581,7 +1287,7 @@ Figure 7.5: Potential Solution to Task 5
 <li>You can still see the outlier at the top of the figure as a solid black dot.</li>
 </ul>
 <p>You could even add the <code>geom_jitter</code> to have all the data points:</p>
-<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Timepoint</span>,y<span class="op">=</span><span class="va">GuiltRating</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1602,7 +1308,7 @@ Figure 7.6: Alternative Potential Solution to Task 5
 <h4>
 <span class="header-section-number">7.5.1.6</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Timepoint</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1612,81 +1318,38 @@ Figure 7.6: Alternative Potential Solution to Task 5
 <span>            LowerCI <span class="op">=</span> <span class="va">mean</span> <span class="op">-</span> <span class="fl">1.96</span><span class="op">*</span><span class="va">se</span>,</span>
 <span>            UpperCI <span class="op">=</span> <span class="va">mean</span> <span class="op">+</span> <span class="fl">1.96</span><span class="op">*</span><span class="va">se</span><span class="op">)</span></span></code></pre></div>
 <p>This would show the following data:</p>
-<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">descriptives</span>, align <span class="op">=</span> <span class="st">"c"</span>, caption <span class="op">=</span> <span class="st">"Descriptive data for the current study"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:ch7-task6-table1">Table 7.6: </span>Descriptive data for the current study
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Timepoint
-</th>
-<th style="text-align:center;">
-n
-</th>
-<th style="text-align:center;">
-mean
-</th>
-<th style="text-align:center;">
-sd
-</th>
-<th style="text-align:center;">
-se
-</th>
-<th style="text-align:center;">
-LowerCI
-</th>
-<th style="text-align:center;">
-UpperCI
-</th>
+<span id="tab:ch7-task6-table1">Table 7.6: </span>Descriptive data for the current study</caption>
+<thead><tr class="header">
+<th align="center">Timepoint</th>
+<th align="center">n</th>
+<th align="center">mean</th>
+<th align="center">sd</th>
+<th align="center">se</th>
+<th align="center">LowerCI</th>
+<th align="center">UpperCI</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-Thirteen
-</td>
-<td style="text-align:center;">
-75
-</td>
-<td style="text-align:center;">
-4.04
-</td>
-<td style="text-align:center;">
-1.934327
-</td>
-<td style="text-align:center;">
-0.2233569
-</td>
-<td style="text-align:center;">
-3.602221
-</td>
-<td style="text-align:center;">
-4.477779
-</td>
+<tr class="odd">
+<td align="center">Thirteen</td>
+<td align="center">75</td>
+<td align="center">4.04</td>
+<td align="center">1.934327</td>
+<td align="center">0.2233569</td>
+<td align="center">3.602221</td>
+<td align="center">4.477779</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-Twelve
-</td>
-<td style="text-align:center;">
-75
-</td>
-<td style="text-align:center;">
-5.80
-</td>
-<td style="text-align:center;">
-1.497746
-</td>
-<td style="text-align:center;">
-0.1729448
-</td>
-<td style="text-align:center;">
-5.461028
-</td>
-<td style="text-align:center;">
-6.138972
-</td>
+<tr class="even">
+<td align="center">Twelve</td>
+<td align="center">75</td>
+<td align="center">5.80</td>
+<td align="center">1.497746</td>
+<td align="center">0.1729448</td>
+<td align="center">5.461028</td>
+<td align="center">6.138972</td>
 </tr>
 </tbody>
 </table></div>
@@ -1700,7 +1363,7 @@ Twelve
 <li>A basic barplot with 95% Confidence Intervals.</li>
 <li>We have embellished the figure a little but you can mess around with the code to see what each bit does.</li>
 </ul>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">descriptives</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Timepoint</span>, y <span class="op">=</span> <span class="va">mean</span>, fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#999000"</span>, <span class="st">"#000999"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1722,7 +1385,7 @@ Figure 7.7: Possible Solution to Task 7
 <li><p>One thing to watch out for with the above code is the <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous()</a></code> function which helps us set the length and tick marks (-) on the y-axis. Rather oddly, if you set the <code>limits = ...</code> to the same values as the <code>ylim = ...</code> in <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> then your figure will behave oddly and may disappear. <code><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian()</a></code> is a zoom function and must be set within the limits of the scale, set by <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous()</a></code>.</p></li>
 <li><p>An alternative way to display just the means and errorbars would be to use the pointrange approach. This image shows again the 95% CI</p></li>
 </ul>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">descriptives</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Timepoint</span>, y <span class="op">=</span> <span class="va">mean</span>, fill <span class="op">=</span> <span class="va">Timepoint</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">LowerCI</span>, ymax <span class="op">=</span> <span class="va">UpperCI</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Twelve"</span>,<span class="st">"Thirteen"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1746,125 +1409,81 @@ Figure 7.8: Alternative Solution to Task 7
 <ul>
 <li>Remember to set <code>paired = TRUE</code> to run the within-subjects t-test</li>
 </ul>
-<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">GuiltRating</span> <span class="op">~</span> <span class="va">Timepoint</span>, </span>
 <span>                  data <span class="op">=</span> <span class="va">lates</span>, </span>
 <span>                  paired <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                  alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
+<colgroup>
+<col width="10%">
+<col width="12%">
+<col width="9%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="16%">
+<col width="14%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
 </tr></thead>
-<tbody><tr>
-<td style="text-align:right;">
--1.76
-</td>
-<td style="text-align:right;">
--8.232202
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-74
-</td>
-<td style="text-align:right;">
--2.185995
-</td>
-<td style="text-align:right;">
--1.334005
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-two.sided
-</td>
+<tbody><tr class="odd">
+<td align="right">-1.76</td>
+<td align="right">-8.232202</td>
+<td align="right">0</td>
+<td align="right">74</td>
+<td align="right">-2.185995</td>
+<td align="right">-1.334005</td>
+<td align="left">Paired t-test</td>
+<td align="left">two.sided</td>
 </tr></tbody>
 </table></div>
 <ul>
 <li>Alternatively, using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> functions to make force in a given condition as the first condition. Here, below, we are forcing condition <code>Thirteen</code> as the first condition and so the values match the above approach. If you forced condition <code>Twelve</code> as the first condition then the only difference would be that the t-value would change polarity (positive to negative or vice versa).</li>
 </ul>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Timepoint</span> <span class="op">==</span> <span class="st">"Thirteen"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span>,</span>
 <span>                  <span class="va">lates</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Timepoint</span> <span class="op">==</span> <span class="st">"Twelve"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">GuiltRating</span><span class="op">)</span>,</span>
 <span>                  paired <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                  alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
+<colgroup>
+<col width="10%">
+<col width="12%">
+<col width="9%">
+<col width="12%">
+<col width="12%">
+<col width="12%">
+<col width="16%">
+<col width="14%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
 </tr></thead>
-<tbody><tr>
-<td style="text-align:right;">
--1.76
-</td>
-<td style="text-align:right;">
--8.232202
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-74
-</td>
-<td style="text-align:right;">
--2.185995
-</td>
-<td style="text-align:right;">
--1.334005
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-two.sided
-</td>
+<tbody><tr class="odd">
+<td align="right">-1.76</td>
+<td align="right">-8.232202</td>
+<td align="right">0</td>
+<td align="right">74</td>
+<td align="right">-2.185995</td>
+<td align="right">-1.334005</td>
+<td align="left">Paired t-test</td>
+<td align="left">two.sided</td>
 </tr></tbody>
 </table></div>
 <p>The reason that the two outputs are the same is because the formula (top) method (x ~ y) is actually doing the same process as the second approach, but you are just not sure which is the first condition. This second approach (bottom) just makes it clearer.</p>
@@ -1882,7 +1501,7 @@ two.sided
 <p><strong>"A paired-samples t-test was ran to compare the change in guilt ratings before (M = 5.8, SD = 1.5) and after (M = 4.04, SD = 1.93) the crucial evidence was heard. A significant difference was found (t(74) = 8.23, p = 4.7113406^{-12}) with Timepoint 13 having an average rating 1.76 units lower than Timepoint 12. This tells us that the critical evidence did have an influence on the rating of guilt by jury members."</strong></p>
 <p><strong>Working with rounding p-values</strong></p>
 <p>When rounding off p-values that are less than .001, rounding will give you a value of 0 which is technically wrong - the probability will be very low but not 0. As such, and according to APA format, values less than .001 would normally be written as p &lt; .001. To create a reader-friendly p-value, then you could try something like the following in your code:</p>
-<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">p.value</span> <span class="op">&lt;</span> <span class="fl">.001</span>, </span>
 <span>       <span class="st">"p &lt; .001"</span>, </span>
 <span>       <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"p = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">p.value</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
@@ -2148,7 +1767,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-03-01.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-06-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

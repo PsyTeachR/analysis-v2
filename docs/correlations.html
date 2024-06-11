@@ -7,7 +7,7 @@
 <title>Chapter 9 Correlations | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="9.1 Overview As you will read in Miller and Haden (2013) as part of the Correlations Basics reading, correlations are used to detect and quantify relationships among numerical variables. In short,...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 9 Correlations | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/correlations.html">
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -188,108 +189,47 @@ Figure 9.1: Schematic examples of extreme bivariate relationships
 <p>Anscombe (1973) showed that four sets of bivariate data (X,Y) that have the exact same means, medians, and relationships:</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:corr-anscombe-table">Table 9.1: </span>Four bivariate datasets that have the same means, medians, standard deviations, and relationships
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Group
-</th>
-<th style="text-align:center;">
-meanX_rnd
-</th>
-<th style="text-align:center;">
-sdX_rnd
-</th>
-<th style="text-align:center;">
-meanY_rnd
-</th>
-<th style="text-align:center;">
-sdY_rnd
-</th>
-<th style="text-align:center;">
-corrs_rnd
-</th>
+<span id="tab:corr-anscombe-table">Table 9.1: </span>Four bivariate datasets that have the same means, medians, standard deviations, and relationships</caption>
+<thead><tr class="header">
+<th align="center">Group</th>
+<th align="center">meanX_rnd</th>
+<th align="center">sdX_rnd</th>
+<th align="center">meanY_rnd</th>
+<th align="center">sdY_rnd</th>
+<th align="center">corrs_rnd</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-I
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-3.317
-</td>
-<td style="text-align:center;">
-7.501
-</td>
-<td style="text-align:center;">
-2.032
-</td>
-<td style="text-align:center;">
-0.816
-</td>
+<tr class="odd">
+<td align="center">I</td>
+<td align="center">9</td>
+<td align="center">3.317</td>
+<td align="center">7.501</td>
+<td align="center">2.032</td>
+<td align="center">0.816</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-II
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-3.317
-</td>
-<td style="text-align:center;">
-7.501
-</td>
-<td style="text-align:center;">
-2.032
-</td>
-<td style="text-align:center;">
-0.816
-</td>
+<tr class="even">
+<td align="center">II</td>
+<td align="center">9</td>
+<td align="center">3.317</td>
+<td align="center">7.501</td>
+<td align="center">2.032</td>
+<td align="center">0.816</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-III
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-3.317
-</td>
-<td style="text-align:center;">
-7.500
-</td>
-<td style="text-align:center;">
-2.030
-</td>
-<td style="text-align:center;">
-0.816
-</td>
+<tr class="odd">
+<td align="center">III</td>
+<td align="center">9</td>
+<td align="center">3.317</td>
+<td align="center">7.500</td>
+<td align="center">2.030</td>
+<td align="center">0.816</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-IV
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-3.317
-</td>
-<td style="text-align:center;">
-7.501
-</td>
-<td style="text-align:center;">
-2.031
-</td>
-<td style="text-align:center;">
-0.817
-</td>
+<tr class="even">
+<td align="center">IV</td>
+<td align="center">9</td>
+<td align="center">3.317</td>
+<td align="center">7.501</td>
+<td align="center">2.031</td>
+<td align="center">0.817</td>
 </tr>
 </tbody>
 </table></div>
@@ -411,7 +351,7 @@ difference between 2 and 3?
 <p><strong>Assumption 2: Pairs of Data</strong></p>
 <p>All correlations must have a data point for each participant on the two variables being correlated. This should make sense as to why - you can't correlate against an empty cell! Check that you have a data point in both columns for each participant. After that, try answering the question in Task 3. A discussion is in the solutions at the end of the chapter.</p>
 <p><strong>Note:</strong> You can check for missing data by visual inspection - literally using your eyes. A missing data point will show as a <strong>NA</strong>, which is short for not applicable, not available, or no answer. An alternative would be to use the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> function. This can be really handy when you have lots of data and visual inspection would just take too long. If for example you ran the following code:</p>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></span></code></pre></div>
 <p>If you look at the output from that function, each <code>FALSE</code> tells you that there is a data-point in that cell. That is because <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> asks is that cell a NA; is it empty. If the cell was empty then it would come back as <code>TRUE</code>. As all cells have data in them, they are all showing as <code>FALSE</code>. If you wanted to ask the opposite question, is their data in this cell, then you would write <code>!is.na()</code> which is read as "is not NA". The exclamation mark <code>!</code> turns the question into the opposite.</p>
 <p>It looks like everyone has data in all the columns but let's test our skills a little whilst we are here. Answer the following questions:</p>
@@ -639,12 +579,12 @@ proven.
 <p><strong>Advanced 1: Matrix of Scatterplots</strong></p>
 <p>Above we ran one correlation and if we wanted to do a different correlation then we would have to edit the <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code> line and run it again. However, when you have lots of variables in a dataset, to get a quick overview of patterns, one thing you might want to do is run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the <code>Hmisc</code> library - already installed in the Boyd Orr Labs. We will use the Miller and Haden data here again which you should still have in a tibble called <code>mh</code>.</p>
 <p>First, we need to get rid of the Participant column as we don't want to correlate that with anything. It won't tell us anything. Copy and run the below line of code</p>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://hbiostat.org/R/Hmisc/">"Hmisc"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span><span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Participant</span><span class="op">)</span></span></code></pre></div>
 <p>Now run the following line. The <code><a href="https://rdrr.io/r/graphics/pairs.html">pairs()</a></code> function from the <code>Hmisc</code> library creates a matrix of scatterplots which you can then use to view all the relationships at the one time.</p>
-<div class="sourceCode" id="cb365"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10-advance-pairs"></span>
@@ -653,7 +593,7 @@ Figure 9.3: Matrix of Correlation plots of Miller and Haden (2013) data
 </p>
 </div>
 <p>And the <code><a href="https://rdrr.io/pkg/Hmisc/man/rcorr.html">rcorr()</a></code> function creates a matrix of correlations and p-values. But watch out, it only accepts the data in matrix format. Run the following two lines of code.</p>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mh_mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">mh</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/rcorr.html">rcorr</a></span><span class="op">(</span><span class="va">mh_mx</span>, type <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##       Abil   IQ  Home    TV
@@ -738,8 +678,8 @@ Answer the following questions to check your answers. The solutions are at the b
 <option value="">large</option></select></p></li>
 <li>
 <p>Say you run the study and find that the effect size determined is r = .24. Given what you know about power, select the statement that is true:</p>
-<div id="radio_GBUUOPXBAS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GBUUOPXBAS" value=""><span>the study is sufficiently powered as the analysis indicates you can only detect effect sizes smaller than r = .24</span></label><label><input type="radio" autocomplete="off" name="radio_GBUUOPXBAS" value="answer"><span>the study is underpowered as the analysis indicates you can only detect effect sizes larger than r = .34</span></label>
+<div id="radio_KDSXEFFBPK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KDSXEFFBPK" value=""><span>the study is sufficiently powered as the analysis indicates you can only detect effect sizes smaller than r = .24</span></label><label><input type="radio" autocomplete="off" name="radio_KDSXEFFBPK" value="answer"><span>the study is underpowered as the analysis indicates you can only detect effect sizes larger than r = .34</span></label>
 </div>
 </li>
 </ul>
@@ -867,7 +807,7 @@ The backdrop for the exercise is the following study:</p>
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://broom.tidymodels.org/">"broom"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span><span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span></span></code></pre></div>
@@ -890,452 +830,192 @@ The backdrop for the exercise is the following study:</p>
 <li><p>Missing data is represented by NA. It stands for Not Available but is a very good way of improving your Scottish accent. For example, "is that a number" can be replied with "NA!".</p></li>
 <li><p>If you want to keep everybody from the whole dataset that has a score for Ability you would use:</p></li>
 </ul>
-<div class="sourceCode" id="cb369"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mh</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Abil</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:right;">
-Participant
-</th>
-<th style="text-align:right;">
-Abil
-</th>
-<th style="text-align:right;">
-IQ
-</th>
-<th style="text-align:right;">
-Home
-</th>
-<th style="text-align:right;">
-TV
-</th>
+<thead><tr class="header">
+<th align="right">Participant</th>
+<th align="right">Abil</th>
+<th align="right">IQ</th>
+<th align="right">Home</th>
+<th align="right">TV</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-61
-</td>
-<td style="text-align:right;">
-107
-</td>
-<td style="text-align:right;">
-144
-</td>
-<td style="text-align:right;">
-487
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">61</td>
+<td align="right">107</td>
+<td align="right">144</td>
+<td align="right">487</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-56
-</td>
-<td style="text-align:right;">
-109
-</td>
-<td style="text-align:right;">
-123
-</td>
-<td style="text-align:right;">
-608
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">56</td>
+<td align="right">109</td>
+<td align="right">123</td>
+<td align="right">608</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-45
-</td>
-<td style="text-align:right;">
-81
-</td>
-<td style="text-align:right;">
-108
-</td>
-<td style="text-align:right;">
-640
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">45</td>
+<td align="right">81</td>
+<td align="right">108</td>
+<td align="right">640</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-66
-</td>
-<td style="text-align:right;">
-100
-</td>
-<td style="text-align:right;">
-155
-</td>
-<td style="text-align:right;">
-493
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">66</td>
+<td align="right">100</td>
+<td align="right">155</td>
+<td align="right">493</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-49
-</td>
-<td style="text-align:right;">
-92
-</td>
-<td style="text-align:right;">
-103
-</td>
-<td style="text-align:right;">
-636
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">49</td>
+<td align="right">92</td>
+<td align="right">103</td>
+<td align="right">636</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-62
-</td>
-<td style="text-align:right;">
-105
-</td>
-<td style="text-align:right;">
-161
-</td>
-<td style="text-align:right;">
-407
-</td>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">62</td>
+<td align="right">105</td>
+<td align="right">161</td>
+<td align="right">407</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-61
-</td>
-<td style="text-align:right;">
-92
-</td>
-<td style="text-align:right;">
-138
-</td>
-<td style="text-align:right;">
-463
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">61</td>
+<td align="right">92</td>
+<td align="right">138</td>
+<td align="right">463</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-55
-</td>
-<td style="text-align:right;">
-101
-</td>
-<td style="text-align:right;">
-119
-</td>
-<td style="text-align:right;">
-717
-</td>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">55</td>
+<td align="right">101</td>
+<td align="right">119</td>
+<td align="right">717</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-62
-</td>
-<td style="text-align:right;">
-118
-</td>
-<td style="text-align:right;">
-155
-</td>
-<td style="text-align:right;">
-643
-</td>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">62</td>
+<td align="right">118</td>
+<td align="right">155</td>
+<td align="right">643</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-61
-</td>
-<td style="text-align:right;">
-99
-</td>
-<td style="text-align:right;">
-121
-</td>
-<td style="text-align:right;">
-674
-</td>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">61</td>
+<td align="right">99</td>
+<td align="right">121</td>
+<td align="right">674</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:right;">
-104
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-675
-</td>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">51</td>
+<td align="right">104</td>
+<td align="right">93</td>
+<td align="right">675</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-48
-</td>
-<td style="text-align:right;">
-100
-</td>
-<td style="text-align:right;">
-127
-</td>
-<td style="text-align:right;">
-595
-</td>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">48</td>
+<td align="right">100</td>
+<td align="right">127</td>
+<td align="right">595</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:right;">
-97
-</td>
-<td style="text-align:right;">
-673
-</td>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">50</td>
+<td align="right">95</td>
+<td align="right">97</td>
+<td align="right">673</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:right;">
-82
-</td>
-<td style="text-align:right;">
-140
-</td>
-<td style="text-align:right;">
-523
-</td>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">50</td>
+<td align="right">82</td>
+<td align="right">140</td>
+<td align="right">523</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:right;">
-67
-</td>
-<td style="text-align:right;">
-114
-</td>
-<td style="text-align:right;">
-151
-</td>
-<td style="text-align:right;">
-665
-</td>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">67</td>
+<td align="right">114</td>
+<td align="right">151</td>
+<td align="right">665</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:right;">
-112
-</td>
-<td style="text-align:right;">
-663
-</td>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">51</td>
+<td align="right">95</td>
+<td align="right">112</td>
+<td align="right">663</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
-55
-</td>
-<td style="text-align:right;">
-94
-</td>
-<td style="text-align:right;">
-102
-</td>
-<td style="text-align:right;">
-684
-</td>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">55</td>
+<td align="right">94</td>
+<td align="right">102</td>
+<td align="right">684</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:right;">
-54
-</td>
-<td style="text-align:right;">
-103
-</td>
-<td style="text-align:right;">
-142
-</td>
-<td style="text-align:right;">
-505
-</td>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">54</td>
+<td align="right">103</td>
+<td align="right">142</td>
+<td align="right">505</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-19
-</td>
-<td style="text-align:right;">
-57
-</td>
-<td style="text-align:right;">
-96
-</td>
-<td style="text-align:right;">
-127
-</td>
-<td style="text-align:right;">
-541
-</td>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">57</td>
+<td align="right">96</td>
+<td align="right">127</td>
+<td align="right">541</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-54
-</td>
-<td style="text-align:right;">
-104
-</td>
-<td style="text-align:right;">
-102
-</td>
-<td style="text-align:right;">
-678
-</td>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">54</td>
+<td align="right">104</td>
+<td align="right">102</td>
+<td align="right">678</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-52
-</td>
-<td style="text-align:right;">
-98
-</td>
-<td style="text-align:right;">
-124
-</td>
-<td style="text-align:right;">
-564
-</td>
+<tr class="odd">
+<td align="right">21</td>
+<td align="right">52</td>
+<td align="right">98</td>
+<td align="right">124</td>
+<td align="right">564</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-48
-</td>
-<td style="text-align:right;">
-117
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:right;">
-787
-</td>
+<tr class="even">
+<td align="right">22</td>
+<td align="right">48</td>
+<td align="right">117</td>
+<td align="right">87</td>
+<td align="right">787</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-23
-</td>
-<td style="text-align:right;">
-61
-</td>
-<td style="text-align:right;">
-100
-</td>
-<td style="text-align:right;">
-141
-</td>
-<td style="text-align:right;">
-582
-</td>
+<tr class="odd">
+<td align="right">23</td>
+<td align="right">61</td>
+<td align="right">100</td>
+<td align="right">141</td>
+<td align="right">582</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:right;">
-54
-</td>
-<td style="text-align:right;">
-101
-</td>
-<td style="text-align:right;">
-117
-</td>
-<td style="text-align:right;">
-647
-</td>
+<tr class="even">
+<td align="right">24</td>
+<td align="right">54</td>
+<td align="right">101</td>
+<td align="right">117</td>
+<td align="right">647</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:right;">
-48
-</td>
-<td style="text-align:right;">
-94
-</td>
-<td style="text-align:right;">
-111
-</td>
-<td style="text-align:right;">
-448
-</td>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">48</td>
+<td align="right">94</td>
+<td align="right">111</td>
+<td align="right">448</td>
 </tr>
 </tbody>
 </table></div>
@@ -1343,28 +1023,18 @@ TV
 <ul>
 <li>Alternatively, if you want to keep everybody from the whole dataset that does not have a score for Ability you would use:</li>
 </ul>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Abil</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:right;">
-Participant
-</th>
-<th style="text-align:right;">
-Abil
-</th>
-<th style="text-align:right;">
-IQ
-</th>
-<th style="text-align:right;">
-Home
-</th>
-<th style="text-align:right;">
-TV
-</th>
+<thead><tr class="header">
+<th align="right">Participant</th>
+<th align="right">Abil</th>
+<th align="right">IQ</th>
+<th align="right">Home</th>
+<th align="right">TV</th>
 </tr></thead>
-<tbody><tr></tr></tbody>
+<tbody></tbody>
 </table></div>
 </div>
 <p>Remember that you would need to store the output of this step, so really it would be something like <code>mh &lt;- filter(mh, !is.na(Abil))</code></p>
@@ -1377,7 +1047,7 @@ TV
 <ul>
 <li>Reading ability data appears as normal as expected for 25 participants. Hard to say how close to normality something should look when there are so few participants.</li>
 </ul>
-<div class="sourceCode" id="cb371"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Abil</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -1390,7 +1060,7 @@ Figure 9.4: Histogram showing the distribution of Reading Ability Scores from Mi
 <ul>
 <li>IQ data appears as normal as expected for 25 participants</li>
 </ul>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">IQ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -1404,7 +1074,7 @@ Figure 9.5: Histogram showing the distribution of IQ Scores from Miller and Hade
 <li>The relationship between reading ability and IQ scores appears appears linear and with no clear outliers. Data also appears homeoscedastic.</li>
 <li>We have added the <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> function to help clarify the line of best fit (also know as the regression line or the slope).</li>
 </ul>
-<div class="sourceCode" id="cb373"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mh</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Abil</span>, y <span class="op">=</span> <span class="va">IQ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1433,7 +1103,7 @@ Figure 9.6: Scatterplot of IQ scores as a function of Reading Ability from Mille
 <li>We are going to run a pearson correlation as we would argue the data is interval and the relationship is linear.</li>
 <li>The correlation would be run as follows - tidying it into a nice and usable table.</li>
 </ul>
-<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">mh</span><span class="op">$</span><span class="va">Abil</span>, </span>
 <span>                    <span class="va">mh</span><span class="op">$</span><span class="va">IQ</span>, </span>
 <span>                    method <span class="op">=</span> <span class="st">"pearson"</span>, </span>
@@ -1445,7 +1115,7 @@ Figure 9.6: Scatterplot of IQ scores as a function of Reading Ability from Mille
 <div style="border: 0px;overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:ch10InClassSolT6-tab">Table 9.2: </span>The correlation output of the Reading Ability and IQ relationship.
+<span id="tab:ch10InClassSolT6-tab">Table 9.2: </span><span id="tab:ch10InClassSolT6-tab">Table 9.3: </span>The correlation output of the Reading Ability and IQ relationship.
 </caption>
 <thead><tr>
 <th style="text-align:right;">
@@ -1518,7 +1188,7 @@ two.sided
 <li>And <code>statistic</code> is the t-value associated with this analysis as correlations use the t-distribution (same as in Chapters 6, 7 and 8) to determine probability of an outcome.</li>
 <li>Remember that we can use the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function to get individual values as shown here.</li>
 </ul>
-<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pvalue</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">p.value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
@@ -1555,7 +1225,7 @@ two.sided
 <span class="header-section-number">9.5.1.9</span> Task 9<a class="anchor" aria-label="anchor" href="#task-9-3"><i class="fas fa-link"></i></a>
 </h4>
 <p><strong>1. Sample size for a correlation</strong></p>
-<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sample_size_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html">pwr.r.test</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">.4</span>, </span>
@@ -1565,7 +1235,7 @@ two.sided
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/pluck.html">pluck</a></span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><strong>2. Effect size for a correlation analysis</strong></p>
-<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html">pwr.r.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span>,</span>
 <span>           sig.level <span class="op">=</span> <span class="fl">.05</span>, </span>
 <span>           power <span class="op">=</span> <span class="fl">.8</span>, </span>
@@ -1584,13 +1254,13 @@ two.sided
 <li>Reading in the Vaping Data using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code>
 </li>
 </ul>
-<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"VapingData.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Steps 2 to 4</strong></p>
 <ul>
 <li>The main wrangle of parts 2 to 4</li>
 </ul>
-<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_BLOCK3_Acc</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">IAT_BLOCK5_Acc</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1606,7 +1276,7 @@ two.sided
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>                          mean_IAT_ACC <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IAT_ACC</span><span class="op">)</span>,</span>
 <span>                          mean_IAT_RT <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IAT_RT</span><span class="op">)</span>,</span>
@@ -1616,18 +1286,19 @@ two.sided
 <ul>
 <li>A couple of visual checks of normality through histograms</li>
 </ul>
-<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: Removed 11 rows containing non-finite values (`stat_bin()`).</code></pre>
+<pre><code>## Warning: Removed 11 rows containing non-finite outside the scale range
+## (`stat_bin()`).</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT10-6-1"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT10-6-1-1.png" alt="Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)" width="100%"><p class="caption">
 Figure 9.7: Histogram showing the distribution of Scores on the Vaping Questionnaire (Explicit)
 </p>
 </div>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">IAT_RT</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -1642,11 +1313,12 @@ Figure 9.8: Histogram showing the distribution of IAT Reaction Times (Implicit)
 <li>Remember that, often, the scatterplot is considered the descriptive of the correlation, hence why you see them including in journal articles to support the stated relationship.</li>
 <li>The scatterplot can be used to make descriptive claims about the direction of the relationship, the strength of the relationship, whether it is linear or not, and to check for outliers and homeoscedasticity.</li>
 </ul>
-<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dat</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">IAT_RT</span>, y <span class="op">=</span> <span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 11 rows containing missing values or values outside the scale range
+## (`geom_point()`).</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch10InClassSolT10-6-3"></span>
 <img src="09-s02-lab09e_files/figure-html/ch10InClassSolT10-6-3-1.png" alt="A scatterplot showing the relationship between implicit IAT reaction times (x) and explicit Vaping Questionnaire Scores (y)" width="100%"><p class="caption">
@@ -1656,7 +1328,7 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <ul>
 <li>A quick look at the data reveals some people do not have a Vaping Questionnaire score and some don't have an IAT score. The correlation only works when people have a score on both factors so we remove all those that only have a score on one of the factors.</li>
 </ul>
-<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">VapingQuestionnaireScore</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">IAT_RT</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -1664,7 +1336,7 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <ul>
 <li>The analysis:</li>
 </ul>
-<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">VapingQuestionnaireScore</span>, </span>
 <span>                    <span class="va">dat</span><span class="op">$</span><span class="va">IAT_RT</span>, </span>
 <span>                    method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1672,7 +1344,7 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <ul>
 <li>And extracting the values:</li>
 </ul>
-<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">correlation</span> <span class="op">&lt;-</span> <span class="va">results</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span></span>
 <span></span>
@@ -1711,90 +1383,57 @@ Figure 9.9: A scatterplot showing the relationship between implicit IAT reaction
 <h3>Checking for outliers with z-scores<a class="anchor" aria-label="anchor" href="#checking-for-outliers-with-z-scores"><i class="fas fa-link"></i></a>
 </h3>
 <p>We briefly mentioned in the above activities that you could use z-scores to check for outliers, instead of visual inspection. We have covered this in lectures and it works for any interval or ratio dataset, and not just ones for correlations, but we will demonstrate it here using the IQ data from Miller and Haden. First, lets get just the IQ data.</p>
-<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mh_IQ</span> <span class="op">&lt;-</span> <span class="va">mh</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span></span></code></pre></div>
 <p>A z-score is just a standardised value based on the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (SD or <span class="math inline">\(\sigma\)</span>, proonounced "sigma") of the sample it comes from. The formula for a z-score is:
 <br></p>
 <p><span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span></p>
 <p>Using z-scores is away of effectively converting your data onto the Normal Distribution. As such, because of known cut-offs from the Normal Distribution (e.g., 68% of data between <span class="math inline">\(\pm1SD\)</span>, etc - See Chapter 4), we can use that information to determine a value as an outlier. To do it, you convert all the data within your variable into their respective z-score and if any of the values fall above or below your cut-off then they are considered an outlier.</p>
-<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mh_IQ_z</span> <span class="op">&lt;-</span> <span class="va">mh_IQ</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>z_scores <span class="op">=</span> <span class="op">(</span><span class="va">IQ</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">IQ</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Which will give us the following data (showing only the first 6 rows):</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:zscore-iq-table">Table 9.3: </span>Raw IQ data and z-scored IQ data from Miller and Haden
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-IQ
-</th>
-<th style="text-align:center;">
-z_scores
-</th>
+<span id="tab:zscore-iq-table">Table 9.4: </span>Raw IQ data and z-scored IQ data from Miller and Haden</caption>
+<thead><tr class="header">
+<th align="center">IQ</th>
+<th align="center">z_scores</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-107
-</td>
-<td style="text-align:center;">
-0.7695895
-</td>
+<tr class="odd">
+<td align="center">107</td>
+<td align="center">0.7695895</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-109
-</td>
-<td style="text-align:center;">
-0.9907359
-</td>
+<tr class="even">
+<td align="center">109</td>
+<td align="center">0.9907359</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-81
-</td>
-<td style="text-align:center;">
--2.1053138
-</td>
+<tr class="odd">
+<td align="center">81</td>
+<td align="center">-2.1053138</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-100
-</td>
-<td style="text-align:center;">
--0.0044229
-</td>
+<tr class="even">
+<td align="center">100</td>
+<td align="center">-0.0044229</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-92
-</td>
-<td style="text-align:center;">
--0.8890086
-</td>
+<tr class="odd">
+<td align="center">92</td>
+<td align="center">-0.8890086</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-105
-</td>
-<td style="text-align:center;">
-0.5484431
-</td>
+<tr class="even">
+<td align="center">105</td>
+<td align="center">0.5484431</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-92
-</td>
-<td style="text-align:center;">
--0.8890086
-</td>
+<tr class="odd">
+<td align="center">92</td>
+<td align="center">-0.8890086</td>
 </tr>
 </tbody>
 </table></div>
 <p>And if you run through the data you will see a whole range of z-scores ranging from -2.1053138 to 1.9858948. During the class we said that we would use a cut-off of <span class="math inline">\(\pm2.5SD\)</span> and you can see from the range of the IQ z-scores that there is no value above that, so we have no outliers. Which you could confirm with the following code:</p>
-<div class="sourceCode" id="cb393"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb397"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mh_IQ_z</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">z_scores</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
 <p>Which if you run that code, you can see we have 0 outliers. This also demonstrates however why you must stipulate your cut-offs in advance - otherwise you might fall foul of adjusting your data to fit your own predictions and hiding your decision making in the numerous researcher degrees of freedom that exist. For example, say you run the above analysis and see no outliers but don't find the result you want/expect/believe should be there. A questionable research practice would be now to start adjusting your z-score cut-off to different values to see what difference that makes. For instance, had we said the cut-off was more stringent at <span class="math inline">\(\pm2SD\)</span> we would have found 1 outlier.</p>
 <p>So the two take-aways from this are:</p>
@@ -1817,7 +1456,7 @@ z_scores
 <code><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion()</a></code> can be used to tidy up the table in terms of removing NAs, leading zeros, and for setting the number of decimal places.</li>
 </ul>
 <p>The code would look like this:</p>
-<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr">corrr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">mh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MillerHadenData.csv"</span><span class="op">)</span></span>
@@ -1830,81 +1469,41 @@ z_scores
 <p>Which if you then look at the ouput you get this nice clean correlation matrix table shown below.</p>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:left;">
-Abil
-</th>
-<th style="text-align:left;">
-IQ
-</th>
-<th style="text-align:left;">
-Home
-</th>
-<th style="text-align:left;">
-TV
-</th>
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="left">Abil</th>
+<th align="left">IQ</th>
+<th align="left">Home</th>
+<th align="left">TV</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Abil
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="odd">
+<td align="left">Abil</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-IQ
-</td>
-<td style="text-align:left;">
-.451
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td align="left">IQ</td>
+<td align="left">.451</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Home
-</td>
-<td style="text-align:left;">
-.744
-</td>
-<td style="text-align:left;">
-.202
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="odd">
+<td align="left">Home</td>
+<td align="left">.744</td>
+<td align="left">.202</td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-TV
-</td>
-<td style="text-align:left;">
--.288
-</td>
-<td style="text-align:left;">
-.246
-</td>
-<td style="text-align:left;">
--.648
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td align="left">TV</td>
+<td align="left">-.288</td>
+<td align="left">.246</td>
+<td align="left">-.648</td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table></div>
@@ -1916,7 +1515,7 @@ TV
 </h3>
 <p>One step that is often overlooked when working with correlations and a data set with numerous variables, is to compare whether the correlations are significantly different from each other. For example, say you are looking at whether there is a relationship between height and attractiveness in males and in females. You run the two correlations and find one is a stronger relationship than the other. Many would try to conclude that that means there is a significantly stronger relationship in one gender than the other. However that has not been tested. It can be tested though. We will quickly show you how, but this paper will also help the discussion: Diedenhofen and Musch (2015) cocor: A Comprehensive Solution for the Statistical Comparison of Correlations. PLOS ONE 10(6): e0131499. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945</a></p>
 <p>As always we need the libraries first. You will need to install the <strong><code>cocor</code></strong> package on to your laptop.</p>
-<div class="sourceCode" id="cb395"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb399"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://comparingcorrelations.org">cocor</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <p>Now we are going to walk through three different examples just to show you how it would work in different experimental designs. You will need to match the values in the code with the values in the text to make full sense of these examples. We will use examples from work on faces, voices and personality traits that you will encounter later in this book.</p>
@@ -1924,7 +1523,7 @@ TV
 <p>Given the scenario of males voice pitch and height (r(28) = .89) and female voice pitch and height (r(28) = .75) can you say that the difference between these correlations is significant?</p>
 <p>As these correlations come from two different groups - male voices and female voices - we used the <code><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html">cocor.indep.groups()</a></code> function.</p>
 <p><strong>Note:</strong> As the df of both groups is 28, this means that the N is 30 of both groups (based on N = df-2)</p>
-<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">compare1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html">cocor.indep.groups</a></span><span class="op">(</span>r1.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
 <span>                               r2.hm <span class="op">=</span> <span class="fl">.75</span>, </span>
 <span>                               n1 <span class="op">=</span> <span class="fl">30</span>, </span>
@@ -1953,7 +1552,7 @@ TV
 <p>What about the scenario where you have 30 participants rating faces on the scales of trust, warmth and likability, and we want to know if the relationship between trust and warmth (r = .89) is significantly different than the relationship between trust and likability (r = .8).</p>
 <p>As this data comes from the same participants, and there is crossover/overlap in traits - i.e. one trait appears in both correlations of interest - then we will use the <code><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap()</a></code>. To do this comparison we also need to know the relationship between the remaining correlation of warmth and likability (r = .91).</p>
 <p><strong>Note:</strong> The order of input of correlations matters. See <code>?cocor.dep.groups.overlap()</code> for help.</p>
-<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">compare2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
 <span>                                     r.jh <span class="op">=</span> <span class="fl">.8</span>, </span>
 <span>                                     r.kh <span class="op">=</span> <span class="fl">.91</span>, </span>
@@ -2013,7 +1612,7 @@ TV
 ##   Null hypothesis rejected (Interval does not include 0)</code></pre>
 <p>So this test actually produces the output of a lot of tests; many of which we probably don't know whether to use or not. However, what you can do is run the analysis and choose just a specific test by adding the argument to the function: <code>test = steiger1980</code> or <code>test = pearson1898</code> for example. These are probably the two most common.</p>
 <p>Let's run the analysis again using just Pearson's Z (1898)</p>
-<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">compare3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html">cocor.dep.groups.overlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
 <span>                                     r.jh <span class="op">=</span> <span class="fl">.8</span>, </span>
 <span>                                     r.kh <span class="op">=</span> <span class="fl">.91</span>, </span>
@@ -2046,7 +1645,7 @@ TV
 <li>warmth and attractiveness (.92)</li>
 </ul>
 <p><strong>Note:</strong> The order of input of correlations matters. See <code>?cocor.dep.groups.nonoverlap()</code> for help.</p>
-<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">compare5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.nonoverlap.html">cocor.dep.groups.nonoverlap</a></span><span class="op">(</span>r.jk <span class="op">=</span> <span class="fl">.89</span>, </span>
 <span>                                        r.hm <span class="op">=</span> <span class="fl">.93</span>, </span>
 <span>                                        r.jh <span class="op">=</span> <span class="fl">.88</span>, </span>
@@ -2334,7 +1933,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-03-01.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-06-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

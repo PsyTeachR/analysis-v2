@@ -7,7 +7,7 @@
 <title>Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="5.1 Overview This chapter will introduce you to Null Hypothesis Significance Testing (NHST): In quantitative research we collect a sample, calculate a summary statistic about that sample, and use...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 5 NHST: Binomial test and One-Sample t-test | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/nhst-binomial-test-and-one-sample-t-test.html">
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -214,192 +215,99 @@
 <p>Below is the data from the 22 participants you have collected in your pilot study. Their mean reaction time for valid trials (in milliseconds) is shown in the right hand column, <code>valid_rt</code>.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:ch6-preclass-nsdata">Table 5.1: </span>Pilot Data for 22 Participants on a Sleep-Related Posner Paradigm. ID is shown in participant column and mean reaction time (ms) on valid trails is shown in valid_rt column.
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-participant
-</th>
-<th style="text-align:center;">
-valid_rt
-</th>
+<span id="tab:ch6-preclass-nsdata">Table 5.1: </span>Pilot Data for 22 Participants on a Sleep-Related Posner Paradigm. ID is shown in participant column and mean reaction time (ms) on valid trails is shown in valid_rt column.</caption>
+<thead><tr class="header">
+<th align="center">participant</th>
+<th align="center">valid_rt</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-631.2
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">631.2</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-800.8
-</td>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">800.8</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-595.4
-</td>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">595.4</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-502.6
-</td>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">502.6</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-604.5
-</td>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">604.5</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-516.9
-</td>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">516.9</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-658.0
-</td>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">658.0</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-8
-</td>
-<td style="text-align:center;">
-502.0
-</td>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">502.0</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-496.7
-</td>
+<tr class="odd">
+<td align="center">9</td>
+<td align="center">496.7</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-600.3
-</td>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">600.3</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-714.6
-</td>
+<tr class="odd">
+<td align="center">11</td>
+<td align="center">714.6</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-12
-</td>
-<td style="text-align:center;">
-623.7
-</td>
+<tr class="even">
+<td align="center">12</td>
+<td align="center">623.7</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-13
-</td>
-<td style="text-align:center;">
-634.5
-</td>
+<tr class="odd">
+<td align="center">13</td>
+<td align="center">634.5</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-14
-</td>
-<td style="text-align:center;">
-724.9
-</td>
+<tr class="even">
+<td align="center">14</td>
+<td align="center">724.9</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-15
-</td>
-<td style="text-align:center;">
-815.7
-</td>
+<tr class="odd">
+<td align="center">15</td>
+<td align="center">815.7</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-16
-</td>
-<td style="text-align:center;">
-456.9
-</td>
+<tr class="even">
+<td align="center">16</td>
+<td align="center">456.9</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-17
-</td>
-<td style="text-align:center;">
-703.4
-</td>
+<tr class="odd">
+<td align="center">17</td>
+<td align="center">703.4</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-18
-</td>
-<td style="text-align:center;">
-647.5
-</td>
+<tr class="even">
+<td align="center">18</td>
+<td align="center">647.5</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-19
-</td>
-<td style="text-align:center;">
-657.9
-</td>
+<tr class="odd">
+<td align="center">19</td>
+<td align="center">657.9</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-20
-</td>
-<td style="text-align:center;">
-613.2
-</td>
+<tr class="even">
+<td align="center">20</td>
+<td align="center">613.2</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-21
-</td>
-<td style="text-align:center;">
-585.4
-</td>
+<tr class="odd">
+<td align="center">21</td>
+<td align="center">585.4</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-22
-</td>
-<td style="text-align:center;">
-674.1
-</td>
+<tr class="even">
+<td align="center">22</td>
+<td align="center">674.1</td>
 </tr>
 </tbody>
 </table></div>
@@ -830,7 +738,7 @@ recorded the looking behavior (or gaze) of the infants during this â€˜baselineâ€
 <span class="header-section-number">5.6.2</span> Load in the data<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT0"><i class="fas fa-link"></i></a>
 </h3>
 <p>Call <code>tidyverse</code> to the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> and load in the data (<code>socialmelodies_exp1.csv</code>) and store them in object <code>melodydata</code>.</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
@@ -847,7 +755,7 @@ recorded the looking behavior (or gaze) of the infants during this â€˜baselineâ€
 </h3>
 <p>This data file includes the variables for all 5 experiments reported in the paper. We only want
 to analyze the data for Experiment 1. Using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function, create a new data frame <code>melodydata_exp1</code> that only contains data of Experiment 1 (variable <code>exp1</code> with value 1 indicates all data fro Experiment 1). Hint: The new data frame should have 32 observations.</p>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT2" class="section level3" number="5.6.4">
@@ -862,7 +770,7 @@ baseline trial (<code>Baseline_Proportion_Gaze_to_Singer</code>). In other words
 behaviour toward the singer of the familiar melody (<code>Test_Proportion_Gaze_to_Singer</code>) was higher than chance at the test phase.</p>
 <p>Thus, create a new data frame called <code>melodydata_exp1_reduced</code> that only contains the variables <code>id</code>, <code>Baseline_Proportion_Gaze_to_Singer</code>, and <code>Test_Proportion_Gaze_to_Singer</code>.</p>
 <p>Hint: The new data frame contains 32 observations and 3 variables.</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT3" class="section level3" number="5.6.5">
@@ -870,7 +778,7 @@ behaviour toward the singer of the familiar melody (<code>Test_Proportion_Gaze_t
 <span class="header-section-number">5.6.5</span> Task 3 - Testing baseline gazing proportion<a class="anchor" aria-label="anchor" href="#Ch5PracticeSkillsT3"><i class="fas fa-link"></i></a>
 </h3>
 <p>Perform a One-sample t-test to examine whether the proportion of time spent looking at the person singing the familiar song at baseline did not differ from chance (0.5).</p>
-<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT4" class="section level3" number="5.6.6">
@@ -880,7 +788,7 @@ behaviour toward the singer of the familiar melody (<code>Test_Proportion_Gaze_t
 <p>Now, perform a One-sample t-test to examine whether the proportion of infants' looking
 behaviour toward the singer of the familiar melody was higher than chance at the test phase
 (0.5).</p>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="cn">NULL</span>, <span class="cn">NULL</span><span class="op">)</span>, mu <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT5" class="section level3" number="5.6.7">
@@ -891,7 +799,7 @@ behaviour toward the singer of the familiar melody was higher than chance at the
 <p>Store the new data frame in object <code>melodydata_exp1_wide</code>.</p>
 <p>Hint: You will need <code>pivot_longer</code> function for this step.
 Hint: The new data frame has 64 observations and 3 variables (<code>id</code>, <code>TrialType</code>, <code>Proportion</code>).</p>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -906,7 +814,7 @@ familiar song at the baseline and test trials.</p>
 <ul>
 <li>Turn off the legend using the <code><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides()</a></code> as it isn't needed because the x-axis tells you which trial is which.</li>
 </ul>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="Ch5PracticeSkillsT7" class="section level3" number="5.6.9">
@@ -931,7 +839,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ns_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">22</span>,</span>
 <span>                  valid_rt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">631.2</span>,<span class="fl">800.8</span>,<span class="fl">595.4</span>,<span class="fl">502.6</span>,<span class="fl">604.5</span>,</span>
 <span>                               <span class="fl">516.9</span>,<span class="fl">658.0</span>,<span class="fl">502.0</span>,<span class="fl">496.7</span>,<span class="fl">600.3</span>,</span>
@@ -944,7 +852,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-5"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">woods_mean</span> <span class="op">&lt;-</span> <span class="fl">590</span></span>
 <span></span>
 <span><span class="va">n_participants</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -962,25 +870,25 @@ familiar song at the baseline and test trials.</p>
 <ul>
 <li>You can use the density function:</li>
 </ul>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">n_participants</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <ul>
 <li>Or, the cumulative probability function:</li>
 </ul>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">n_participants</span> <span class="op">-</span> <span class="fl">1L</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <ul>
 <li>Or, If you were to plug in the numbers directly into the code:</li>
 </ul>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">16</span><span class="op">:</span><span class="fl">22</span>,<span class="fl">22</span>, <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <ul>
 <li>Or, finally, remembering we need to specify a value lower than our minimum participant number as <code>lower.tail = FALSE</code>.</li>
 </ul>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">22</span>, <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 0.0262394</code></pre>
 <p>It is better practice to use the first two solutions, which pull the values straight from ns_data, as you run the risk of entering an error into your code if you plug in the values manually.</p>
@@ -999,7 +907,7 @@ familiar song at the baseline and test trials.</p>
 <li>For <code>ns_data_mean</code> use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to calculate the mean and then <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> the value.</li>
 <li>For <code>ns_data_sd</code> use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to calculate the sd and then <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> the value.</li>
 </ul>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># the mean</span></span>
 <span><span class="va">ns_data_mean</span> <span class="op">&lt;-</span> <span class="va">ns_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1010,7 +918,7 @@ familiar song at the baseline and test trials.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">valid_rt</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></span></code></pre></div>
 <p><strong>NOTE:</strong> You could print them out on the screen if you wanted to "\n" is the end of line symbol so that they print on different lines</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The mean number of hours was"</span>, <span class="va">ns_data_mean</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"The standard deviation was"</span>, <span class="va">ns_data_sd</span>, <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## The mean number of hours was 625.4636 
@@ -1021,7 +929,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.2.2</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-4"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_obs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">ns_data_mean</span> <span class="op">-</span> <span class="va">woods_mean</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">ns_data_sd</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Giving a t_obs value of 1.7638067</li>
@@ -1033,13 +941,13 @@ familiar song at the baseline and test trials.</p>
 <span class="header-section-number">5.7.2.3</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>If using values straight from ns_data, and multiplying by 2 for a two-tailed test, you would do the following:</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pval</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_obs</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ns_data</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1L</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2L</span></span></code></pre></div>
 <ul>
 <li>Giving a pval of 0.0923092</li>
 </ul>
 <p>But you can also get the same answer by plugging the values in yourself - though this method runs the risk of error and you are better off using the first calculation as those values come straight from ns_data. :</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pval2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="fl">21</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span></span></code></pre></div>
 <ul>
 <li>Giving a pval of 0.0923092</li>
@@ -1051,7 +959,7 @@ familiar song at the baseline and test trials.</p>
 <span class="header-section-number">5.7.2.4</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-3"><i class="fas fa-link"></i></a>
 </h4>
 <p>The t-test would be run as follows, with the output shown below:</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">ns_data</span>, <span class="va">valid_rt</span><span class="op">)</span>, mu <span class="op">=</span> <span class="va">woods_mean</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
@@ -1084,7 +992,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.1</span> Load in the data<a class="anchor" aria-label="anchor" href="#load-in-the-data-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">melodydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"socialmelodies_exp1.csv"</span><span class="op">)</span></span></code></pre></div>
@@ -1094,7 +1002,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.2</span> Task 1 - Filter data<a class="anchor" aria-label="anchor" href="#task-1---filter-data"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">melodydata_exp1</span> <span class="op">&lt;-</span> <span class="va">melodydata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">exp1</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT1">Return to Task</a></p>
@@ -1103,7 +1011,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.3</span> Task 2 - Select data<a class="anchor" aria-label="anchor" href="#task-2---select-data"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">melodydata_exp1_reduced</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT2">Return to Task</a></p>
@@ -1112,7 +1020,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.4</span> Task 3 - Testing baseline gazing proportion<a class="anchor" aria-label="anchor" href="#task-3---testing-baseline-gazing-proportion"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT3">Return to Task</a></p>
 </div>
@@ -1120,7 +1028,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.5</span> Task 4 - Testing test trial gazing proportion<a class="anchor" aria-label="anchor" href="#task-4---testing-test-trial-gazing-proportion"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">melodydata_exp1_reduced</span>, <span class="va">Test_Proportion_Gaze_to_Singer</span><span class="op">)</span>, mu <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 <p><a href="nhst-binomial-test-and-one-sample-t-test.html#Ch5PracticeSkillsT4">Return to Task</a></p>
 </div>
@@ -1128,7 +1036,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.6</span> Task 5 - Gathering data into a different format<a class="anchor" aria-label="anchor" href="#task-5---gathering-data-into-a-different-format"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">melodydata_exp1_wide</span> <span class="op">&lt;-</span> <span class="va">melodydata_exp1_reduced</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Baseline_Proportion_Gaze_to_Singer</span><span class="op">:</span><span class="va">Test_Proportion_Gaze_to_Singer</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"TrialType"</span>,</span>
@@ -1139,7 +1047,7 @@ familiar song at the baseline and test trials.</p>
 <h4>
 <span class="header-section-number">5.7.3.7</span> Task 6 - Visualise baseline and test trial data<a class="anchor" aria-label="anchor" href="#task-6---visualise-baseline-and-test-trial-data"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">melodydata_exp1_wide</span>, </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">TrialType</span>, </span>
 <span>           y <span class="op">=</span> <span class="va">Proportion</span>, </span>
@@ -1420,7 +1328,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-03-01.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-06-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -18,6 +18,7 @@ fig:dim4-1
 fig:dim5-1
 fig:dim6-1
 fig:dim7-1
+fig:unnamed-chunk-7
 fig:Ch3InClassTask2-hidden
 fig:Ch3InClassTask3-hidden
 fig:Ch3InClassTask5-hidden
@@ -203,6 +204,7 @@ boxplots---geom_boxplot
 violin-boxplots-geom_violin-and-geom_boxplot
 barplots---geom_bar-or-geom_col
 themes-labels-guides-and-facet_wraps
+saving-your-figures
 choosing-appropriate-figures
 data-visualisation-application
 mental-rotation-angle-and-reaction-time

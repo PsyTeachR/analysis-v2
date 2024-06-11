@@ -7,7 +7,7 @@
 <title>Chapter 1 Starting with R Markdown | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="1.1 Overview A key goal of any researcher is to carry out an experiment and to tell others about it. One of the main ways we as Psychologists do this is through publication of journal articles....">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 1 Starting with R Markdown | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/starting-with-r-markdown.html">
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -471,92 +472,43 @@ We could probably do with a wee summary here:
 <br></p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:chp1-secret-table-disp">Table 1.1: </span>Rules! Rules! Rules!
-</caption>
-<thead><tr>
-<th style="text-align:center;">
-Code
-</th>
-<th style="text-align:center;">
-Does Code Run
-</th>
-<th style="text-align:center;">
-Does Code Show
-</th>
-<th style="text-align:center;">
-Do Results Show
-</th>
+<span id="tab:chp1-secret-table-disp">Table 1.1: </span>Rules! Rules! Rules!</caption>
+<thead><tr class="header">
+<th align="center">Code</th>
+<th align="center">Does Code Run</th>
+<th align="center">Does Code Show</th>
+<th align="center">Do Results Show</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-eval = FALSE
-</td>
-<td style="text-align:center;">
-NO
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-NO
-</td>
+<tr class="odd">
+<td align="center">eval = FALSE</td>
+<td align="center">NO</td>
+<td align="center">YES</td>
+<td align="center">NO</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-echo = TRUE
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-YES
-</td>
+<tr class="even">
+<td align="center">echo = TRUE</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-echo = FALSE
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-NO
-</td>
-<td style="text-align:center;">
-YES
-</td>
+<tr class="odd">
+<td align="center">echo = FALSE</td>
+<td align="center">YES</td>
+<td align="center">NO</td>
+<td align="center">YES</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-results = "hide"
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-NO
-</td>
+<tr class="even">
+<td align="center">results = "hide"</td>
+<td align="center">YES</td>
+<td align="center">YES</td>
+<td align="center">NO</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-include = FALSE
-</td>
-<td style="text-align:center;">
-YES
-</td>
-<td style="text-align:center;">
-NO
-</td>
-<td style="text-align:center;">
-NO
-</td>
+<tr class="odd">
+<td align="center">include = FALSE</td>
+<td align="center">YES</td>
+<td align="center">NO</td>
+<td align="center">NO</td>
 </tr>
 </tbody>
 </table></div>
@@ -1516,39 +1468,21 @@ data for males and females.
 </h4>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-Sex
-</th>
-<th style="text-align:right;">
-NofGroups
-</th>
-<th style="text-align:right;">
-mean_length
-</th>
+<thead><tr class="header">
+<th align="left">Sex</th>
+<th align="right">NofGroups</th>
+<th align="right">mean_length</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:right;">
-3.574667
-</td>
+<tr class="odd">
+<td align="left">Female</td>
+<td align="right">15</td>
+<td align="right">3.574667</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
-26
-</td>
-<td style="text-align:right;">
-3.606923
-</td>
+<tr class="even">
+<td align="left">Male</td>
+<td align="right">26</td>
+<td align="right">3.606923</td>
 </tr>
 </tbody>
 </table></div>
@@ -1838,7 +1772,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-03-01.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-06-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

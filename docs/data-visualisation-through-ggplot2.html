@@ -7,7 +7,7 @@
 <title>Chapter 3 Data Visualisation Through ggplot2 | Analysis</title>
 <meta name="author" content="Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson">
 <meta name="description" content="3.1 Overview Data visualisation is very important for understanding your data. It is a key part of data analysis in exploring data, checking assumptions, and displaying results. Figures and plots...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta name="generator" content="bookdown 0.39 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Data Visualisation Through ggplot2 | Analysis">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/analysis-v2/data-visualisation-through-ggplot2.html">
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -680,9 +681,72 @@ _ <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_cla
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">CorrectResponse</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="choosing-appropriate-figures" class="section level3" number="3.2.9">
+<div id="saving-your-figures" class="section level3" number="3.2.9">
 <h3>
-<span class="header-section-number">3.2.9</span> Choosing Appropriate Figures<a class="anchor" aria-label="anchor" href="#choosing-appropriate-figures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2.9</span> Saving your Figures<a class="anchor" aria-label="anchor" href="#saving-your-figures"><i class="fas fa-link"></i></a>
+</h3>
+<p>It would be really useful to save a copy of your plots as an image file so that you can use them in a presentation or report. One approach we can use is the function <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>.</p>
+<p>There are two ways you can use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. If you don't tell <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> which plot you want to save, by default it will save <strong>the last plot you created</strong>. To demonstrate this let's run the code from Activity 3.2.6 again to produce the nice violin-boxplot:</p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_box_correct</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">CorrectResponse</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Mean_Time</span>, </span>
+<span>           fill <span class="op">=</span> <span class="va">CorrectResponse</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="03-s01-lab03b_files/figure-html/unnamed-chunk-7-1.png" alt="Violin-boxplot2" width="100%"><p class="caption">
+Figure 3.8: Violin-boxplot2
+</p>
+</div>
+<p>Now that we've got the plot we want to save as our last produced plot, all that <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> requires is for you to tell it what file name it should save the plot to and the type of image file you want to create (the below example uses .png but you could also use e.g., .jpeg and other image types).</p>
+<ul>
+<li>Type and run the below code into a new code chunk and then check your chapter folder. If you have performed this correctly then you see the saved image file.</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"violin-boxplot.png"</span><span class="op">)</span></span></code></pre></div>
+<p>Note that the image tends to save at a default size, or the size that the image is displayed in your viewer, but you can change this manually if you think that the dimensions of the plot are not correct or if you need a particular size or file type.</p>
+<ul>
+<li>Type and run the below code to overwrite the image file with new dimensions.
+<ul>
+<li>try different dimensions and units to see the difference. You might want to create violin-boxplot-v1, ...-v2, ...-v3, and compare them. Remember you can use <code>?ggsave()</code> in the console window to bring up the help on this function.</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"violin-boxplot.png"</span>, </span>
+<span>       width <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>       height <span class="op">=</span> <span class="fl">8</span>, </span>
+<span>       units <span class="op">=</span> <span class="st">"in"</span><span class="op">)</span></span></code></pre></div>
+<p>Alternatively, the second way of using <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> is to save your plot as an object, just like we have done with tibbles, and then tell <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> which object you want to save.</p>
+<ul>
+<li>Type and run the below code and then check your folder for the image file. Resize the plot if you think it needs it.
+<ul>
+<li>The below code saves the plot from Activity 3.2.6 into an object named <code>viobox</code> and then saves it to an image file "violin-boxplot-stored.png".</li>
+<li>
+<strong>Note:</strong> We do not add on <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. Instead it is a separate line of code and we tell it which object to save. So, do not do <code>+ ggsave()</code>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">viobox</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_box_correct</span>, </span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">CorrectResponse</span>, </span>
+<span>           y <span class="op">=</span> <span class="va">Mean_Time</span>, </span>
+<span>           fill <span class="op">=</span> <span class="va">CorrectResponse</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"violin-boxplot-stored.png"</span>, plot <span class="op">=</span> <span class="va">viobox</span><span class="op">)</span></span></code></pre></div>
+<p>Finally, note that when you save a plot to an object, you will not see the plot displayed anywhere. To get the figure to display you need to type the object name in the console (i.e., <code>viobox</code>). The benefit of saving figures this way is that if you are making lots of plots, you can't accidentally save the wrong one because you are explicitly specifying which plot to save rather than just saving the last one.</p>
+</div>
+<div id="choosing-appropriate-figures" class="section level3" number="3.2.10">
+<h3>
+<span class="header-section-number">3.2.10</span> Choosing Appropriate Figures<a class="anchor" aria-label="anchor" href="#choosing-appropriate-figures"><i class="fas fa-link"></i></a>
 </h3>
 <p>As you progress through Psychology, you will come across a variety of different figures and plots, each looking slightly different and giving different information. When looking at these figures, and indeed when choosing one for your own analyses, you have to think about which figure is the most appropriate for your data. For example, scatterplots are great when both variables are continuous; boxplots and histograms are great for viewing spreads of data; and violin boxplots are particularly effective in conveying a more complete picture of the data distribution. In addition, barplots are commonly used where one variable is categorical - but as above note that barplots can be misleading and lots of new approaches to display categorical information are being created. Always keep asking yourself, does my plot display my data correctly. Also, do I have the right number of dots/conditions/groups in my figure? Too many or too few would suggest something is not quite right. Look at your data!</p>
 
@@ -837,7 +901,7 @@ number of columns (3).
 </ul>
 </li>
 </ol>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_angle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -893,7 +957,7 @@ x-axis name, then the y-axis name.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask2-hidden"></span>
 <img src="03-s01-lab03c_files/figure-html/Ch3InClassTask2-hidden-1.png" alt="Basic Scatterplot of Response Time by Angle of Rotation" width="100%"><p class="caption">
-Figure 3.8: Basic Scatterplot of Response Time by Angle of Rotation
+Figure 3.9: Basic Scatterplot of Response Time by Angle of Rotation
 </p>
 </div>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--pink);">Thinking Cap Point</span></p>
@@ -954,7 +1018,7 @@ comma. Everything else in our code stays the same.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask3-hidden"></span>
 <img src="03-s01-lab03c_files/figure-html/Ch3InClassTask3-hidden-1.png" alt="Separating points by Sex" width="100%"><p class="caption">
-Figure 3.9: Separating points by Sex
+Figure 3.10: Separating points by Sex
 </p>
 </div>
 <p>Hmmm, that figure does not look that informative. It looks similar to the one we created but the dots have doubled - we now have 8 instead of 4 - but we do not know which is male or female, and the connecting line is confusing. We need to add a little more to the code to tell it how to separate the data based on Sex.</p>
@@ -1005,7 +1069,7 @@ You should now have something like this:
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask5-hidden"></span>
 <img src="03-s01-lab03c_files/figure-html/Ch3InClassTask5-hidden-1.png" alt="Separate lines for each Sex" width="100%"><p class="caption">
-Figure 3.10: Separate lines for each Sex
+Figure 3.11: Separate lines for each Sex
 </p>
 </div>
 <p>Great! We can now see that the female line is on top and the male line is on the bottom. But before we start interpreting this figure let's finish tidying it up with a few more tasks. For example the dots for each data point are perhaps a little small to see, so we could increase them in size. Also, color is great if you can print in color, but we could also change the shape of the dots to help people distinguish between the Sex for when displaying in color isn't an option. To do this we will use the additional calls of <code>shape</code> and <code>size</code> within our <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>.</p>
@@ -1035,7 +1099,7 @@ Helpful Hint
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask6-hidden"></span>
 <img src="03-s01-lab03c_files/figure-html/Ch3InClassTask6-hidden-1.png" alt="Changing Shape and Size of Data Points" width="100%"><p class="caption">
-Figure 3.11: Changing Shape and Size of Data Points
+Figure 3.12: Changing Shape and Size of Data Points
 </p>
 </div>
 <p><strong>A quick point - in, out, what's the aes about?</strong></p>
@@ -1118,7 +1182,7 @@ Helpful Hint
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask8-hidden"></span>
 <img src="03-s01-lab03c_files/figure-html/Ch3InClassTask8-hidden-1.png" alt="The finished figure!" width="100%"><p class="caption">
-Figure 3.12: The finished figure!
+Figure 3.13: The finished figure!
 </p>
 </div>
 <p>Take a few minutes to look at the figure and try to interpret it in terms of reaction time as a function of rotation and sex. Try answering the following questions:</p>
@@ -1175,7 +1239,7 @@ further.
 <ol start="2" style="list-style-type: decimal">
 <li>Finally, if you look closely at the figure, you will see that the line between points actually goes in front of the points. It looks a bit messy. How could you make it tidier by having the line run behind the data points? Not sure? Remember that figures are constructed based on a series of layers. We draw one layer and then the next, so try changing Task 8 to draw the lines first and then the points on top. Give it a go!</li>
 </ol>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_facet_guide</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Sex</span>, shape <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1210,7 +1274,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.1</span> Task 1<a class="anchor" aria-label="anchor" href="#task-1-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">menrot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"MentalRotationBehavioralData.csv"</span><span class="op">)</span></span>
@@ -1221,7 +1285,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.2</span> Task 2<a class="anchor" aria-label="anchor" href="#task-2-2"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_angle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1241,7 +1305,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.3</span> Task 3<a class="anchor" aria-label="anchor" href="#task-3-2"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_angle_sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1257,7 +1321,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.4</span> Task 4<a class="anchor" aria-label="anchor" href="#task-4-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1273,7 +1337,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.5</span> Task 5<a class="anchor" aria-label="anchor" href="#task-5-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_grouped_color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1289,7 +1353,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.6</span> Task 6<a class="anchor" aria-label="anchor" href="#task-6-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_shape_size</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1305,7 +1369,7 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.7</span> Task 7<a class="anchor" aria-label="anchor" href="#task-7-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_lab_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -1323,14 +1387,14 @@ further.
 <h4>
 <span class="header-section-number">3.5.1.8</span> Task 8<a class="anchor" aria-label="anchor" href="#task-8-1"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">manrot_facet_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_Resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'Angle'. You can override using the
 ## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">manrot_facet_guide</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Sex</span>, shape <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1347,20 +1411,20 @@ further.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassSolT8-1"></span>
 <img src="03-s01-lab03e_files/figure-html/Ch3InClassSolT8-1-1.png" alt="Task 8" width="100%"><p class="caption">
-Figure 3.13: Task 8
+Figure 3.14: Task 8
 </p>
 </div>
 <ul>
 <li>Remembering it is a layer system, we could use the below code to have the lines behind the points.</li>
 </ul>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">manrot_facet_guide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_Resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'Angle'. You can override using the
 ## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">manrot_facet_guide</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Sex</span>, shape <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1372,7 +1436,7 @@ Figure 3.13: Task 8
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassSolT8-2"></span>
 <img src="03-s01-lab03e_files/figure-html/Ch3InClassSolT8-2-1.png" alt="Task 8 Alternative" width="100%"><p class="caption">
-Figure 3.14: Task 8 Alternative
+Figure 3.15: Task 8 Alternative
 </p>
 </div>
 <p><a href="data-visualisation-through-ggplot2.html#Ch3InClassQueT8">Return to Task</a></p>
@@ -1397,14 +1461,14 @@ Figure 3.14: Task 8 Alternative
 <span class="header-section-number">3.6.1</span> More on <code>aes()</code><a class="anchor" aria-label="anchor" href="#more-on-aes"><i class="fas fa-link"></i></a>
 </h3>
 <p>In this chapter, we added a short note about using the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call, but we see people having issues with this so we thought a quick demonstration might help. Here is the code from the previous activity:</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_angle_sex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Angle</span>, <span class="va">Sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_Resp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'Angle'. You can override using the
 ## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_angle_sex</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Sex</span>, shape <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1413,7 +1477,7 @@ Figure 3.14: Task 8 Alternative
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask6-more-hidden"></span>
 <img src="03-s01-lab03f_files/figure-html/Ch3InClassTask6-more-hidden-1.png" alt="Changing Shape and Size of Data Points" width="100%"><p class="caption">
-Figure 3.15: Changing Shape and Size of Data Points
+Figure 3.16: Changing Shape and Size of Data Points
 </p>
 </div>
 <p>Specifically, we are going to focus on the <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> line. Inside the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> we stated <code>color = Sex, shape = Sex</code> and outside the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> we stated, <code>size = 3</code>. Earlier we said, outside <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> means that all observations take the one value or color or type. Inside means that each observation within a condition takes the same value or color or type, but different conditions have different values/color/type. So based on that understanding, in the above plot, all shapes have the same size (i.e., 3), but there is a different shape and color of shape for each sex. Now let's demonstrate some alternatives.</p>
@@ -1425,7 +1489,7 @@ Figure 3.15: Changing Shape and Size of Data Points
 </ol>
 </li>
 </ol>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_angle_sex</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, shape <span class="op">=</span> <span class="fl">3</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1434,7 +1498,7 @@ Figure 3.15: Changing Shape and Size of Data Points
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask6-more-hidden-11"></span>
 <img src="03-s01-lab03f_files/figure-html/Ch3InClassTask6-more-hidden-11-1.png" alt="All points have the same shape, color and size" width="100%"><p class="caption">
-Figure 3.16: All points have the same shape, color and size
+Figure 3.17: All points have the same shape, color and size
 </p>
 </div>
 <ol start="2" style="list-style-type: decimal">
@@ -1445,7 +1509,7 @@ Figure 3.16: All points have the same shape, color and size
 </ol>
 </li>
 </ol>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_angle_sex</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fl">3</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1454,7 +1518,7 @@ Figure 3.16: All points have the same shape, color and size
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask6-more-hidden-12"></span>
 <img src="03-s01-lab03f_files/figure-html/Ch3InClassTask6-more-hidden-12-1.png" alt="All points have the same shape and size but color is determined by Sex" width="100%"><p class="caption">
-Figure 3.17: All points have the same shape and size but color is determined by Sex
+Figure 3.18: All points have the same shape and size but color is determined by Sex
 </p>
 </div>
 <ol start="3" style="list-style-type: decimal">
@@ -1464,7 +1528,7 @@ Figure 3.17: All points have the same shape and size but color is determined by 
 </ol>
 </li>
 </ol>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_angle_sex</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Angle</span>, y <span class="op">=</span> <span class="va">mean_Resp</span>, group <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">Sex</span>, shape <span class="op">=</span> <span class="va">Sex</span>, size <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1474,7 +1538,7 @@ Figure 3.17: All points have the same shape and size but color is determined by 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:Ch3InClassTask6-more-hidden-13"></span>
 <img src="03-s01-lab03f_files/figure-html/Ch3InClassTask6-more-hidden-13-1.png" alt="All points have the same shape and size but color is determined by Sex" width="100%"><p class="caption">
-Figure 3.18: All points have the same shape and size but color is determined by Sex
+Figure 3.19: All points have the same shape and size but color is determined by Sex
 </p>
 </div>
 <p>You actually get a warning when doing this option. Why? Because if you had numerous options then you would have too many different shapes being created and it would cause issues with the code and may even crash it. Pay attention to warnings.</p>
@@ -1482,7 +1546,7 @@ Figure 3.18: All points have the same shape and size but color is determined by 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:comb6-more-hidden-2"></span>
 <img src="03-s01-lab03f_files/figure-html/comb6-more-hidden-2-1.png" alt="The plot on the left suggests all observations are of the same condition. The figure on the right suggests a difference between all observations. Always think about what your information you convey in your figures!" width="100%"><p class="caption">
-Figure 3.19: The plot on the left suggests all observations are of the same condition. The figure on the right suggests a difference between all observations. Always think about what your information you convey in your figures!
+Figure 3.20: The plot on the left suggests all observations are of the same condition. The figure on the right suggests a difference between all observations. Always think about what your information you convey in your figures!
 </p>
 </div>
 <p>Hopefully that is beginning to become clearer. Insider the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> means that all observations within a variable/condition are shown the same, but are different from observations from a different variable/condition. Outside the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> means that all observations are shown as the same regardless of condition.</p>
@@ -1503,7 +1567,7 @@ e.g. <code>install.packages("patchwork")</code>.
 </div>
 <p><br></p>
 <p>Plots like boxplots and histograms, when combined, can be incredibly useful in understanding the overall shape of your data and whether or not it fits the assumptions of inferential tests, something we will come on to later. If we were to create two separate plots, we might get something like this:</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_hist_correct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">Participant</span>, <span class="va">CorrectResponse</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Mean_Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Time</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1517,19 +1581,19 @@ e.g. <code>install.packages("patchwork")</code>.
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch3-add-1"></span>
 <img src="03-s01-lab03f_files/figure-html/ch3-add-1-1.png" alt="A histogram of distribution of Mean Time counts by Sex" width="100%"><p class="caption">
-Figure 3.20: A histogram of distribution of Mean Time counts by Sex
+Figure 3.21: A histogram of distribution of Mean Time counts by Sex
 </p>
 </div>
 <p><br></p>
 <p>And:</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">menrot_box_correct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">menrot</span>, <span class="va">Participant</span>, <span class="va">CorrectResponse</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Mean_Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Time</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">CorrectResponse</span> <span class="op">==</span> <span class="st">"Correct"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">demog</span>, <span class="st">"Participant"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'Participant'. You can override using the
 ## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_box_correct</span>, </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">CorrectResponse</span>, </span>
 <span>           y <span class="op">=</span> <span class="va">Mean_Time</span>, </span>
@@ -1539,16 +1603,16 @@ Figure 3.20: A histogram of distribution of Mean Time counts by Sex
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:ch3-add-2"></span>
 <img src="03-s01-lab03f_files/figure-html/ch3-add-2-1.png" alt="A boxplot of the spreads of Mean Time for Correct Responses by Sex" width="100%"><p class="caption">
-Figure 3.21: A boxplot of the spreads of Mean Time for Correct Responses by Sex
+Figure 3.22: A boxplot of the spreads of Mean Time for Correct Responses by Sex
 </p>
 </div>
 <p><br></p>
 <p>Now given that they both divide the data by sex, you can start to see how the figure legend for each plot becomes a bit repetitive, and how combining them into one figure would potentially make things easier. There are a number of packages to do this, but <code>patchwork</code> is very straightforward and flexible.</p>
 <p>Let's now call in <code>patchwork</code></p>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span></code></pre></div>
 <p>The first thing you need to do when using patchwork is save your plots in an object (just like you would with the output of any function). Using the code above, this might look like below for the boxplot:</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_box</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_box_correct</span>, </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">CorrectResponse</span>, </span>
 <span>           y <span class="op">=</span> <span class="va">Mean_Time</span>, </span>
@@ -1557,7 +1621,7 @@ Figure 3.21: A boxplot of the spreads of Mean Time for Correct Responses by Sex
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"A"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>And below for the histogram:</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_hist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">menrot_hist_correct</span>, </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Mean_Time</span>,</span>
 <span>           fill <span class="op">=</span> <span class="va">Sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -1567,48 +1631,48 @@ Figure 3.21: A boxplot of the spreads of Mean Time for Correct Responses by Sex
 <p><br></p>
 <p><strong>Note:</strong> The reason for the inclusion of a title on each plot will become clear in a second.</p>
 <p><strong>Note:</strong> When you run these codes no plots will be generated as you are saving them as objects - the boxplot in <code>p_box</code> and the histogram in <code>p_hist</code>. It is important to realise this distinction as if someone asks you to make produce a code where the figure is generated when your code knits, and you have saved your plot as an object, then your figure might not show. If you have save a plot as an object, you can generate the figure by just calling the name of the object. If you look at the ggplot cheatsheet you will see this approach a lot. Here is how we would call the boxplot stored in <code>p_box</code>.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_box</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:p-box"></span>
 <img src="03-s01-lab03f_files/figure-html/p-box-1.png" alt="A boxplot of the spreads of Mean Time for Correct Responses by Sex" width="100%"><p class="caption">
-Figure 3.22: A boxplot of the spreads of Mean Time for Correct Responses by Sex
+Figure 3.23: A boxplot of the spreads of Mean Time for Correct Responses by Sex
 </p>
 </div>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_hist</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:p-hist"></span>
 <img src="03-s01-lab03f_files/figure-html/p-hist-1.png" alt="A histogram of distribution of Mean Time counts by Sex" width="100%"><p class="caption">
-Figure 3.23: A histogram of distribution of Mean Time counts by Sex
+Figure 3.24: A histogram of distribution of Mean Time counts by Sex
 </p>
 </div>
 <p><br></p>
 <p><strong>Note:</strong> You will see a warning from the histogram plot about selecting a binwidth. We haven't really looked at this yet but will do in due course. If you wanted to "fix" that warning then changing the histrogram code to something like <code>+ geom_histogram(binwidth = 100)</code> might work. The value that you enter is relative to the scale of your data. A binwidth of 1 would create a bin every increase of 1 ms. A binwidth of 100 creates a bin every 100 ms.</p>
 <p>So far so nothing exciting. Looks just like what we have seen before. Didn't we say we wanted both the plots in a single figure, right? Well to do that in patchwork, we simply "add" the plots together using a plus sign (+), as such:</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_box</span> <span class="op">+</span> <span class="va">p_hist</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:comb1"></span>
 <img src="03-s01-lab03f_files/figure-html/comb1-1.png" alt="A boxplot (A - left) of the spreads of Mean Time for Correct Responses, and histogram (B - right) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)" width="100%"><p class="caption">
-Figure 3.24: A boxplot (A - left) of the spreads of Mean Time for Correct Responses, and histogram (B - right) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)
+Figure 3.25: A boxplot (A - left) of the spreads of Mean Time for Correct Responses, and histogram (B - right) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)
 </p>
 </div>
 <p><strong>Note:</strong> We can use the "titles"" we added to the plots in the original code above to tell readers which plot, within the combined figure, we are referring to, A or B, left or right, as shown in the figure legend beneath the figure. This might seem a bit pedantic, but you have no control over how somebody views your published figure, and as such clarity is paramount!</p>
 <p>Awesome, that it? No! We can also change the configuration of the plots in the combined figure. Say we wanted the plots on top of each other - portrait rather than landscape - well in that instance we divide the plots using the divide sign (/), as such:</p>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_box</span> <span class="op">/</span> <span class="va">p_hist</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:comb2"></span>
 <img src="03-s01-lab03f_files/figure-html/comb2-1.png" alt="A boxplot (A - top) of the spreads of Mean Time for Correct Responses, and histogram (B - bottom) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)" width="100%"><p class="caption">
-Figure 3.25: A boxplot (A - top) of the spreads of Mean Time for Correct Responses, and histogram (B - bottom) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)
+Figure 3.26: A boxplot (A - top) of the spreads of Mean Time for Correct Responses, and histogram (B - bottom) of distribution of Mean Time counts, both separated by Sex (female - red, male - cyan)
 </p>
 </div>
 <p>And now we refer to top and bottom, rather than left and right. In fact, <code>patchwork</code> is really flexible and can work with multiple plots and arrangements. Hypothetically, say you had three plots and wanted two on top of one, then you would use the approach of combining "+" and "/" as such:</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">plot1</span> <span class="op">+</span> <span class="va">plot2</span><span class="op">)</span><span class="op">/</span><span class="va">plot3</span></span></code></pre></div>
 <p>Remember the trick to using patchwork is to save your plots as objects first (<code>p1 &lt;- ggplot(....)</code>) and the rest is easy. But be sure to always know if your figure is to be shown when knitted or not; more often than not, seeing the figure is more important than seeing the code.</p>
 <p><strong>Happy Visualising!</strong></p>
@@ -1833,7 +1897,8 @@ $( document ).ready(function() {
 <li><a class="nav-link" href="#violin-boxplots-geom_violin-and-geom_boxplot"><span class="header-section-number">3.2.6</span> Violin-boxplots – geom_violin() and geom_boxplot()</a></li>
 <li><a class="nav-link" href="#barplots---geom_bar-or-geom_col"><span class="header-section-number">3.2.7</span> Barplots - geom_bar() or geom_col()</a></li>
 <li><a class="nav-link" href="#themes-labels-guides-and-facet_wraps"><span class="header-section-number">3.2.8</span> Themes, Labels, Guides, and facet_wraps()</a></li>
-<li><a class="nav-link" href="#choosing-appropriate-figures"><span class="header-section-number">3.2.9</span> Choosing Appropriate Figures</a></li>
+<li><a class="nav-link" href="#saving-your-figures"><span class="header-section-number">3.2.9</span> Saving your Figures</a></li>
+<li><a class="nav-link" href="#choosing-appropriate-figures"><span class="header-section-number">3.2.10</span> Choosing Appropriate Figures</a></li>
 </ul>
 </li>
 <li>
@@ -1880,7 +1945,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-03-01.</p>
+    <p>"<strong>Analysis</strong>" was written by Phil McAleer, Carolina E. Kuepper-Tetzel, Helena Paterson. It was last built on 2024-06-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
