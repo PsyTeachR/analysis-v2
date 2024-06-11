@@ -444,6 +444,65 @@ ggplot(data = menrot_better_plot,
   theme_bw()
 ```
 
+
+### Saving your Figures
+
+It would be really useful to save a copy of your plots as an image file so that you can use them in a presentation or report. One approach we can use is the function `ggsave()`.
+
+There are two ways you can use `ggsave()`. If you don't tell `ggsave()` which plot you want to save, by default it will save **the last plot you created**. To demonstrate this let's run the code from Activity 3.2.6 again to produce the nice violin-boxplot:
+
+```{r, fig.cap="Violin-boxplot2"}
+ggplot(data = menrot_box_correct, 
+       aes(x = CorrectResponse, 
+           y = Mean_Time, 
+           fill = CorrectResponse)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.2) +
+  guides(fill = FALSE)
+```
+
+Now that we've got the plot we want to save as our last produced plot, all that `ggsave()` requires is for you to tell it what file name it should save the plot to and the type of image file you want to create (the below example uses .png but you could also use e.g., .jpeg and other image types).
+
+* Type and run the below code into a new code chunk and then check your chapter folder. If you have performed this correctly then you see the saved image file.
+
+```{r, eval = FALSE}
+ggsave("violin-boxplot.png")
+```
+
+Note that the image tends to save at a default size, or the size that the image is displayed in your viewer, but you can change this manually if you think that the dimensions of the plot are not correct or if you need a particular size or file type.
+
+* Type and run the below code to overwrite the image file with new dimensions.
+    * try different dimensions and units to see the difference. You might want to create violin-boxplot-v1, ...-v2, ...-v3, and compare them. Remember you can use `?ggsave()` in the console window to bring up the help on this function.
+
+```{r, eval = FALSE}
+ggsave("violin-boxplot.png", 
+       width = 10, 
+       height = 8, 
+       units = "in")
+```
+
+Alternatively, the second way of using `ggsave()` is to save your plot as an object, just like we have done with tibbles, and then tell `ggsave()` which object you want to save. 
+
+* Type and run the below code and then check your folder for the image file. Resize the plot if you think it needs it.
+    * The below code saves the plot from Activity 3.2.6 into an object named `viobox` and then saves it to an image file "violin-boxplot-stored.png". 
+    * **Note:** We do not add on `ggsave()`. Instead it is a separate line of code and we tell it which object to save. So, do not do `+ ggsave()`   
+
+```{r, eval = FALSE}
+viobox <- ggplot(data = menrot_box_correct, 
+       aes(x = CorrectResponse, 
+           y = Mean_Time, 
+           fill = CorrectResponse)) + 
+  geom_violin() +
+  geom_boxplot(width = 0.2) +
+  guides(fill = FALSE)
+
+
+ggsave("violin-boxplot-stored.png", plot = viobox)
+```
+
+Finally, note that when you save a plot to an object, you will not see the plot displayed anywhere. To get the figure to display you need to type the object name in the console (i.e., `viobox`). The benefit of saving figures this way is that if you are making lots of plots, you can't accidentally save the wrong one because you are explicitly specifying which plot to save rather than just saving the last one.
+
+
 ### Choosing Appropriate Figures
 
 As you progress through Psychology, you will come across a variety of different figures and plots, each looking slightly different and giving different information. When looking at these figures, and indeed when choosing one for your own analyses, you have to think about which figure is the most appropriate for your data. For example, scatterplots are great when both variables are continuous; boxplots and histograms are great for viewing spreads of data; and violin boxplots are particularly effective in conveying a more complete picture of the data distribution. In addition, barplots are commonly used where one variable is categorical - but as above note that barplots can be misleading and lots of new approaches to display categorical information are being created. Always keep asking yourself, does my plot display my data correctly. Also, do I have the right number of dots/conditions/groups in my figure? Too many or too few would suggest something is not quite right. Look at your data!
